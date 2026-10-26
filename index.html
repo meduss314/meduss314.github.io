@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lina Prieto · Product Designer</title>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Lina Valentina Prieto, Senior Product Designer en fintech y pagos. Casos: Portal Deuna Negocios, Código Único de Pago, Suscripciones, Colombia Fintech, Claro y BBVA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column of work. Home = hero + "comprobante" of results + case grid; each case = receipt-style meta card, then story with image slots. */
+:root{
+  --bg:#f5f8fc; --surface:#ffffff; --ink:#122036; --muted:#5a6a80; --line:#dbe4ef;
+  --accent:#1679c9; --accent-soft:#dcedfc; --paper:#fbf6e6; --ok:#1d8a5b;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1320; --surface:#131d2e; --ink:#e7eef7; --muted:#9aabc2; --line:#24324a;
+  --accent:#5fb8ff; --accent-soft:#16304d; --paper:#1b2433; --ok:#52c48f; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c1320; --surface:#131d2e; --ink:#e7eef7; --muted:#9aabc2; --line:#24324a;
+  --accent:#5fb8ff; --accent-soft:#16304d; --paper:#1b2433; --ok:#52c48f; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg); color:var(--ink); font:16px/1.6 var(--body); margin:0}
+a{color:inherit}
+img{max-width:100%; display:block}
+.wrap{max-width:var(--wrap); margin-inline:auto; padding-left:max(20px, env(safe-area-inset-left,0px)); padding-right:max(20px, env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--display); text-wrap:balance; margin:0; letter-spacing:-.02em}
+p{margin:0}
+.eyebrow{font:500 12px/1.2 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+
+/* header */
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
+header.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:14px}
+.brand{font:700 17px/1 var(--display); text-decoration:none; display:flex; align-items:center; gap:10px}
+.brand i{width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block}
+nav.links{display:flex; gap:22px; align-items:center; font-weight:500; font-size:15px}
+nav.links a{text-decoration:none; color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; font:600 15px/1 var(--body); text-decoration:none; border:1px solid var(--ink); color:var(--ink); background:transparent; cursor:pointer}
+.btn.solid{background:var(--ink); color:var(--bg)}
+.btn:hover{transform:translateY(-1px)}
+@media (max-width:640px){ nav.links .hide-sm{display:none} nav.links{gap:14px} }
+
+/* hero */
+.hero{padding-block:72px 56px; display:grid; grid-template-columns:1.25fr .9fr; gap:48px; align-items:end}
+.hero h1{font-size:clamp(40px, 6.4vw, 76px); line-height:.98; font-weight:800}
+.hero h1 em{font-style:normal; color:var(--accent)}
+.hero .lead{font-size:clamp(18px,2vw,21px); color:var(--muted); max-width:34ch; margin-top:22px}
+.hero .ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:28px}
+.status{display:inline-flex; align-items:center; gap:8px; font:500 13px/1 var(--mono); color:var(--ok); margin-bottom:22px}
+.status::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent)}
+
+/* receipt */
+.receipt{background:var(--paper); border-radius:14px; padding:22px 22px 18px; font-family:var(--mono); font-size:13px; position:relative; box-shadow:0 1px 0 var(--line), 0 18px 40px -24px rgba(18,32,54,.35)}
+.receipt::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:8px;
+  background:radial-gradient(circle at 6px 0, transparent 6px, var(--paper) 6.5px) 0 0/12px 8px repeat-x}
+.receipt .r-head{display:flex; justify-content:space-between; color:var(--muted); padding-bottom:12px; border-bottom:1px dashed var(--line); margin-bottom:6px}
+.receipt .row{display:flex; justify-content:space-between; gap:16px; padding-block:9px; border-bottom:1px dashed var(--line)}
+.receipt .row:last-child{border-bottom:0}
+.receipt .row span:first-child{color:var(--muted)}
+.receipt .row b{font:600 18px/1 var(--display); letter-spacing:-.01em; font-variant-numeric:tabular-nums; white-space:nowrap}
+.receipt .code{font:500 22px/1 var(--mono); letter-spacing:.18em; color:var(--accent)}
+
+/* sections */
+section.block{padding-block:56px; border-top:1px solid var(--line)}
+.sec-head{display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; margin-bottom:28px}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px); font-weight:700}
+
+/* case grid */
+.grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:28px}
+@media (max-width:760px){ .grid{grid-template-columns:1fr} .hero{grid-template-columns:1fr; padding-block:48px 40px} }
+.card{display:flex; flex-direction:column; gap:14px; text-decoration:none; color:inherit}
+.card .shot{aspect-ratio:16/10}
+.card:hover .shot img{transform:scale(1.02)}
+.card .meta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+.tag{font:500 12px/1 var(--mono); padding:6px 9px; border-radius:6px; background:var(--accent-soft); color:var(--ink)}
+.tag.live{background:transparent; border:1px solid var(--ok); color:var(--ok)}
+.card h3{font-size:24px; font-weight:700; line-height:1.15}
+.card p{color:var(--muted)}
+.card .more{font-weight:600; color:var(--accent)}
+
+/* image slots */
+.shot{position:relative; border-radius:12px; overflow:hidden; background:var(--accent-soft); max-width:100%}
+.shot img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease}
+.shot.free{aspect-ratio:auto}
+.shot.free img{height:auto; object-fit:contain}
+.shot .ph{position:absolute; inset:0; display:grid; place-content:center; text-align:center; gap:6px; padding:16px;
+  border:1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent); border-radius:12px; color:var(--ink); font-size:14px}
+.shot.free .ph{position:relative; min-height:220px}
+.ph b{font:600 15px/1.3 var(--body)}
+.ph code{font:500 12px/1.4 var(--mono); color:var(--accent); word-break:break-all}
+.ph small{font:12px/1.3 var(--mono); color:var(--muted)}
+figure{margin:0; display:flex; flex-direction:column; gap:10px}
+figcaption{font-size:14px; color:var(--muted)}
+
+/* about */
+.about{display:grid; grid-template-columns:1fr 1fr; gap:48px}
+@media (max-width:760px){ .about{grid-template-columns:1fr} }
+.about .text{display:flex; flex-direction:column; gap:16px; max-width:60ch; font-size:17px}
+.timeline{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+.timeline li{display:grid; grid-template-columns:120px 1fr; gap:16px; padding-block:14px; border-bottom:1px solid var(--line)}
+.timeline .when{font:500 13px/1.6 var(--mono); color:var(--muted); font-variant-numeric:tabular-nums}
+.timeline b{display:block; font-weight:600}
+.timeline span{color:var(--muted); font-size:15px}
+.skills{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+
+/* contact */
+.contact{display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:start}
+@media (max-width:760px){ .contact{grid-template-columns:1fr} }
+.contact h2{font-size:clamp(30px,4vw,48px); font-weight:800}
+.contact dl{margin:0; display:grid; gap:2px}
+.contact .item{display:flex; justify-content:space-between; align-items:center; gap:12px; padding-block:14px; border-bottom:1px solid var(--line); flex-wrap:wrap}
+.contact dt{font:500 12px/1 var(--mono); text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
+.contact dd{margin:0; font-weight:600; user-select:all; overflow-wrap:anywhere}
+footer{padding-block:32px; color:var(--muted); font-size:14px; border-top:1px solid var(--line)}
+
+/* case page */
+.case-hero{padding-block:48px 32px}
+.back{font-weight:600; text-decoration:none; color:var(--muted); display:inline-flex; gap:8px; margin-bottom:28px}
+.back:hover{color:var(--ink)}
+.case-hero h1{font-size:clamp(36px,5.6vw,64px); font-weight:800; line-height:1}
+.case-hero .lead{font-size:clamp(19px,2.2vw,24px); color:var(--muted); max-width:38ch; margin-top:18px; font-family:var(--display); font-weight:400; letter-spacing:-.01em}
+.case-top{display:grid; grid-template-columns:1.4fr .8fr; gap:40px; align-items:start}
+@media (max-width:860px){ .case-top{grid-template-columns:1fr} }
+.case-body{display:grid; gap:56px; padding-block:24px 64px}
+.chapter{display:grid; grid-template-columns:220px minmax(0,1fr); gap:32px}
+@media (max-width:860px){ .chapter{grid-template-columns:1fr; gap:14px} }
+.chapter > h2{font-size:22px; font-weight:700; position:sticky; top:84px; align-self:start}
+@media (max-width:860px){ .chapter > h2{position:static} }
+.chapter .content{display:flex; flex-direction:column; gap:18px; min-width:0}
+.content p{max-width:66ch; font-size:17px}
+.content h3{font-size:19px; font-weight:600; margin-top:8px}
+.content ol, .content ul{margin:0; padding-left:22px; display:grid; gap:10px; max-width:66ch; font-size:17px}
+.pair{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
+.trio{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
+@media (max-width:640px){ .pair,.trio{grid-template-columns:1fr} }
+.finding{display:grid; grid-template-columns:auto 1fr; gap:6px 14px; padding:16px 18px; background:var(--surface); border:1px solid var(--line); border-radius:12px; max-width:72ch}
+.finding .k{font:500 12px/1.9 var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--muted)}
+.impact{background:var(--ink); color:var(--bg); border-radius:16px; padding:32px; display:grid; gap:10px}
+.impact .big{font:800 clamp(34px,5vw,56px)/1 var(--display); letter-spacing:-.03em}
+.impact p{opacity:.85; max-width:60ch}
+.next{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-block:32px; border-top:1px solid var(--line)}
+.next a{text-decoration:none}
+.next small{display:block; font:500 12px/1 var(--mono); color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px}
+.next b{font:700 22px/1.2 var(--display)}
+
+@media (prefers-reduced-motion: reduce){ *{transition:none!important; scroll-behavior:auto!important} .btn:hover{transform:none} }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><i></i>Lina Prieto</a>
+    <nav class="links" aria-label="Principal">
+      <a href="#casos">Casos</a>
+      <a class="hide-sm" href="#sobre-mi">Sobre mí</a>
+      <a class="hide-sm" href="#contacto">Contacto</a>
+      <a class="btn" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer><div class="wrap">Lina Valentina Prieto Acevedo · Senior Product Designer · Bogotá, Colombia</div></footer>
+
+<script>
+/* ===== Contenido ===== */
+const LINKEDIN = "https://www.linkedin.com/in/lina-valentina-prieto-acevedo";
+const EMAIL = "valentinaprieto1000@gmail.com";
+const PHONE = "+57 310 887 8265";
+
+// img(id, etiqueta, tamaño recomendado, opciones)
+const img = (src, label, size="1600×1000", opts={}) => ({img:src, label, size, ...opts});
+
+const CASES = [
+{
+  id:"portal-deuna-negocios", title:"Portal Deuna Negocios",
+  card:"De 10 comercios piloto a más de 2.000 que se autogestionan",
+  lead:"De 10 comercios piloto a más de 2.000 que gestionan su negocio sin llamar a soporte.",
+  tags:["B2B","Web","Fintech"], year:"2024–2026", status:"En producción",
+  meta:[["Rol","Lead Product Designer"],["Equipo","Product Owner, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"],["Estado","En producción"]],
+  cover:img("deuna/portada","Portada: pantalla principal del portal"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Deuna es la billetera digital más usada de Ecuador. Mientras más comercios la adoptaban, más crecía un costo invisible: cada pregunta de un comercio terminaba en el equipo comercial."},
+      {p:"¿Llegó este pago? ¿Me reenvías el reporte de ayer? ¿Cómo me integro? El equipo comercial dedicaba 4–5 horas diarias a responder. Los desarrolladores senior y el arquitecto, 2–3 horas diarias a soporte de integraciones."}]},
+    {h:"El reto", blocks:[
+      {p:"No bastaba con diseñar un portal. Había que convencer a la dirección de que no era un gasto más, sino la forma de dejar de pagar ese tiempo todos los días. Y hacerlo con un MVP que saliera en dos meses."},
+      {fig:img("deuna/reto","El problema: comercios pidiendo soporte por pagos y reportes","1600×900",{free:true})}]},
+    {h:"Mi rol", blocks:[
+      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Construí con el equipo el caso de negocio, definí la arquitectura de información, diseñé y validé los flujos, y acompañé la evolución del producto después del lanzamiento."}]},
+    {h:"Lo que descubrimos", blocks:[
+      {p:"Antes de dibujar una pantalla, medimos de dónde venía la carga operativa. Tres hallazgos definieron el producto:"},
+      {ul:["Los comercios validaban pagos con capturas de pantalla. Al cerrar caja, el cliente mostraba una foto del pago y el comercio llamaba para confirmar.","Los reportes vivían en el correo. Si no llegaban, el comercio no podía cerrar caja y pedía un reenvío.","Las integraciones consumían al equipo técnico. Cada empresa que quería conectarse necesitaba acompañamiento de un desarrollador senior."]},
+      {fig:img("deuna/hallazgos","Mapa de hallazgos o arquitectura de información","1600×1000",{free:true})}]},
+    {h:"Lo que decidimos", blocks:[
+      {p:"Con esos datos armamos el caso de negocio que aprobó el proyecto. De ahí salieron tres decisiones:"},
+      {ol:["Empezar solo por transacciones y reportes. Eran las dos solicitudes más frecuentes. Dejamos integraciones y permisos para una segunda fase y así salimos en dos meses.","Diseñar para quien cierra caja, no para un analista. Tiempo real, búsqueda por pagador o número de transacción y el detalle a un clic: confirmar un pago debe tomar segundos.","Tratar la integración como un producto. El perfil de desarrollador y el sandbox atacaron directamente las horas del equipo técnico."]}]},
+    {h:"Primer MVP", blocks:[
+      {h3:"Transacciones en tiempo real"},
+      {p:"El comercio confirma un pago al instante desde el portal, sin pedir capturas ni llamar al equipo comercial. Ventas y devoluciones van separadas, y cada transacción tiene su detalle completo."},
+      {fig:img("deuna/transacciones","Pantalla de transacciones","1600×1000",{free:true})},
+      {h3:"Historial de reportes"},
+      {p:"Los reportes que antes llegaban por correo ahora están siempre disponibles, filtrados por fecha, frecuencia y sucursal. El comercio los descarga cuando los necesita y puede cerrar caja sin esperar a nadie."},
+      {fig:img("deuna/reportes","Pantalla de reportes","1600×1000",{free:true})}]},
+    {h:"Segunda fase", blocks:[
+      {p:"Con el portal en uso, las necesidades de los comercios más grandes marcaron la segunda fase: controlar quién ve qué, e integrarse sin depender del equipo técnico de Deuna."},
+      {h3:"Roles y Permisos"},
+      {p:"Diseñamos un sistema de accesos para que diferentes perfiles dentro de una empresa pudieran operar el portal con distintos niveles de visibilidad y control, protegiendo información sensible sin afectar la operación diaria."},
+      {trio:[img("deuna/roles-1","Roles: listado de usuarios","1200×900"),img("deuna/roles-2","Roles: crear o editar rol","1200×900"),img("deuna/roles-3","Roles: permisos por módulo","1200×900")]},
+      {h3:"Perfil Desarrollador y Sandbox"},
+      {p:"Creamos un espacio para empresas que querían integrarse técnicamente con Deuna: documentación, configuración de webhooks, credenciales y un ambiente sandbox para pruebas de integración."},
+      {fig:img("deuna/sandbox","Perfil desarrollador y sandbox","1600×1000",{free:true})}]},
+  ],
+  impact:{big:"10 → +2.000 comercios", p:"Del piloto a la operación diaria, gestionando pagos, reportes e integraciones sin llamar a soporte. El equipo comercial recuperó 4–5 horas diarias y el técnico 2–3 horas."}
+},
+{
+  id:"cup", title:"Código Único de Pago",
+  card:"Pagar en caja sin QR: 6 dígitos, aceptado en +45.000 puntos de venta",
+  lead:"Pagar en caja sin QR: un código de 6 dígitos que hoy usan todos los clientes de Deuna.",
+  tags:["App","Pagos","Research"], year:"2024", status:"En producción",
+  meta:[["Rol","Product Designer"],["Equipo","Producto y negocio"],["Plataforma","App Deuna (personas y comercios)"],["Validación","10 pruebas de usabilidad"],["Estado","En producción"]],
+  cover:img("cup/portada","Portada: pantalla de ingreso del código"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"En supermercados como Tía y Santa María pasa algo simple: en la caja no hay QR dinámico. Para millones de compras, Deuna no era una opción."},
+      {p:"La solución de negocio fue un código de 6 dígitos: el cajero lo dicta, el cliente lo ingresa en la app y paga. Mi trabajo era que ese gesto fuera tan rápido como pagar en efectivo."}]},
+    {h:"El reto", blocks:[
+      {p:"Diseñar un pago presencial que funcione con una fila detrás, un código dictado en voz alta y un usuario que nunca había visto esta forma de pagar. Y hacerlo dentro de “Pagar en Deuna”, sin crear un flujo paralelo."},
+      {pair:[img("cup/contexto-1","Momento de uso en caja","1200×900"),img("cup/contexto-2","Entrada a “Pagar en Deuna”","1200×900")]}]},
+    {h:"Mi rol", blocks:[
+      {p:"Diseñé el flujo de punta a punta: arquitectura, interacción, estados de error y prototipos de alta fidelidad. Planeé y ejecuté las pruebas de usabilidad, e iteré el diseño con producto y negocio."}]},
+    {h:"La solución", blocks:[
+      {p:"Partimos del momento real de uso: una caja de supermercado con fila, un código dictado en voz alta y ningún QR a la vista. Cada paso extra era un segundo más frente al cajero."},
+      {fig:img("cup/flujo","Flujo completo: código → monto → confirmación","1600×900",{free:true})},
+      {p:"Un pago en caja tampoco puede quedarse colgado. Diseñé cuatro salidas claras: código inválido, saldo insuficiente, límite transaccional superado y error del servicio. Cada una le dice al usuario qué pasó y qué hacer, con la fila esperando."},
+      {fig:img("cup/errores","Los 4 estados de error","1600×900",{free:true})}]},
+    {h:"Validación", blocks:[
+      {p:"Hice 10 pruebas de usabilidad en una agencia bancaria, con usuarios reales y el prototipo en mano. No buscaba saber si les gustaba: quería ver dónde se trababan en caja."},
+      {finding:["La mayoría buscaba el código dentro de “Pagar”.","Puse la entrada al código ahí, junto al escáner de QR, en lugar de crear un acceso nuevo en el home."]},
+      {finding:["Confundían el código con una OTP o clave de verificación.","Cambié el texto a “Es un número que te entrega el negocio y cambia cada vez que pagues”, y separé los dígitos en grupos de dos para que se lea como un código de pago."]},
+      {finding:["La pantalla de monto y confirmación funcionó sin fricción.","No la toqué. Saber qué no cambiar también es una decisión."]},
+      {fig:img("cup/iteracion","Antes y después del cambio de copy y agrupación de dígitos","1600×900",{free:true})}]},
+  ],
+  impact:{big:"+45.000 puntos de venta", p:"En producción para todos los usuarios de Deuna, personas y comercios, y aceptado en más de 45.000 puntos de venta tras la alianza con Datafast."}
+},
+{
+  id:"suscripciones", title:"Suscripciones y débitos automáticos",
+  card:"Débitos automáticos sin tarjeta, desde la billetera",
+  lead:"Pagar suscripciones con la billetera, sin tarjeta: una tokenización compleja convertida en “vincular cuenta”.",
+  tags:["App","Pagos","Integraciones"], year:"2026", status:"En desarrollo",
+  meta:[["Rol","Lead Product Designer"],["Equipo","Producto, arquitectura y desarrollo"],["Plataforma","App Deuna + apps de comercios"],["Estado","En desarrollo"]],
+  cover:img("suscripciones/portada","Portada: pantalla “Vincular cuenta”"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Pedir comida, pagar el gimnasio o una suscripción: casi todo cobro recurrente en apps exige una tarjeta. Deuna no tiene tarjeta, y no queríamos inventar una."},
+      {p:"La respuesta técnica fue tokenizar la cuenta del usuario y habilitar cobros automáticos por API con cada comercio. La pregunta de diseño: ¿cómo le explicas eso a alguien que solo quiere pagar su pedido?"}]},
+    {h:"El reto", blocks:[
+      {p:"El flujo empieza en la app del comercio, salta a Deuna para autorizar y vuelve al comercio. Tres apps, un permiso de cobro y cero tolerancia a la desconfianza."},
+      {p:"Había que explicar la vinculación sin hablar de tokens ni APIs, distinguir una suscripción fija de un pago recurrente variable, y generar confianza en un salto entre aplicaciones."},
+      {fig:img("suscripciones/flujo","Flujo entre apps: comercio → Deuna → comercio","1600×900",{free:true})}]},
+    {h:"Mi rol", blocks:[
+      {p:"Lideré el diseño de punta a punta en la app de Deuna: benchmark, arquitectura, flujos, research, prototipos y la estrategia de medición. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
+    {h:"Tres decisiones", blocks:[
+      {h3:"1. Hablar de “vincular cuenta”, no de tokenizar"},
+      {p:"Vincular una cuenta es una acción que la gente ya conoce. La pantalla de vinculación dice desde el inicio “Este paso no genera ningún cobro”: la frase que desactiva el miedo principal. Debajo, tres beneficios claros: pagos seguros, saldo disponible y control total."},
+      {trio:[img("suscripciones/vincular-1","Vincular cuenta","900×1600"),img("suscripciones/vincular-2","Autorizar permiso","900×1600"),img("suscripciones/vincular-3","Confirmación","900×1600")]},
+      {h3:"2. Suscripción y pago recurrente, cada uno con su estado"},
+      {p:"En research, los usuarios entendían ambos conceptos como lo mismo. Cada tipo tiene su descripción, su jerarquía y su estado: fijo y periódico, o variable según el uso. Así nadie se sorprende con un cobro."},
+      {h3:"3. Control visible en todo momento"},
+      {p:"Siempre se ve qué comercio pide el permiso y qué tipo de cobro hará. Desvincular está siempre en Perfil → Comercios vinculados, con correo y notificación de confirmación."},
+      {p:"Y los casos que nadie ve: sesión inválida, cuenta ya vinculada, errores del servicio y espera de respuesta. Cada uno le dice al usuario qué pasó y le permite volver al comercio sin quedarse atrapado."},
+      {pair:[img("suscripciones/control","Comercios vinculados y desvincular","1200×900"),img("suscripciones/errores","Estados de error y espera","1200×900")]}]},
+  ],
+  impact:{big:"Pagos recurrentes sin tarjeta", p:"Un nuevo método de pago recurrente para los comercios del ecosistema Deuna, con el embudo de medición listo desde el día uno."}
+},
+{
+  id:"colombia-fintech", title:"Colombia Fintech",
+  card:"Rediseño del sitio del gremio fintech más importante del país",
+  lead:"Del repositorio de información a la puerta de entrada del ecosistema fintech colombiano.",
+  tags:["Sitio web","Arquitectura de información","Freelance"], year:"2025", status:"Publicado",
+  meta:[["Rol","Product Designer"],["Equipo","Producto, stakeholders del gremio y agencia de marca"],["Plataforma","Sitio web"],["Estado","Publicado en 2025"]],
+  cover:img("colombia-fintech/portada","Portada: home del nuevo sitio"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Colombia Fintech reúne a bancos digitales, fintechs, aliados e inversionistas. Su sitio era donde todos ellos llegaban primero, y no le hablaba a ninguno."},
+      {p:"Todo estaba ahí, pero apilado: noticias, eventos, afiliación y documentos con el mismo peso. Quien llegaba con ganas de afiliarse tenía que buscar cómo hacerlo entre noticias y documentos."},
+      {pair:[img("colombia-fintech/antes","Sitio anterior","1200×900"),img("colombia-fintech/despues","Sitio nuevo","1200×900")]}]},
+    {h:"El reto", blocks:[
+      {p:"Llevar la nueva identidad de marca, creada por un equipo externo, a un sitio que en pocos segundos le dijera a cada visitante qué gana con Colombia Fintech y dónde seguir."}]},
+    {h:"Mi rol", blocks:[
+      {p:"Rediseñé la arquitectura de información y los flujos de navegación, y diseñé la experiencia de punta a punta hasta el prototipo de alta fidelidad. Trabajé con producto, con los stakeholders del gremio y con la agencia que hizo la marca."}]},
+    {h:"El rediseño", blocks:[
+      {h3:"Afiliación y comunidad al frente"},
+      {p:"“Vinculación” vive en el menú principal, y el inicio tiene su propio bloque para unirse a la comunidad fintech más grande de Colombia. Unirse dejó de ser un enlace perdido."},
+      {p:"El directorio de miembros y los testimonios de líderes del sector están en el inicio: el valor de pertenecer se ve antes de leerlo."},
+      {pair:[img("colombia-fintech/afiliacion","Bloque de afiliación","1200×900"),img("colombia-fintech/comunidad","Directorio y testimonios","1200×900")]},
+      {h3:"Traduciendo la marca a producto digital"},
+      {p:"Eventos, cursos, Fintech & Beer y webinars quedaron en pestañas, en lugar de un listado mezclado. La identidad nueva era fuerte: la usé para dar ritmo y jerarquía, no para decorar. Más aire, menos bloques compitiendo."},
+      {fig:img("colombia-fintech/agenda","Agenda de eventos por pestañas","1600×1000",{free:true})}]},
+  ],
+  impact:{big:"Sitio publicado", p:"En uso por el gremio fintech más importante de Colombia."},
+  link:{href:"https://colombiafintech.co", label:"Ver sitio"}
+},
+{
+  id:"claro", title:"E-commerce Claro Colombia",
+  card:"+18% en pagos online y −25% de abandono en el checkout",
+  lead:"Rediseño del e-commerce nacional de Claro, del home al checkout, en todos los dispositivos.",
+  tags:["E-commerce","Conversión","Design System"], year:"2023–2024", status:"En producción",
+  meta:[["Rol","Product Designer"],["Empresa","VASS para Claro Colombia"],["Plataforma","Web y mobile"],["Periodo","Sep 2023 – Ene 2024"]],
+  cover:img("claro/portada","Portada: checkout rediseñado"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Claro vende planes, equipos y servicios en su tienda online a todo el país. El embudo de compra tenía demasiados pasos y mucha carga para el usuario, y una parte grande de quienes llegaban al checkout no terminaba de pagar."}]},
+    {h:"Mi rol", blocks:[
+      {p:"Lideré el rediseño de la experiencia de compra de punta a punta: Homepage, Catálogo y flujo de Checkout para múltiples dispositivos. Validé los flujos con prototipos interactivos y trabajé con ingeniería y QA hasta producción."}]},
+    {h:"Qué cambiamos", blocks:[
+      {ul:["Simplificamos el checkout quitando pasos y reduciendo la carga cognitiva en cada pantalla.","Ordenamos el catálogo para que comparar y elegir fuera más rápido.","Evolucionamos el Design System existente con nuevos patrones y componentes documentados, para que la consistencia se mantuviera en toda la plataforma."]},
+      {fig:img("claro/checkout","Checkout: antes y después","1600×1000",{free:true})},
+      {pair:[img("claro/catalogo","Catálogo","1200×900"),img("claro/design-system","Componentes del Design System","1200×900")]}]},
+  ],
+  impact:{big:"+18% pagos · −25% abandono", p:"Aumentaron 18% los pagos online y bajó 25% el abandono en el embudo de compra."}
+},
+{
+  id:"bbva", title:"Plataforma de sucursales BBVA",
+  card:"Automatización de retiros y giros internacionales en sucursal",
+  lead:"Una plataforma interna para que los asesores de sucursal hagan retiros y giros internacionales con menos pasos manuales.",
+  tags:["Herramienta interna","Banca","Flujos"], year:"2024", status:"Proyecto interno",
+  meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para BBVA"],["Plataforma","Herramienta interna web"],["Periodo","Mar – Ago 2024"]],
+  cover:img("bbva/portada","Portada: pantalla de la plataforma (puede ir anonimizada)"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"En las sucursales de BBVA, los retiros y los envíos internacionales de dinero dependían de procesos manuales para el personal del banco. Cada operación tomaba varios pasos y tenía espacio para errores."}]},
+    {h:"Mi rol", blocks:[
+      {p:"Mapeé los procesos manuales de sucursal y los convertí en flujos digitales más rápidos y con menos pasos. Diseñé los flujos transaccionales de retiros y giros internacionales, cuidando validaciones, estados y casos de error, y los validé con entrevistas y pruebas de usabilidad con usuarios internos."}]},
+    {h:"La solución", blocks:[
+      {fig:img("bbva/flujo","Mapa del proceso: antes y después","1600×900",{free:true})},
+      {pair:[img("bbva/retiros","Flujo de retiros","1200×900"),img("bbva/giros","Flujo de giros internacionales","1200×900")]}]},
+  ],
+  impact:{big:"Menos pasos en sucursal", p:"Procesos operativos de retiros y giros internacionales convertidos en flujos digitales para el personal del banco."}
+}
+];
+
+/* ===== Imágenes: prueba .webp, .png, .jpg; si no existe, muestra el recuadro ===== */
+const EXTS = ["webp","png","jpg","jpeg"];
+function figureHTML(f, cls=""){
+  return `<div class="shot ${f.free?'free':''} ${cls}" data-img="${f.img}" data-label="${f.label}" data-size="${f.size}">
+    <img alt="${f.label}" loading="lazy" hidden></div>`;
+}
+function loadImages(root){
+  root.querySelectorAll(".shot[data-img]").forEach(box=>{
+    const im = box.querySelector("img"); let i = 0;
+    const tryNext = () => {
+      if(i >= EXTS.length){ showPh(box); return; }
+      im.src = `img/${box.dataset.img}.${EXTS[i++]}`;
+    };
+    im.onload = () => { im.hidden = false; box.querySelector(".ph")?.remove(); };
+    im.onerror = tryNext;
+    tryNext();
+  });
+}
+function showPh(box){
+  if(box.querySelector(".ph")) return;
+  const d = document.createElement("div"); d.className = "ph";
+  d.innerHTML = `<b>${box.dataset.label}</b><code>img/${box.dataset.img}.png</code><small>${box.dataset.size} px</small>`;
+  box.appendChild(d);
+}
+
+/* ===== Vistas ===== */
+const app = document.getElementById("app");
+const esc = s => s;
+
+function homeView(){
+  return `
+  <div class="wrap">
+    <section class="hero" id="inicio">
+      <div>
+        <div class="status">Abierta a nuevas oportunidades</div>
+        <h1>Diseño productos financieros que se usan en <em>la caja, la sucursal y el back-office</em>.</h1>
+        <p class="lead">Senior Product Designer con más de 5 años en fintech, banca y e-commerce. Del caso de negocio a producción.</p>
+        <div class="ctas">
+          <a class="btn solid" href="#casos">Ver casos</a>
+          <a class="btn" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="receipt" aria-label="Resultados destacados">
+        <div class="r-head"><span>COMPROBANTE</span><span>2021 → 2026</span></div>
+        <div class="row"><span>Comercios autogestionados</span><b>10 → +2.000</b></div>
+        <div class="row"><span>Puntos de venta con CUP</span><b>+45.000</b></div>
+        <div class="row"><span>Pagos online Claro</span><b>+18%</b></div>
+        <div class="row"><span>Abandono en checkout</span><b>−25%</b></div>
+        <div class="row"><span>Entrevistas y pruebas</span><b>+30</b></div>
+        <div class="row"><span>Código de pago</span><span class="code">48 27 15</span></div>
+      </div>
+    </section>
+
+    <section class="block" id="casos">
+      <div class="sec-head"><h2>Casos seleccionados</h2><span class="eyebrow">${CASES.length} proyectos</span></div>
+      <div class="grid">
+        ${CASES.map(c=>`
+          <a class="card" href="#${c.id}">
+            ${figureHTML(c.cover)}
+            <div class="meta">${c.status==="En producción"||c.status==="Publicado"?`<span class="tag live">${c.status}</span>`:`<span class="tag">${c.status}</span>`}${c.tags.slice(0,2).map(t=>`<span class="tag">${t}</span>`).join("")}<span class="eyebrow">${c.year}</span></div>
+            <h3>${c.title}</h3>
+            <p>${c.card}</p>
+            <span class="more">Ver caso →</span>
+          </a>`).join("")}
+      </div>
+    </section>
+
+    <section class="block" id="sobre-mi">
+      <div class="sec-head"><h2>Sobre mí</h2></div>
+      <div class="about">
+        <div class="text">
+          <p>Diseño productos financieros de punta a punta: desde cómo opera el negocio hasta lo que vive el usuario. Hoy lidero el diseño del frente B2B en Deuna, la billetera digital más usada de Ecuador.</p>
+          <p>He diseñado para banca y servicios financieros con BBVA, Bancolombia, Porvenir y Crédito Fácil Codensa, y para e-commerce con Claro. Mi fuerte es resolver problemas reales de operación, canales digitales y conversión.</p>
+          <p>No diseño sin contexto. Entiendo el negocio, la tecnología y al usuario antes de decidir, y trabajo de la mano con producto y desarrollo para que lo que diseñamos funcione en producción.</p>
+          <div class="skills">${["UX Research","Design Systems","Flujos de pago","Herramientas internas","Figma","Maze","Accesibilidad (WCAG)","Prototipado"].map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+        </div>
+        <ol class="timeline" aria-label="Trayectoria">
+          <li><span class="when">2024 – hoy</span><div><b>Senior Product Designer · Neoris</b><span>Deuna (Ecuador) y BBVA</span></div></li>
+          <li><span class="when">2022 – hoy</span><div><b>Product Designer freelance · Contra Studio</b><span>Colombia Fintech, negocios y restaurantes</span></div></li>
+          <li><span class="when">2023 – 2024</span><div><b>Product Designer · VASS</b><span>E-commerce de Claro Colombia</span></div></li>
+          <li><span class="when">2023</span><div><b>UX Designer · Multiplica</b><span>Canales de atención de Bancolombia</span></div></li>
+          <li><span class="when">2021 – 2023</span><div><b>Digital Experience Designer · NTT DATA</b><span>Porvenir y Crédito Fácil Codensa</span></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="contacto">
+      <div class="contact">
+        <div>
+          <span class="eyebrow">Contacto</span>
+          <h2 style="margin-top:12px">¿Buscas una Product Designer para tu equipo? Hablemos.</h2>
+        </div>
+        <dl>
+          <div class="item"><div><dt>Correo</dt><dd>${EMAIL}</dd></div><button class="btn" data-copy="${EMAIL}" type="button">Copiar</button></div>
+          <div class="item"><div><dt>Celular</dt><dd>${PHONE}</dd></div><button class="btn" data-copy="${PHONE}" type="button">Copiar</button></div>
+          <div class="item"><div><dt>LinkedIn</dt><dd>linkedin.com/in/lina-valentina-prieto-acevedo</dd></div><a class="btn" href="${LINKEDIN}" target="_blank" rel="noopener">Abrir</a></div>
+          <div class="item"><div><dt>Hoja de vida</dt><dd>PDF en español e inglés</dd></div><a class="btn" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">Ver CV</a></div>
+        </dl>
+      </div>
+    </section>
+  </div>`;
+}
+
+function blockHTML(b){
+  if(b.p) return `<p>${b.p}</p>`;
+  if(b.h3) return `<h3>${b.h3}</h3>`;
+  if(b.ul) return `<ul>${b.ul.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  if(b.ol) return `<ol>${b.ol.map(x=>`<li>${x}</li>`).join("")}</ol>`;
+  if(b.fig) return `<figure>${figureHTML(b.fig)}<figcaption>${b.fig.label}</figcaption></figure>`;
+  if(b.pair) return `<div class="pair">${b.pair.map(f=>`<figure>${figureHTML(f)}<figcaption>${f.label}</figcaption></figure>`).join("")}</div>`;
+  if(b.trio) return `<div class="trio">${b.trio.map(f=>`<figure>${figureHTML(f)}<figcaption>${f.label}</figcaption></figure>`).join("")}</div>`;
+  if(b.finding) return `<div class="finding"><span class="k">Vimos</span><span>${b.finding[0]}</span><span class="k">Decidí</span><span>${b.finding[1]}</span></div>`;
+  return "";
+}
+
+function caseView(c){
+  const i = CASES.indexOf(c), nx = CASES[(i+1)%CASES.length];
+  return `
+  <div class="wrap">
+    <section class="case-hero">
+      <a class="back" href="#casos">← Todos los casos</a>
+      <div class="case-top">
+        <div>
+          <span class="eyebrow">${c.tags.join(" · ")} · ${c.year}</span>
+          <h1 style="margin-top:14px">${c.title}</h1>
+          <p class="lead">${c.lead}</p>
+          ${c.link?`<div style="margin-top:22px"><a class="btn" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ↗</a></div>`:""}
+        </div>
+        <div class="receipt">
+          <div class="r-head"><span>FICHA DEL PROYECTO</span><span>${c.year}</span></div>
+          ${c.meta.map(([k,v])=>`<div class="row"><span>${k}</span><span style="text-align:right">${v}</span></div>`).join("")}
+        </div>
+      </div>
+    </section>
+    <figure style="margin-bottom:24px">${figureHTML({...c.cover, free:true})}</figure>
+    <div class="case-body">
+      ${c.chapters.map(ch=>`<section class="chapter"><h2>${ch.h}</h2><div class="content">${ch.blocks.map(blockHTML).join("")}</div></section>`).join("")}
+      <section class="chapter"><h2>Impacto</h2><div class="content"><div class="impact"><span class="big">${c.impact.big}</span><p>${c.impact.p}</p></div></div></section>
+    </div>
+    <nav class="next" aria-label="Más casos">
+      <a href="#casos"><small>Volver</small><b>Todos los casos</b></a>
+      <a href="#${nx.id}" style="text-align:right"><small>Siguiente caso</small><b>${nx.title} →</b></a>
+    </nav>
+  </div>`;
+}
+
+function render(){
+  const id = location.hash.slice(1);
+  const c = CASES.find(x=>x.id===id);
+  if(c){ app.innerHTML = caseView(c); document.title = `${c.title} · Lina Prieto`; window.scrollTo(0,0); }
+  else {
+    if(!app.dataset.home){ app.innerHTML = homeView(); app.dataset.home="1"; document.title = "Lina Prieto · Product Designer"; }
+    if(id){ document.getElementById(id)?.scrollIntoView(); } else window.scrollTo(0,0);
+  }
+  if(c) app.dataset.home = "";
+  loadImages(app);
+}
+window.addEventListener("hashchange", render);
+render();
+
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-copy]"); if(!b) return;
+  const t = b.dataset.copy;
+  const done = () => { b.textContent = "Copiado"; setTimeout(()=>b.textContent="Copiar",1500); };
+  try{ navigator.clipboard.writeText(t).then(done).catch(()=>{ selectText(b); }); }catch(_){ selectText(b); }
+});
+function selectText(b){ const dd=b.parentElement.querySelector("dd"); const r=document.createRange(); r.selectNodeContents(dd); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+</script>
+
+</body>
+</html>
