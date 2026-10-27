@@ -394,6 +394,52 @@ section{position:relative}
 .cbody{display:flow-root; padding-top:72px}
 .cbody .ticket{margin-top:0}
 @media (max-width:860px){ .cbody{padding-top:48px} .cbody .ticket{margin-top:0} }
+
+/* ===== v6 · punto medio: casos sobrios ===== */
+.cases{background:var(--paper); color:var(--ink)}
+.cases .sec-title{color:var(--ink)}
+.ccard.c-card{background:var(--white); color:var(--ink); border:1px solid var(--line)}
+.ccard.c-card .shot{background:#efede7}
+.ccard h3{font-size:clamp(28px,3vw,40px)}
+.ccard .bottom p{font-weight:500; color:#4a4a52}
+.ccard:hover{box-shadow:0 30px 60px -34px rgba(27,27,31,.35); border-color:rgba(27,27,31,.4)}
+.ccard .arrow{border-color:currentColor}
+.ccard .badge{background:var(--ink); color:var(--white)}
+.ccard:hover .arrow{background:var(--lime); color:var(--ink); border-color:var(--lime)}
+.chero{background:var(--paper); color:var(--ink); border-bottom:1px solid var(--line)}
+.chero .mono{color:#6b6b72}
+.chero .split-media .shot{background:transparent}
+.chero .pill.back{background:var(--white); color:var(--ink); border:1px solid var(--line)}
+.cbody{padding-top:48px}
+.cbody .ticket,.ticket{background:var(--white); border:1px solid var(--line); transform:none!important; margin-top:0}
+.ticket .th{border-bottom:1px solid var(--line); color:#6b6b72}
+.trow .cell{border-bottom:0}
+.trow .cell span{color:#6b6b72}
+.summary{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:14px}
+@media (max-width:860px){ .summary{grid-template-columns:1fr} }
+.summary div{background:var(--white); border:1px solid var(--line); border-radius:20px; padding:20px 22px}
+.summary span{display:block; font:500 11px/1.4 var(--mono); text-transform:uppercase; letter-spacing:.06em; color:#6b6b72; margin-bottom:8px}
+.summary p{margin:0; line-height:1.5}
+.summary div:last-child{background:var(--ink); color:var(--white); border-color:var(--ink)}
+.summary div:last-child span{color:var(--lime)}
+.chapters{counter-reset:ch}
+.chapter{counter-increment:ch}
+.chapter > h2{font:700 clamp(24px,2.4vw,30px)/1.15 var(--body); text-transform:none; letter-spacing:-.01em}
+.chapter > h2:before{content:counter(ch,decimal-leading-zero); display:block; font:500 12px/1 var(--mono); letter-spacing:.08em; color:#6b6b72; margin-bottom:10px}
+.content h3{font:700 19px/1.3 var(--body)}
+.finding{border:1px solid var(--line); border-radius:18px}
+.finding .k.v{background:#ece9ff} .finding .k.d{background:#e6ffb0}
+.impact .spark{color:var(--lime)}
+.cbody figure .shot.free{background:transparent}
+.chero .cover-media .shot{border:1px solid var(--line); box-shadow:0 30px 60px -34px rgba(27,27,31,.35); transform:none; border-radius:20px}
+.learn{border-left:3px solid var(--lime); padding:6px 0 6px 18px; margin:0; font-size:18px; line-height:1.55}
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px}
+.kpis div{background:var(--white); border:1px solid var(--line); border-radius:18px; padding:18px 20px}
+.kpis b{display:block; font:400 clamp(34px,4vw,46px)/1 var(--cond); margin-bottom:8px}
+.kpis span{font-size:14px; line-height:1.4; color:#4a4a52}
+.quotes{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px}
+.quotes blockquote{margin:0; background:var(--white); border:1px solid var(--line); border-radius:18px; padding:20px 22px; font-size:16px; line-height:1.5}
+.quotes cite{display:block; margin-top:12px; font:500 12px/1.4 var(--mono); font-style:normal; color:#6b6b72; text-transform:uppercase; letter-spacing:.04em}
 </style>
 
 <header class="top">
@@ -588,73 +634,119 @@ const CASES = [
 },
 {
   id:"credito-facil-codensa", noSlots:true, title:"Crédito Fácil Codensa",
-  card:"Web y app de una tarjeta de crédito, de la arquitectura al design system",
-  lead:"Rediseño de la web y la app de Crédito Fácil Codensa: consultar productos, pagar y pedir un préstamo sin llamar a la línea de atención.",
-  tags:["Fintech","Web y app","Design System"], year:"2021", status:"Consultoría",
-  meta:[["Rol","Product Designer"],["Empresa","NTT DATA para Crédito Fácil Codensa"],["Plataforma","Web responsive y app móvil"],["Equipo","3 diseñadores"]],
-  cover:img("cfc/mock-home","Home de productos en web y móvil","1600×1000",{free:true}),
+  card:"Web, app y design system para gestionar una tarjeta de crédito sin llamar al call center",
+  lead:"Rediseño de la web y la app de Crédito Fácil Codensa para que los clientes consulten, paguen, bloqueen su tarjeta y pidan un préstamo por su cuenta.",
+  tags:["Fintech","Web y app","Design System"], year:"2021–2022", status:"Consultoría",
+  meta:[["Rol","Product Designer"],["Empresa","NTT DATA para Crédito Fácil Codensa (Enel · Scotiabank Colpatria)"],["Plataforma","Web responsive y app móvil"],["Equipo","3 diseñadores"]],
+  summary:[["El problema","Para consultar el cupo, ver movimientos, pagar o bloquear la tarjeta, muchos clientes tenían que llamar o ir a un punto físico."],["Qué hice","Arquitectura de información con card sorting, wireframes, diseño de web y app, encuesta de satisfacción y design system."],["Resultado","Una sola experiencia en web y app, construida con los mismos componentes y con una forma de medir la satisfacción dentro del producto."]],
+  cover:img("cfc/mock-home","Tus productos en web y móvil","1600×1000",{free:true}),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"Crédito Fácil Codensa es la tarjeta de crédito que muchos hogares colombianos pagan junto con su factura de energía. La experiencia digital no estaba a la altura: consultar saldo, ver movimientos o pagar obligaba a muchos clientes a llamar o ir a un punto físico."}]},
-    {h:"Mi rol", blocks:[
-      {p:"Trabajé en un equipo de tres diseñadores en todo el proceso: arquitectura de información, wireframes, diseño visual de la web y la app, design system y encuesta de satisfacción."}]},
-    {h:"Arquitectura", blocks:[
-      {p:"Hicimos card sorting con usuarios para entender cómo agrupaban las tareas. El resultado separó claramente tres mundos: mover dinero (retirar, transferir, pagar), consultar mis productos y pedir ayuda. Esa agrupación definió la navegación."},
-      {fig:img("cfc/arquitectura","Card sorting: matriz de similitud y agrupación","1600×1000",{free:true})}]},
+      {p:"Crédito Fácil Codensa es la tarjeta de crédito que los clientes de Enel pagan junto con su factura de energía, respaldada por Scotiabank Colpatria. Muchos de sus usuarios no son expertos en banca digital y la plataforma anterior los obligaba a llamar para lo más básico."}]},
+    {h:"Mi rol y equipo", blocks:[
+      {p:"Trabajé con otros dos diseñadores en NTT DATA, con el equipo del cliente y desarrollo. Participé en todo el proceso: research, arquitectura de información, wireframes, diseño visual, design system y piezas para las tiendas de apps."}]},
+    {h:"Arquitectura de información", blocks:[
+      {p:"Antes de dibujar pantallas hicimos card sorting para entender cómo los usuarios agrupaban las tareas. El resultado mostró tres grupos claros:"},
+      {ul:["Mover dinero: retirar, transferir, pagar facturas y pagar tarjetas.","Consultar mis productos: saldo, movimientos, número de cuenta, documentos.","Pedir ayuda: preguntas frecuentes, ayuda y notificaciones."]},
+      {fig:img("cfc/arquitectura","Card sorting: matriz de similitud y agrupación de categorías","1600×1000",{free:true})}]},
+    {h:"Decisiones clave", blocks:[
+      {finding:["Los usuarios buscaban primero su tarjeta y su próximo pago.","Un home que muestra producto, pago oportuno y últimos movimientos sin navegar."]},
+      {finding:["Bloquear la tarjeta por robo o pérdida era una urgencia que hoy pasaba por el call center.","Un flujo de bloqueo de tres pasos con motivo, confirmación y comprobante."]},
+      {finding:["El cliente no tenía forma de decir si la web le servía.","Una encuesta corta de cuatro pasos al terminar una gestión, para medir recomendación, solución y facilidad."]}]},
+    {h:"Wireframes", blocks:[
+      {p:"Validamos los flujos en baja fidelidad antes del diseño visual. Este es el bloqueo de tarjeta: elegir el motivo, confirmar y recibir el comprobante."},
+      {fig:img("cfc/wireframes","Wireframes del flujo de bloqueo de tarjeta","1600×1000",{free:true})}]},
     {h:"La solución", blocks:[
       {h3:"Tus productos, en una sola vista"},
-      {p:"El home muestra la tarjeta, el próximo pago, los últimos movimientos y el préstamo personal sin tener que navegar. En móvil se conserva la misma jerarquía."},
-      {h3:"Medir para mejorar"},
-      {p:"Diseñamos una encuesta de satisfacción en cuatro pasos dentro de la plataforma para medir la recomendación y recoger comentarios después de cada gestión."},
-      {fig:img("cfc/mock-encuesta","Encuesta de satisfacción","1600×1000",{free:true})},
+      {p:"Tarjeta, cupo disponible, pago oportuno, últimos movimientos y préstamo personal en la primera pantalla. En móvil se mantiene la misma jerarquía."},
+      {h3:"Encuesta de satisfacción"},
+      {p:"Cuatro preguntas con progreso visible y respuestas rápidas (caritas, sí/no, escala) para que contestar tome segundos."},
+      {fig:img("cfc/mock-encuesta","Paso 1: recomendación de 0 a 10","1600×1000",{free:true})},
+      {fig:img("cfc/encuesta-flujo","Pasos 2 a 4 y confirmación","1600×1000",{free:true})},
       {h3:"Design system"},
-      {p:"Botones, campos, iconos, tarjetas por tipo de producto y estados, para que web y app se construyeran con las mismas piezas."},
-      {fig:img("cfc/design-system","Componentes del design system","1600×1000",{free:true})}]},
+      {p:"Botones, campos, iconografía, tarjetas por tipo de producto y estados. Web y app salieron de las mismas piezas, lo que aceleró desarrollo y mantuvo la consistencia."},
+      {fig:img("cfc/design-system","Componentes del design system","1600×1000",{free:true})},
+      {h3:"Lanzamiento en tiendas"},
+      {fig:img("cfc/store","Piezas para App Store y Google Play","1600×1000",{free:true})}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"Con usuarios poco digitales, la arquitectura pesa más que la interfaz: si la tarea está donde la persona la busca, no necesita ayuda."}]},
   ],
-  impact:{big:"Web + app + design system", p:"Una experiencia consistente para consultar, pagar y solicitar crédito desde cualquier dispositivo."}
+  impact:{big:"Web + app + design system", p:"Una experiencia consistente para consultar, pagar, bloquear la tarjeta y pedir crédito, con la satisfacción medida dentro del producto."}
 },
 {
   id:"porvenir-app", noSlots:true, title:"App Porvenir",
-  card:"App de pensiones y cesantías validada con pruebas de usabilidad",
-  lead:"Diseño de la app de Porvenir para consultar y mover pensiones voluntarias y cesantías, desde el workshop de visión hasta las pruebas con usuarios.",
+  card:"App de pensiones y cesantías basada en 14 entrevistas y validada con 11 afiliados",
+  lead:"Diseño de la app de Porvenir para que los afiliados consulten y muevan sus pensiones voluntarias, obligatorias y cesantías sin depender de un asesor.",
   tags:["Fintech","App","Research"], year:"2021", status:"Consultoría",
   meta:[["Rol","Product Designer"],["Empresa","NTT DATA para Porvenir"],["Plataforma","App móvil"],["Equipo","3 diseñadores"]],
-  cover:img("porvenir/mock-producto","Detalle de cesantías: cuentas, saldo y movimientos","1600×1000",{free:true}),
+  summary:[["El problema","Los afiliados usaban la web, la oficina o el asesor para trámites simples, y no entendían conceptos como saldo consolidado."],["Qué hice","Workshop de visión, 14 entrevistas, arquitectura, wireframes, diseño visual y pruebas de usabilidad."],["Resultado","Puntaje SUS en el rango aceptable con 11 afiliados y hallazgos concretos para ajustar antes de desarrollo."]],
+  cover:img("porvenir/mock-producto","Cesantías: cuentas, saldo y movimientos","1600×1000",{free:true}),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"Porvenir administra las pensiones y cesantías de millones de colombianos. La app debía permitir ver todos los productos, entender el saldo y hacer aportes, retiros y traslados sin depender de un asesor."}]},
-    {h:"Mi rol", blocks:[
-      {p:"Participé en el workshop de visión con el negocio, en las entrevistas con afiliados, la arquitectura de información, los wireframes, el diseño visual y las pruebas de usabilidad."}]},
-    {h:"Proceso", blocks:[
-      {ul:["Workshop de visión: objetivos del negocio y titulares del futuro para alinear qué debía lograr la app.","Entrevistas con afiliados para entender qué consultan y qué los obliga a llamar.","Wireframes de los flujos principales y pruebas de usabilidad con escala SUS para ajustar antes del diseño final."]}]},
+      {p:"Porvenir administra pensiones y cesantías de millones de colombianos. La app debía integrar los servicios existentes, dar más autoservicio en las consultas y transacciones frecuentes, y acercar a Porvenir a sus afiliados."}]},
+    {h:"Mi rol y equipo", blocks:[
+      {p:"Trabajé con otros dos diseñadores en NTT DATA. Participé en el workshop con el negocio, las entrevistas, la arquitectura de información, los wireframes, el diseño visual y las pruebas de usabilidad."}]},
+    {h:"Workshop de visión", blocks:[
+      {p:"Con el negocio hicimos el ejercicio de “titulares del futuro”: escribir la noticia que saldría en el periódico si la app fuera un éxito. De ahí salieron los valores y funcionalidades clave."},
+      {ul:["Valores: acompañamiento permanente, facilidad de acceso, seguridad, agilidad y omnicanalidad.","Funcionalidades: ver portafolios, transacciones, certificados y extractos, vinculación a productos y autenticación biométrica."]}]},
+    {h:"Entrevistas", blocks:[
+      {stats:[["14","afiliados entrevistados"],["3–27","años de afiliación"],["9","sesiones en 3 días"],["50 min","por sesión"]]},
+      {p:"Hablamos con afiliados de pensiones obligatorias, voluntarias y cesantías. Lo que encontramos:"},
+      {ul:["Quienes tienen pensión voluntaria la usan para ahorrar, pero no saben que pueden elegir otras inversiones.","Quieren ver en tiempo real cómo se comporta su inversión y depender menos del asesor.","Prefieren hacer certificados y extractos en digital, sobre todo para la declaración de renta.","Valoran todo lo que les evite ir a una oficina, aunque aún desconfían de los trámites con dinero."]},
+      {quotes:[["Prefiero hacer la descarga de mis certificados por web que por app. No es tan urgente como para descargarla en la app.","Luca, empresario"],["Sería útil hacerlo por la app, sería genial y mucho más sencillo.","Jorge, gestión de almacenes"],["Tengo reunión mensual con mi financial planner, ahí revisamos el tema de inversiones.","Edgar, ingeniero mecánico"]]}]},
+    {h:"Wireframes", blocks:[
+      {p:"Diseñamos los flujos principales en baja fidelidad. El retiro de pensiones voluntarias se dividió en cuatro pasos visibles (objetivo, portafolio, forma de retiro y revisión) para que el afiliado sepa siempre dónde está."},
+      {fig:img("porvenir/wireframes","Wireframes del retiro de pensiones voluntarias","1600×1000",{free:true})}]},
     {h:"La solución", blocks:[
       {h3:"Home con accesos directos"},
-      {p:"Las cuatro tareas más frecuentes (transferir, retirar, certificados y extractos) quedan arriba, y debajo todos los productos con su saldo actual."},
+      {p:"Las cuatro tareas más frecuentes (transferir, retirar, certificados y extractos) quedan arriba y debajo todos los productos con su saldo."},
       {fig:img("porvenir/mock-movimientos","Home y movimientos","1600×1000",{free:true})},
       {h3:"Entender el dinero"},
-      {p:"El detalle de cada producto muestra el saldo total, cuánto es aporte y cuánto rendimiento, y cómo está invertido. Los movimientos se leen como una lista simple con fecha, tipo y monto."}]},
+      {p:"El detalle de cada producto separa aportes y rendimientos, y muestra cómo está invertido. Los movimientos se leen como una lista con fecha, tipo y monto."}]},
+    {h:"Pruebas de usabilidad", blocks:[
+      {stats:[["11","afiliados"],["5 días","de pruebas remotas"],["45 min","máximo por sesión"],["SUS","en rango aceptable"]]},
+      {p:"Probamos el prototipo navegable en remoto con Lookback, con tareas definidas con el Product Owner. En general la app gustó y se percibió fácil, y aparecieron tres problemas para corregir:"},
+      {finding:["Usuarios con varias cuentas de cesantías no entendían por qué aparecían varias.","Explicar el origen de cada cuenta y agruparlas por administradora."]},
+      {finding:["Algunos no notaban que cada movimiento tenía detalle.","Hacer más evidente el acceso al detalle de cada movimiento."]},
+      {finding:["Saldo consolidado, no consolidado y total eran conceptos muy técnicos, y la ayuda no los aclaraba.","Reescribir los términos en lenguaje simple y mejorar la ayuda contextual."]}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"La interfaz puede ser clara y aun así fallar por el lenguaje. En productos financieros, revisar los términos con usuarios es tan importante como revisar el flujo."}]},
   ],
-  impact:{big:"Validada con usuarios", p:"Flujos ajustados con pruebas de usabilidad y escala SUS antes de pasar a desarrollo."}
+  impact:{big:"14 entrevistas · 11 pruebas", p:"Una app diseñada desde lo que los afiliados necesitan y validada con usuarios reales antes de pasar a desarrollo."}
 },
 {
   id:"movistar-empresas", noSlots:true, title:"Movistar Empresas B2B",
-  card:"Portal de autogestión para clientes empresariales",
-  lead:"Portal web para que las empresas clientes de Movistar consulten sus cuentas y creen solicitudes de soporte sin llamar a un asesor.",
-  tags:["B2B","Web","Autogestión"], year:"2021", status:"Consultoría",
-  meta:[["Rol","Product Designer"],["Empresa","NTT DATA para Telefónica Movistar"],["Plataforma","Web B2B"]],
-  cover:img("movistar/mock-solicitud","Crear una solicitud de soporte","1600×1000",{free:true}),
+  card:"Portal de autogestión para que las empresas manejen sus líneas y pidan soporte sin un asesor",
+  lead:"Portal web para que los clientes empresariales de Movistar consulten sus cuentas y líneas, y creen solicitudes de soporte por su cuenta.",
+  tags:["B2B","Web","Autogestión"], year:"2022", status:"Consultoría",
+  meta:[["Rol","Product Designer"],["Empresa","NTT DATA para Movistar Empresas (Telefónica)"],["Plataforma","Web B2B"],["Equipo","Diseño a mi cargo"]],
+  summary:[["El problema","Las empresas manejan decenas de NITs y líneas, y cualquier consulta o requerimiento pasaba por un asesor."],["Qué hice","Benchmark de portales de telcos, arquitectura del portal y diseño de la home, el detalle de cuenta y la ayuda en línea."],["Resultado","Un portal donde el cliente encuentra su cuenta, revisa sus líneas y crea un ticket en cuatro pasos."]],
+  cover:img("movistar/mock-home","Home: empresas y NITs del cliente","1600×1000",{free:true}),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"Las empresas clientes de Movistar gestionaban muchas líneas y cuentas, y cualquier requerimiento pasaba por un asesor. El portal debía darles autonomía para consultar y pedir soporte."}]},
+      {p:"Un cliente empresarial de Movistar puede tener muchas razones sociales (NITs) y cientos de líneas. Para saber el estado de una línea, el saldo de una cuenta o pedir soporte, dependía de su asesor comercial."}]},
     {h:"Mi rol", blocks:[
-      {p:"Diseñé el proyecto de punta a punta: benchmark de portales B2B, pantallas de cuenta y detalle de la cuenta, y el flujo de ayuda en línea."}]},
+      {p:"Fui la diseñadora del proyecto: hice el benchmark, definí la estructura del portal y diseñé las pantallas de home, detalle de cuenta y ayuda en línea con el equipo de Movistar y desarrollo."}]},
+    {h:"Benchmark", blocks:[
+      {p:"Revisé cómo resolvían la autogestión Virgin, Claro, Mi Tigo y ETB. Tomamos tres ideas: búsqueda como punto de entrada, información de la cuenta siempre visible y procesos de soporte guiados por pasos."},
+      {fig:img("movistar/benchmark","Benchmark de portales y apps de telcos","1600×1000",{free:true})}]},
+    {h:"Decisiones clave", blocks:[
+      {finding:["Los clientes manejan muchos NITs y no recuerdan en cuál está cada línea.","La home arranca con un buscador por NIT o razón social y tarjetas por empresa."]},
+      {finding:["Revisar líneas una por una era lento.","Una tabla con estado, plan, valor y equipo de cada línea, con búsqueda y exportar a Excel."]},
+      {finding:["Las solicitudes llegaban incompletas al asesor.","Un formulario en cuatro pasos que pide tipo, razón y archivos antes de crear el ticket."]}]},
     {h:"La solución", blocks:[
-      {p:"Un flujo de solicitud en cuatro pasos visibles (datos, razón, archivos y ticket) para que el cliente sepa siempre en qué punto está y qué falta."}]},
+      {h3:"Detalle de la cuenta"},
+      {p:"Datos de la cuenta arriba (número, ciudad, fecha de corte, saldo) y todas las líneas en una tabla con su estado."},
+      {fig:img("movistar/mock-detalle","Detalle de la cuenta y sus líneas","1600×1000",{free:true})},
+      {h3:"Ayuda en línea"},
+      {p:"Crear una solicitud se divide en cuatro pasos visibles para que el cliente sepa siempre qué falta. Al final recibe un número de ticket para hacer seguimiento."},
+      {fig:img("movistar/flujo","Flujo de solicitud: datos, razón, archivos y ticket","1600×1000",{free:true})}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"En B2B el usuario no navega, busca. Diseñar desde la búsqueda y las tablas fue más útil que cualquier dashboard."}]},
   ],
-  impact:{big:"Soporte en autogestión", p:"Solicitudes creadas por el cliente desde el portal, con seguimiento por ticket."}
+  impact:{big:"Soporte en autogestión", p:"Clientes empresariales que encuentran su cuenta, revisan sus líneas y crean solicitudes con seguimiento, sin pasar por un asesor."}
 }
 ];
-
 /* ===== Imágenes =====
    Orden de carga: 1) archivo propio en img/<caso>/<nombre>.png o .jpg  2) imagen del Framer  3) recuadro punteado */
 function figureHTML(f, forceFree){
@@ -706,7 +798,7 @@ function doodle(kind, cls){
   return `<svg class="dd ${cls}" viewBox="0 0 120 100" aria-hidden="true"><path d="${SQUIG[kind]}" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 }
 const CORNERS = doodle("loops","d-tl") + doodle("burst","d-tr") + doodle("curl","d-bl") + doodle("burst","d-br") + doodle("wave","d-bm");
-const COLORS = ["c-pink","c-lime","c-violet","c-lime","c-violet","c-pink"];
+const COLORS = ["c-card"];
 
 /* ===== Textos de inicio ===== */
 const RESULTS = [
@@ -760,7 +852,7 @@ function homeView(){
 
   <section class="cases" id="casos">
     <div class="wrap">
-      <div class="sec-title rv"><h2 class="cond">Casos</h2><p>Seis proyectos de pagos, banca y producto digital, contados desde el problema de negocio hasta el impacto.</p></div>
+      <div class="sec-title rv"><h2 class="cond">Casos</h2><p>Proyectos de pagos, banca y producto digital, contados desde el problema de negocio hasta el impacto.</p></div>
       <div class="case-grid">
         ${CASES.map((c,i)=>`
           <a class="ccard ${COLORS[i%COLORS.length]} rv" style="--d:${(i%2)*90}ms" href="#${c.id}">
@@ -816,6 +908,9 @@ function blockHTML(b){
   if(b.fig) return fig(b.fig);
   if(b.pair) return `<div class="pair">${b.pair.map(f=>fig(f, !!f.remote)).join("")}</div>`;
   if(b.trio) return `<div class="trio">${b.trio.map(f=>fig(f, !!f.remote)).join("")}</div>`;
+  if(b.stats) return `<div class="kpis rv">${b.stats.map(([n,t])=>`<div><b>${n}</b><span>${t}</span></div>`).join("")}</div>`;
+  if(b.quotes) return `<div class="quotes">${b.quotes.map(([q,a])=>`<blockquote class="rv">“${q}”<cite>${a}</cite></blockquote>`).join("")}</div>`;
+  if(b.learn) return `<p class="learn rv">${b.learn}</p>`;
   if(b.finding) return `<div class="finding rv"><span class="k v">Vimos</span><span>${b.finding[0]}</span><span class="k d">Decidí</span><span>${b.finding[1]}</span></div>`;
   return "";
 }
@@ -835,7 +930,6 @@ function caseView(c){
   const i = CASES.indexOf(c), nx = CASES[(i+1)%CASES.length];
   return `
   <section class="chero">
-    ${CORNERS}
     <div class="wrap">
       <a class="pill back" href="#casos">← Todos los casos</a>
       <div class="split">
@@ -849,13 +943,13 @@ function caseView(c){
       </div>
     </div>
   </section>
-  ${caseTicker(c)}
   <div class="cbody">
     <div class="wrap">
       <div class="ticket rv">
         <div class="th mono"><span>Ficha del proyecto</span><span>${c.year}</span></div>
         <div class="trow">${c.meta.map(([k,v])=>`<div class="cell"><span>${k}</span><b>${v}</b></div>`).join("")}</div>
       </div>
+      ${c.summary?`<div class="summary rv">${c.summary.map(([k,t])=>`<div><span>${k}</span><p>${t}</p></div>`).join("")}</div>`:""}
     </div>
     <div class="wrap chapters">
       ${c.chapters.map(ch=>`<section class="chapter"><h2 class="cond rv">${ch.h}</h2><div class="content">${withSlot(c,ch).map(blockHTML).join("")}</div></section>`).join("")}
