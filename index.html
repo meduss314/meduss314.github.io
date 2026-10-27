@@ -585,6 +585,73 @@ const CASES = [
       {pair:[img("bbva/retiros","Flujo de retiros","1200×900"),img("bbva/giros","Flujo de giros internacionales","1200×900")]}]},
   ],
   impact:{big:"Menos pasos en sucursal", p:"Procesos operativos de retiros y giros internacionales convertidos en flujos digitales para el personal del banco."}
+},
+{
+  id:"credito-facil-codensa", noSlots:true, title:"Crédito Fácil Codensa",
+  card:"Web y app de una tarjeta de crédito, de la arquitectura al design system",
+  lead:"Rediseño de la web y la app de Crédito Fácil Codensa: consultar productos, pagar y pedir un préstamo sin llamar a la línea de atención.",
+  tags:["Fintech","Web y app","Design System"], year:"2021", status:"Consultoría",
+  meta:[["Rol","Product Designer"],["Empresa","NTT DATA para Crédito Fácil Codensa"],["Plataforma","Web responsive y app móvil"],["Equipo","3 diseñadores"]],
+  cover:img("cfc/mock-home","Home de productos en web y móvil","1600×1000",{free:true}),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Crédito Fácil Codensa es la tarjeta de crédito que muchos hogares colombianos pagan junto con su factura de energía. La experiencia digital no estaba a la altura: consultar saldo, ver movimientos o pagar obligaba a muchos clientes a llamar o ir a un punto físico."}]},
+    {h:"Mi rol", blocks:[
+      {p:"Trabajé en un equipo de tres diseñadores en todo el proceso: arquitectura de información, wireframes, diseño visual de la web y la app, design system y encuesta de satisfacción."}]},
+    {h:"Arquitectura", blocks:[
+      {p:"Hicimos card sorting con usuarios para entender cómo agrupaban las tareas. El resultado separó claramente tres mundos: mover dinero (retirar, transferir, pagar), consultar mis productos y pedir ayuda. Esa agrupación definió la navegación."},
+      {fig:img("cfc/arquitectura","Card sorting: matriz de similitud y agrupación","1600×1000",{free:true})}]},
+    {h:"La solución", blocks:[
+      {h3:"Tus productos, en una sola vista"},
+      {p:"El home muestra la tarjeta, el próximo pago, los últimos movimientos y el préstamo personal sin tener que navegar. En móvil se conserva la misma jerarquía."},
+      {h3:"Medir para mejorar"},
+      {p:"Diseñamos una encuesta de satisfacción en cuatro pasos dentro de la plataforma para medir la recomendación y recoger comentarios después de cada gestión."},
+      {fig:img("cfc/mock-encuesta","Encuesta de satisfacción","1600×1000",{free:true})},
+      {h3:"Design system"},
+      {p:"Botones, campos, iconos, tarjetas por tipo de producto y estados, para que web y app se construyeran con las mismas piezas."},
+      {fig:img("cfc/design-system","Componentes del design system","1600×1000",{free:true})}]},
+  ],
+  impact:{big:"Web + app + design system", p:"Una experiencia consistente para consultar, pagar y solicitar crédito desde cualquier dispositivo."}
+},
+{
+  id:"porvenir-app", noSlots:true, title:"App Porvenir",
+  card:"App de pensiones y cesantías validada con pruebas de usabilidad",
+  lead:"Diseño de la app de Porvenir para consultar y mover pensiones voluntarias y cesantías, desde el workshop de visión hasta las pruebas con usuarios.",
+  tags:["Fintech","App","Research"], year:"2021", status:"Consultoría",
+  meta:[["Rol","Product Designer"],["Empresa","NTT DATA para Porvenir"],["Plataforma","App móvil"],["Equipo","3 diseñadores"]],
+  cover:img("porvenir/mock-producto","Detalle de cesantías: cuentas, saldo y movimientos","1600×1000",{free:true}),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Porvenir administra las pensiones y cesantías de millones de colombianos. La app debía permitir ver todos los productos, entender el saldo y hacer aportes, retiros y traslados sin depender de un asesor."}]},
+    {h:"Mi rol", blocks:[
+      {p:"Participé en el workshop de visión con el negocio, en las entrevistas con afiliados, la arquitectura de información, los wireframes, el diseño visual y las pruebas de usabilidad."}]},
+    {h:"Proceso", blocks:[
+      {ul:["Workshop de visión: objetivos del negocio y titulares del futuro para alinear qué debía lograr la app.","Entrevistas con afiliados para entender qué consultan y qué los obliga a llamar.","Wireframes de los flujos principales y pruebas de usabilidad con escala SUS para ajustar antes del diseño final."]}]},
+    {h:"La solución", blocks:[
+      {h3:"Home con accesos directos"},
+      {p:"Las cuatro tareas más frecuentes (transferir, retirar, certificados y extractos) quedan arriba, y debajo todos los productos con su saldo actual."},
+      {fig:img("porvenir/mock-movimientos","Home y movimientos","1600×1000",{free:true})},
+      {h3:"Entender el dinero"},
+      {p:"El detalle de cada producto muestra el saldo total, cuánto es aporte y cuánto rendimiento, y cómo está invertido. Los movimientos se leen como una lista simple con fecha, tipo y monto."}]},
+  ],
+  impact:{big:"Validada con usuarios", p:"Flujos ajustados con pruebas de usabilidad y escala SUS antes de pasar a desarrollo."}
+},
+{
+  id:"movistar-empresas", noSlots:true, title:"Movistar Empresas B2B",
+  card:"Portal de autogestión para clientes empresariales",
+  lead:"Portal web para que las empresas clientes de Movistar consulten sus cuentas y creen solicitudes de soporte sin llamar a un asesor.",
+  tags:["B2B","Web","Autogestión"], year:"2021", status:"Consultoría",
+  meta:[["Rol","Product Designer"],["Empresa","NTT DATA para Telefónica Movistar"],["Plataforma","Web B2B"]],
+  cover:img("movistar/mock-solicitud","Crear una solicitud de soporte","1600×1000",{free:true}),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Las empresas clientes de Movistar gestionaban muchas líneas y cuentas, y cualquier requerimiento pasaba por un asesor. El portal debía darles autonomía para consultar y pedir soporte."}]},
+    {h:"Mi rol", blocks:[
+      {p:"Diseñé el proyecto de punta a punta: benchmark de portales B2B, pantallas de cuenta y detalle de la cuenta, y el flujo de ayuda en línea."}]},
+    {h:"La solución", blocks:[
+      {p:"Un flujo de solicitud en cuatro pasos visibles (datos, razón, archivos y ticket) para que el cliente sepa siempre en qué punto está y qué falta."}]},
+  ],
+  impact:{big:"Soporte en autogestión", p:"Solicitudes creadas por el cliente desde el portal, con seguimiento por ticket."}
 }
 ];
 
@@ -756,7 +823,7 @@ function blockHTML(b){
 const slug = s => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 function withSlot(c, ch){
   const hasImg = ch.blocks.some(b=>b.fig||b.pair||b.trio);
-  if(hasImg) return ch.blocks;
+  if(hasImg || c.noSlots) return ch.blocks;
   return [...ch.blocks, {fig:img(`${c.cover.img.split("/")[0]}/${slug(ch.h)}`, `Imagen para “${ch.h}”`, "1600×1000", {free:true})}];
 }
 function caseTicker(c){
