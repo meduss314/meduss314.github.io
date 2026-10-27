@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lina Prieto · Product Designer</title>
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}[hidden]{display:none!important}</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
 </head>
 <body>
 
@@ -12,169 +12,214 @@
 <meta name="description" content="Lina Valentina Prieto, Senior Product Designer en fintech y pagos. Casos: Portal Deuna Negocios, Código Único de Pago, Suscripciones, Colombia Fintech, Claro y BBVA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bagel+Fat+One&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: one column of work. Home = hero + "comprobante" of results + case grid; each case = receipt-style meta card, then story with image slots. */
+/* Layout: loud color-blocked bands (violet hero → lime ticker → black stats → color case cards → grid-paper about → contact), stickers + 4-point sparkles as the only ornament. Single committed look (no dark/light switch). */
 :root{
-  --bg:#f5f8fc; --surface:#ffffff; --ink:#122036; --muted:#5a6a80; --line:#dbe4ef;
-  --accent:#1679c9; --accent-soft:#dcedfc; --paper:#fbf6e6; --ok:#1d8a5b;
-  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --violet:#5b4cf8; --lime:#c6ff3d; --pink:#ff85f5; --black:#1b1b1f; --paper:#f4f1e9; --white:#ffffff;
+  --ink:#1b1b1f; --line:rgba(27,27,31,.14);
+  --cond:"Anton", "Impact", "Arial Narrow Bold", sans-serif;
+  --fun:"Bagel Fat One", "Arial Rounded MT Bold", system-ui, sans-serif;
   --body:"Figtree", "Segoe UI", system-ui, sans-serif;
   --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
-  --wrap:1120px;
+  --wrap:1200px;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0c1320; --surface:#131d2e; --ink:#e7eef7; --muted:#9aabc2; --line:#24324a;
-  --accent:#5fb8ff; --accent-soft:#16304d; --paper:#1b2433; --ok:#52c48f; color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0c1320; --surface:#131d2e; --ink:#e7eef7; --muted:#9aabc2; --line:#24324a;
-  --accent:#5fb8ff; --accent-soft:#16304d; --paper:#1b2433; --ok:#52c48f; color-scheme:dark}
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg); color:var(--ink); font:16px/1.6 var(--body); margin:0}
+body{background:var(--black); color:var(--ink); font:17px/1.6 var(--body); margin:0; overflow-x:hidden}
 a{color:inherit}
 img{max-width:100%; display:block}
-.wrap{max-width:var(--wrap); margin-inline:auto; padding-left:max(20px, env(safe-area-inset-left,0px)); padding-right:max(20px, env(safe-area-inset-right,0px))}
-h1,h2,h3,h4{font-family:var(--display); text-wrap:balance; margin:0; letter-spacing:-.02em}
+h1,h2,h3{margin:0; text-wrap:balance}
 p{margin:0}
-.eyebrow{font:500 12px/1.2 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
-:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+.wrap{max-width:var(--wrap); margin-inline:auto; padding-left:max(20px, env(safe-area-inset-left,0px)); padding-right:max(20px, env(safe-area-inset-right,0px))}
+:focus-visible{outline:3px solid var(--lime); outline-offset:3px; border-radius:6px}
+.cond{font-family:var(--cond); font-weight:400; text-transform:uppercase; letter-spacing:-.005em; line-height:.9}
+.mono{font:500 12px/1.3 var(--mono); letter-spacing:.06em; text-transform:uppercase}
+mark{background:var(--pink); color:var(--black); padding:0 .18em; border-radius:4px; box-decoration-break:clone; -webkit-box-decoration-break:clone}
+mark.lime{background:var(--lime)}
 
 /* header */
-body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
-header.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
-header.top .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:14px}
-.brand{font:700 17px/1 var(--display); text-decoration:none; display:flex; align-items:center; gap:10px}
-.brand i{width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block}
-nav.links{display:flex; gap:22px; align-items:center; font-weight:500; font-size:15px}
-nav.links a{text-decoration:none; color:var(--muted)}
-nav.links a:hover{color:var(--ink)}
-.btn{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; font:600 15px/1 var(--body); text-decoration:none; border:1px solid var(--ink); color:var(--ink); background:transparent; cursor:pointer}
-.btn.solid{background:var(--ink); color:var(--bg)}
-.btn:hover{transform:translateY(-1px)}
-@media (max-width:640px){ nav.links .hide-sm{display:none} nav.links{gap:14px} }
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--black)}
+header.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--black); color:var(--white)}
+header.top .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; padding-block:12px}
+.logo{font:400 26px/1 var(--fun); text-decoration:none; color:var(--white); display:flex; align-items:center; gap:4px}
+.logo svg{width:22px; height:22px; fill:var(--lime); transform:translateY(-6px)}
+nav.links{display:flex; gap:8px; align-items:center}
+.pill{display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:999px; font:700 14px/1 var(--body); text-decoration:none; border:2px solid currentColor; background:transparent; color:inherit; cursor:pointer; white-space:nowrap; transition:transform .15s ease}
+.pill:hover{transform:translateY(-2px) rotate(-1deg)}
+.pill.violet{background:var(--violet); border-color:var(--violet); color:var(--white)}
+.pill.lime{background:var(--lime); border-color:var(--lime); color:var(--black)}
+.pill.black{background:var(--black); border-color:var(--black); color:var(--white)}
+.pill.big{padding:15px 24px; font-size:16px}
+@media (max-width:640px){ nav.links .hide-sm{display:none} }
+
+/* sparkle + sticker */
+.spark{display:inline-block; width:1em; height:1em; vertical-align:-.1em}
+.spark path{fill:currentColor}
+.sticker{position:absolute; width:150px; height:150px; border-radius:50%; display:grid; place-items:center; z-index:2}
+.sticker svg.ring{position:absolute; inset:0; width:100%; height:100%; animation:spin 18s linear infinite}
+.sticker text{font:700 11.5px var(--mono); letter-spacing:.14em; text-transform:uppercase}
+.sticker .core{font:400 22px/1 var(--fun); text-align:center; transform:rotate(-8deg)}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* hero */
-.hero{padding-block:72px 56px; display:grid; grid-template-columns:1.25fr .9fr; gap:48px; align-items:end}
-.hero h1{font-size:clamp(40px, 6.4vw, 76px); line-height:.98; font-weight:800}
-.hero h1 em{font-style:normal; color:var(--accent)}
-.hero .lead{font-size:clamp(18px,2vw,21px); color:var(--muted); max-width:34ch; margin-top:22px}
-.hero .ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:28px}
-.status{display:inline-flex; align-items:center; gap:8px; font:500 13px/1 var(--mono); color:var(--ok); margin-bottom:22px}
-.status::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent)}
+.hero{background:var(--violet); color:var(--white); position:relative; overflow:hidden}
+.hero .wrap{position:relative; padding-block:56px 64px}
+.hero .scribble{position:absolute; inset:auto -40px 30% -40px; width:calc(100% + 80px); height:220px; pointer-events:none; opacity:.9}
+.hero .hi{position:relative; z-index:1}
+.hero .kicker{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:18px}
+.hero h1{font-size:clamp(76px, 15.5vw, 210px); position:relative}
+.hero h1 .row2{display:block; color:var(--lime)}
+.hero .sub{font:600 clamp(19px,2.4vw,28px)/1.35 var(--body); max-width:30ch; margin-top:28px}
+.hero .ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px}
+.hero .sticker{right:max(20px,4vw); top:48px; background:var(--pink); color:var(--black)}
+.hero .s2{position:absolute; right:22%; bottom:38px; width:64px; height:64px; color:var(--lime); z-index:1}
+@media (max-width:760px){ .hero .sticker{width:112px; height:112px; top:auto; bottom:24px; right:16px} .hero .sticker .core{font-size:16px} .hero .sticker text{font-size:9px} .hero .s2{display:none} }
 
-/* receipt */
-.receipt{background:var(--paper); border-radius:14px; padding:22px 22px 18px; font-family:var(--mono); font-size:13px; position:relative; box-shadow:0 1px 0 var(--line), 0 18px 40px -24px rgba(18,32,54,.35)}
-.receipt::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:8px;
-  background:radial-gradient(circle at 6px 0, transparent 6px, var(--paper) 6.5px) 0 0/12px 8px repeat-x}
-.receipt .r-head{display:flex; justify-content:space-between; color:var(--muted); padding-bottom:12px; border-bottom:1px dashed var(--line); margin-bottom:6px}
-.receipt .row{display:flex; justify-content:space-between; gap:16px; padding-block:9px; border-bottom:1px dashed var(--line)}
-.receipt .row:last-child{border-bottom:0}
-.receipt .row span:first-child{color:var(--muted)}
-.receipt .row b{font:600 18px/1 var(--display); letter-spacing:-.01em; font-variant-numeric:tabular-nums; white-space:nowrap}
-.receipt .code{font:500 22px/1 var(--mono); letter-spacing:.18em; color:var(--accent)}
+/* ticker */
+.ticker{background:var(--lime); color:var(--black); overflow:hidden; border-block:2px solid var(--black)}
+.ticker .track{display:flex; width:max-content; gap:28px; padding-block:12px; animation:slide 30s linear infinite; font:400 22px/1 var(--cond); text-transform:uppercase; letter-spacing:.02em}
+.ticker span{display:inline-flex; align-items:center; gap:28px; white-space:nowrap}
+.ticker .spark{width:18px; height:18px; color:var(--violet)}
+@keyframes slide{to{transform:translateX(-50%)}}
 
-/* sections */
-section.block{padding-block:56px; border-top:1px solid var(--line)}
-.sec-head{display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; margin-bottom:28px}
-.sec-head h2{font-size:clamp(28px,3.4vw,40px); font-weight:700}
+/* stats */
+.stats{background:var(--black); color:var(--white)}
+.stats .wrap{padding-block:64px}
+.stat-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:28px}
+@media (max-width:860px){ .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.stat{border-radius:22px; padding:22px; display:flex; flex-direction:column; justify-content:space-between; gap:28px; min-height:190px; color:var(--black)}
+.stat b{font:400 clamp(44px,5.4vw,72px)/.9 var(--cond); font-variant-numeric:tabular-nums}
+.stat span{font-weight:600; font-size:15px; line-height:1.35}
+.c-pink{background:var(--pink)} .c-lime{background:var(--lime)} .c-violet{background:var(--violet); color:var(--white)} .c-paper{background:var(--paper)}
+.sec-title{display:flex; justify-content:space-between; align-items:end; gap:18px; flex-wrap:wrap}
+.sec-title h2{font-size:clamp(56px,9vw,120px)}
+.sec-title p{max-width:34ch; font-weight:500}
 
-/* case grid */
-.grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:28px}
-@media (max-width:760px){ .grid{grid-template-columns:1fr} .hero{grid-template-columns:1fr; padding-block:48px 40px} }
-.card{display:flex; flex-direction:column; gap:14px; text-decoration:none; color:inherit}
-.card .shot{aspect-ratio:16/10}
-.card:hover .shot img{transform:scale(1.02)}
-.card .meta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-.tag{font:500 12px/1 var(--mono); padding:6px 9px; border-radius:6px; background:var(--accent-soft); color:var(--ink)}
-.tag.live{background:transparent; border:1px solid var(--ok); color:var(--ok)}
-.card h3{font-size:24px; font-weight:700; line-height:1.15}
-.card p{color:var(--muted)}
-.card .more{font-weight:600; color:var(--accent)}
+/* cases */
+.cases{background:var(--black); color:var(--white)}
+.cases .wrap{padding-block:24px 80px}
+.case-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:28px}
+@media (max-width:760px){ .case-grid{grid-template-columns:1fr} }
+.ccard{border-radius:26px; padding:22px; display:flex; flex-direction:column; gap:18px; text-decoration:none; color:var(--black); position:relative; transition:transform .2s ease}
+.ccard.c-violet{color:var(--white)}
+.ccard:hover{transform:translateY(-4px) rotate(-.4deg)}
+.ccard .top{display:flex; justify-content:space-between; gap:10px; align-items:start}
+.ccard h3{font-size:clamp(34px,3.8vw,48px)}
+.badge{font:700 12px/1 var(--body); padding:7px 11px; border-radius:999px; background:var(--black); color:var(--white); white-space:nowrap}
+.ccard .shot{aspect-ratio:16/10; border-radius:16px}
+.ccard .bottom{display:flex; justify-content:space-between; align-items:end; gap:16px}
+.ccard .bottom p{font-weight:600; max-width:36ch; line-height:1.4}
+.arrow{width:44px; height:44px; flex:none; border:2px solid currentColor; border-radius:50%; display:grid; place-items:center; font-size:20px; transition:transform .2s ease}
+.ccard:hover .arrow{transform:rotate(45deg)}
 
 /* image slots */
-.shot{position:relative; border-radius:12px; overflow:hidden; background:var(--accent-soft); max-width:100%}
-.shot img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease}
+.shot{position:relative; overflow:hidden; background:rgba(27,27,31,.08); max-width:100%; border-radius:16px}
+.c-violet .shot{background:rgba(255,255,255,.12)}
+.shot img{width:100%; height:100%; object-fit:cover}
 .shot.free{aspect-ratio:auto}
 .shot.free img{height:auto; object-fit:contain}
-.shot .ph{position:absolute; inset:0; display:grid; place-content:center; text-align:center; gap:6px; padding:16px;
-  border:1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent); border-radius:12px; color:var(--ink); font-size:14px}
-.shot.free .ph{position:relative; min-height:220px}
-.ph b{font:600 15px/1.3 var(--body)}
-.ph code{font:500 12px/1.4 var(--mono); color:var(--accent); word-break:break-all}
-.ph small{font:12px/1.3 var(--mono); color:var(--muted)}
+.shot .ph{position:absolute; inset:0; display:grid; place-content:center; text-align:center; gap:6px; padding:16px; border:2px dashed currentColor; border-radius:16px; opacity:.85}
+.shot.free .ph{position:relative; min-height:240px}
+.ph b{font:700 15px/1.3 var(--body)}
+.ph code{font:500 12px/1.4 var(--mono); word-break:break-all}
+.ph small{font:12px/1.3 var(--mono); opacity:.7}
 figure{margin:0; display:flex; flex-direction:column; gap:10px}
-figcaption{font-size:14px; color:var(--muted)}
+figcaption{font-size:14px; opacity:.7}
 
 /* about */
-.about{display:grid; grid-template-columns:1fr 1fr; gap:48px}
-@media (max-width:760px){ .about{grid-template-columns:1fr} }
-.about .text{display:flex; flex-direction:column; gap:16px; max-width:60ch; font-size:17px}
-.timeline{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
-.timeline li{display:grid; grid-template-columns:120px 1fr; gap:16px; padding-block:14px; border-bottom:1px solid var(--line)}
-.timeline .when{font:500 13px/1.6 var(--mono); color:var(--muted); font-variant-numeric:tabular-nums}
-.timeline b{display:block; font-weight:600}
-.timeline span{color:var(--muted); font-size:15px}
-.skills{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+.about{background:var(--paper); background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:36px 36px; color:var(--black); border-radius:36px 36px 0 0}
+.about .wrap{padding-block:80px}
+.about-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:40px; margin-top:32px; align-items:start}
+@media (max-width:860px){ .about-grid{grid-template-columns:1fr} }
+.about .text{display:flex; flex-direction:column; gap:16px; font-size:19px; max-width:58ch; font-weight:500}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+.chip{font:700 13px/1 var(--body); padding:9px 13px; border-radius:999px; border:2px solid var(--black); background:var(--white)}
+.chip:nth-child(3n+1){background:var(--lime)} .chip:nth-child(3n+2){background:var(--pink)}
+.tl{background:var(--black); color:var(--white); border-radius:26px; padding:10px 22px; list-style:none; margin:0}
+.tl li{display:grid; grid-template-columns:96px 1fr; gap:14px; padding-block:16px; border-bottom:1px solid rgba(255,255,255,.14)}
+.tl li:last-child{border-bottom:0}
+.tl .when{font:500 12px/1.7 var(--mono); color:var(--lime)}
+.tl b{display:block; font-weight:700}
+.tl span{opacity:.7; font-size:15px}
 
 /* contact */
-.contact{display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:start}
-@media (max-width:760px){ .contact{grid-template-columns:1fr} }
-.contact h2{font-size:clamp(30px,4vw,48px); font-weight:800}
-.contact dl{margin:0; display:grid; gap:2px}
-.contact .item{display:flex; justify-content:space-between; align-items:center; gap:12px; padding-block:14px; border-bottom:1px solid var(--line); flex-wrap:wrap}
-.contact dt{font:500 12px/1 var(--mono); text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
-.contact dd{margin:0; font-weight:600; user-select:all; overflow-wrap:anywhere}
-footer{padding-block:32px; color:var(--muted); font-size:14px; border-top:1px solid var(--line)}
+.contact{background:var(--paper); color:var(--black)}
+.contact .wrap{padding-block:24px 96px; text-align:center; position:relative}
+.contact h2{font-size:clamp(72px,14vw,180px); position:relative; display:inline-block}
+.contact h2 .spark{position:absolute; top:-8%; left:-10%; width:.42em; height:.42em; color:var(--violet)}
+.contact .sticker{position:absolute; right:-6%; bottom:-10%; background:var(--lime); width:120px; height:120px; color:var(--black)}
+.contact .sticker .core{font-size:18px}
+.contact .lead{font-weight:600; font-size:20px; margin:28px auto 0; max-width:40ch}
+.contact-list{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:36px; text-align:left}
+@media (max-width:760px){ .contact-list{grid-template-columns:1fr} .contact .sticker{display:none} }
+.ci{background:var(--white); border:2px solid var(--black); border-radius:20px; padding:16px 18px; display:flex; flex-direction:column; gap:10px; min-width:0}
+.ci dd{margin:0; font-weight:700; user-select:all; overflow-wrap:anywhere}
+.ci .pill{align-self:start}
+footer{background:var(--black); color:var(--white)}
+footer .wrap{padding-block:26px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:14px; opacity:.85}
 
 /* case page */
-.case-hero{padding-block:48px 32px}
-.back{font-weight:600; text-decoration:none; color:var(--muted); display:inline-flex; gap:8px; margin-bottom:28px}
-.back:hover{color:var(--ink)}
-.case-hero h1{font-size:clamp(36px,5.6vw,64px); font-weight:800; line-height:1}
-.case-hero .lead{font-size:clamp(19px,2.2vw,24px); color:var(--muted); max-width:38ch; margin-top:18px; font-family:var(--display); font-weight:400; letter-spacing:-.01em}
-.case-top{display:grid; grid-template-columns:1.4fr .8fr; gap:40px; align-items:start}
-@media (max-width:860px){ .case-top{grid-template-columns:1fr} }
-.case-body{display:grid; gap:56px; padding-block:24px 64px}
-.chapter{display:grid; grid-template-columns:220px minmax(0,1fr); gap:32px}
+.chero{background:var(--violet); color:var(--white); position:relative; overflow:hidden}
+.chero .wrap{padding-block:40px 56px; position:relative}
+.back{display:inline-flex; margin-bottom:28px}
+.chero h1{font-size:clamp(56px,10vw,132px)}
+.chero .lead{font:600 clamp(19px,2.3vw,26px)/1.35 var(--body); max-width:34ch; margin-top:22px}
+.chero-grid{display:grid; grid-template-columns:1.5fr .9fr; gap:36px; align-items:end}
+@media (max-width:860px){ .chero-grid{grid-template-columns:1fr} }
+.ticket{background:var(--lime); color:var(--black); border-radius:20px; padding:20px 22px; position:relative; transform:rotate(1.2deg); font-size:15px}
+.ticket .th{display:flex; justify-content:space-between; padding-bottom:10px; border-bottom:2px dashed rgba(27,27,31,.35); margin-bottom:4px}
+.ticket .row{display:flex; justify-content:space-between; gap:14px; padding-block:9px; border-bottom:1px dashed rgba(27,27,31,.25)}
+.ticket .row:last-child{border-bottom:0}
+.ticket .row span:first-child{font:500 12px/1.9 var(--mono); text-transform:uppercase; letter-spacing:.05em}
+.ticket .row span:last-child{font-weight:700; text-align:right}
+.cbody{background:var(--paper); color:var(--black)}
+.cover-wrap{padding-block:40px 8px}
+.chapters{display:grid; gap:64px; padding-block:48px 72px}
+.chapter{display:grid; grid-template-columns:240px minmax(0,1fr); gap:32px}
 @media (max-width:860px){ .chapter{grid-template-columns:1fr; gap:14px} }
-.chapter > h2{font-size:22px; font-weight:700; position:sticky; top:84px; align-self:start}
+.chapter > h2{font-size:clamp(40px,4.4vw,56px); position:sticky; top:84px; align-self:start}
 @media (max-width:860px){ .chapter > h2{position:static} }
-.chapter .content{display:flex; flex-direction:column; gap:18px; min-width:0}
-.content p{max-width:66ch; font-size:17px}
-.content h3{font-size:19px; font-weight:600; margin-top:8px}
-.content ol, .content ul{margin:0; padding-left:22px; display:grid; gap:10px; max-width:66ch; font-size:17px}
-.pair{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
-.trio{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
+.content{display:flex; flex-direction:column; gap:18px; min-width:0}
+.content p,.content ul,.content ol{max-width:64ch}
+.content h3{font:800 22px/1.25 var(--body); margin-top:10px}
+.content ul,.content ol{margin:0; padding-left:22px; display:grid; gap:10px}
+.content li::marker{color:var(--violet); font-weight:800}
+.pair{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+.trio{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
 @media (max-width:640px){ .pair,.trio{grid-template-columns:1fr} }
-.finding{display:grid; grid-template-columns:auto 1fr; gap:6px 14px; padding:16px 18px; background:var(--surface); border:1px solid var(--line); border-radius:12px; max-width:72ch}
-.finding .k{font:500 12px/1.9 var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--muted)}
-.impact{background:var(--ink); color:var(--bg); border-radius:16px; padding:32px; display:grid; gap:10px}
-.impact .big{font:800 clamp(34px,5vw,56px)/1 var(--display); letter-spacing:-.03em}
-.impact p{opacity:.85; max-width:60ch}
-.next{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-block:32px; border-top:1px solid var(--line)}
+.finding{display:grid; grid-template-columns:auto 1fr; gap:8px 16px; padding:18px 20px; background:var(--white); border:2px solid var(--black); border-radius:20px; max-width:72ch}
+.finding .k{font:700 12px/1 var(--body); padding:7px 10px; border-radius:999px; align-self:start; text-align:center}
+.finding .k.v{background:var(--pink)} .finding .k.d{background:var(--lime)}
+.impact{background:var(--black); color:var(--white); border-radius:28px; padding:34px; display:grid; gap:14px; position:relative; overflow:hidden}
+.impact .big{font-size:clamp(46px,6.6vw,86px); color:var(--lime)}
+.impact p{max-width:58ch; opacity:.85}
+.impact .spark{position:absolute; right:22px; top:22px; width:54px; height:54px; color:var(--pink)}
+.next{background:var(--black); color:var(--white)}
+.next .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-block:36px}
 .next a{text-decoration:none}
-.next small{display:block; font:500 12px/1 var(--mono); color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px}
-.next b{font:700 22px/1.2 var(--display)}
+.next small{display:block; margin-bottom:8px; opacity:.7}
+.next b{font-size:clamp(28px,4vw,44px)}
 
-@media (prefers-reduced-motion: reduce){ *{transition:none!important; scroll-behavior:auto!important} .btn:hover{transform:none} }
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important; scroll-behavior:auto!important} }
 </style>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#inicio"><i></i>Lina Prieto</a>
+    <a class="logo" href="#inicio">lina<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg></a>
     <nav class="links" aria-label="Principal">
-      <a href="#casos">Casos</a>
-      <a class="hide-sm" href="#sobre-mi">Sobre mí</a>
-      <a class="hide-sm" href="#contacto">Contacto</a>
-      <a class="btn" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="pill violet" href="#casos">Casos</a>
+      <a class="pill violet hide-sm" href="#sobre-mi">Sobre mí</a>
+      <a class="pill violet hide-sm" href="#contacto">Contacto</a>
+      <a class="pill lime" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">CV</a>
     </nav>
   </div>
 </header>
 
 <main id="app"></main>
 
-<footer><div class="wrap">Lina Valentina Prieto Acevedo · Senior Product Designer · Bogotá, Colombia</div></footer>
+<footer><div class="wrap"><span>Lina Valentina Prieto Acevedo · Senior Product Designer</span><span>Bogotá, Colombia</span></div></footer>
 
 <script>
 /* ===== Contenido ===== */
@@ -356,20 +401,15 @@ const CASES = [
 
 /* ===== Imágenes: prueba .webp, .png, .jpg; si no existe, muestra el recuadro ===== */
 const EXTS = ["webp","png","jpg","jpeg"];
-function figureHTML(f, cls=""){
-  return `<div class="shot ${f.free?'free':''} ${cls}" data-img="${f.img}" data-label="${f.label}" data-size="${f.size}">
-    <img alt="${f.label}" loading="lazy" hidden></div>`;
+function figureHTML(f){
+  return `<div class="shot ${f.free?'free':''}" data-img="${f.img}" data-label="${f.label}" data-size="${f.size}"><img alt="${f.label}" loading="lazy" hidden></div>`;
 }
 function loadImages(root){
   root.querySelectorAll(".shot[data-img]").forEach(box=>{
     const im = box.querySelector("img"); let i = 0;
-    const tryNext = () => {
-      if(i >= EXTS.length){ showPh(box); return; }
-      im.src = `img/${box.dataset.img}.${EXTS[i++]}`;
-    };
+    const tryNext = () => { if(i >= EXTS.length){ showPh(box); return; } im.src = `img/${box.dataset.img}.${EXTS[i++]}`; };
     im.onload = () => { im.hidden = false; box.querySelector(".ph")?.remove(); };
-    im.onerror = tryNext;
-    tryNext();
+    im.onerror = tryNext; tryNext();
   });
 }
 function showPh(box){
@@ -379,58 +419,82 @@ function showPh(box){
   box.appendChild(d);
 }
 
+/* ===== Piezas gráficas ===== */
+const SPARK = `<svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg>`;
+let stickerN = 0;
+function sticker(ring, core, cls=""){
+  const id = "ring" + (++stickerN);
+  return `<div class="sticker ${cls}" aria-hidden="true">
+    <svg class="ring" viewBox="0 0 150 150"><defs><path id="${id}" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs>
+    <text fill="currentColor"><textPath href="#${id}">${ring}</textPath></text></svg>
+    <div class="core">${core}</div></div>`;
+}
+const SCRIBBLE = `<svg class="scribble" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 150 C80 40 140 40 160 120 S260 200 300 110 S400 10 440 100 S520 190 580 120 S680 30 720 110 S820 190 870 110 S960 20 1010 100 S1110 180 1220 60" fill="none" stroke="#1b1b1f" stroke-width="14" stroke-linecap="round" opacity=".55"/></svg>`;
+const COLORS = ["c-pink","c-lime","c-violet","c-lime","c-violet","c-pink"];
+
 /* ===== Vistas ===== */
 const app = document.getElementById("app");
-const esc = s => s;
 
 function homeView(){
+  const ticker = ["Fintech","Pagos","Design Systems","UX Research","Productos B2B","Herramientas internas","Banca"];
+  const tick = ticker.map(t=>`<span>${t} ${SPARK}</span>`).join("");
   return `
-  <div class="wrap">
-    <section class="hero" id="inicio">
-      <div>
-        <div class="status">Abierta a nuevas oportunidades</div>
-        <h1>Diseño productos financieros que se usan en <em>la caja, la sucursal y el back-office</em>.</h1>
-        <p class="lead">Senior Product Designer con más de 5 años en fintech, banca y e-commerce. Del caso de negocio a producción.</p>
+  <section class="hero" id="inicio">
+    ${SCRIBBLE}
+    <div class="wrap">
+      ${sticker("Open to work · Open to work · Open to work · ","Open<br>to work")}
+      <div class="hi">
+        <div class="kicker"><span class="pill lime">Senior Product Designer</span><span class="mono">Bogotá · Remoto</span></div>
+        <h1 class="cond">Lina<span class="row2">Prieto</span></h1>
+        <p class="sub">Diseño productos financieros que se usan <mark>en la caja</mark>, <mark class="lime">en la sucursal</mark> y en el back-office.</p>
         <div class="ctas">
-          <a class="btn solid" href="#casos">Ver casos</a>
-          <a class="btn" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="pill lime big" href="#casos">Ver casos ↓</a>
+          <a class="pill big" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
       </div>
-      <div class="receipt" aria-label="Resultados destacados">
-        <div class="r-head"><span>COMPROBANTE</span><span>2021 → 2026</span></div>
-        <div class="row"><span>Comercios autogestionados</span><b>10 → +2.000</b></div>
-        <div class="row"><span>Puntos de venta con CUP</span><b>+45.000</b></div>
-        <div class="row"><span>Pagos online Claro</span><b>+18%</b></div>
-        <div class="row"><span>Abandono en checkout</span><b>−25%</b></div>
-        <div class="row"><span>Entrevistas y pruebas</span><b>+30</b></div>
-        <div class="row"><span>Código de pago</span><span class="code">48 27 15</span></div>
-      </div>
-    </section>
+      <svg class="s2" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg>
+    </div>
+  </section>
 
-    <section class="block" id="casos">
-      <div class="sec-head"><h2>Casos seleccionados</h2><span class="eyebrow">${CASES.length} proyectos</span></div>
-      <div class="grid">
-        ${CASES.map(c=>`
-          <a class="card" href="#${c.id}">
+  <div class="ticker" aria-hidden="true"><div class="track">${tick}${tick}</div></div>
+
+  <section class="stats">
+    <div class="wrap">
+      <div class="sec-title"><h2 class="cond" style="color:var(--white)">Resultados</h2><p>Más de 5 años en fintech, banca y e-commerce, del caso de negocio a producción.</p></div>
+      <div class="stat-grid">
+        <div class="stat c-lime"><b>10→2.000+</b><span>comercios que se autogestionan en el Portal Deuna Negocios</span></div>
+        <div class="stat c-pink"><b>+45.000</b><span>puntos de venta aceptan el Código Único de Pago</span></div>
+        <div class="stat c-violet"><b>+18%</b><span>pagos online en el e-commerce de Claro</span></div>
+        <div class="stat c-paper"><b>−25%</b><span>abandono en el checkout de Claro</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cases" id="casos">
+    <div class="wrap">
+      <div class="sec-title"><h2 class="cond" style="color:var(--white)">Casos</h2><p>${CASES.length} proyectos de pagos, banca y producto digital.</p></div>
+      <div class="case-grid">
+        ${CASES.map((c,i)=>`
+          <a class="ccard ${COLORS[i%COLORS.length]}" href="#${c.id}">
+            <div class="top"><h3 class="cond">${c.title}</h3><span class="badge">${c.status}</span></div>
             ${figureHTML(c.cover)}
-            <div class="meta">${c.status==="En producción"||c.status==="Publicado"?`<span class="tag live">${c.status}</span>`:`<span class="tag">${c.status}</span>`}${c.tags.slice(0,2).map(t=>`<span class="tag">${t}</span>`).join("")}<span class="eyebrow">${c.year}</span></div>
-            <h3>${c.title}</h3>
-            <p>${c.card}</p>
-            <span class="more">Ver caso →</span>
+            <div class="bottom"><p>${c.card}</p><span class="arrow">↗</span></div>
           </a>`).join("")}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="block" id="sobre-mi">
-      <div class="sec-head"><h2>Sobre mí</h2></div>
-      <div class="about">
+  <section class="about" id="sobre-mi">
+    <div class="wrap">
+      <div class="sec-title"><h2 class="cond">Sobre mí ${SPARK}</h2></div>
+      <div class="about-grid">
         <div class="text">
-          <p>Diseño productos financieros de punta a punta: desde cómo opera el negocio hasta lo que vive el usuario. Hoy lidero el diseño del frente B2B en Deuna, la billetera digital más usada de Ecuador.</p>
-          <p>He diseñado para banca y servicios financieros con BBVA, Bancolombia, Porvenir y Crédito Fácil Codensa, y para e-commerce con Claro. Mi fuerte es resolver problemas reales de operación, canales digitales y conversión.</p>
-          <p>No diseño sin contexto. Entiendo el negocio, la tecnología y al usuario antes de decidir, y trabajo de la mano con producto y desarrollo para que lo que diseñamos funcione en producción.</p>
-          <div class="skills">${["UX Research","Design Systems","Flujos de pago","Herramientas internas","Figma","Maze","Accesibilidad (WCAG)","Prototipado"].map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+          <p>Diseño productos financieros de punta a punta: desde cómo opera el negocio hasta lo que vive el usuario. Hoy lidero el diseño del frente B2B en <mark class="lime">Deuna</mark>, la billetera digital más usada de Ecuador.</p>
+          <p>He diseñado para banca y servicios financieros con BBVA, Bancolombia, Porvenir y Crédito Fácil Codensa, y para e-commerce con Claro.</p>
+          <p>No diseño sin contexto. Entiendo el negocio, la tecnología y al usuario antes de decidir, y trabajo de la mano con producto y desarrollo para que lo que diseñamos <mark>funcione en producción</mark>.</p>
+          <div class="chips">${["UX Research","Design Systems","Flujos de pago","Herramientas internas","Figma","Maze","Accesibilidad","Prototipado"].map(s=>`<span class="chip">${s}</span>`).join("")}</div>
         </div>
-        <ol class="timeline" aria-label="Trayectoria">
+        <ol class="tl" aria-label="Trayectoria">
           <li><span class="when">2024 – hoy</span><div><b>Senior Product Designer · Neoris</b><span>Deuna (Ecuador) y BBVA</span></div></li>
           <li><span class="when">2022 – hoy</span><div><b>Product Designer freelance · Contra Studio</b><span>Colombia Fintech, negocios y restaurantes</span></div></li>
           <li><span class="when">2023 – 2024</span><div><b>Product Designer · VASS</b><span>E-commerce de Claro Colombia</span></div></li>
@@ -438,23 +502,20 @@ function homeView(){
           <li><span class="when">2021 – 2023</span><div><b>Digital Experience Designer · NTT DATA</b><span>Porvenir y Crédito Fácil Codensa</span></div></li>
         </ol>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="block" id="contacto">
-      <div class="contact">
-        <div>
-          <span class="eyebrow">Contacto</span>
-          <h2 style="margin-top:12px">¿Buscas una Product Designer para tu equipo? Hablemos.</h2>
-        </div>
-        <dl>
-          <div class="item"><div><dt>Correo</dt><dd>${EMAIL}</dd></div><button class="btn" data-copy="${EMAIL}" type="button">Copiar</button></div>
-          <div class="item"><div><dt>Celular</dt><dd>${PHONE}</dd></div><button class="btn" data-copy="${PHONE}" type="button">Copiar</button></div>
-          <div class="item"><div><dt>LinkedIn</dt><dd>linkedin.com/in/lina-valentina-prieto-acevedo</dd></div><a class="btn" href="${LINKEDIN}" target="_blank" rel="noopener">Abrir</a></div>
-          <div class="item"><div><dt>Hoja de vida</dt><dd>PDF en español e inglés</dd></div><a class="btn" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">Ver CV</a></div>
-        </dl>
-      </div>
-    </section>
-  </div>`;
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <h2 class="cond">${SPARK}Hablemos!!!${sticker("Open to work · Open to work · ","Open<br>to work")}</h2>
+      <p class="lead">¿Buscas una Product Designer para tu equipo? Escríbeme y conversamos.</p>
+      <dl class="contact-list">
+        <div class="ci"><dt class="mono">Correo</dt><dd>${EMAIL}</dd><button class="pill lime" data-copy="${EMAIL}" type="button">Copiar</button></div>
+        <div class="ci"><dt class="mono">Celular</dt><dd>${PHONE}</dd><button class="pill lime" data-copy="${PHONE}" type="button">Copiar</button></div>
+        <div class="ci"><dt class="mono">LinkedIn y CV</dt><dd>lina-valentina-prieto-acevedo</dd><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="pill violet" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a><a class="pill black" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">CV ↗</a></div></div>
+      </dl>
+    </div>
+  </section>`;
 }
 
 function blockHTML(b){
@@ -465,50 +526,52 @@ function blockHTML(b){
   if(b.fig) return `<figure>${figureHTML(b.fig)}<figcaption>${b.fig.label}</figcaption></figure>`;
   if(b.pair) return `<div class="pair">${b.pair.map(f=>`<figure>${figureHTML(f)}<figcaption>${f.label}</figcaption></figure>`).join("")}</div>`;
   if(b.trio) return `<div class="trio">${b.trio.map(f=>`<figure>${figureHTML(f)}<figcaption>${f.label}</figcaption></figure>`).join("")}</div>`;
-  if(b.finding) return `<div class="finding"><span class="k">Vimos</span><span>${b.finding[0]}</span><span class="k">Decidí</span><span>${b.finding[1]}</span></div>`;
+  if(b.finding) return `<div class="finding"><span class="k v">Vimos</span><span>${b.finding[0]}</span><span class="k d">Decidí</span><span>${b.finding[1]}</span></div>`;
   return "";
 }
 
 function caseView(c){
   const i = CASES.indexOf(c), nx = CASES[(i+1)%CASES.length];
   return `
-  <div class="wrap">
-    <section class="case-hero">
-      <a class="back" href="#casos">← Todos los casos</a>
-      <div class="case-top">
+  <section class="chero">
+    ${SCRIBBLE}
+    <div class="wrap">
+      <a class="pill back" href="#casos">← Todos los casos</a>
+      <div class="chero-grid">
         <div>
-          <span class="eyebrow">${c.tags.join(" · ")} · ${c.year}</span>
-          <h1 style="margin-top:14px">${c.title}</h1>
+          <span class="mono">${c.tags.join(" · ")} · ${c.year}</span>
+          <h1 class="cond" style="margin-top:14px">${c.title}</h1>
           <p class="lead">${c.lead}</p>
-          ${c.link?`<div style="margin-top:22px"><a class="btn" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ↗</a></div>`:""}
+          ${c.link?`<div style="margin-top:22px"><a class="pill lime" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ↗</a></div>`:""}
         </div>
-        <div class="receipt">
-          <div class="r-head"><span>FICHA DEL PROYECTO</span><span>${c.year}</span></div>
-          ${c.meta.map(([k,v])=>`<div class="row"><span>${k}</span><span style="text-align:right">${v}</span></div>`).join("")}
+        <div class="ticket">
+          <div class="th mono"><span>Ficha del proyecto</span><span>${c.year}</span></div>
+          ${c.meta.map(([k,v])=>`<div class="row"><span>${k}</span><span>${v}</span></div>`).join("")}
         </div>
       </div>
-    </section>
-    <figure style="margin-bottom:24px">${figureHTML({...c.cover, free:true})}</figure>
-    <div class="case-body">
-      ${c.chapters.map(ch=>`<section class="chapter"><h2>${ch.h}</h2><div class="content">${ch.blocks.map(blockHTML).join("")}</div></section>`).join("")}
-      <section class="chapter"><h2>Impacto</h2><div class="content"><div class="impact"><span class="big">${c.impact.big}</span><p>${c.impact.p}</p></div></div></section>
     </div>
-    <nav class="next" aria-label="Más casos">
-      <a href="#casos"><small>Volver</small><b>Todos los casos</b></a>
-      <a href="#${nx.id}" style="text-align:right"><small>Siguiente caso</small><b>${nx.title} →</b></a>
-    </nav>
-  </div>`;
+  </section>
+  <div class="cbody">
+    <div class="wrap cover-wrap"><figure>${figureHTML({...c.cover, free:true})}</figure></div>
+    <div class="wrap chapters">
+      ${c.chapters.map(ch=>`<section class="chapter"><h2 class="cond">${ch.h}</h2><div class="content">${ch.blocks.map(blockHTML).join("")}</div></section>`).join("")}
+      <section class="chapter"><h2 class="cond">Impacto</h2><div class="content"><div class="impact">${SPARK}<span class="big cond">${c.impact.big}</span><p>${c.impact.p}</p></div></div></section>
+    </div>
+  </div>
+  <nav class="next" aria-label="Más casos"><div class="wrap">
+    <a href="#casos"><small class="mono">Volver</small><b class="cond">Todos los casos</b></a>
+    <a href="#${nx.id}" style="text-align:right"><small class="mono">Siguiente caso</small><b class="cond" style="color:var(--lime)">${nx.title} →</b></a>
+  </div></nav>`;
 }
 
 function render(){
   const id = location.hash.slice(1);
   const c = CASES.find(x=>x.id===id);
-  if(c){ app.innerHTML = caseView(c); document.title = `${c.title} · Lina Prieto`; window.scrollTo(0,0); }
+  if(c){ app.innerHTML = caseView(c); app.dataset.home=""; document.title = `${c.title} · Lina Prieto`; window.scrollTo(0,0); }
   else {
     if(!app.dataset.home){ app.innerHTML = homeView(); app.dataset.home="1"; document.title = "Lina Prieto · Product Designer"; }
     if(id){ document.getElementById(id)?.scrollIntoView(); } else window.scrollTo(0,0);
   }
-  if(c) app.dataset.home = "";
   loadImages(app);
 }
 window.addEventListener("hashchange", render);
@@ -516,9 +579,8 @@ render();
 
 document.addEventListener("click", e=>{
   const b = e.target.closest("[data-copy]"); if(!b) return;
-  const t = b.dataset.copy;
   const done = () => { b.textContent = "Copiado"; setTimeout(()=>b.textContent="Copiar",1500); };
-  try{ navigator.clipboard.writeText(t).then(done).catch(()=>{ selectText(b); }); }catch(_){ selectText(b); }
+  try{ navigator.clipboard.writeText(b.dataset.copy).then(done).catch(()=>selectText(b)); }catch(_){ selectText(b); }
 });
 function selectText(b){ const dd=b.parentElement.querySelector("dd"); const r=document.createRange(); r.selectNodeContents(dd); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
 </script>
