@@ -371,6 +371,19 @@ section{position:relative}
 .ticker .track{animation-duration:22s}
 .impact.rv.wait:not(.in){transform:scale(.8) rotate(-3deg)}
 @media (prefers-reduced-motion: reduce){ .rv.wait:not(.in){opacity:1!important; transform:none!important; filter:none!important} .dd{translate:none} }
+
+/* ====== v5: más aire en los casos ====== */
+.chero .wrap{padding-block:48px 80px}
+.cbody .ticket{margin-top:72px; padding:30px 34px}
+.trow{gap:8px 32px}
+.chapters{gap:120px; padding-block:96px 128px}
+.chapter{gap:56px}
+.content{gap:28px}
+.content p{line-height:1.75}
+.pair,.trio{gap:22px}
+.impact{padding:48px}
+.next .wrap{padding-block:56px}
+@media (max-width:860px){ .chapters{gap:80px; padding-block:64px 96px} .cbody .ticket{margin-top:48px; padding:22px} }
 </style>
 
 <header class="top">
@@ -730,6 +743,17 @@ function blockHTML(b){
   return "";
 }
 
+const slug = s => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+function withSlot(c, ch){
+  const hasImg = ch.blocks.some(b=>b.fig||b.pair||b.trio);
+  if(hasImg) return ch.blocks;
+  return [...ch.blocks, {fig:img(`${c.cover.img.split("/")[0]}/${slug(ch.h)}`, `Imagen para “${ch.h}”`, "1600×1000", {free:true})}];
+}
+function caseTicker(c){
+  const items = [c.title, ...c.tags, c.status, c.year];
+  const t = items.map(x=>`<span>${x} ${SPARK}</span>`).join("");
+  return `<div class="ticker" aria-hidden="true"><div class="track">${t}${t}${t}</div></div>`;
+}
 function caseView(c){
   const i = CASES.indexOf(c), nx = CASES[(i+1)%CASES.length];
   return `
@@ -748,6 +772,7 @@ function caseView(c){
       </div>
     </div>
   </section>
+  ${caseTicker(c)}
   <div class="cbody">
     <div class="wrap">
       <div class="ticket rv">
@@ -756,7 +781,7 @@ function caseView(c){
       </div>
     </div>
     <div class="wrap chapters">
-      ${c.chapters.map(ch=>`<section class="chapter"><h2 class="cond rv">${ch.h}</h2><div class="content">${ch.blocks.map(blockHTML).join("")}</div></section>`).join("")}
+      ${c.chapters.map(ch=>`<section class="chapter"><h2 class="cond rv">${ch.h}</h2><div class="content">${withSlot(c,ch).map(blockHTML).join("")}</div></section>`).join("")}
       <section class="chapter"><h2 class="cond rv">Impacto</h2><div class="content"><div class="impact rv">${SPARK}<span class="big cond">${c.impact.big}</span><p>${c.impact.p}</p></div></div></section>
     </div>
   </div>
