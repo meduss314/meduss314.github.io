@@ -9,10 +9,10 @@
 <body>
 
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Lina Valentina Prieto, Senior Product Designer en fintech y pagos. Casos: Portal Deuna Negocios, Código Único de Pago, Suscripciones, Colombia Fintech, Claro y BBVA.">
+<meta name="description" content="Lina Valentina Prieto, Senior Product Designer en fintech y pagos. Casos: Portal Deuna Negocios, Back Office, Código Único de Pago, Suscripciones, Colombia Fintech, Crédito Fácil Codensa, Porvenir y Movistar.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Lina Prieto · Senior Product Designer">
-<meta property="og:description" content="Productos financieros que se usan en la caja, la sucursal y el back-office. Casos de Deuna, BBVA, Claro y Colombia Fintech.">
+<meta property="og:description" content="Productos financieros que se usan en la caja, la sucursal y el back-office. Casos de Deuna, Colombia Fintech, Porvenir, Crédito Fácil Codensa y Movistar.">
 <meta property="og:image" content="https://linaprietodesign.com/img/lina.jpg">
 <meta name="theme-color" content="#5b4cf8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -469,24 +469,6 @@ const img = (src, label, size="1600×1000", opts={}) => ({img:src, label, size, 
 
 const CASES = [
 {
-  id:"back-office", draft:true, title:"Back Office comercial Deuna",
-  card:"La plataforma interna con la que el equipo comercial afilia y gestiona 10.000 comercios",
-  lead:"La herramienta interna donde los asesores comerciales de Deuna afilian comercios y configuran todo lo que necesitan para cobrar.",
-  tags:["Herramienta interna","B2B","Flujos"], year:"2024–2026", status:"En producción",
-  meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Usuarios","Asesores comerciales"],["Plataforma","Web interna"]],
-  summary:[["Quién lo usa","Los asesores comerciales, la fuerza de ventas de Deuna, que consiguen comercios y los afilian."],["Qué hice","Diseñé el proceso completo de afiliación y la administración de comercios, sucursales, QRs, comisiones y reportes."],["Resultado","Alrededor de 10.000 comercios afiliados y gestionados desde la plataforma."]],
-  cover:img("backoffice/portada","Portada: back office comercial"),
-  chapters:[
-    {h:"Contexto", blocks:[
-      {p:"Cada comercio que empieza a cobrar con Deuna pasa por el back office. Ahí los asesores comerciales lo crean, cargan sus documentos, configuran sucursales y cajas, asignan QRs, definen comisiones y generan reportes."}]},
-    {h:"Mi rol", blocks:[
-      {p:"Diseñé el proceso de afiliación de comercios dentro de la plataforma y las vistas de administración: listados, tablas, sucursales, comisiones, QRs y reportes."}]},
-    {h:"El flujo de afiliación", blocks:[
-      {p:"Del primer contacto al comercio listo para cobrar: datos del comercio, documentos, sucursales, configuración de comisión y asignación de QRs."}]},
-  ],
-  impact:{big:"≈10.000 comercios", p:"Afiliados y administrados por el equipo comercial desde el back office."}
-},
-{
   id:"portal-deuna-negocios", title:"Portal Deuna Negocios",
   card:"De 10 comercios piloto a más de 2.000 que se autogestionan",
   lead:"Un portal de autogestión para que los comercios grandes de Deuna confirmen pagos, descarguen reportes e integren la API sin pasar por soporte.",
@@ -521,11 +503,37 @@ const CASES = [
   impact:{big:"10 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus usuarios e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
 },
 {
+  id:"back-office", noSlots:true, title:"Back Office comercial Deuna",
+  card:"La herramienta interna con la que el equipo comercial afilia y gestiona unos 10.000 comercios",
+  lead:"La plataforma interna donde los asesores comerciales de Deuna afilian comercios y configuran todo lo que necesitan para empezar a cobrar.",
+  tags:["Herramienta interna","B2B","Flujos"], year:"2024–2026", status:"En producción",
+  meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Usuarios","Asesores comerciales"],["Plataforma","Web interna"]],
+  summary:[["El problema","La fuerza de ventas necesitaba afiliar comercios y dejarlos listos para cobrar: datos, documentos, sucursales, comisiones y QRs, todo en un solo lugar."],["Qué hice","Diseñé el proceso de afiliación de punta a punta y las vistas para administrar comercios, sucursales, cajas, QRs, comisiones y reportes."],["Resultado","Alrededor de 10.000 comercios afiliados y gestionados desde la plataforma."]],
+  cover:img("backoffice/flujo","Proceso de afiliación de un comercio","1600×1000",{free:true}),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Cada comercio que cobra con Deuna entra por el back office. Los asesores comerciales, la fuerza de ventas de Deuna, consiguen el comercio y lo afilian desde ahí: lo crean, cargan sus documentos, arman su estructura de sucursales y cajas, definen la comisión, asignan QRs y lo siguen en reportes."}]},
+    {h:"Mi rol", blocks:[
+      {p:"Antes del Portal Deuna Negocios, el back office era mi producto. Diseñé el proceso de afiliación dentro de la plataforma y las vistas de administración: listados, tablas, configuración y reportes."}]},
+    {h:"Problema y solución", blocks:[
+      {finding:["Un comercio puede ser un grupo sombrilla, una empresa, una sucursal o una caja, y cada uno se configura distinto.","Un modelo de estructura único (grupo → empresa → sucursal → caja) que se usa en la afiliación, en los QRs y en los reportes."]},
+      {finding:["La afiliación tiene muchos pasos y documentos, y un asesor la hace entre visitas comerciales.","Un flujo guiado por pasos, para que el asesor sepa siempre qué falta antes de activar el comercio."]},
+      {finding:["Comisiones y QRs se configuraban por comercio y un error se notaba solo cuando el comercio ya cobraba.","Configuración de comisión y asignación de QRs como pasos explícitos de la afiliación, antes de activar."]}]},
+    {h:"El flujo de afiliación", blocks:[
+      {p:"Del primer contacto al comercio listo para cobrar, en cinco pasos."},
+      {fig:img("backoffice/flujo","Proceso de afiliación de un comercio","1600×1000",{free:true})}]},
+    {h:"Qué gestiona la plataforma", blocks:[
+      {fig:img("backoffice/modulos","Módulos del back office comercial","1600×1000",{free:true})}]},
+  ],
+  impact:{big:"≈10.000 comercios", p:"Afiliados y administrados por el equipo comercial desde el back office."}
+},
+{
   id:"cup", title:"Código Único de Pago",
   card:"Pagar en caja sin QR: 6 dígitos, aceptado en +45.000 puntos de venta",
   lead:"Pagar en caja sin QR: un código de 6 dígitos que hoy usan todos los clientes de Deuna.",
   tags:["App","Pagos","Research"], year:"2024", status:"En producción",
   meta:[["Rol","Product Designer"],["Equipo","Producto y negocio"],["Plataforma","App Deuna (personas y comercios)"],["Validación","10 pruebas de usabilidad"],["Estado","En producción"]],
+  summary:[["El problema","Los QRs falsos hicieron que muchos comercios dejaran de mostrar el QR de Deuna, y cada vez menos personas pagaban con la billetera."],["Qué hice","Diseñé un nuevo método de pago, pagar en caja sin QR, de la ideación a las pruebas con usuarios en una agencia bancaria."],["Resultado","En producción para todos los usuarios, aceptado en más de 45.000 puntos de venta y disponible desde la banca móvil de Banco Pichincha."]],
   cover:img("cup/portada","Portada: pantalla de ingreso del código","1600×1000",{remote:"https://framerusercontent.com/images/ZSPxykkKaTGD34Q6oKfyuVy5I.png"}),
   chapters:[
     {h:"Contexto", blocks:[
@@ -555,6 +563,7 @@ const CASES = [
   lead:"Pagar suscripciones con la billetera, sin tarjeta: una tokenización compleja convertida en “vincular cuenta”.",
   tags:["App","Pagos","Integraciones"], year:"2026", status:"En desarrollo",
   meta:[["Rol","Lead Product Designer"],["Equipo","Producto, arquitectura y desarrollo"],["Plataforma","App Deuna + apps de comercios"],["Estado","En desarrollo"]],
+  summary:[["El problema","Los comercios digitales internacionales que cobran vía dLocal solo aceptaban tarjeta, y Deuna no tiene tarjeta."],["Qué hice","Diseñé la vinculación de la cuenta y el débito automático: benchmark de Latinoamérica, flujos entre apps, pruebas de usabilidad y medición."],["Resultado","Un nuevo método de pago recurrente sin tarjeta, con el embudo de medición listo desde el día uno."]],
   cover:img("suscripciones/portada","Portada: pantalla “Vincular cuenta”","1600×1000",{remote:"https://framerusercontent.com/images/TsqXxFsRybj1exbSyDk1Qzn4FZA.png"}),
   chapters:[
     {h:"Contexto", blocks:[
@@ -569,6 +578,9 @@ const CASES = [
       {p:"Lideré el diseño de punta a punta en la app de Deuna: benchmark de los estándares de vinculación y débito automático en Latinoamérica, arquitectura, flujos, pruebas de usabilidad con usuarios, prototipos y la estrategia de medición. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
     {h:"Tres decisiones", blocks:[
       {fig:img("suscripciones/decisiones","Decisiones de diseño","2400×1900",{free:true,remote:"https://framerusercontent.com/images/8D2Zc3o0Ba2TuOcOXe97Vntst8.png"})},
+      {finding:["Tokenizar es un concepto técnico que asusta, y el miedo principal era que vincular generara un cobro.","Hablar de “vincular cuenta” y decir desde el inicio “Este paso no genera ningún cobro”."]},
+      {finding:["En research, los usuarios entendían suscripción y pago recurrente como lo mismo.","Cada tipo con su descripción, jerarquía y estado: fijo y periódico, o variable según el uso."]},
+      {finding:["El salto entre la app del comercio y Deuna genera desconfianza.","Mostrar siempre qué comercio pide el permiso y qué cobro hará, y dejar desvincular a la vista en Perfil."]},
       {h3:"1. Hablar de “vincular cuenta”, no de tokenizar"},
       {p:"Vincular una cuenta es una acción que la gente ya conoce. La pantalla de vinculación dice desde el inicio “Este paso no genera ningún cobro”: la frase que desactiva el miedo principal. Debajo, tres beneficios claros: pagos seguros, saldo disponible y control total."},
       {trio:[img("suscripciones/vincular-1","Vincular cuenta","900×1600",{remote:"https://framerusercontent.com/images/z95BQwWQd1uPELB2KBDF5gc170U.png"}),img("suscripciones/vincular-2","Autorizar permiso","900×1600",{remote:"https://framerusercontent.com/images/hmInmKZRZitZVyVOrapQUHwGnk.png"}),img("suscripciones/vincular-3","Confirmación","900×1600",{remote:"https://framerusercontent.com/images/LkkVGvUc7tIXA5FcnyMdFnsEWWc.png"})]},
@@ -587,6 +599,7 @@ const CASES = [
   lead:"Del repositorio de información a la puerta de entrada del ecosistema fintech colombiano.",
   tags:["Sitio web","Arquitectura de información","Freelance"], year:"2025", status:"Publicado",
   meta:[["Rol","Product Designer"],["Equipo","Producto, stakeholders del gremio y agencia de marca"],["Plataforma","Sitio web"],["Estado","Publicado en 2025"]],
+  summary:[["El problema","El sitio tenía todo apilado con el mismo peso: quien quería afiliarse tenía que buscar cómo hacerlo entre noticias y documentos."],["Qué hice","Rediseñé la arquitectura de información, los flujos de navegación y la experiencia completa con la nueva marca."],["Resultado","Sitio publicado en 2025, con la afiliación y la comunidad al frente."]],
   cover:img("colombia-fintech/portada","Portada: home del nuevo sitio","1600×1000",{remote:"https://framerusercontent.com/images/1LKEvwaEU6ECPmK9LnY7NOvJdo.png"}),
   chapters:[
     {h:"Contexto", blocks:[
@@ -598,6 +611,9 @@ const CASES = [
     {h:"Mi rol", blocks:[
       {p:"Rediseñé la arquitectura de información y los flujos de navegación, y diseñé la experiencia de punta a punta hasta el prototipo de alta fidelidad. Trabajé con producto, con los stakeholders del gremio y con la agencia que hizo la marca."}]},
     {h:"El rediseño", blocks:[
+      {finding:["Afiliarse, el objetivo principal del gremio, era un enlace perdido.","“Vinculación” en el menú principal y un bloque propio en el inicio para unirse a la comunidad."]},
+      {finding:["El valor de pertenecer no se veía.","Directorio de miembros y testimonios de líderes del sector en el inicio."]},
+      {finding:["Eventos, cursos y webinars estaban mezclados en un solo listado.","Pestañas por tipo de contenido y más aire entre bloques."]},
       {h3:"Afiliación y comunidad al frente"},
       {p:"“Vinculación” vive en el menú principal, y el inicio tiene su propio bloque para unirse a la comunidad fintech más grande de Colombia. Unirse dejó de ser un enlace perdido."},
       {p:"El directorio de miembros y los testimonios de líderes del sector están en el inicio: el valor de pertenecer se ve antes de leerlo."},
@@ -607,43 +623,6 @@ const CASES = [
   ],
   impact:{big:"Sitio publicado", p:"En uso por el gremio fintech más importante de Colombia."},
   link:{href:"https://colombiafintech.co", label:"Ver sitio"}
-},
-{
-  id:"claro", title:"E-commerce Claro Colombia",
-  card:"+18% en pagos online y −25% de abandono en el checkout",
-  lead:"Rediseño del e-commerce nacional de Claro, del home al checkout, en todos los dispositivos.",
-  tags:["E-commerce","Conversión","Design System"], year:"2023–2024", status:"En producción",
-  meta:[["Rol","Product Designer"],["Empresa","VASS para Claro Colombia"],["Plataforma","Web y mobile"],["Periodo","Sep 2023 – Ene 2024"]],
-  cover:img("claro/portada","Portada: checkout rediseñado"),
-  chapters:[
-    {h:"Contexto", blocks:[
-      {p:"Claro vende planes, equipos y servicios en su tienda online a todo el país. El embudo de compra tenía demasiados pasos y mucha carga para el usuario, y una parte grande de quienes llegaban al checkout no terminaba de pagar."}]},
-    {h:"Mi rol", blocks:[
-      {p:"Lideré el rediseño de la experiencia de compra de punta a punta: Homepage, Catálogo y flujo de Checkout para múltiples dispositivos. Validé los flujos con prototipos interactivos y trabajé con ingeniería y QA hasta producción."}]},
-    {h:"Qué cambiamos", blocks:[
-      {ul:["Simplificamos el checkout quitando pasos y reduciendo la carga cognitiva en cada pantalla.","Ordenamos el catálogo para que comparar y elegir fuera más rápido.","Evolucionamos el Design System existente con nuevos patrones y componentes documentados, para que la consistencia se mantuviera en toda la plataforma."]},
-      {fig:img("claro/checkout","Checkout: antes y después","1600×1000",{free:true})},
-      {pair:[img("claro/catalogo","Catálogo","1200×900"),img("claro/design-system","Componentes del Design System","1200×900")]}]},
-  ],
-  impact:{big:"+18% pagos · −25% abandono", p:"Aumentaron 18% los pagos online y bajó 25% el abandono en el embudo de compra."}
-},
-{
-  id:"bbva", title:"Plataforma de sucursales BBVA",
-  card:"Automatización de retiros y giros internacionales en sucursal",
-  lead:"Una plataforma interna para que los asesores de sucursal hagan retiros y giros internacionales con menos pasos manuales.",
-  tags:["Herramienta interna","Banca","Flujos"], year:"2024", status:"Proyecto interno",
-  meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para BBVA"],["Plataforma","Herramienta interna web"],["Periodo","Mar – Ago 2024"]],
-  cover:img("bbva/portada","Portada: pantalla de la plataforma (puede ir anonimizada)"),
-  chapters:[
-    {h:"Contexto", blocks:[
-      {p:"En las sucursales de BBVA, los retiros y los envíos internacionales de dinero dependían de procesos manuales para el personal del banco. Cada operación tomaba varios pasos y tenía espacio para errores."}]},
-    {h:"Mi rol", blocks:[
-      {p:"Mapeé los procesos manuales de sucursal y los convertí en flujos digitales más rápidos y con menos pasos. Diseñé los flujos transaccionales de retiros y giros internacionales, cuidando validaciones, estados y casos de error, y los validé con entrevistas y pruebas de usabilidad con usuarios internos."}]},
-    {h:"La solución", blocks:[
-      {fig:img("bbva/flujo","Mapa del proceso: antes y después","1600×900",{free:true})},
-      {pair:[img("bbva/retiros","Flujo de retiros","1200×900"),img("bbva/giros","Flujo de giros internacionales","1200×900")]}]},
-  ],
-  impact:{big:"Menos pasos en sucursal", p:"Procesos operativos de retiros y giros internacionales convertidos en flujos digitales para el personal del banco."}
 },
 {
   id:"credito-facil-codensa", noSlots:true, title:"Crédito Fácil Codensa",
@@ -817,8 +796,8 @@ const COLORS = ["c-card"];
 const RESULTS = [
   {big:"10 →<br>+2.000", txt:"Comercios que hoy gestionan pagos y reportes solos en el Portal Deuna Negocios.", c:"c-lime", d:"burst"},
   {big:"+45.000", txt:"Puntos de venta donde se puede pagar con el Código Único de Pago.", c:"c-pink", d:"star"},
-  {big:"+18%", txt:"Pagos online en el e-commerce de Claro después del rediseño del checkout.", c:"c-violet", d:"loops"},
-  {big:"−25%", txt:"Abandono en el embudo de compra de Claro, quitando pasos y fricción.", c:"c-paper", d:"wave"}
+  {big:"40 h", txt:"Semanales de desarrolladores senior liberadas del soporte de integraciones con el perfil desarrollador.", c:"c-violet", d:"loops"},
+  {big:"≈10.000", txt:"Comercios afiliados y gestionados desde el back office comercial de Deuna.", c:"c-paper", d:"wave"}
 ];
 
 /* ===== Vistas ===== */
@@ -924,7 +903,7 @@ function blockHTML(b){
   if(b.stats) return `<div class="kpis rv">${b.stats.map(([n,t])=>`<div><b>${n}</b><span>${t}</span></div>`).join("")}</div>`;
   if(b.quotes) return `<div class="quotes">${b.quotes.map(([q,a])=>`<blockquote class="rv">“${q}”<cite>${a}</cite></blockquote>`).join("")}</div>`;
   if(b.learn) return `<p class="learn rv">${b.learn}</p>`;
-  if(b.finding) return `<div class="finding rv"><span class="k v">Vimos</span><span>${b.finding[0]}</span><span class="k d">Decidí</span><span>${b.finding[1]}</span></div>`;
+  if(b.finding) return `<div class="finding rv"><span class="k v">Problema</span><span>${b.finding[0]}</span><span class="k d">Solución</span><span>${b.finding[1]}</span></div>`;
   return "";
 }
 
