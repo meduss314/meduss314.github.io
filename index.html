@@ -66,8 +66,8 @@ nav.links{display:flex; gap:8px; align-items:center}
 /* hero */
 .hero{background:var(--violet); color:var(--white); position:relative; overflow:hidden}
 .hero .wrap{position:relative; padding-block:56px 64px}
-.hero-grid{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:40px; align-items:center}
-@media (max-width:860px){ .hero-grid{grid-template-columns:1fr; gap:28px} }
+.hero-grid{display:block}
+.title-row{display:flex; align-items:center; gap:clamp(28px,4vw,56px); flex-wrap:wrap}
 .hero .hi{position:relative; z-index:1; min-width:0}
 /* doodles en las esquinas */
 .dd{position:absolute; pointer-events:none; z-index:0}
@@ -78,18 +78,18 @@ nav.links{display:flex; gap:8px; align-items:center}
 .d-bm{bottom:22px; left:46%; width:110px; color:var(--lime); transform:rotate(-6deg)}
 @media (max-width:860px){ .d-tl{width:100px; left:-30px} .d-tr{width:80px} .d-bm{display:none} .d-bl{width:96px} .d-br{width:120px} }
 /* foto */
-.photo{position:relative; z-index:1; justify-self:end; width:min(100%, 440px)}
-.photo img{width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:28px; border:4px solid var(--black); box-shadow:12px 12px 0 var(--lime); transform:rotate(2deg)}
-@media (max-width:860px){ .photo{justify-self:start; width:min(78%, 320px); margin-top:8px} }
+.photo{position:relative; z-index:1; width:clamp(150px, 19vw, 270px); flex:none}
+.photo img{width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:24px; border:4px solid var(--black); box-shadow:10px 10px 0 var(--lime); transform:rotate(3deg)}
 .hero .kicker{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:18px}
 .hero h1{font-size:clamp(76px, 15.5vw, 210px); position:relative}
 .hero h1 .row2{display:block; color:var(--lime)}
 .hero .sub{font:600 clamp(19px,2.4vw,28px)/1.35 var(--body); max-width:30ch; margin-top:28px}
 .hero .ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px}
-.hero .sticker{left:-56px; bottom:-34px; background:var(--pink); color:var(--black)}
-.hero .s2{position:absolute; right:-18px; top:-22px; width:58px; height:58px; color:var(--lime); z-index:2}
-.hero h1{font-size:clamp(76px, 12.5vw, 180px)}
-@media (max-width:860px){ .hero .sticker{width:108px; height:108px; left:auto; right:-60px; bottom:-20px} .hero .sticker .core{font-size:15px} .hero .sticker text{font-size:9px} }
+.hero .sticker{width:112px; height:112px; right:-52px; bottom:-36px; background:var(--pink); color:var(--black)}
+.hero .sticker .core{font-size:16px} .hero .sticker text{font-size:9.5px}
+.hero .s2{position:absolute; left:-20px; top:-20px; width:46px; height:46px; color:var(--lime); z-index:2}
+.hero h1{font-size:clamp(76px, 13.5vw, 196px)}
+@media (max-width:640px){ .photo{width:150px} .hero .sticker{width:92px; height:92px; right:-40px; bottom:-26px} .hero .sticker .core{font-size:13px} .hero .sticker text{font-size:8px} }
 
 /* ticker */
 .ticker{background:var(--lime); color:var(--black); overflow:hidden; border-block:2px solid var(--black)}
@@ -473,17 +473,19 @@ function homeView(){
     <div class="wrap hero-grid">
       <div class="hi">
         <div class="kicker"><span class="pill lime">Senior Product Designer</span><span class="mono">Bogotá · Remoto</span></div>
-        <h1 class="cond">Lina<span class="row2">Prieto</span></h1>
+        <div class="title-row">
+          <h1 class="cond">Lina<span class="row2">Prieto</span></h1>
+          <div class="photo">
+            <img src="img/lina.jpg" alt="Lina Valentina Prieto" width="900" height="900">
+            ${sticker("Open to work · Open to work · Open to work · ","Open<br>to work")}
+            <svg class="s2" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg>
+          </div>
+        </div>
         <p class="sub">Diseño productos financieros que se usan <mark>en la caja</mark>, <mark class="lime">en la sucursal</mark> y en el back-office.</p>
         <div class="ctas">
           <a class="pill lime big" href="#casos">Ver casos ↓</a>
           <a class="pill big" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
-      </div>
-      <div class="photo">
-        <img src="img/lina.jpg" alt="Lina Valentina Prieto" width="900" height="900">
-        ${sticker("Open to work · Open to work · Open to work · ","Open<br>to work")}
-        <svg class="s2" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg>
       </div>
     </div>
   </section>
