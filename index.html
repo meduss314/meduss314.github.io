@@ -471,42 +471,34 @@ const CASES = [
 {
   id:"portal-deuna-negocios", title:"Portal Deuna Negocios",
   card:"De 10 comercios piloto a más de 2.000 que se autogestionan",
-  lead:"De 10 comercios piloto a más de 2.000 que gestionan su negocio sin llamar a soporte.",
+  lead:"Un portal de autogestión para que los comercios grandes de Deuna confirmen pagos, descarguen reportes e integren la API sin pasar por soporte.",
   tags:["B2B","Web","Fintech"], year:"2024–2026", status:"En producción",
-  meta:[["Rol","Lead Product Designer"],["Equipo","Product Owner, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"],["Estado","En producción"]],
-  cover:img("deuna/portada","Portada: pantalla principal del portal","1600×1000",{remote:"https://framerusercontent.com/images/szaV3JcSSYShZbme0b2frMMU6uw.png"}),
+  meta:[["Rol","Lead Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Equipo","Product Owner, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"]],
+  summary:[["El problema","Los reportes llegaban por correo (y terminaron en listas negras) y confirmar un pago dependía de una sola persona o de servicio al cliente. Los comercios amenazaban con cancelar."],["Qué hice","Diseñé el portal desde cero y cada funcionalidad como una iniciativa end-to-end: benchmark, diseño, pruebas de usabilidad e iteración."],["Resultado","De 10 comercios piloto a más de 2.000 que se autogestionan, y un equipo técnico que dejó de hacer soporte de integraciones."]],
+  cover:img("deuna/portada","Pantalla principal del portal","1600×1000",{remote:"https://framerusercontent.com/images/szaV3JcSSYShZbme0b2frMMU6uw.png"}),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"Deuna es la billetera digital más usada de Ecuador. Mientras más comercios la adoptaban, más crecía un costo invisible: cada pregunta de un comercio terminaba en el equipo comercial."},
-      {p:"¿Llegó este pago? ¿Me reenvías el reporte de ayer? ¿Cómo me integro? El equipo comercial dedicaba 4–5 horas diarias a responder. Los desarrolladores senior y el arquitecto, 2–3 horas diarias a soporte de integraciones."}]},
-    {h:"El reto", blocks:[
-      {p:"No bastaba con diseñar un portal. Había que convencer a la dirección de que no era un gasto más, sino la forma de dejar de pagar ese tiempo todos los días. Y hacerlo con un MVP que saliera en dos meses."},
-      {fig:img("deuna/reto","El problema: comercios pidiendo soporte por pagos y reportes","1600×900",{free:true, remote:"https://framerusercontent.com/images/YVnfRFXAHcvaqSDLcIbJrGtpN8.png"})}]},
+      {p:"Deuna es la billetera digital más usada de Ecuador. Lo que más atrae a los comercios grandes es conectarse por API y cobrar con Deuna desde sus propios sistemas. Pero todo lo que pasaba después del cobro vivía fuera de su alcance."},
+      {ul:["<b>Reportes:</b> se enviaban por correo. Muchos no llegaban porque caímos en listas negras, y sin reportes los comercios no podían cerrar caja y querían cancelar el servicio.","<b>Transacciones:</b> la confirmación de pago le llegaba a una sola persona de la empresa. El cajero no podía verificarla, desconfiaba de comprobantes falsos y terminaba llamando a servicio al cliente.","<b>Integraciones:</b> cada comercio que se conectaba por API necesitaba acompañamiento de desarrolladores senior, el asesor comercial y el arquitecto de merchants."]}]},
     {h:"Mi rol", blocks:[
-      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Construí con el equipo el caso de negocio, definí la arquitectura de información, diseñé y validé los flujos, y acompañé la evolución del producto después del lanzamiento."}]},
-    {h:"Lo que descubrimos", blocks:[
-      {p:"Antes de dibujar una pantalla, medimos de dónde venía la carga operativa. Tres hallazgos definieron el producto:"},
-      {ul:["Los comercios validaban pagos con capturas de pantalla. Al cerrar caja, el cliente mostraba una foto del pago y el comercio llamaba para confirmar.","Los reportes vivían en el correo. Si no llegaban, el comercio no podía cerrar caja y pedía un reenvío.","Las integraciones consumían al equipo técnico. Cada empresa que quería conectarse necesitaba acompañamiento de un desarrollador senior."]},
-      {fig:img("deuna/hallazgos","Mapa de hallazgos o arquitectura de información","1600×1000",{free:true, remote:"https://framerusercontent.com/images/IZE1MWR6ngcJ7P2ye2b0W92mFMg.png"})}]},
-    {h:"Lo que decidimos", blocks:[
-      {p:"Con esos datos armamos el caso de negocio que aprobó el proyecto. De ahí salieron tres decisiones:"},
-      {ol:["Empezar solo por transacciones y reportes. Eran las dos solicitudes más frecuentes. Dejamos integraciones y permisos para una segunda fase y así salimos en dos meses.","Diseñar para quien cierra caja, no para un analista. Tiempo real, búsqueda por pagador o número de transacción y el detalle a un clic: confirmar un pago debe tomar segundos.","Tratar la integración como un producto. El perfil de desarrollador y el sandbox atacaron directamente las horas del equipo técnico."]}]},
-    {h:"Primer MVP", blocks:[
-      {h3:"Transacciones en tiempo real"},
-      {p:"El comercio confirma un pago al instante desde el portal, sin pedir capturas ni llamar al equipo comercial. Ventas y devoluciones van separadas, y cada transacción tiene su detalle completo."},
-      {fig:img("deuna/transacciones","Pantalla de transacciones","1600×1000",{free:true, remote:"https://framerusercontent.com/images/N9pPFzjVXfQdooiTmYl4XiksQU.png"})},
-      {h3:"Historial de reportes"},
-      {p:"Los reportes que antes llegaban por correo ahora están siempre disponibles, filtrados por fecha, frecuencia y sucursal. El comercio los descarga cuando los necesita y puede cerrar caja sin esperar a nadie."},
-      {fig:img("deuna/reportes","Pantalla de reportes","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})}]},
-    {h:"Segunda fase", blocks:[
-      {p:"Con el portal en uso, las necesidades de los comercios más grandes marcaron la segunda fase: controlar quién ve qué, e integrarse sin depender del equipo técnico de Deuna."},
-      {h3:"Roles y Permisos"},
-      {p:"Diseñamos un sistema de accesos para que diferentes perfiles dentro de una empresa pudieran operar el portal con distintos niveles de visibilidad y control, protegiendo información sensible sin afectar la operación diaria."},
-      {fig:img("deuna/roles-1","Roles y Permisos","1728×1145",{free:true,remote:"https://framerusercontent.com/images/yDKWtaFokPTjMCFFCnwIhdDhM.png"})},
-      {h3:"Perfil Desarrollador y Sandbox"},
-      {p:"Creamos un espacio para empresas que querían integrarse técnicamente con Deuna: documentación, configuración de webhooks, credenciales y un ambiente sandbox para pruebas de integración."}]},
+      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Antes de este portal diseñaba el back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Construí con el equipo el caso de negocio, definí la arquitectura de información y traté cada funcionalidad como una iniciativa propia, con su benchmark, diseño, pruebas de usabilidad e iteración."}]},
+    {h:"El MVP", blocks:[
+      {p:"Teníamos dos meses. Priorizamos solo lo que hacía que los comercios quisieran irse:"},
+      {finding:["Si los reportes no llegaban, el comercio quería cancelar.","Historial de reportes siempre disponible en el portal, filtrado por fecha, frecuencia y sucursal."]},
+      {finding:["Cualquier cajero necesitaba verificar un pago al instante, sin depender del correo de otra persona.","Transacciones en tiempo real con búsqueda por pagador o número de transacción y el detalle a un clic."]},
+      {fig:img("deuna/transacciones","Transacciones en tiempo real","1600×1000",{free:true, remote:"https://framerusercontent.com/images/N9pPFzjVXfQdooiTmYl4XiksQU.png"})},
+      {fig:img("deuna/reportes","Historial de reportes","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})},
+      {p:"Salimos con 10 comercios piloto. Funcionó tan bien que hubo que masificarlo, y el portal empezó a crecer."}]},
+    {h:"Perfil desarrollador y sandbox", blocks:[
+      {p:"Los desarrolladores de los comercios ahora tienen la documentación, las credenciales, la configuración de webhooks y un ambiente sandbox para probar su integración por su cuenta. Lo priorizamos para liberar a nuestra célula: en vez de dar consultoría de integración, podía construir producto."}]},
+    {h:"Roles y permisos", blocks:[
+      {p:"No todos los que entran al portal son iguales ni deben ver lo mismo. Diseñamos un modelo de accesos según la estructura de cada comercio: grupos sombrilla, empresas, sucursales y cajas."},
+      {ul:["<b>Administrador de grupo:</b> ve y gestiona todas las empresas del grupo.","<b>Administrador de empresa:</b> gestiona su empresa, sus sucursales y quién ve qué.","<b>Consulta:</b> permisos variables que define el administrador.","<b>Desarrollador:</b> solo las funciones de integración."]},
+      {fig:img("deuna/roles-1","Roles y permisos","1728×1145",{free:true,remote:"https://framerusercontent.com/images/yDKWtaFokPTjMCFFCnwIhdDhM.png"})}]},
+    {h:"Reportes consolidados", blocks:[
+      {p:"Solo ofrecíamos reportes diarios. A fin de mes, trimestre o año, los comercios armaban sus cifras a mano o le pedían a nuestra fuerza comercial que lo hiciera. Creamos reportes personalizados que el comercio configura y descarga con las métricas que necesita."}]},
   ],
-  impact:{big:"10 → +2.000 comercios", p:"Del piloto a la operación diaria, gestionando pagos, reportes e integraciones sin llamar a soporte. El equipo comercial recuperó 4–5 horas diarias y el técnico 2–3 horas."}
+  impact:{big:"10 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus usuarios e integran la API sin llamar a soporte. El equipo comercial y el técnico recuperaron horas diarias para trabajo de producto."}
 },
 {
   id:"cup", title:"Código Único de Pago",
@@ -517,13 +509,13 @@ const CASES = [
   cover:img("cup/portada","Portada: pantalla de ingreso del código","1600×1000",{remote:"https://framerusercontent.com/images/ZSPxykkKaTGD34Q6oKfyuVy5I.png"}),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"En supermercados como Tía y Santa María pasa algo simple: en la caja no hay QR dinámico. Para millones de compras, Deuna no era una opción."},
-      {p:"La solución de negocio fue un código de 6 dígitos: el cajero lo dicta, el cliente lo ingresa en la app y paga. Mi trabajo era que ese gesto fuera tan rápido como pagar en efectivo."}]},
+      {p:"En Ecuador empezaron a circular QRs falsos. Muchos comercios dejaron de exhibir el QR de Deuna por miedo al fraude, y menos personas pagaban con la billetera. Además, en supermercados como Tía y Santa María la caja no tiene QR dinámico."},
+      {p:"La solución de negocio fue un nuevo método: pagar en caja sin QR, con un código de 6 dígitos: el cajero lo dicta, el cliente lo ingresa en la app y paga. Mi trabajo era que ese gesto fuera tan rápido como pagar en efectivo."}]},
     {h:"El reto", blocks:[
       {p:"Diseñar un pago presencial que funcione con una fila detrás, un código dictado en voz alta y un usuario que nunca había visto esta forma de pagar. Y hacerlo dentro de “Pagar en Deuna”, sin crear un flujo paralelo."},
       {fig:img("cup/contexto-1","Pagar en caja con el código de 6 dígitos","1922×1602",{free:true, remote:"https://framerusercontent.com/images/Lr2pAw06a9v0pU031Scsq0a6KUs.png"})}]},
     {h:"Mi rol", blocks:[
-      {p:"Diseñé el flujo de punta a punta: arquitectura, interacción, estados de error y prototipos de alta fidelidad. Planeé y ejecuté las pruebas de usabilidad, e iteré el diseño con producto y negocio."}]},
+      {p:"Lo trabajamos como una iniciativa end-to-end: ideación, benchmark, journey, diseño, pruebas con usuarios e iteración. Diseñé el flujo de punta a punta: arquitectura, interacción, estados de error y prototipos de alta fidelidad. Planeé y ejecuté las pruebas de usabilidad, e iteré el diseño con producto y negocio."}]},
     {h:"La solución", blocks:[
       {p:"Partimos del momento real de uso: una caja de supermercado con fila, un código dictado en voz alta y ningún QR a la vista. Cada paso extra era un segundo más frente al cajero."},
       {fig:img("cup/flujo","Flujo completo: código → monto → confirmación","1600×900",{free:true, remote:"https://framerusercontent.com/images/NKKfd988eZvmvcxKuqc8SXKzmQ.png"})},
@@ -535,7 +527,7 @@ const CASES = [
       {finding:["La pantalla de monto y confirmación funcionó sin fricción.","No la toqué. Saber qué no cambiar también es una decisión."]},
       {fig:img("cup/iteracion","Antes y después del cambio de copy y agrupación de dígitos","1600×900",{free:true, remote:"https://framerusercontent.com/images/hbUblecnJ6sIXqwz5tuOgsJZwI.png"})}]},
   ],
-  impact:{big:"+45.000 puntos de venta", p:"En producción para todos los usuarios de Deuna, personas y comercios, y aceptado en más de 45.000 puntos de venta tras la alianza con Datafast."}
+  impact:{big:"+45.000 puntos de venta", p:"En producción para todos los usuarios de Deuna, personas y comercios, aceptado en más de 45.000 puntos de venta tras la alianza con Datafast, y disponible también desde la banca móvil de Banco Pichincha."}
 },
 {
   id:"suscripciones", title:"Suscripciones y débitos automáticos",
