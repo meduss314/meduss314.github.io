@@ -469,6 +469,24 @@ const img = (src, label, size="1600×1000", opts={}) => ({img:src, label, size, 
 
 const CASES = [
 {
+  id:"back-office", draft:true, title:"Back Office comercial Deuna",
+  card:"La plataforma interna con la que el equipo comercial afilia y gestiona 10.000 comercios",
+  lead:"La herramienta interna donde los asesores comerciales de Deuna afilian comercios y configuran todo lo que necesitan para cobrar.",
+  tags:["Herramienta interna","B2B","Flujos"], year:"2024–2026", status:"En producción",
+  meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Usuarios","Asesores comerciales"],["Plataforma","Web interna"]],
+  summary:[["Quién lo usa","Los asesores comerciales, la fuerza de ventas de Deuna, que consiguen comercios y los afilian."],["Qué hice","Diseñé el proceso completo de afiliación y la administración de comercios, sucursales, QRs, comisiones y reportes."],["Resultado","Alrededor de 10.000 comercios afiliados y gestionados desde la plataforma."]],
+  cover:img("backoffice/portada","Portada: back office comercial"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Cada comercio que empieza a cobrar con Deuna pasa por el back office. Ahí los asesores comerciales lo crean, cargan sus documentos, configuran sucursales y cajas, asignan QRs, definen comisiones y generan reportes."}]},
+    {h:"Mi rol", blocks:[
+      {p:"Diseñé el proceso de afiliación de comercios dentro de la plataforma y las vistas de administración: listados, tablas, sucursales, comisiones, QRs y reportes."}]},
+    {h:"El flujo de afiliación", blocks:[
+      {p:"Del primer contacto al comercio listo para cobrar: datos del comercio, documentos, sucursales, configuración de comisión y asignación de QRs."}]},
+  ],
+  impact:{big:"≈10.000 comercios", p:"Afiliados y administrados por el equipo comercial desde el back office."}
+},
+{
   id:"portal-deuna-negocios", title:"Portal Deuna Negocios",
   card:"De 10 comercios piloto a más de 2.000 que se autogestionan",
   lead:"Un portal de autogestión para que los comercios grandes de Deuna confirmen pagos, descarguen reportes e integren la API sin pasar por soporte.",
@@ -490,7 +508,9 @@ const CASES = [
       {fig:img("deuna/reportes","Historial de reportes","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})},
       {p:"Salimos con 10 comercios piloto. Funcionó tan bien que hubo que masificarlo, y el portal empezó a crecer."}]},
     {h:"Perfil desarrollador y sandbox", blocks:[
-      {p:"Los desarrolladores de los comercios ahora tienen la documentación, las credenciales, la configuración de webhooks y un ambiente sandbox para probar su integración por su cuenta. Lo priorizamos para liberar a nuestra célula: en vez de dar consultoría de integración, podía construir producto."}]},
+      {p:"Los desarrolladores de los comercios ahora tienen la documentación, las credenciales, la configuración de webhooks y un ambiente sandbox para probar su integración por su cuenta. Lo priorizamos para liberar a nuestra célula: en vez de dar consultoría de integración, podía construir producto."},
+      {stats:[["40 h","semanales de soporte de integración"],["3","desarrolladores senior dedicados a eso"]]},
+      {p:"Además del soporte que daban el asesor comercial y el arquitecto de merchants. Con el perfil desarrollador, ese tiempo volvió al roadmap."}]},
     {h:"Roles y permisos", blocks:[
       {p:"No todos los que entran al portal son iguales ni deben ver lo mismo. Diseñamos un modelo de accesos según la estructura de cada comercio: grupos sombrilla, empresas, sucursales y cajas."},
       {ul:["<b>Administrador de grupo:</b> ve y gestiona todas las empresas del grupo.","<b>Administrador de empresa:</b> gestiona su empresa, sus sucursales y quién ve qué.","<b>Consulta:</b> permisos variables que define el administrador.","<b>Desarrollador:</b> solo las funciones de integración."]},
@@ -498,7 +518,7 @@ const CASES = [
     {h:"Reportes consolidados", blocks:[
       {p:"Solo ofrecíamos reportes diarios. A fin de mes, trimestre o año, los comercios armaban sus cifras a mano o le pedían a nuestra fuerza comercial que lo hiciera. Creamos reportes personalizados que el comercio configura y descarga con las métricas que necesita."}]},
   ],
-  impact:{big:"10 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus usuarios e integran la API sin llamar a soporte. El equipo comercial y el técnico recuperaron horas diarias para trabajo de producto."}
+  impact:{big:"10 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus usuarios e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
 },
 {
   id:"cup", title:"Código Único de Pago",
@@ -509,7 +529,7 @@ const CASES = [
   cover:img("cup/portada","Portada: pantalla de ingreso del código","1600×1000",{remote:"https://framerusercontent.com/images/ZSPxykkKaTGD34Q6oKfyuVy5I.png"}),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"En Ecuador empezaron a circular QRs falsos. Muchos comercios dejaron de exhibir el QR de Deuna por miedo al fraude, y menos personas pagaban con la billetera. Además, en supermercados como Tía y Santa María la caja no tiene QR dinámico."},
+      {p:"En Ecuador empezaron a circular QRs falsos. Muchos comercios, incluidos grandes supermercados, dejaron de exhibir el QR de Deuna por miedo al fraude, y cada vez menos personas pagaban con la billetera."},
       {p:"La solución de negocio fue un nuevo método: pagar en caja sin QR, con un código de 6 dígitos: el cajero lo dicta, el cliente lo ingresa en la app y paga. Mi trabajo era que ese gesto fuera tan rápido como pagar en efectivo."}]},
     {h:"El reto", blocks:[
       {p:"Diseñar un pago presencial que funcione con una fila detrás, un código dictado en voz alta y un usuario que nunca había visto esta forma de pagar. Y hacerlo dentro de “Pagar en Deuna”, sin crear un flujo paralelo."},
@@ -539,13 +559,14 @@ const CASES = [
   chapters:[
     {h:"Contexto", blocks:[
       {p:"Pedir comida, pagar el gimnasio o una suscripción: casi todo cobro recurrente en apps exige una tarjeta. Deuna no tiene tarjeta, y no queríamos inventar una."},
-      {p:"La respuesta técnica fue tokenizar la cuenta del usuario y habilitar cobros automáticos por API con cada comercio. La pregunta de diseño: ¿cómo le explicas eso a alguien que solo quiere pagar su pedido?"}]},
+      {p:"La oportunidad vino de dLocal, el procesador que cobra en Latinoamérica para comercios digitales internacionales como Netflix, Rappi, PedidosYa, Shein o Temu. Para que esos comercios pudieran cobrar con Deuna, había que darle a la billetera la capacidad de un cobro automático."},
+      {p:"La respuesta técnica fue tokenizar la cuenta del usuario: un token único que se comporta como una tarjeta frente al comercio y que se le entrega solo cuando el usuario acepta la vinculación. Con él, el comercio puede debitar una suscripción o una compra puntual. La pregunta de diseño: ¿cómo le explicas eso a alguien que solo quiere pagar su pedido?"}]},
     {h:"El reto", blocks:[
       {p:"El flujo empieza en la app del comercio, salta a Deuna para autorizar y vuelve al comercio. Tres apps, un permiso de cobro y cero tolerancia a la desconfianza."},
       {p:"Había que explicar la vinculación sin hablar de tokens ni APIs, distinguir una suscripción fija de un pago recurrente variable, y generar confianza en un salto entre aplicaciones."},
       {fig:img("suscripciones/flujo","Flujo entre apps: comercio → Deuna → comercio","1600×900",{free:true, remote:"https://framerusercontent.com/images/xTC0Pe3GE3v3fhCtoy2vBQ5meQU.png"})}]},
     {h:"Mi rol", blocks:[
-      {p:"Lideré el diseño de punta a punta en la app de Deuna: benchmark, arquitectura, flujos, research, prototipos y la estrategia de medición. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
+      {p:"Lideré el diseño de punta a punta en la app de Deuna: benchmark de los estándares de vinculación y débito automático en Latinoamérica, arquitectura, flujos, pruebas de usabilidad con usuarios, prototipos y la estrategia de medición. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
     {h:"Tres decisiones", blocks:[
       {fig:img("suscripciones/decisiones","Decisiones de diseño","2400×1900",{free:true,remote:"https://framerusercontent.com/images/8D2Zc3o0Ba2TuOcOXe97Vntst8.png"})},
       {h3:"1. Hablar de “vincular cuenta”, no de tokenizar"},
@@ -846,7 +867,7 @@ function homeView(){
     <div class="wrap">
       <div class="sec-title rv"><h2 class="cond">Casos</h2><p>Proyectos de pagos, banca y producto digital, contados desde el problema de negocio hasta el impacto.</p></div>
       <div class="case-grid">
-        ${CASES.map((c,i)=>`
+        ${CASES.filter(c=>!c.draft).map((c,i)=>`
           <a class="ccard ${COLORS[i%COLORS.length]} rv" style="--d:${(i%2)*90}ms" href="#${c.id}">
             <div class="top"><h3 class="cond">${c.title}</h3><span class="badge">${c.status}</span></div>
             ${figureHTML(c.cover)}
@@ -919,7 +940,7 @@ function caseTicker(c){
   return `<div class="ticker" aria-hidden="true"><div class="track">${t}${t}${t}</div></div>`;
 }
 function caseView(c){
-  const i = CASES.indexOf(c), nx = CASES[(i+1)%CASES.length];
+  const L = CASES.filter(x=>!x.draft), i = L.indexOf(c), nx = L[(i+1)%L.length];
   return `
   <section class="chero">
     <div class="wrap">
