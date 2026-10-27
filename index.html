@@ -216,7 +216,115 @@ footer .wrap{padding-block:26px; display:flex; justify-content:space-between; ga
 .next small{display:block; margin-bottom:8px; opacity:.7}
 .next b{font-size:clamp(28px,4vw,44px)}
 
-@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important; scroll-behavior:auto!important} }
+/* ====== v3: layout dividido, slider, transiciones ====== */
+:root{--ease:cubic-bezier(.22,1,.36,1)}
+section{position:relative}
+.stats .wrap,.cases .wrap,.about .wrap,.contact .wrap,.hero .ctas{position:relative; z-index:1}
+.stats,.cases,.about,.contact{overflow:hidden}
+
+/* encabezado y casos: texto + imagen a la misma altura, mínimo 24px entre ambos */
+.split{display:flex; align-items:flex-start; gap:clamp(24px,4vw,64px)}
+.split-text{position:relative; z-index:1; flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:22px}
+.split-text h1{margin:0}
+.split-text .sub{margin:0}
+.split-media{flex:none; position:relative; z-index:1}
+.hero .split-media.photo{width:auto}
+.hero .photo img{width:100%; height:100%; aspect-ratio:auto; object-fit:cover}
+.hero .kicker{margin:0}
+.hero .ctas{margin-top:34px}
+.cover-media{width:min(44%, 560px)}
+.cover-media .shot{height:100%; aspect-ratio:auto; border:4px solid var(--black); border-radius:24px; box-shadow:10px 10px 0 var(--lime); transform:rotate(1.5deg); background:var(--paper)}
+.chero .split-text .sub{font:600 clamp(19px,2.2vw,25px)/1.35 var(--body); max-width:34ch}
+.chero h1{font-size:clamp(52px,7.4vw,112px)}
+@media (max-width:760px){
+  .split{flex-direction:column; align-items:stretch}
+  .hero .split-media.photo{width:min(100%, 340px); align-self:flex-start; margin-right:40px}
+  .hero .photo img{aspect-ratio:1/1; height:auto}
+  .cover-media{width:100%}
+  .cover-media .shot{height:auto; aspect-ratio:16/10}
+}
+
+/* títulos de sección: título arriba, descripción abajo */
+.sec-title{flex-direction:column; align-items:flex-start; gap:16px}
+.sec-title p{max-width:52ch; font-size:19px}
+.stats .sec-title, .cases .sec-title{color:var(--white)}
+
+/* resultados */
+.stat{position:relative; overflow:hidden; transition:transform .45s var(--ease), box-shadow .45s var(--ease); cursor:default}
+.stat:hover{transform:scale(1.06) rotate(-1deg); box-shadow:0 24px 50px -20px rgba(0,0,0,.6); z-index:2}
+.stat b{line-height:.92}
+.stat-dd{position:absolute; right:14px; top:14px; width:54px; height:54px; opacity:.9; transition:transform .6s var(--ease)}
+.c-lime .stat-dd{color:var(--violet)} .c-pink .stat-dd{color:var(--violet)} .c-violet .stat-dd{color:var(--lime)} .c-paper .stat-dd{color:var(--pink)}
+.stat:hover .stat-dd{transform:rotate(90deg) scale(1.15)}
+.dots{display:none; justify-content:center; gap:8px; margin-top:18px}
+.dots i{width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,.3); transition:width .3s var(--ease), background .3s}
+.dots i.on{width:26px; background:var(--lime)}
+.d-stats1{width:120px; right:-28px; top:40px; color:var(--pink)}
+.d-stats2{width:150px; left:-20px; bottom:20px; color:var(--violet)}
+@media (max-width:860px){
+  .stat-grid{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:14px; padding:8px 4px 14px; margin-inline:-4px; scrollbar-width:none}
+  .stat-grid::-webkit-scrollbar{display:none}
+  .stat{flex:0 0 84%; scroll-snap-align:center; min-height:220px}
+  .stat:hover{transform:none}
+  .dots{display:flex}
+}
+
+/* casos */
+.ccard .shot img{transition:transform .7s var(--ease)}
+.ccard:hover .shot img{transform:scale(1.04)}
+.ccard{transition:transform .45s var(--ease), box-shadow .45s var(--ease)}
+.ccard:hover{box-shadow:0 26px 60px -24px rgba(0,0,0,.7)}
+.shot.loaded img{animation:imgIn .7s var(--ease) both}
+@keyframes imgIn{from{opacity:0; transform:scale(1.03)}to{opacity:1; transform:none}}
+
+/* sobre mí */
+.d-about1{width:110px; right:4%; top:40px; color:var(--violet)}
+.d-about2{width:130px; left:-20px; bottom:60px; color:var(--pink)}
+.chip{transition:transform .3s var(--ease)}
+.chip:hover{transform:translateY(-3px) rotate(-3deg)}
+.tl li{transition:transform .35s var(--ease); position:relative}
+.tl li::before{content:""; position:absolute; left:-22px; top:16px; bottom:16px; width:4px; border-radius:4px; background:var(--lime); transform:scaleY(0); transition:transform .35s var(--ease)}
+.tl li:hover{transform:translateX(8px)}
+.tl li:hover::before{transform:scaleY(1)}
+
+/* contacto */
+.ci dd a{text-decoration:underline; text-decoration-color:var(--violet); text-underline-offset:3px}
+.ci{transition:transform .35s var(--ease), box-shadow .35s var(--ease)}
+.ci:hover{transform:translateY(-4px); box-shadow:6px 6px 0 var(--black)}
+
+/* ficha del caso, ahora horizontal */
+.cbody .ticket{transform:rotate(-.6deg); margin-top:36px}
+.trow{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:4px 22px}
+.trow .cell{display:flex; flex-direction:column; gap:4px; padding-block:10px; border-bottom:1px dashed rgba(27,27,31,.25)}
+.trow .cell span{font:500 11px/1.4 var(--mono); text-transform:uppercase; letter-spacing:.06em}
+.trow .cell b{font-weight:700; line-height:1.3}
+
+/* garabatos: flotan suave */
+.dd{animation:floaty 7s ease-in-out infinite}
+.d-tr,.d-br,.d-stats1,.d-about1{animation-name:spinfloat; animation-duration:14s}
+@keyframes floaty{50%{translate:0 -10px}}
+@keyframes spinfloat{to{rotate:360deg}}
+
+/* entrada del encabezado */
+.hero .ln, .chero .ln{display:block; animation:rise .9s var(--ease) both}
+.hero .row2{animation-delay:.12s}
+.hero .kicker,.chero .mono{animation:rise .7s var(--ease) both}
+.hero .sub,.chero .sub{animation:rise .9s var(--ease) .22s both}
+.hero .photo,.cover-media{animation:pop .9s var(--ease) .3s both}
+@keyframes rise{from{opacity:0; transform:translateY(36px)}}
+@keyframes pop{from{opacity:0; transform:scale(.88) rotate(-6deg)}}
+
+/* aparición al hacer scroll (solo lo que está fuera de pantalla al cargar) */
+.rv{transition:opacity .8s var(--ease), transform .8s var(--ease); transition-delay:var(--d,0ms)}
+.rv.wait:not(.in){opacity:0; transform:translateY(40px)}
+
+/* cambio de página suave */
+::view-transition-old(root){animation:vtOut .35s var(--ease) both}
+::view-transition-new(root){animation:vtIn .55s var(--ease) both}
+@keyframes vtOut{to{opacity:0; transform:translateY(-16px)}}
+@keyframes vtIn{from{opacity:0; transform:translateY(24px)}}
+
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important; scroll-behavior:auto!important} .rv.wait:not(.in){opacity:1; transform:none} }
 </style>
 
 <header class="top">
@@ -251,38 +359,37 @@ const CASES = [
   lead:"De 10 comercios piloto a más de 2.000 que gestionan su negocio sin llamar a soporte.",
   tags:["B2B","Web","Fintech"], year:"2024–2026", status:"En producción",
   meta:[["Rol","Lead Product Designer"],["Equipo","Product Owner, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"],["Estado","En producción"]],
-  cover:img("deuna/portada","Portada: pantalla principal del portal"),
+  cover:img("deuna/portada","Portada: pantalla principal del portal","1600×1000",{remote:"https://framerusercontent.com/images/szaV3JcSSYShZbme0b2frMMU6uw.png"}),
   chapters:[
     {h:"Contexto", blocks:[
       {p:"Deuna es la billetera digital más usada de Ecuador. Mientras más comercios la adoptaban, más crecía un costo invisible: cada pregunta de un comercio terminaba en el equipo comercial."},
       {p:"¿Llegó este pago? ¿Me reenvías el reporte de ayer? ¿Cómo me integro? El equipo comercial dedicaba 4–5 horas diarias a responder. Los desarrolladores senior y el arquitecto, 2–3 horas diarias a soporte de integraciones."}]},
     {h:"El reto", blocks:[
       {p:"No bastaba con diseñar un portal. Había que convencer a la dirección de que no era un gasto más, sino la forma de dejar de pagar ese tiempo todos los días. Y hacerlo con un MVP que saliera en dos meses."},
-      {fig:img("deuna/reto","El problema: comercios pidiendo soporte por pagos y reportes","1600×900",{free:true})}]},
+      {fig:img("deuna/reto","El problema: comercios pidiendo soporte por pagos y reportes","1600×900",{free:true, remote:"https://framerusercontent.com/images/YVnfRFXAHcvaqSDLcIbJrGtpN8.png"})}]},
     {h:"Mi rol", blocks:[
       {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Construí con el equipo el caso de negocio, definí la arquitectura de información, diseñé y validé los flujos, y acompañé la evolución del producto después del lanzamiento."}]},
     {h:"Lo que descubrimos", blocks:[
       {p:"Antes de dibujar una pantalla, medimos de dónde venía la carga operativa. Tres hallazgos definieron el producto:"},
       {ul:["Los comercios validaban pagos con capturas de pantalla. Al cerrar caja, el cliente mostraba una foto del pago y el comercio llamaba para confirmar.","Los reportes vivían en el correo. Si no llegaban, el comercio no podía cerrar caja y pedía un reenvío.","Las integraciones consumían al equipo técnico. Cada empresa que quería conectarse necesitaba acompañamiento de un desarrollador senior."]},
-      {fig:img("deuna/hallazgos","Mapa de hallazgos o arquitectura de información","1600×1000",{free:true})}]},
+      {fig:img("deuna/hallazgos","Mapa de hallazgos o arquitectura de información","1600×1000",{free:true, remote:"https://framerusercontent.com/images/IZE1MWR6ngcJ7P2ye2b0W92mFMg.png"})}]},
     {h:"Lo que decidimos", blocks:[
       {p:"Con esos datos armamos el caso de negocio que aprobó el proyecto. De ahí salieron tres decisiones:"},
       {ol:["Empezar solo por transacciones y reportes. Eran las dos solicitudes más frecuentes. Dejamos integraciones y permisos para una segunda fase y así salimos en dos meses.","Diseñar para quien cierra caja, no para un analista. Tiempo real, búsqueda por pagador o número de transacción y el detalle a un clic: confirmar un pago debe tomar segundos.","Tratar la integración como un producto. El perfil de desarrollador y el sandbox atacaron directamente las horas del equipo técnico."]}]},
     {h:"Primer MVP", blocks:[
       {h3:"Transacciones en tiempo real"},
       {p:"El comercio confirma un pago al instante desde el portal, sin pedir capturas ni llamar al equipo comercial. Ventas y devoluciones van separadas, y cada transacción tiene su detalle completo."},
-      {fig:img("deuna/transacciones","Pantalla de transacciones","1600×1000",{free:true})},
+      {fig:img("deuna/transacciones","Pantalla de transacciones","1600×1000",{free:true, remote:"https://framerusercontent.com/images/N9pPFzjVXfQdooiTmYl4XiksQU.png"})},
       {h3:"Historial de reportes"},
       {p:"Los reportes que antes llegaban por correo ahora están siempre disponibles, filtrados por fecha, frecuencia y sucursal. El comercio los descarga cuando los necesita y puede cerrar caja sin esperar a nadie."},
-      {fig:img("deuna/reportes","Pantalla de reportes","1600×1000",{free:true})}]},
+      {fig:img("deuna/reportes","Pantalla de reportes","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})}]},
     {h:"Segunda fase", blocks:[
       {p:"Con el portal en uso, las necesidades de los comercios más grandes marcaron la segunda fase: controlar quién ve qué, e integrarse sin depender del equipo técnico de Deuna."},
       {h3:"Roles y Permisos"},
       {p:"Diseñamos un sistema de accesos para que diferentes perfiles dentro de una empresa pudieran operar el portal con distintos niveles de visibilidad y control, protegiendo información sensible sin afectar la operación diaria."},
-      {trio:[img("deuna/roles-1","Roles: listado de usuarios","1200×900"),img("deuna/roles-2","Roles: crear o editar rol","1200×900"),img("deuna/roles-3","Roles: permisos por módulo","1200×900")]},
+      {fig:img("deuna/roles-1","Roles y Permisos","1728×1145",{free:true,remote:"https://framerusercontent.com/images/yDKWtaFokPTjMCFFCnwIhdDhM.png"})},
       {h3:"Perfil Desarrollador y Sandbox"},
-      {p:"Creamos un espacio para empresas que querían integrarse técnicamente con Deuna: documentación, configuración de webhooks, credenciales y un ambiente sandbox para pruebas de integración."},
-      {fig:img("deuna/sandbox","Perfil desarrollador y sandbox","1600×1000",{free:true})}]},
+      {p:"Creamos un espacio para empresas que querían integrarse técnicamente con Deuna: documentación, configuración de webhooks, credenciales y un ambiente sandbox para pruebas de integración."}]},
   ],
   impact:{big:"10 → +2.000 comercios", p:"Del piloto a la operación diaria, gestionando pagos, reportes e integraciones sin llamar a soporte. El equipo comercial recuperó 4–5 horas diarias y el técnico 2–3 horas."}
 },
@@ -292,27 +399,26 @@ const CASES = [
   lead:"Pagar en caja sin QR: un código de 6 dígitos que hoy usan todos los clientes de Deuna.",
   tags:["App","Pagos","Research"], year:"2024", status:"En producción",
   meta:[["Rol","Product Designer"],["Equipo","Producto y negocio"],["Plataforma","App Deuna (personas y comercios)"],["Validación","10 pruebas de usabilidad"],["Estado","En producción"]],
-  cover:img("cup/portada","Portada: pantalla de ingreso del código"),
+  cover:img("cup/portada","Portada: pantalla de ingreso del código","1600×1000",{remote:"https://framerusercontent.com/images/ZSPxykkKaTGD34Q6oKfyuVy5I.png"}),
   chapters:[
     {h:"Contexto", blocks:[
       {p:"En supermercados como Tía y Santa María pasa algo simple: en la caja no hay QR dinámico. Para millones de compras, Deuna no era una opción."},
       {p:"La solución de negocio fue un código de 6 dígitos: el cajero lo dicta, el cliente lo ingresa en la app y paga. Mi trabajo era que ese gesto fuera tan rápido como pagar en efectivo."}]},
     {h:"El reto", blocks:[
       {p:"Diseñar un pago presencial que funcione con una fila detrás, un código dictado en voz alta y un usuario que nunca había visto esta forma de pagar. Y hacerlo dentro de “Pagar en Deuna”, sin crear un flujo paralelo."},
-      {pair:[img("cup/contexto-1","Momento de uso en caja","1200×900"),img("cup/contexto-2","Entrada a “Pagar en Deuna”","1200×900")]}]},
+      {fig:img("cup/contexto-1","Pagar en caja con el código de 6 dígitos","1922×1602",{free:true, remote:"https://framerusercontent.com/images/Lr2pAw06a9v0pU031Scsq0a6KUs.png"})}]},
     {h:"Mi rol", blocks:[
       {p:"Diseñé el flujo de punta a punta: arquitectura, interacción, estados de error y prototipos de alta fidelidad. Planeé y ejecuté las pruebas de usabilidad, e iteré el diseño con producto y negocio."}]},
     {h:"La solución", blocks:[
       {p:"Partimos del momento real de uso: una caja de supermercado con fila, un código dictado en voz alta y ningún QR a la vista. Cada paso extra era un segundo más frente al cajero."},
-      {fig:img("cup/flujo","Flujo completo: código → monto → confirmación","1600×900",{free:true})},
-      {p:"Un pago en caja tampoco puede quedarse colgado. Diseñé cuatro salidas claras: código inválido, saldo insuficiente, límite transaccional superado y error del servicio. Cada una le dice al usuario qué pasó y qué hacer, con la fila esperando."},
-      {fig:img("cup/errores","Los 4 estados de error","1600×900",{free:true})}]},
+      {fig:img("cup/flujo","Flujo completo: código → monto → confirmación","1600×900",{free:true, remote:"https://framerusercontent.com/images/NKKfd988eZvmvcxKuqc8SXKzmQ.png"})},
+      {p:"Un pago en caja tampoco puede quedarse colgado. Diseñé cuatro salidas claras: código inválido, saldo insuficiente, límite transaccional superado y error del servicio. Cada una le dice al usuario qué pasó y qué hacer, con la fila esperando."}]},
     {h:"Validación", blocks:[
       {p:"Hice 10 pruebas de usabilidad en una agencia bancaria, con usuarios reales y el prototipo en mano. No buscaba saber si les gustaba: quería ver dónde se trababan en caja."},
       {finding:["La mayoría buscaba el código dentro de “Pagar”.","Puse la entrada al código ahí, junto al escáner de QR, en lugar de crear un acceso nuevo en el home."]},
       {finding:["Confundían el código con una OTP o clave de verificación.","Cambié el texto a “Es un número que te entrega el negocio y cambia cada vez que pagues”, y separé los dígitos en grupos de dos para que se lea como un código de pago."]},
       {finding:["La pantalla de monto y confirmación funcionó sin fricción.","No la toqué. Saber qué no cambiar también es una decisión."]},
-      {fig:img("cup/iteracion","Antes y después del cambio de copy y agrupación de dígitos","1600×900",{free:true})}]},
+      {fig:img("cup/iteracion","Antes y después del cambio de copy y agrupación de dígitos","1600×900",{free:true, remote:"https://framerusercontent.com/images/hbUblecnJ6sIXqwz5tuOgsJZwI.png"})}]},
   ],
   impact:{big:"+45.000 puntos de venta", p:"En producción para todos los usuarios de Deuna, personas y comercios, y aceptado en más de 45.000 puntos de venta tras la alianza con Datafast."}
 },
@@ -322,7 +428,7 @@ const CASES = [
   lead:"Pagar suscripciones con la billetera, sin tarjeta: una tokenización compleja convertida en “vincular cuenta”.",
   tags:["App","Pagos","Integraciones"], year:"2026", status:"En desarrollo",
   meta:[["Rol","Lead Product Designer"],["Equipo","Producto, arquitectura y desarrollo"],["Plataforma","App Deuna + apps de comercios"],["Estado","En desarrollo"]],
-  cover:img("suscripciones/portada","Portada: pantalla “Vincular cuenta”"),
+  cover:img("suscripciones/portada","Portada: pantalla “Vincular cuenta”","1600×1000",{remote:"https://framerusercontent.com/images/TsqXxFsRybj1exbSyDk1Qzn4FZA.png"}),
   chapters:[
     {h:"Contexto", blocks:[
       {p:"Pedir comida, pagar el gimnasio o una suscripción: casi todo cobro recurrente en apps exige una tarjeta. Deuna no tiene tarjeta, y no queríamos inventar una."},
@@ -330,19 +436,20 @@ const CASES = [
     {h:"El reto", blocks:[
       {p:"El flujo empieza en la app del comercio, salta a Deuna para autorizar y vuelve al comercio. Tres apps, un permiso de cobro y cero tolerancia a la desconfianza."},
       {p:"Había que explicar la vinculación sin hablar de tokens ni APIs, distinguir una suscripción fija de un pago recurrente variable, y generar confianza en un salto entre aplicaciones."},
-      {fig:img("suscripciones/flujo","Flujo entre apps: comercio → Deuna → comercio","1600×900",{free:true})}]},
+      {fig:img("suscripciones/flujo","Flujo entre apps: comercio → Deuna → comercio","1600×900",{free:true, remote:"https://framerusercontent.com/images/xTC0Pe3GE3v3fhCtoy2vBQ5meQU.png"})}]},
     {h:"Mi rol", blocks:[
       {p:"Lideré el diseño de punta a punta en la app de Deuna: benchmark, arquitectura, flujos, research, prototipos y la estrategia de medición. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
     {h:"Tres decisiones", blocks:[
+      {fig:img("suscripciones/decisiones","Decisiones de diseño","2400×1900",{free:true,remote:"https://framerusercontent.com/images/8D2Zc3o0Ba2TuOcOXe97Vntst8.png"})},
       {h3:"1. Hablar de “vincular cuenta”, no de tokenizar"},
       {p:"Vincular una cuenta es una acción que la gente ya conoce. La pantalla de vinculación dice desde el inicio “Este paso no genera ningún cobro”: la frase que desactiva el miedo principal. Debajo, tres beneficios claros: pagos seguros, saldo disponible y control total."},
-      {trio:[img("suscripciones/vincular-1","Vincular cuenta","900×1600"),img("suscripciones/vincular-2","Autorizar permiso","900×1600"),img("suscripciones/vincular-3","Confirmación","900×1600")]},
+      {trio:[img("suscripciones/vincular-1","Vincular cuenta","900×1600",{remote:"https://framerusercontent.com/images/z95BQwWQd1uPELB2KBDF5gc170U.png"}),img("suscripciones/vincular-2","Autorizar permiso","900×1600",{remote:"https://framerusercontent.com/images/hmInmKZRZitZVyVOrapQUHwGnk.png"}),img("suscripciones/vincular-3","Confirmación","900×1600",{remote:"https://framerusercontent.com/images/LkkVGvUc7tIXA5FcnyMdFnsEWWc.png"})]},
       {h3:"2. Suscripción y pago recurrente, cada uno con su estado"},
       {p:"En research, los usuarios entendían ambos conceptos como lo mismo. Cada tipo tiene su descripción, su jerarquía y su estado: fijo y periódico, o variable según el uso. Así nadie se sorprende con un cobro."},
       {h3:"3. Control visible en todo momento"},
       {p:"Siempre se ve qué comercio pide el permiso y qué tipo de cobro hará. Desvincular está siempre en Perfil → Comercios vinculados, con correo y notificación de confirmación."},
       {p:"Y los casos que nadie ve: sesión inválida, cuenta ya vinculada, errores del servicio y espera de respuesta. Cada uno le dice al usuario qué pasó y le permite volver al comercio sin quedarse atrapado."},
-      {pair:[img("suscripciones/control","Comercios vinculados y desvincular","1200×900"),img("suscripciones/errores","Estados de error y espera","1200×900")]}]},
+      {pair:[img("suscripciones/control","Comercios vinculados y desvincular","1200×900",{remote:"https://framerusercontent.com/images/DFciVUBqeb6vU28lvB4Bo0Nh2Y.png"}),img("suscripciones/errores","Estados de error y espera","1200×900",{remote:"https://framerusercontent.com/images/hDP8NOtjiN2bQkWZZcimej2dA.png"})]}]},
   ],
   impact:{big:"Pagos recurrentes sin tarjeta", p:"Un nuevo método de pago recurrente para los comercios del ecosistema Deuna, con el embudo de medición listo desde el día uno."}
 },
@@ -352,12 +459,12 @@ const CASES = [
   lead:"Del repositorio de información a la puerta de entrada del ecosistema fintech colombiano.",
   tags:["Sitio web","Arquitectura de información","Freelance"], year:"2025", status:"Publicado",
   meta:[["Rol","Product Designer"],["Equipo","Producto, stakeholders del gremio y agencia de marca"],["Plataforma","Sitio web"],["Estado","Publicado en 2025"]],
-  cover:img("colombia-fintech/portada","Portada: home del nuevo sitio"),
+  cover:img("colombia-fintech/portada","Portada: home del nuevo sitio","1600×1000",{remote:"https://framerusercontent.com/images/1LKEvwaEU6ECPmK9LnY7NOvJdo.png"}),
   chapters:[
     {h:"Contexto", blocks:[
       {p:"Colombia Fintech reúne a bancos digitales, fintechs, aliados e inversionistas. Su sitio era donde todos ellos llegaban primero, y no le hablaba a ninguno."},
       {p:"Todo estaba ahí, pero apilado: noticias, eventos, afiliación y documentos con el mismo peso. Quien llegaba con ganas de afiliarse tenía que buscar cómo hacerlo entre noticias y documentos."},
-      {pair:[img("colombia-fintech/antes","Sitio anterior","1200×900"),img("colombia-fintech/despues","Sitio nuevo","1200×900")]}]},
+      {pair:[img("colombia-fintech/antes","Sitio anterior","1200×900",{remote:"https://framerusercontent.com/images/jVe34Z1NWNzfKvcOP3x2ZMCMZc.png"}),img("colombia-fintech/despues","Sitio nuevo","1200×900",{remote:"https://framerusercontent.com/images/6uTDjW9LzRhw0q8NTuBpCoC0.png"})]}]},
     {h:"El reto", blocks:[
       {p:"Llevar la nueva identidad de marca, creada por un equipo externo, a un sitio que en pocos segundos le dijera a cada visitante qué gana con Colombia Fintech y dónde seguir."}]},
     {h:"Mi rol", blocks:[
@@ -366,10 +473,9 @@ const CASES = [
       {h3:"Afiliación y comunidad al frente"},
       {p:"“Vinculación” vive en el menú principal, y el inicio tiene su propio bloque para unirse a la comunidad fintech más grande de Colombia. Unirse dejó de ser un enlace perdido."},
       {p:"El directorio de miembros y los testimonios de líderes del sector están en el inicio: el valor de pertenecer se ve antes de leerlo."},
-      {pair:[img("colombia-fintech/afiliacion","Bloque de afiliación","1200×900"),img("colombia-fintech/comunidad","Directorio y testimonios","1200×900")]},
+      {pair:[img("colombia-fintech/afiliacion","Bloque de afiliación","1200×900",{remote:"https://framerusercontent.com/images/aS2gJ44t5Gqv3o4tb9Sm4Av3qng.png"}),img("colombia-fintech/comunidad","Directorio y testimonios","1200×900",{remote:"https://framerusercontent.com/images/rCYLdVV133IULVbImh29d3jR3k.png"})]},
       {h3:"Traduciendo la marca a producto digital"},
-      {p:"Eventos, cursos, Fintech & Beer y webinars quedaron en pestañas, en lugar de un listado mezclado. La identidad nueva era fuerte: la usé para dar ritmo y jerarquía, no para decorar. Más aire, menos bloques compitiendo."},
-      {fig:img("colombia-fintech/agenda","Agenda de eventos por pestañas","1600×1000",{free:true})}]},
+      {p:"Eventos, cursos, Fintech & Beer y webinars quedaron en pestañas, en lugar de un listado mezclado. La identidad nueva era fuerte: la usé para dar ritmo y jerarquía, no para decorar. Más aire, menos bloques compitiendo."}]},
   ],
   impact:{big:"Sitio publicado", p:"En uso por el gremio fintech más importante de Colombia."},
   link:{href:"https://colombiafintech.co", label:"Ver sitio"}
@@ -413,16 +519,20 @@ const CASES = [
 }
 ];
 
-/* ===== Imágenes: prueba .webp, .png, .jpg; si no existe, muestra el recuadro ===== */
-const EXTS = ["webp","png","jpg","jpeg"];
-function figureHTML(f){
-  return `<div class="shot ${f.free?'free':''}" data-img="${f.img}" data-label="${f.label}" data-size="${f.size}"><img alt="${f.label}" loading="lazy" hidden></div>`;
+/* ===== Imágenes =====
+   Orden de carga: 1) archivo propio en img/<caso>/<nombre>.png o .jpg  2) imagen del Framer  3) recuadro punteado */
+function figureHTML(f, forceFree){
+  const free = f.free || forceFree;
+  return `<div class="shot ${free?'free':''}" data-img="${f.img}" data-remote="${f.remote||''}" data-label="${f.label}" data-size="${f.size}"><img alt="${f.label}" loading="lazy" decoding="async" hidden></div>`;
 }
 function loadImages(root){
   root.querySelectorAll(".shot[data-img]").forEach(box=>{
-    const im = box.querySelector("img"); let i = 0;
-    const tryNext = () => { if(i >= EXTS.length){ showPh(box); return; } im.src = `img/${box.dataset.img}.${EXTS[i++]}`; };
-    im.onload = () => { im.hidden = false; box.querySelector(".ph")?.remove(); };
+    const im = box.querySelector("img");
+    const list = [`img/${box.dataset.img}.png`, `img/${box.dataset.img}.jpg`];
+    if(box.dataset.remote) list.push(box.dataset.remote + "?scale-down-to=2048");
+    let i = 0;
+    const tryNext = () => { if(i >= list.length){ showPh(box); return; } im.src = list[i++]; };
+    im.onload = () => { im.hidden = false; box.classList.add("loaded"); box.querySelector(".ph")?.remove(); };
     im.onerror = tryNext; tryNext();
   });
 }
@@ -434,7 +544,8 @@ function showPh(box){
 }
 
 /* ===== Piezas gráficas ===== */
-const SPARK = `<svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg>`;
+const STAR4 = "M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z";
+const SPARK = `<svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><path d="${STAR4}"/></svg>`;
 let stickerN = 0;
 function sticker(ring, core, cls=""){
   const id = "ring" + (++stickerN);
@@ -443,7 +554,6 @@ function sticker(ring, core, cls=""){
     <text fill="currentColor"><textPath href="#${id}">${ring}</textPath></text></svg>
     <div class="core">${core}</div></div>`;
 }
-/* Doodles: estrella puntiaguda + garabatos, en las esquinas */
 function burst(points=8){
   const pts=[]; for(let i=0;i<points*2;i++){ const a=Math.PI*i/points - Math.PI/2; const r = i%2 ? 13 : (i%4===0 ? 50 : 38); pts.push((50+r*Math.cos(a)).toFixed(1)+","+(50+r*Math.sin(a)).toFixed(1)); }
   return `<polygon points="${pts.join(" ")}" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>`;
@@ -456,10 +566,19 @@ const SQUIG = {
 };
 function doodle(kind, cls){
   if(kind==="burst") return `<svg class="dd ${cls}" viewBox="0 0 100 100" aria-hidden="true">${burst()}</svg>`;
+  if(kind==="star") return `<svg class="dd ${cls}" viewBox="0 0 100 100" aria-hidden="true"><path d="${STAR4}" fill="currentColor"/></svg>`;
   return `<svg class="dd ${cls}" viewBox="0 0 120 100" aria-hidden="true"><path d="${SQUIG[kind]}" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 }
-const SCRIBBLE = doodle("loops","d-tl") + doodle("burst","d-tr") + doodle("curl","d-bl") + doodle("burst","d-br") + doodle("wave","d-bm");
+const CORNERS = doodle("loops","d-tl") + doodle("burst","d-tr") + doodle("curl","d-bl") + doodle("burst","d-br") + doodle("wave","d-bm");
 const COLORS = ["c-pink","c-lime","c-violet","c-lime","c-violet","c-pink"];
+
+/* ===== Textos de inicio ===== */
+const RESULTS = [
+  {big:"10 →<br>+2.000", txt:"Comercios que hoy gestionan pagos y reportes solos en el Portal Deuna Negocios.", c:"c-lime", d:"burst"},
+  {big:"+45.000", txt:"Puntos de venta donde se puede pagar con el Código Único de Pago.", c:"c-pink", d:"star"},
+  {big:"+18%", txt:"Pagos online en el e-commerce de Claro después del rediseño del checkout.", c:"c-violet", d:"loops"},
+  {big:"−25%", txt:"Abandono en el embudo de compra de Claro, quitando pasos y fricción.", c:"c-paper", d:"wave"}
+];
 
 /* ===== Vistas ===== */
 const app = document.getElementById("app");
@@ -469,23 +588,23 @@ function homeView(){
   const tick = ticker.map(t=>`<span>${t} ${SPARK}</span>`).join("");
   return `
   <section class="hero" id="inicio">
-    ${SCRIBBLE}
-    <div class="wrap hero-grid">
-      <div class="hi">
-        <div class="kicker"><span class="pill lime">Senior Product Designer</span><span class="mono">Bogotá · Remoto</span></div>
-        <div class="title-row">
-          <h1 class="cond">Lina<span class="row2">Prieto</span></h1>
-          <div class="photo">
-            <img src="img/lina.jpg" alt="Lina Valentina Prieto" width="900" height="900">
-            ${sticker("Open to work · Open to work · Open to work · ","Open<br>to work")}
-            <svg class="s2" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg>
-          </div>
+    ${CORNERS}
+    <div class="wrap">
+      <div class="split">
+        <div class="split-text">
+          <div class="kicker"><span class="pill lime">Senior Product Designer</span><span class="mono">Bogotá · Remoto</span></div>
+          <h1 class="cond"><span class="ln">Lina</span><span class="ln row2">Prieto</span></h1>
+          <p class="sub">Diseño productos financieros que se usan <mark>en la caja</mark>, <mark class="lime">en la sucursal</mark> y en el back-office.</p>
         </div>
-        <p class="sub">Diseño productos financieros que se usan <mark>en la caja</mark>, <mark class="lime">en la sucursal</mark> y en el back-office.</p>
-        <div class="ctas">
-          <a class="pill lime big" href="#casos">Ver casos ↓</a>
-          <a class="pill big" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <div class="split-media photo">
+          <img src="img/lina.jpg" alt="Lina Valentina Prieto" width="900" height="900">
+          ${sticker("Open to work · Open to work · Open to work · ","Open<br>to work")}
+          <svg class="s2" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="${STAR4}"/></svg>
         </div>
+      </div>
+      <div class="ctas">
+        <a class="pill lime big" href="#casos">Ver casos ↓</a>
+        <a class="pill big" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
   </section>
@@ -493,23 +612,22 @@ function homeView(){
   <div class="ticker" aria-hidden="true"><div class="track">${tick}${tick}</div></div>
 
   <section class="stats">
+    ${doodle("burst","d-stats1")}${doodle("esse","d-stats2")}
     <div class="wrap">
-      <div class="sec-title"><h2 class="cond" style="color:var(--white)">Resultados</h2><p>Más de 5 años en fintech, banca y e-commerce, del caso de negocio a producción.</p></div>
-      <div class="stat-grid">
-        <div class="stat c-lime"><b>10→2.000+</b><span>comercios que se autogestionan en el Portal Deuna Negocios</span></div>
-        <div class="stat c-pink"><b>+45.000</b><span>puntos de venta aceptan el Código Único de Pago</span></div>
-        <div class="stat c-violet"><b>+18%</b><span>pagos online en el e-commerce de Claro</span></div>
-        <div class="stat c-paper"><b>−25%</b><span>abandono en el checkout de Claro</span></div>
+      <div class="sec-title rv"><h2 class="cond">Resultados</h2><p>Números de productos que ya están en producción. Diseño pensando en lo que cambia para el negocio y para quien usa el producto todos los días.</p></div>
+      <div class="stat-grid" id="statSlider">
+        ${RESULTS.map((r,i)=>`<div class="stat ${r.c} rv" style="--d:${i*80}ms">${doodle(r.d,"stat-dd")}<b>${r.big}</b><span>${r.txt}</span></div>`).join("")}
       </div>
+      <div class="dots" id="statDots" aria-hidden="true">${RESULTS.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join("")}</div>
     </div>
   </section>
 
   <section class="cases" id="casos">
     <div class="wrap">
-      <div class="sec-title"><h2 class="cond" style="color:var(--white)">Casos</h2><p>${CASES.length} proyectos de pagos, banca y producto digital.</p></div>
+      <div class="sec-title rv"><h2 class="cond">Casos</h2><p>Seis proyectos de pagos, banca y producto digital, contados desde el problema de negocio hasta el impacto.</p></div>
       <div class="case-grid">
         ${CASES.map((c,i)=>`
-          <a class="ccard ${COLORS[i%COLORS.length]}" href="#${c.id}">
+          <a class="ccard ${COLORS[i%COLORS.length]} rv" style="--d:${(i%2)*90}ms" href="#${c.id}">
             <div class="top"><h3 class="cond">${c.title}</h3><span class="badge">${c.status}</span></div>
             ${figureHTML(c.cover)}
             <div class="bottom"><p>${c.card}</p><span class="arrow">↗</span></div>
@@ -519,20 +637,21 @@ function homeView(){
   </section>
 
   <section class="about" id="sobre-mi">
+    ${doodle("burst","d-about1")}${doodle("curl","d-about2")}
     <div class="wrap">
-      <div class="sec-title"><h2 class="cond">Sobre mí ${SPARK}</h2></div>
+      <div class="sec-title rv"><h2 class="cond">Sobre mí ${SPARK}</h2></div>
       <div class="about-grid">
-        <div class="text">
-          <p>Diseño productos financieros de punta a punta: desde cómo opera el negocio hasta lo que vive el usuario. Hoy lidero el diseño del frente B2B en <mark class="lime">Deuna</mark>, la billetera digital más usada de Ecuador.</p>
-          <p>He diseñado para banca y servicios financieros con BBVA, Bancolombia, Porvenir y Crédito Fácil Codensa, y para e-commerce con Claro.</p>
-          <p>No diseño sin contexto. Entiendo el negocio, la tecnología y al usuario antes de decidir, y trabajo de la mano con producto y desarrollo para que lo que diseñamos <mark>funcione en producción</mark>.</p>
+        <div class="text rv">
+          <p>Llevo más de 5 años diseñando productos financieros: billeteras, pagos en caja, portales para comercios y herramientas internas de banca.</p>
+          <p>Hoy lidero el diseño del frente B2B en <mark class="lime">Deuna</mark>, la billetera digital más usada de Ecuador. Allí llevamos el Portal Deuna Negocios de 10 a más de 2.000 comercios y lanzamos el Código Único de Pago.</p>
+          <p>Antes diseñé para BBVA, Bancolombia, Claro, Porvenir y Crédito Fácil Codensa. Me muevo entre negocio, tecnología y usuario: investigo, armo el caso, diseño el flujo y lo acompaño hasta que <mark>funciona en producción</mark>.</p>
           <div class="chips">${["UX Research","Design Systems","Flujos de pago","Herramientas internas","Figma","Maze","Accesibilidad","Prototipado"].map(s=>`<span class="chip">${s}</span>`).join("")}</div>
         </div>
-        <ol class="tl" aria-label="Trayectoria">
+        <ol class="tl rv" style="--d:120ms" aria-label="Trayectoria">
           <li><span class="when">2024 – hoy</span><div><b>Senior Product Designer · Neoris</b><span>Deuna (Ecuador) y BBVA</span></div></li>
           <li><span class="when">2022 – hoy</span><div><b>Product Designer freelance · Contra Studio</b><span>Colombia Fintech, negocios y restaurantes</span></div></li>
           <li><span class="when">2023 – 2024</span><div><b>Product Designer · VASS</b><span>E-commerce de Claro Colombia</span></div></li>
-          <li><span class="when">2023</span><div><b>UX Designer · Multiplica</b><span>Canales de atención de Bancolombia</span></div></li>
+          <li><span class="when">2023</span><div><b>UX Designer · Multiplica</b><span>Canales de atención y créditos de Bancolombia</span></div></li>
           <li><span class="when">2021 – 2023</span><div><b>Digital Experience Designer · NTT DATA</b><span>Porvenir y Crédito Fácil Codensa</span></div></li>
         </ol>
       </div>
@@ -541,26 +660,27 @@ function homeView(){
 
   <section class="contact" id="contacto">
     <div class="wrap">
-      <h2 class="cond">${SPARK}Hablemos!!!${sticker("Open to work · Open to work · ","Open<br>to work")}</h2>
-      <p class="lead">¿Buscas una Product Designer para tu equipo? Escríbeme y conversamos.</p>
+      <h2 class="cond rv">${SPARK}Hablemos!!!${sticker("Open to work · Open to work · ","Open<br>to work")}</h2>
+      <p class="lead rv">¿Buscas una Product Designer para tu equipo? Escríbeme y conversamos.</p>
       <dl class="contact-list">
-        <div class="ci"><dt class="mono">Correo</dt><dd>${EMAIL}</dd><button class="pill lime" data-copy="${EMAIL}" type="button">Copiar</button></div>
-        <div class="ci"><dt class="mono">Celular</dt><dd>${PHONE}</dd><button class="pill lime" data-copy="${PHONE}" type="button">Copiar</button></div>
-        <div class="ci"><dt class="mono">LinkedIn y CV</dt><dd>lina-valentina-prieto-acevedo</dd><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="pill violet" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a><a class="pill black" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">CV ↗</a></div></div>
+        <div class="ci rv"><dt class="mono">Correo</dt><dd>${EMAIL}</dd><button class="pill lime" data-copy="${EMAIL}" type="button">Copiar</button></div>
+        <div class="ci rv" style="--d:80ms"><dt class="mono">Celular</dt><dd>${PHONE}</dd><button class="pill lime" data-copy="${PHONE}" type="button">Copiar</button></div>
+        <div class="ci rv" style="--d:160ms"><dt class="mono">LinkedIn</dt><dd><a href="${LINKEDIN}" target="_blank" rel="noopener">${LINKEDIN.replace("https://www.","")}</a></dd><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="pill violet" href="${LINKEDIN}" target="_blank" rel="noopener">Abrir LinkedIn ↗</a><a class="pill black" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">CV ↗</a></div></div>
       </dl>
     </div>
   </section>`;
 }
 
 function blockHTML(b){
-  if(b.p) return `<p>${b.p}</p>`;
-  if(b.h3) return `<h3>${b.h3}</h3>`;
-  if(b.ul) return `<ul>${b.ul.map(x=>`<li>${x}</li>`).join("")}</ul>`;
-  if(b.ol) return `<ol>${b.ol.map(x=>`<li>${x}</li>`).join("")}</ol>`;
-  if(b.fig) return `<figure>${figureHTML(b.fig)}<figcaption>${b.fig.label}</figcaption></figure>`;
-  if(b.pair) return `<div class="pair">${b.pair.map(f=>`<figure>${figureHTML(f)}<figcaption>${f.label}</figcaption></figure>`).join("")}</div>`;
-  if(b.trio) return `<div class="trio">${b.trio.map(f=>`<figure>${figureHTML(f)}<figcaption>${f.label}</figcaption></figure>`).join("")}</div>`;
-  if(b.finding) return `<div class="finding"><span class="k v">Vimos</span><span>${b.finding[0]}</span><span class="k d">Decidí</span><span>${b.finding[1]}</span></div>`;
+  if(b.p) return `<p class="rv">${b.p}</p>`;
+  if(b.h3) return `<h3 class="rv">${b.h3}</h3>`;
+  if(b.ul) return `<ul class="rv">${b.ul.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  if(b.ol) return `<ol class="rv">${b.ol.map(x=>`<li>${x}</li>`).join("")}</ol>`;
+  const fig = (f, free) => `<figure class="rv">${figureHTML(f, free)}<figcaption>${f.label}</figcaption></figure>`;
+  if(b.fig) return fig(b.fig);
+  if(b.pair) return `<div class="pair">${b.pair.map(f=>fig(f, !!f.remote)).join("")}</div>`;
+  if(b.trio) return `<div class="trio">${b.trio.map(f=>fig(f, !!f.remote)).join("")}</div>`;
+  if(b.finding) return `<div class="finding rv"><span class="k v">Vimos</span><span>${b.finding[0]}</span><span class="k d">Decidí</span><span>${b.finding[1]}</span></div>`;
   return "";
 }
 
@@ -568,34 +688,73 @@ function caseView(c){
   const i = CASES.indexOf(c), nx = CASES[(i+1)%CASES.length];
   return `
   <section class="chero">
-    ${SCRIBBLE}
+    ${CORNERS}
     <div class="wrap">
       <a class="pill back" href="#casos">← Todos los casos</a>
-      <div class="chero-grid">
-        <div>
+      <div class="split">
+        <div class="split-text">
           <span class="mono">${c.tags.join(" · ")} · ${c.year}</span>
-          <h1 class="cond" style="margin-top:14px">${c.title}</h1>
-          <p class="lead">${c.lead}</p>
-          ${c.link?`<div style="margin-top:22px"><a class="pill lime" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ↗</a></div>`:""}
+          <h1 class="cond"><span class="ln">${c.title}</span></h1>
+          <p class="sub">${c.lead}</p>
+          ${c.link?`<div><a class="pill lime" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ↗</a></div>`:""}
         </div>
-        <div class="ticket">
-          <div class="th mono"><span>Ficha del proyecto</span><span>${c.year}</span></div>
-          ${c.meta.map(([k,v])=>`<div class="row"><span>${k}</span><span>${v}</span></div>`).join("")}
-        </div>
+        <div class="split-media cover-media">${figureHTML(c.cover)}</div>
       </div>
     </div>
   </section>
   <div class="cbody">
-    <div class="wrap cover-wrap"><figure>${figureHTML({...c.cover, free:true})}</figure></div>
+    <div class="wrap">
+      <div class="ticket rv">
+        <div class="th mono"><span>Ficha del proyecto</span><span>${c.year}</span></div>
+        <div class="trow">${c.meta.map(([k,v])=>`<div class="cell"><span>${k}</span><b>${v}</b></div>`).join("")}</div>
+      </div>
+    </div>
     <div class="wrap chapters">
-      ${c.chapters.map(ch=>`<section class="chapter"><h2 class="cond">${ch.h}</h2><div class="content">${ch.blocks.map(blockHTML).join("")}</div></section>`).join("")}
-      <section class="chapter"><h2 class="cond">Impacto</h2><div class="content"><div class="impact">${SPARK}<span class="big cond">${c.impact.big}</span><p>${c.impact.p}</p></div></div></section>
+      ${c.chapters.map(ch=>`<section class="chapter"><h2 class="cond rv">${ch.h}</h2><div class="content">${ch.blocks.map(blockHTML).join("")}</div></section>`).join("")}
+      <section class="chapter"><h2 class="cond rv">Impacto</h2><div class="content"><div class="impact rv">${SPARK}<span class="big cond">${c.impact.big}</span><p>${c.impact.p}</p></div></div></section>
     </div>
   </div>
   <nav class="next" aria-label="Más casos"><div class="wrap">
     <a href="#casos"><small class="mono">Volver</small><b class="cond">Todos los casos</b></a>
     <a href="#${nx.id}" style="text-align:right"><small class="mono">Siguiente caso</small><b class="cond" style="color:var(--lime)">${nx.title} →</b></a>
   </div></nav>`;
+}
+
+/* ===== Comportamiento ===== */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let io;
+function setupReveal(){
+  io?.disconnect();
+  if(reduce || !("IntersectionObserver" in window)) return;
+  io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px", threshold:.08});
+  app.querySelectorAll(".rv").forEach(el=>{
+    const r = el.getBoundingClientRect();
+    if(r.top < innerHeight*0.92) { el.classList.add("in"); return; }   // lo visible al cargar no se oculta
+    el.classList.add("wait"); io.observe(el);
+  });
+}
+/* La foto mide lo mismo que el bloque de texto (desde la etiqueta verde hasta la descripción) */
+let ro;
+function syncMedia(){
+  ro?.disconnect();
+  const split = app.querySelector(".split"); if(!split) return;
+  const txt = split.querySelector(".split-text"), media = split.querySelector(".split-media");
+  const apply = () => {
+    if(matchMedia("(max-width: 760px)").matches){ media.style.height = ""; media.style.width = ""; return; }
+    const h = txt.offsetHeight;
+    media.style.height = h + "px";
+    if(media.classList.contains("photo")) media.style.width = h + "px";
+  };
+  ro = new ResizeObserver(apply); ro.observe(txt); addEventListener("resize", apply); apply();
+}
+function setupSlider(){
+  const s = document.getElementById("statSlider"), dots = document.getElementById("statDots");
+  if(!s || !dots) return;
+  s.addEventListener("scroll", ()=>{
+    const cards=[...s.children]; const mid = s.scrollLeft + s.clientWidth/2;
+    let k = 0, best = 1e9; cards.forEach((c,i)=>{ const d=Math.abs(c.offsetLeft + c.offsetWidth/2 - mid); if(d<best){best=d;k=i;} });
+    [...dots.children].forEach((d,i)=>d.classList.toggle("on", i===k));
+  }, {passive:true});
 }
 
 function render(){
@@ -606,10 +765,17 @@ function render(){
     if(!app.dataset.home){ app.innerHTML = homeView(); app.dataset.home="1"; document.title = "Lina Prieto · Product Designer"; }
     if(id){ document.getElementById(id)?.scrollIntoView(); } else window.scrollTo(0,0);
   }
-  loadImages(app);
+  loadImages(app); syncMedia(); setupReveal(); setupSlider();
 }
-window.addEventListener("hashchange", render);
-render();
+let first = true;
+function go(){
+  const changesView = !!CASES.find(x=>x.id===location.hash.slice(1)) || !app.dataset.home;
+  if(!first && changesView && document.startViewTransition && !reduce){ document.startViewTransition(render); }
+  else render();
+  first = false;
+}
+window.addEventListener("hashchange", go);
+go();
 
 document.addEventListener("click", e=>{
   const b = e.target.closest("[data-copy]"); if(!b) return;
