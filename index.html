@@ -488,11 +488,11 @@ const img = (src, label, size="1600×1000", opts={}) => ({img:src, label, size, 
 const CASES = [
 {
   id:"portal-deuna-negocios", noSlots:true, title:"Portal Deuna Negocios",
-  card:"De 10 comercios piloto a más de 2.000 que se autogestionan",
+  card:"De 25 empresas piloto a más de 2.000 comercios que se autogestionan",
   lead:"Un portal de autogestión para que los comercios grandes de Deuna confirmen pagos, descarguen reportes, gestionen a su equipo e integren la API sin pasar por soporte.",
   tags:["B2B","Web","Research"], year:"2024–2026", status:"En producción",
-  meta:[["Rol","Lead Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Equipo","Product Owner, UX research, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"]],
-  summary:[["El problema","Reportes por correo que no llegaban, pagos que solo una persona podía confirmar y un equipo comercial y técnico dedicado a soporte. Los comercios querían cancelar."],["Qué hice","Diseñé el portal desde cero y cada funcionalidad como una iniciativa end-to-end, validada con comercios en 6 estudios entre 2024 y 2026."],["Resultado","De 10 comercios piloto a más de 2.000 que se autogestionan, y 40 horas semanales de desarrolladores senior de vuelta al roadmap."]],
+  meta:[["Rol","Lead Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Equipo","Dupla con UX researcher, Product Owner, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"]],
+  summary:[["El problema","Reportes por correo que no llegaban, pagos que solo una persona podía confirmar y un equipo comercial y técnico dedicado a soporte. Los comercios querían cancelar."],["Qué hice","Diseñé el portal desde cero y, en dupla con UX research, validé cada funcionalidad con comercios en 7 estudios entre 2024 y 2026."],["Resultado","De 25 empresas piloto a más de 2.000 comercios que se autogestionan, y 40 horas semanales de desarrolladores senior de vuelta al roadmap."]],
   cover:img("deuna/portada","Pantalla principal del portal","1600×1000",{remote:"https://framerusercontent.com/images/szaV3JcSSYShZbme0b2frMMU6uw.png"}),
   chapters:[
     {h:"Contexto", blocks:[
@@ -503,7 +503,7 @@ const CASES = [
       {stats:[["72 h","al mes por coordinador comercial resolviendo problemas de reportes"],["20 h","al mes del arquitecto en el mismo problema"],["40 h","semanales de 3 desarrolladores senior en soporte de integraciones"],["$0,04","por cada SMS de notificación ($0,02 por correo)"]]},
       {p:"Las metas: bajar entre 20 y 25% los costos de notificar transacciones por canales que no controlamos, reducir a la mitad el tiempo perdido en errores, ganar comercios que no se afiliaban por falta de autogestión y mejorar el CSAT."}]},
     {h:"Mi rol", blocks:[
-      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Antes de este portal diseñaba el back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Definí la arquitectura de información, diseñé y prototipé cada flujo, y trabajé con UX research en cada estudio: preparé prototipos, participé en las sesiones e iteré con los hallazgos."}]},
+      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Antes de este portal diseñaba el back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Definí la arquitectura de información, diseñé y prototipé cada flujo, e hice la investigación en dupla con Elizabeth Mendoza, UX researcher: planeamos cada estudio, moderamos las sesiones, sintetizamos los hallazgos y aplicamos las mejoras al diseño."}]},
     {h:"Cómo validamos", blocks:[
       {p:"Cada funcionalidad se trató como una iniciativa propia, con su benchmark, prototipo, prueba con comercios reales e iteración antes de desarrollo."},
       {fig:img("deuna/research","Estudios de research del Portal Deuna Negocios","1600×580",{free:true})}]},
@@ -524,15 +524,15 @@ const CASES = [
       {finding:["Al ver “Crear reporte”, 6 de 10 esperaban configurar un consolidado.","Cambiamos el CTA a “Descargar” para que la acción fuera explícita."]},
       {p:"También definimos los datos que van primero: fecha, nombre del pagador, monto, ID de transacción, hora y sucursal. Desktop fue el dispositivo principal, así que el MVP salió en web."},
       {fig:img("deuna/transacciones","Transacciones en tiempo real","1600×1000",{free:true, remote:"https://framerusercontent.com/images/N9pPFzjVXfQdooiTmYl4XiksQU.png"})},
-      {p:"Salimos con un piloto y medimos satisfacción, recomendación y facilidad de uso con una encuesta a las empresas participantes. Funcionó tan bien que hubo que masificarlo."}]},
+      {p:"Salimos con un piloto de 25 empresas, el número que definió el equipo de seguridad para el MVP, y medimos satisfacción, recomendación y facilidad de uso con una encuesta a las empresas participantes. Funcionó tan bien que hubo que masificarlo."}]},
     {h:"Perfil desarrollador y sandbox", blocks:[
       {p:"Los desarrolladores de los comercios ahora tienen documentación, credenciales, configuración de webhooks y un sandbox para probar su integración por su cuenta. Lo priorizamos para liberar a la célula: las 40 horas semanales que 3 desarrolladores senior dedicaban a soporte volvieron al roadmap."}]},
     {h:"Roles y permisos", blocks:[
       {p:"En los primeros tests apareció una señal: 4 de 10 comercios querían que sus vendedores vieran reportes, pero solo de su sucursal. Con el portal en uso, el acceso recaía en una sola persona por empresa. Diseñé un modelo de roles según la estructura del comercio (grupo, empresa, sucursal y caja) y lo probamos con 8 administradores."},
       {stats:[["8/8","estuvieron de acuerdo con los tres roles propuestos"],["8/8","invitaron a un colaborador con éxito"],["25%","completó la edición de permisos: la tarea más difícil"]]},
-      {finding:["Solo 2 de 8 lograron quitar un permiso. Confundían la lista de colaboradores con la de roles y no entendían que debían crear un rol personalizado.","Simplificar la edición de permisos y separar con claridad colaboradores de roles."]},
-      {finding:["7 de 8 cambiaron un rol sin problema, pero 6 no entendieron qué permisos ganaba la persona.","Mostrar un resumen de los nuevos permisos antes de confirmar el cambio."]},
-      {finding:["5 de 6 empresas usan correo institucional para administradores, pero los cajeros rotan mucho.","Contemplar métodos de acceso alternativos para cajeros."]},
+      {finding:["Solo 2 de 8 lograron quitar un permiso. Confundían la lista de colaboradores con la de roles y no entendían que debían crear un rol personalizado.","Simplificamos la edición de permisos y separamos con claridad colaboradores de roles."]},
+      {finding:["7 de 8 cambiaron un rol sin problema, pero 6 no entendieron qué permisos ganaba la persona.","Agregamos un resumen de los nuevos permisos antes de confirmar el cambio."]},
+      {finding:["5 de 6 empresas usan correo institucional para administradores, pero los cajeros rotan mucho.","Habilitamos un método de acceso alternativo para cajeros."]},
       {ul:["<b>Administrador de grupo:</b> ve y gestiona todas las empresas del grupo.","<b>Administrador de empresa:</b> gestiona su empresa, sus sucursales y quién ve qué.","<b>Consulta:</b> permisos variables que define el administrador.","<b>Desarrollador:</b> solo las funciones de integración."]},
       {fig:img("deuna/roles-1","Roles y permisos","1728×1145",{free:true,remote:"https://framerusercontent.com/images/yDKWtaFokPTjMCFFCnwIhdDhM.png"})}]},
     {h:"Grupos empresariales", blocks:[
@@ -542,7 +542,7 @@ const CASES = [
     {h:"Qué aprendí", blocks:[
       {learn:"En B2B, el lenguaje interno es el enemigo. “Pagos”, “reportes” o “rol personalizado” tenían sentido para nosotros y confundían al comercio. Probar cada funcionalidad nos ahorró capacitar a 2.000 comercios después."}]},
   ],
-  impact:{big:"10 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus equipos e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
+  impact:{big:"25 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus equipos e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
 },
 {
   id:"back-office", noSlots:true, title:"Back Office comercial Deuna",
@@ -836,7 +836,7 @@ const COLORS = ["c-card"];
 
 /* ===== Textos de inicio ===== */
 const RESULTS = [
-  {big:"10 →<br>+2.000", txt:"Comercios que hoy gestionan pagos y reportes solos en el Portal Deuna Negocios.", c:"c-lime", d:"burst"},
+  {big:"25 →<br>+2.000", txt:"Comercios que hoy gestionan pagos y reportes solos en el Portal Deuna Negocios.", c:"c-lime", d:"burst"},
   {big:"+45.000", txt:"Puntos de venta donde se puede pagar con el Código Único de Pago.", c:"c-pink", d:"star"},
   {big:"40 h", txt:"Semanales de desarrolladores senior liberadas del soporte de integraciones con el perfil desarrollador.", c:"c-violet", d:"loops"},
   {big:"≈10.000", txt:"Comercios afiliados y gestionados desde el back office comercial de Deuna.", c:"c-paper", d:"wave"}
@@ -905,7 +905,7 @@ function homeView(){
       <div class="about-grid">
         <div class="text rv">
           <p>Llevo más de 5 años diseñando productos financieros: billeteras, pagos en caja, portales para comercios y herramientas internas de banca.</p>
-          <p>Hoy lidero el diseño del frente B2B en <mark class="lime">Deuna</mark>, la billetera digital más usada de Ecuador. Allí llevamos el Portal Deuna Negocios de 10 a más de 2.000 comercios y lanzamos el Código Único de Pago.</p>
+          <p>Hoy lidero el diseño del frente B2B en <mark class="lime">Deuna</mark>, la billetera digital más usada de Ecuador. Allí llevamos el Portal Deuna Negocios de 25 empresas piloto a más de 2.000 comercios y lanzamos el Código Único de Pago.</p>
           <p>Antes diseñé para BBVA, Bancolombia, Claro, Porvenir y Crédito Fácil Codensa. Me muevo entre negocio, tecnología y usuario: investigo, armo el caso, diseño el flujo y lo acompaño hasta que <mark>funciona en producción</mark>.</p>
           <div class="chips">${["UX Research","Design Systems","Flujos de pago","Herramientas internas","Figma","Maze","Accesibilidad","Prototipado"].map(s=>`<span class="chip">${s}</span>`).join("")}</div>
         </div>
