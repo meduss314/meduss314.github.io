@@ -1202,7 +1202,7 @@ function figureHTML(f, forceFree){
 function loadImages(root){
   root.querySelectorAll(".shot[data-img]").forEach(box=>{
     const im = box.querySelector("img");
-    const list = [`img/${box.dataset.img}.png`, `img/${box.dataset.img}.jpg`];
+    const list = [...(LANG==="en" ? [`img/${box.dataset.img}-en.png`, `img/${box.dataset.img}-en.jpg`] : []), `img/${box.dataset.img}.png`, `img/${box.dataset.img}.jpg`];
     if(box.dataset.remote) list.push(box.dataset.remote + "?scale-down-to=2048");
     let i = 0;
     const tryNext = () => { if(i >= list.length){ showPh(box); return; } im.src = list[i++]; };
