@@ -628,35 +628,49 @@ const CASES = [
   impact:{big:"≈10.000 comercios", p:"Gestionados por el equipo comercial desde el back office, conectado con el portal de autogestión."}
 },
 {
-  id:"cup", title:"Código Único de Pago",
+  id:"cup", noSlots:true, title:"Código Único de Pago",
   card:"Pagar en caja sin QR: 6 dígitos, aceptado en +45.000 puntos de venta",
-  lead:"Pagar en caja sin QR: un código de 6 dígitos que hoy usan todos los clientes de Deuna.",
+  lead:"Pagar en caja sin QR: un código de 6 dígitos que el cajero dicta y el cliente ingresa en la app Deuna o en la banca móvil de Banco Pichincha.",
   tags:["App","Pagos","Research"], year:"2024", status:"En producción",
-  meta:[["Rol","Product Designer"],["Equipo","Producto y negocio"],["Plataforma","App Deuna (personas y comercios)"],["Validación","10 pruebas de usabilidad"],["Estado","En producción"]],
-  summary:[["El problema","Los QRs falsos hicieron que muchos comercios dejaran de mostrar el QR de Deuna, y cada vez menos personas pagaban con la billetera."],["Qué hice","Diseñé un nuevo método de pago, pagar en caja sin QR, de la ideación a las pruebas con usuarios en una agencia bancaria."],["Resultado","En producción para todos los usuarios, aceptado en más de 45.000 puntos de venta y disponible desde la banca móvil de Banco Pichincha."]],
-  cover:img("cup/portada","Portada: pantalla de ingreso del código","1600×1000",{remote:"https://framerusercontent.com/images/ZSPxykkKaTGD34Q6oKfyuVy5I.png"}),
+  meta:[["Rol","Product Designer"],["Research","Dupla con Elizabeth Mendoza"],["Plataforma","App Deuna y Banca Móvil Pichincha"],["Validación","2 tests moderados · 16 personas"],["Estado","En producción"]],
+  summary:[["El problema","Los QRs falsos hicieron que muchos comercios dejaran de mostrar el QR de Deuna, y los grandes comercios no tenían una pantalla en caja para mostrarlo."],["Qué hice","Benchmark, priorización, storyboard, flujo de punta a punta con sus estados de error y dos tests moderados en agencias bancarias, en la app Deuna y en la banca móvil."],["Resultado","En producción para todos los usuarios, aceptado en más de 45.000 puntos de venta y disponible desde la banca móvil de Banco Pichincha."]],
+  cover:img("cup/cover","Código Único de Pago: elegir la opción, ingresar los 6 dígitos y recibir el comprobante"),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"En Ecuador empezaron a circular QRs falsos. Muchos comercios, incluidos grandes supermercados, dejaron de exhibir el QR de Deuna por miedo al fraude, y cada vez menos personas pagaban con la billetera."},
-      {p:"La solución de negocio fue un nuevo método: pagar en caja sin QR, con un código de 6 dígitos: el cajero lo dicta, el cliente lo ingresa en la app y paga. Mi trabajo era que ese gesto fuera tan rápido como pagar en efectivo."}]},
-    {h:"El reto", blocks:[
-      {p:"Diseñar un pago presencial que funcione con una fila detrás, un código dictado en voz alta y un usuario que nunca había visto esta forma de pagar. Y hacerlo dentro de “Pagar en Deuna”, sin crear un flujo paralelo."},
-      {fig:img("cup/contexto-1","Pagar en caja con el código de 6 dígitos","1922×1602",{free:true, remote:"https://framerusercontent.com/images/Lr2pAw06a9v0pU031Scsq0a6KUs.png"})}]},
+      {p:"En Ecuador empezaron a circular QRs falsos. Muchos comercios dejaron de exhibir el QR de Deuna por miedo al fraude, y los grandes comercios, con varias cajas, tampoco tenían una pantalla donde mostrarlo. Son el mismo problema: si no hay QR a la vista, el cliente no paga con Deuna."},
+      {p:"El objetivo de negocio era subir los usuarios activos y el MDR con un método de pago para grandes comercios sin interfaz para QR, disponible en Deuna, en la banca móvil y en cooperativas."}]},
     {h:"Mi rol", blocks:[
-      {p:"Lo trabajamos como una iniciativa end-to-end: ideación, benchmark, journey, diseño, pruebas con usuarios e iteración. Diseñé el flujo de punta a punta: arquitectura, interacción, estados de error y prototipos de alta fidelidad. Planeé y ejecuté las pruebas de usabilidad, e iteré el diseño con producto y negocio."}]},
+      {p:"Lo trabajamos end-to-end con mi dupla de research, Elizabeth Mendoza: benchmark, priorización, storyboard, diseño, pruebas con usuarios e iteración. Yo diseñé el flujo completo, del punto de entrada a los estados de error y los prototipos de alta fidelidad, y co-facilité los tests."}]},
+    {h:"Benchmark y priorización", blocks:[
+      {p:"Revisamos cómo pagan las billeteras en Latinoamérica y Estados Unidos. Encontramos cuatro patrones y los comparamos con tres criterios: que escale, que funcione en varios dispositivos y que sea fácil para el usuario."},
+      {fig:img("cup/benchmark","Benchmark: cuatro patrones de pago con billeteras","1600×1000",{free:true})},
+      {p:"El código ganó: funciona sin tarjeta, no depende de un QR impreso y el mismo gesto sirve en caja, en una tienda online o desde otra app bancaria."}]},
+    {h:"El momento de uso", blocks:[
+      {p:"Antes de diseñar pantallas, dibujamos la escena: una caja con fila, un cajero que dicta el código en voz alta y un cliente que nunca había pagado así. Cada paso extra era un segundo más frente al cajero."},
+      {fig:img("cup/storyboard","Storyboard: pagar en caja con el código","1600×1280",{free:true})}]},
     {h:"La solución", blocks:[
-      {p:"Partimos del momento real de uso: una caja de supermercado con fila, un código dictado en voz alta y ningún QR a la vista. Cada paso extra era un segundo más frente al cajero."},
-      {fig:img("cup/flujo","Flujo completo: código → monto → confirmación","1600×900",{free:true, remote:"https://framerusercontent.com/images/NKKfd988eZvmvcxKuqc8SXKzmQ.png"})},
-      {p:"Un pago en caja tampoco puede quedarse colgado. Diseñé cuatro salidas claras: código inválido, saldo insuficiente, límite transaccional superado y error del servicio. Cada una le dice al usuario qué pasó y qué hacer, con la fila esperando."}]},
-    {h:"Validación", blocks:[
-      {p:"Hice 10 pruebas de usabilidad en una agencia bancaria, con usuarios reales y el prototipo en mano. No buscaba saber si les gustaba: quería ver dónde se trababan en caja."},
-      {finding:["La mayoría buscaba el código dentro de “Pagar”.","Puse la entrada al código ahí, junto al escáner de QR, en lugar de crear un acceso nuevo en el home."]},
-      {finding:["Confundían el código con una OTP o clave de verificación.","Cambié el texto a “Es un número que te entrega el negocio y cambia cada vez que pagues”, y separé los dígitos en grupos de dos para que se lea como un código de pago."]},
-      {finding:["La pantalla de monto y confirmación funcionó sin fricción.","No la toqué. Saber qué no cambiar también es una decisión."]},
-      {fig:img("cup/iteracion","Antes y después del cambio de copy y agrupación de dígitos","1600×900",{free:true, remote:"https://framerusercontent.com/images/hbUblecnJ6sIXqwz5tuOgsJZwI.png"})}]},
+      {p:"El código vive dentro de “Pagar”, junto al QR de Deuna, con una etiqueta de “Nuevo”: no creamos un acceso aparte en el home. El usuario ingresa los 6 dígitos, revisa comercio y monto, paga y recibe el comprobante."},
+      {video:{src:"cup/pago-video",label:"Recorrido: de Pagar al comprobante"}},
+      {fig:img("cup/flujo","Flujo final en la app Deuna","1600×1000",{free:true})},
+      {p:"Un pago en caja tampoco puede quedarse colgado. Diseñé salidas claras para código inválido, saldo insuficiente, límite transaccional y error del servicio, cada una con qué pasó y qué hacer, y siempre con la opción de pagar de otra forma."},
+      {fig:img("cup/estados","Ingreso del código, error y confirmación","1600×1000",{free:true})}]},
+    {h:"Test 1: app Deuna", blocks:[
+      {p:"Test moderado en una agencia de Banco Pichincha con 6 personas y el prototipo en mano. Queríamos saber si entendían cómo funciona el código y dónde se trababan."},
+      {stats:[["5/6","buscaron el código en “Pagar”"],["6","personas en el test"],["2","microinteracciones comparadas"],["0","observaciones en monto y confirmación"]]},
+      {finding:["Confundían el código con una OTP o clave de verificación.","Cambiamos el texto a “Es un número que te entrega el negocio y cambia cada vez que pagues” y agrupamos los dígitos de dos en dos para que se lea como un código de pago."]},
+      {finding:["No notaban diferencia entre las dos microinteracciones del campo.","Nos quedamos con la más simple: casillas que avanzan solas y validan al completar el sexto dígito."]},
+      {finding:["Mostraban el comprobante al cajero para que le tomara foto, como en las tiendas pequeñas.","El comprobante destaca monto, comercio y número de transacción, y el comercio recibe la confirmación en caja."]},
+      {finding:["Monto y confirmación no generaron ninguna observación.","No las tocamos. Saber qué no cambiar también es una decisión."]}]},
+    {h:"Test 2: banca móvil", blocks:[
+      {p:"El código también tenía que funcionar desde la banca móvil de Banco Pichincha. Hicimos un segundo test moderado con 10 personas para elegir el nombre y la posición del acceso a Deuna dentro de la app del banco, midiendo tiempo en tarea y tasa de éxito."},
+      {finding:["Los 3 que pidieron ayuda y los 4 que no completaron la tarea no encontraron el acceso a Deuna en el Home. “Escanear o mostrar QR” no comunicaba que también existe el código.","Propusimos un nombre que abarque todas las formas de pago con Deuna y lo llevamos a los tabs superiores, la opción más rápida en tiempo en tarea."]},
+      {fig:img("cup/hallazgos","Síntesis de los dos tests","1600×1000",{free:true})}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"Un método de pago nuevo compite con la costumbre: los usuarios lo buscan donde ya pagan y lo leen con lo que ya conocen, como una OTP. Diseñar fue sobre todo quitar esas confusiones."}]},
   ],
-  impact:{big:"+45.000 puntos de venta", p:"En producción para todos los usuarios de Deuna, personas y comercios, aceptado en más de 45.000 puntos de venta tras la alianza con Datafast, y disponible también desde la banca móvil de Banco Pichincha."}
+  impact:{big:"+45.000 puntos de venta", p:"En producción para todos los usuarios de Deuna, aceptado en más de 45.000 puntos de venta tras la alianza con Datafast, y disponible también desde la banca móvil de Banco Pichincha."}
 },
+
 {
   id:"suscripciones", title:"Suscripciones y débitos automáticos",
   card:"Débitos automáticos sin tarjeta, desde la billetera",
