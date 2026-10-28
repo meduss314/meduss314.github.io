@@ -458,6 +458,27 @@ section{position:relative}
 .rv{transition:opacity .7s var(--ease), transform .7s var(--ease)!important; transition-delay:var(--d,0ms)}
 .rv.wait:not(.in),.stat.rv.wait:not(.in),.ccard.rv.wait:not(.in),.impact.rv.wait:not(.in){opacity:0; transform:translateY(28px)!important; filter:none!important}
 .contact h2{font-size:clamp(64px,11vw,150px)}
+
+/* ===== v9 · casos con más color ===== */
+.chero{background:linear-gradient(160deg,var(--s) 0%,var(--paper) 75%); overflow:hidden}
+.chero .mono{color:var(--a); font-weight:700}
+.hblob{position:absolute; right:-140px; top:-160px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle,var(--a) 0%,transparent 65%); opacity:.18; pointer-events:none}
+.hst{position:absolute; color:var(--a); pointer-events:none; animation:floaty 8s ease-in-out infinite}
+.hst svg{width:100%; height:100%; display:block}
+.hs1{left:46%; top:70px; width:34px; height:34px}
+.hs2{left:4%; bottom:40px; width:22px; height:22px; color:var(--lime); animation-delay:-3s; filter:drop-shadow(0 0 1px rgba(0,0,0,.25))}
+.chero .cover-media .shot{box-shadow:0 40px 80px -40px color-mix(in srgb,var(--a) 70%,transparent); border:0}
+.kpis div{position:relative; overflow:hidden; transition:transform .35s var(--ease), box-shadow .35s var(--ease); border:0}
+.kpis div:hover{transform:translateY(-4px); box-shadow:0 22px 40px -26px rgba(27,27,31,.45)}
+.kpis .k0{background:#ece9ff} .kpis .k1{background:#eef9d6} .kpis .k2{background:#ffe8fb} .kpis .k3{background:#e3f1ff}
+.kpis b{color:var(--ink)}
+.kic{position:absolute; right:14px; top:14px; width:22px; height:22px; color:#5b4cf8; opacity:.75; transition:transform .6s var(--ease)}
+.kpis .k1 .kic{color:#5e8f00} .kpis .k2 .kic{color:#c43fb3} .kpis .k3 .kic{color:#1f7ad6}
+.kpis div:hover .kic{transform:rotate(90deg) scale(1.2)}
+.kic svg{width:100%; height:100%; display:block}
+.vfig .vwrap{border-radius:20px; overflow:hidden; background:#5b4cf8; aspect-ratio:16/10}
+.vfig video{width:100%; height:100%; display:block; object-fit:cover}
+@media (prefers-reduced-motion: reduce){ .hst{animation:none} }
 </style>
 
 <header class="top">
@@ -493,7 +514,7 @@ const CASES = [
   tags:["B2B","Web","Research"], year:"2024–2026", status:"En producción",
   meta:[["Rol","Lead Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Equipo","Dupla con UX researcher, Product Owner, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"]],
   summary:[["El problema","Reportes por correo que no llegaban, pagos que solo una persona podía confirmar y un equipo comercial y técnico dedicado a soporte. Los comercios querían cancelar."],["Qué hice","Diseñé el portal desde cero y, en dupla con UX research, validé cada funcionalidad con comercios en 7 estudios entre 2024 y 2026."],["Resultado","De 25 empresas piloto a más de 2.000 comercios que se autogestionan, y 40 horas semanales de desarrolladores senior de vuelta al roadmap."]],
-  cover:img("deuna/portada","Pantalla principal del portal","1600×1000",{remote:"https://framerusercontent.com/images/szaV3JcSSYShZbme0b2frMMU6uw.png"}),
+  cover:img("deuna/cover2","Portal Deuna Negocios: reportes y transacciones en tiempo real","1600×1000"),
   chapters:[
     {h:"Contexto", blocks:[
       {p:"Deuna es la billetera digital más usada de Ecuador. Lo que más atrae a los comercios grandes es conectarse por API y cobrar con Deuna desde sus propios sistemas. Pero todo lo que pasaba después del cobro vivía fuera de su alcance:"},
@@ -506,9 +527,11 @@ const CASES = [
       {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Antes de este portal diseñaba el back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Definí la arquitectura de información, diseñé y prototipé cada flujo, e hice la investigación en dupla con Elizabeth Mendoza, UX researcher: planeamos cada estudio, moderamos las sesiones, sintetizamos los hallazgos y aplicamos las mejoras al diseño."}]},
     {h:"Cómo validamos", blocks:[
       {p:"Cada funcionalidad se trató como una iniciativa propia, con su benchmark, prototipo, prueba con comercios reales e iteración antes de desarrollo."},
+      {fig:img("deuna/sintesis","Síntesis de hallazgos de los tests y entrevistas con comercios","1600×1000",{free:true})},
       {fig:img("deuna/research","Estudios de research del Portal Deuna Negocios","1600×580",{free:true})}]},
     {h:"Benchmark", blocks:[
-      {p:"Analizamos los portales de Mercado Pago, Nuvei, Payphone, Shopify, Wave y Stripe. Los patrones que adoptamos: menús de poca profundidad, terminología consistente, filtros potentes y feedback claro en cada acción. La idea era que un usuario que ya usa otro medio de pago no tuviera que aprender nada nuevo."}]},
+      {p:"Analizamos los portales de Mercado Pago, Nuvei, Payphone, Shopify, Wave y Stripe. Los patrones que adoptamos: menús de poca profundidad, terminología consistente, filtros potentes y feedback claro en cada acción. La idea era que un usuario que ya usa otro medio de pago no tuviera que aprender nada nuevo."},
+      {fig:img("deuna/benchmark","Benchmark de portales de medios de pago y hallazgos","1600×1000",{free:true})}]},
     {h:"MVP: reportes", blocks:[
       {p:"Probamos dos propuestas con 10 comercios: reutilizar la estructura del back office o crear un listado con lenguaje pensado para el comercio."},
       {stats:[["10/10","terminaron el flujo de la propuesta 2 más rápido y sin ayuda"],["7/10","la calificaron como fácil de usar"],["8/10","esperaban filtrar por fecha y sucursal"]]},
@@ -528,7 +551,9 @@ const CASES = [
       {p:"Salimos con un piloto de 25 empresas, el número que definió el equipo de seguridad para el MVP, y medimos satisfacción, recomendación y facilidad de uso con una encuesta a las empresas participantes. Funcionó tan bien que hubo que masificarlo."}]},
     {h:"Perfil desarrollador y sandbox", blocks:[
       {p:"Los desarrolladores de los comercios ahora tienen documentación, credenciales, configuración de webhooks y un sandbox para probar su integración por su cuenta. Lo priorizamos para liberar a la célula: las 40 horas semanales que 3 desarrolladores senior dedicaban a soporte volvieron al roadmap."},
-      {fig:img("deuna/sandbox","Perfil desarrollador: documentación y centro de pruebas (sandbox)","1600×1000",{free:true})}]},
+      {p:"El sandbox tiene dos pasos: configurar el webhook con sus credenciales y simular un cobro de prueba con un QR, CUP o deeplink para ver la respuesta (aprobado, rechazado o pendiente) y el comprobante, sin tocar dinero real."},
+      {video:{src:"deuna/sandbox-video",label:"Recorrido: documentación, centro de pruebas, webhook y cobro simulado"}},
+      {fig:img("deuna/sandbox2","Centro de pruebas: configurar webhook y simular un cobro","1600×1000",{free:true})}]},
     {h:"Roles y permisos", blocks:[
       {p:"En los primeros tests apareció una señal: 4 de 10 comercios querían que sus vendedores vieran reportes, pero solo de su sucursal. Con el portal en uso, el acceso recaía en una sola persona por empresa. Diseñé un modelo de roles según la estructura del comercio (grupo, empresa, sucursal y caja) y lo probamos con 8 administradores."},
       {stats:[["8/8","estuvieron de acuerdo con los tres roles propuestos"],["8/8","invitaron a un colaborador con éxito"],["25%","completó la edición de permisos: la tarea más difícil"]]},
@@ -536,7 +561,10 @@ const CASES = [
       {finding:["7 de 8 cambiaron un rol sin problema, pero 6 no entendieron qué permisos ganaba la persona.","Agregamos un resumen de los nuevos permisos antes de confirmar el cambio."]},
       {finding:["5 de 6 empresas usan correo institucional para administradores, pero los cajeros rotan mucho.","Habilitamos un método de acceso alternativo para cajeros."]},
       {ul:["<b>Administrador de grupo:</b> ve y gestiona todas las empresas del grupo.","<b>Administrador de empresa:</b> gestiona su empresa, sus sucursales y quién ve qué.","<b>Consulta:</b> permisos variables que define el administrador.","<b>Desarrollador:</b> solo las funciones de integración."]},
-      {fig:img("deuna/roles","Gestión de colaboradores y resumen de cambios antes de guardar","1600×1000",{free:true})},
+      {h3:"Cómo se invita a un colaborador"},
+      {p:"Desde el estado vacío, el administrador invita con correo y nombre, elige el rol, define qué sucursales verá y revisa los permisos que trae ese rol antes de enviar. Los permisos son fijos por rol para evitar el error que vimos en el test: nadie tiene que armar un rol personalizado."},
+      {video:{src:"deuna/roles-video",label:"Recorrido: invitar a un colaborador"}},
+      {fig:img("deuna/roles2","Invitar colaborador: estado vacío, formulario e invitación enviada","1600×1000",{free:true})},
       {p:"Hoy estamos iterando el primer alcance: gestión de colaboradores con estados que explican su causa, auditoría de cambios y protección para no dejar a una empresa sin administrador."}]},
     {h:"Grupos empresariales", blocks:[
       {p:"Los holdings con varias empresas tenían que entrar empresa por empresa y consolidar en Excel. Entrevistamos a comerciales internos y a administradores de grupos para diseñar un acceso unificado: ver todas las empresas del grupo desde un solo lugar, con el rol de administrador de grupo."},
@@ -545,8 +573,17 @@ const CASES = [
       {p:"En alta fidelidad, el administrador del grupo ve un dashboard consolidado: ingresos, transacciones, ticket promedio y devoluciones de todas sus empresas, la participación de cada una y la opción de exportar el consolidado."},
       {fig:img("deuna/grupos-hifi","Dashboard del grupo en alta fidelidad","1600×1000",{free:true})}]},
     {h:"Reportes consolidados", blocks:[
-      {p:"Solo ofrecíamos reportes diarios. A fin de mes, trimestre o año, los comercios armaban sus cifras a mano o le pedían a nuestra fuerza comercial que lo hiciera. Creamos reportes que el comercio configura, programa y descarga, y los probamos antes del lanzamiento con tres tareas: crear un reporte puntual, programar uno recurrente y encontrar un reporte ya generado."},
-      {fig:img("deuna/reportes-consolidados","Crear un reporte personalizado: resumen antes de generarlo","1600×1000",{free:true})}]},
+      {p:"Solo ofrecíamos reportes diarios. A fin de mes, trimestre o año, los comercios armaban sus cifras a mano o le pedían a nuestra fuerza comercial que lo hiciera."},
+      {h3:"Cómo se crea un reporte"},
+      {p:"Un asistente en cuatro pasos dentro de la misma pantalla de reportes: nombre, sucursales, rango de fechas y un resumen antes de crear. El reporte se genera en segundo plano y queda en la misma lista que los automáticos, marcado como personalizado."},
+      {video:{src:"deuna/reportes-video",label:"Recorrido: crear un reporte personalizado"}},
+      {fig:img("deuna/reportes2","Los cuatro pasos para crear un reporte personalizado","1600×1000",{free:true})},
+      {h3:"Lo que mejoramos en la sección"},
+      {finding:["Los reportes personalizados tenían que convivir con los automáticos sin volverse una lista inmanejable.","Una sola tabla con todos los reportes, filtros por tipo, fecha, frecuencia y sucursal, y búsqueda por nombre."]},
+      {finding:["Elegir entre cientos de sucursales una por una no escalaba.","Selector con búsqueda, opción “Todas las sucursales” y un contador de cuántas quedaron seleccionadas."]},
+      {finding:["El comercio no sabía qué rango de fechas podía pedir.","Rango de 2 a 31 días con el mensaje visible antes de elegir, no después del error."]},
+      {finding:["Generar un reporte grande bloqueaba la pantalla.","Generación en segundo plano con un indicador de progreso y aviso cuando está listo para descargar."]},
+      {p:"Lo probamos antes del lanzamiento con tres tareas: crear un reporte puntual, programar uno recurrente y encontrar un reporte ya generado."}]},
     {h:"Qué aprendí", blocks:[
       {learn:"En B2B, el lenguaje interno es el enemigo. “Pagos”, “reportes” o “rol personalizado” tenían sentido para nosotros y confundían al comercio. Probar cada funcionalidad nos ahorró capacitar a 2.000 comercios después."}]},
   ],
@@ -950,7 +987,8 @@ function blockHTML(b){
   if(b.fig) return fig(b.fig);
   if(b.pair) return `<div class="pair">${b.pair.map(f=>fig(f, !!f.remote)).join("")}</div>`;
   if(b.trio) return `<div class="trio">${b.trio.map(f=>fig(f, !!f.remote)).join("")}</div>`;
-  if(b.stats) return `<div class="kpis rv">${b.stats.map(([n,t])=>`<div><b>${n}</b><span>${t}</span></div>`).join("")}</div>`;
+  if(b.stats) return `<div class="kpis rv">${b.stats.map(([n,t],i)=>`<div class="k${i%4}"><i class="kic" aria-hidden="true">${STAR4SVG}</i><b data-n="${n}">${n}</b><span>${t}</span></div>`).join("")}</div>`;
+  if(b.video) return `<figure class="rv vfig"><div class="vwrap"><video src="img/${b.video.src}.mp4" poster="img/${b.video.src}.jpg" autoplay muted loop playsinline preload="metadata"></video></div><figcaption>${b.video.label}</figcaption></figure>`;
   if(b.quotes) return `<div class="quotes">${b.quotes.map(([q,a])=>`<blockquote class="rv">“${q}”<cite>${a}</cite></blockquote>`).join("")}</div>`;
   if(b.learn) return `<p class="learn rv">${b.learn}</p>`;
   if(b.finding) return `<div class="finding rv"><span class="k v">Problema</span><span>${b.finding[0]}</span><span class="k d">Solución</span><span>${b.finding[1]}</span></div>`;
@@ -968,10 +1006,13 @@ function caseTicker(c){
   const t = items.map(x=>`<span>${x} ${SPARK}</span>`).join("");
   return `<div class="ticker" aria-hidden="true"><div class="track">${t}${t}${t}</div></div>`;
 }
+const ACC={_:["#5b4cf8","#ece9ff"],"credito-facil-codensa":["#8a2f8f","#f5e8f5"],"porvenir-app":["#3d7a12","#e7f1dc"],"movistar-empresas":["#0b6fd6","#e3eefb"],"colombia-fintech":["#5b4cf8","#eef9d6"]};
+const STAR4SVG='<svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg>';
 function caseView(c){
   const L = CASES.filter(x=>!x.draft), i = L.indexOf(c), nx = L[(i+1)%L.length];
   return `
-  <section class="chero">
+  <section class="chero" style="--a:${(ACC[c.id]||ACC._)[0]};--s:${(ACC[c.id]||ACC._)[1]}">
+    <span class="hst hs1" aria-hidden="true">${STAR4SVG}</span><span class="hst hs2" aria-hidden="true">${STAR4SVG}</span><span class="hblob" aria-hidden="true"></span>
     <div class="wrap">
       <a class="pill back" href="#casos">← Todos los casos</a>
       <div class="split">
@@ -1032,6 +1073,16 @@ function syncMedia(){
   };
   ro = new ResizeObserver(apply); ro.observe(txt); addEventListener("resize", apply); apply();
 }
+function setupCount(){
+  const els=[...document.querySelectorAll(".kpis b[data-n]")];
+  if(reduce || !("IntersectionObserver" in window)) return;
+  const ob=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; ob.unobserve(e.target);
+    const el=e.target, raw=el.dataset.n, m=raw.match(/^([^0-9]*)([0-9]+)(.*)$/); if(!m) return;
+    const end=+m[2], t0=performance.now(), d=900;
+    const tick=now=>{ const p=Math.min(1,(now-t0)/d), val=Math.round(end*(1-Math.pow(1-p,3))); el.textContent=m[1]+val+m[3]; if(p<1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick); }),{threshold:.6});
+  els.forEach(el=>ob.observe(el));
+}
 function setupSlider(){
   const s = document.getElementById("statSlider"), dots = document.getElementById("statDots");
   if(!s || !dots) return;
@@ -1050,7 +1101,7 @@ function render(){
     if(!app.dataset.home){ app.innerHTML = homeView(); app.dataset.home="1"; document.title = "Lina Prieto · Product Designer"; }
     if(id){ document.getElementById(id)?.scrollIntoView(); } else window.scrollTo(0,0);
   }
-  loadImages(app); syncMedia(); setupReveal(); setupSlider();
+  loadImages(app); syncMedia(); setupReveal(); setupSlider(); setupCount();
 }
 let first = true;
 function go(){
