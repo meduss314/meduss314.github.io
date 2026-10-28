@@ -518,6 +518,7 @@ const CASES = [
       {fig:img("deuna/reportes","Historial de reportes","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})}]},
     {h:"MVP: transacciones en tiempo real", blocks:[
       {p:"Probamos el listado en desktop y mobile con 10 comercios. Los usos principales: validar si un cliente pagó, cuadre y conciliación, y cierre de caja."},
+      {fig:img("deuna/prototipo-trx","Prototipo que probamos con 10 comercios, en desktop y mobile, antes de los ajustes","1600×1000",{free:true})},
       {stats:[["7/10","completaron ver una transacción sin ayuda, en desktop y en mobile"],["8/10","encontraron el filtro de fecha directamente"],["9/10","se confundieron con el término “Pagos”"]]},
       {finding:["9 de 10 entendían “Pagos” como un pago a un proveedor, no como el dinero que Deuna les deposita.","Cambiamos el término por “Acreditaciones” y separamos ventas, acreditaciones y devoluciones en pestañas."]},
       {finding:["4 de 10 iban primero a Reportes para buscar una transacción.","Renombramos la sección a “Transacciones en tiempo real”."]},
@@ -536,7 +537,9 @@ const CASES = [
       {ul:["<b>Administrador de grupo:</b> ve y gestiona todas las empresas del grupo.","<b>Administrador de empresa:</b> gestiona su empresa, sus sucursales y quién ve qué.","<b>Consulta:</b> permisos variables que define el administrador.","<b>Desarrollador:</b> solo las funciones de integración."]},
       {fig:img("deuna/roles-1","Roles y permisos","1728×1145",{free:true,remote:"https://framerusercontent.com/images/yDKWtaFokPTjMCFFCnwIhdDhM.png"})}]},
     {h:"Grupos empresariales", blocks:[
-      {p:"Los holdings con varias empresas tenían que entrar empresa por empresa y consolidar en Excel. Entrevistamos a comerciales internos y a administradores de grupos para diseñar un acceso unificado: ver todas las empresas del grupo desde un solo lugar, con el rol de administrador de grupo."}]},
+      {p:"Los holdings con varias empresas tenían que entrar empresa por empresa y consolidar en Excel. Entrevistamos a comerciales internos y a administradores de grupos para diseñar un acceso unificado: ver todas las empresas del grupo desde un solo lugar, con el rol de administrador de grupo."},
+      {p:"Exploramos tres flujos: un selector de grupo con dashboard, un switcher persistente y un híbrido. Elegimos el híbrido: el administrador escoge una o varias empresas, ve un resumen por empresa y el total combinado, y puede cambiar la selección sin salir de transacciones."},
+      {fig:img("deuna/grupos","Flujo híbrido en media fidelidad: elegir empresas y vista combinada","1600×1000",{free:true})}]},
     {h:"Reportes consolidados", blocks:[
       {p:"Solo ofrecíamos reportes diarios. A fin de mes, trimestre o año, los comercios armaban sus cifras a mano o le pedían a nuestra fuerza comercial que lo hiciera. Creamos reportes que el comercio configura, programa y descarga, y los probamos antes del lanzamiento con tres tareas: crear un reporte puntual, programar uno recurrente y encontrar un reporte ya generado."}]},
     {h:"Qué aprendí", blocks:[
