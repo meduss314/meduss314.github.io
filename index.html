@@ -529,7 +529,7 @@ const CASES = [
       {stats:[["72 h","al mes por coordinador comercial resolviendo problemas de reportes"],["20 h","al mes del arquitecto en el mismo problema"],["40 h","semanales de 3 desarrolladores senior en soporte de integraciones"],["$0,04","por cada SMS de notificación ($0,02 por correo)"]]},
       {p:"Las metas: bajar entre 20 y 25% los costos de notificar transacciones por canales que no controlamos, reducir a la mitad el tiempo perdido en errores, ganar comercios que no se afiliaban por falta de autogestión y mejorar el CSAT."}]},
     {h:"Mi rol", blocks:[
-      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Antes de este portal diseñaba el back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Definí la arquitectura de información, diseñé y prototipé cada flujo, e hice la investigación en dupla con UX research: con Elizabeth Mendoza en el benchmark y los tests de reportes y transacciones del MVP, y con Diana Rivadeneira desde roles y permisos en adelante. Planeamos cada estudio, moderamos las sesiones, sintetizamos los hallazgos y aplicamos las mejoras al diseño."}]},
+      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Venía de trabajar en el mantenimiento del back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Definí la arquitectura de información, diseñé y prototipé cada flujo, e hice la investigación en dupla con UX research: con Elizabeth Mendoza en el benchmark y los tests de reportes y transacciones del MVP, y con Diana Rivadeneira desde roles y permisos en adelante. Planeamos cada estudio, moderamos las sesiones, sintetizamos los hallazgos y aplicamos las mejoras al diseño."}]},
     {h:"Cómo validamos", blocks:[
       {p:"Cada funcionalidad se trató como una iniciativa propia, con su benchmark, prototipo, prueba con comercios reales e iteración antes de desarrollo."},
       {fig:img("deuna/sintesis","Síntesis de hallazgos de los tests y entrevistas con comercios","1600×1000",{free:true})},
@@ -597,28 +597,24 @@ const CASES = [
 },
 {
   id:"back-office", noSlots:true, title:"Back Office comercial Deuna",
-  card:"La herramienta interna con la que el equipo comercial afilia y gestiona unos 10.000 comercios",
-  lead:"La plataforma interna donde los asesores comerciales de Deuna afilian comercios y configuran todo lo que necesitan para empezar a cobrar.",
+  card:"Evolución de la herramienta interna con la que el equipo comercial gestiona unos 10.000 comercios",
+  lead:"La plataforma interna donde los asesores comerciales de Deuna afilian comercios y los configuran para cobrar. Me sumé para mantenerla, evolucionarla y conectarla con el Portal Deuna Negocios.",
   tags:["Herramienta interna","B2B","Flujos"], year:"2024–2026", status:"En producción",
   meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Usuarios","Asesores comerciales"],["Plataforma","Web interna"]],
-  summary:[["El problema","La fuerza de ventas necesitaba afiliar comercios y dejarlos listos para cobrar: datos, documentos, sucursales, comisiones y QRs, todo en un solo lugar."],["Qué hice","Diseñé el proceso de afiliación de punta a punta y las vistas para administrar comercios, sucursales, cajas, QRs, comisiones y reportes."],["Resultado","Alrededor de 10.000 comercios afiliados y gestionados desde la plataforma."]],
+  summary:[["El reto","Una herramienta ya en uso por la fuerza de ventas, con unos 10.000 comercios, que tenía que seguir creciendo sin frenar la operación."],["Qué hice","Mantenimiento y nuevas funcionalidades del back office, y el diseño de la conexión con el Portal Deuna Negocios."],["Resultado","Un back office que alimenta al portal: lo que el asesor configura es lo que el comercio ve y gestiona."]],
   cover:img("backoffice/flujo","Proceso de afiliación de un comercio","1600×620",{free:true}),
   chapters:[
     {h:"Contexto", blocks:[
       {p:"Cada comercio que cobra con Deuna entra por el back office. Los asesores comerciales, la fuerza de ventas de Deuna, consiguen el comercio y lo afilian desde ahí: lo crean, cargan sus documentos, arman su estructura de sucursales y cajas, definen la comisión, asignan QRs y lo siguen en reportes."}]},
     {h:"Mi rol", blocks:[
-      {p:"Antes del Portal Deuna Negocios, el back office era mi producto. Diseñé el proceso de afiliación dentro de la plataforma y las vistas de administración: listados, tablas, configuración y reportes."}]},
-    {h:"Problema y solución", blocks:[
-      {finding:["Un comercio puede ser un grupo sombrilla, una empresa, una sucursal o una caja, y cada uno se configura distinto.","Un modelo de estructura único (grupo → empresa → sucursal → caja) que se usa en la afiliación, en los QRs y en los reportes."]},
-      {finding:["La afiliación tiene muchos pasos y documentos, y un asesor la hace entre visitas comerciales.","Un flujo guiado por pasos, para que el asesor sepa siempre qué falta antes de activar el comercio."]},
-      {finding:["Comisiones y QRs se configuraban por comercio y un error se notaba solo cuando el comercio ya cobraba.","Configuración de comisión y asignación de QRs como pasos explícitos de la afiliación, antes de activar."]}]},
+      {p:"No diseñé el back office desde cero: llegué con la plataforma en producción. Me encargué de su mantenimiento y evolución, y de diseñar la conexión con el Portal Deuna Negocios, para que lo que el equipo comercial configura internamente sea la base de lo que cada comercio ve y gestiona por su cuenta."}]},
     {h:"El flujo de afiliación", blocks:[
-      {p:"Del primer contacto al comercio listo para cobrar, en cinco pasos."},
+      {p:"Del primer contacto al comercio listo para cobrar."},
       {fig:img("backoffice/flujo","Proceso de afiliación de un comercio","1600×620",{free:true})}]},
     {h:"Qué gestiona la plataforma", blocks:[
       {fig:img("backoffice/modulos","Módulos del back office comercial","1600×1000",{free:true})}]},
   ],
-  impact:{big:"≈10.000 comercios", p:"Afiliados y administrados por el equipo comercial desde el back office."}
+  impact:{big:"≈10.000 comercios", p:"Gestionados por el equipo comercial desde el back office, conectado con el portal de autogestión."}
 },
 {
   id:"cup", title:"Código Único de Pago",
