@@ -487,38 +487,62 @@ const img = (src, label, size="1600×1000", opts={}) => ({img:src, label, size, 
 
 const CASES = [
 {
-  id:"portal-deuna-negocios", title:"Portal Deuna Negocios",
+  id:"portal-deuna-negocios", noSlots:true, title:"Portal Deuna Negocios",
   card:"De 10 comercios piloto a más de 2.000 que se autogestionan",
-  lead:"Un portal de autogestión para que los comercios grandes de Deuna confirmen pagos, descarguen reportes e integren la API sin pasar por soporte.",
-  tags:["B2B","Web","Fintech"], year:"2024–2026", status:"En producción",
-  meta:[["Rol","Lead Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Equipo","Product Owner, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"]],
-  summary:[["El problema","Los reportes llegaban por correo (y terminaron en listas negras) y confirmar un pago dependía de una sola persona o de servicio al cliente. Los comercios amenazaban con cancelar."],["Qué hice","Diseñé el portal desde cero y cada funcionalidad como una iniciativa end-to-end: benchmark, diseño, pruebas de usabilidad e iteración."],["Resultado","De 10 comercios piloto a más de 2.000 que se autogestionan, y un equipo técnico que dejó de hacer soporte de integraciones."]],
+  lead:"Un portal de autogestión para que los comercios grandes de Deuna confirmen pagos, descarguen reportes, gestionen a su equipo e integren la API sin pasar por soporte.",
+  tags:["B2B","Web","Research"], year:"2024–2026", status:"En producción",
+  meta:[["Rol","Lead Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Equipo","Product Owner, UX research, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"]],
+  summary:[["El problema","Reportes por correo que no llegaban, pagos que solo una persona podía confirmar y un equipo comercial y técnico dedicado a soporte. Los comercios querían cancelar."],["Qué hice","Diseñé el portal desde cero y cada funcionalidad como una iniciativa end-to-end, validada con comercios en 6 estudios entre 2024 y 2026."],["Resultado","De 10 comercios piloto a más de 2.000 que se autogestionan, y 40 horas semanales de desarrolladores senior de vuelta al roadmap."]],
   cover:img("deuna/portada","Pantalla principal del portal","1600×1000",{remote:"https://framerusercontent.com/images/szaV3JcSSYShZbme0b2frMMU6uw.png"}),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"Deuna es la billetera digital más usada de Ecuador. Lo que más atrae a los comercios grandes es conectarse por API y cobrar con Deuna desde sus propios sistemas. Pero todo lo que pasaba después del cobro vivía fuera de su alcance."},
-      {ul:["<b>Reportes:</b> se enviaban por correo. Muchos no llegaban porque caímos en listas negras, y sin reportes los comercios no podían cerrar caja y querían cancelar el servicio.","<b>Transacciones:</b> la confirmación de pago le llegaba a una sola persona de la empresa. El cajero no podía verificarla, desconfiaba de comprobantes falsos y terminaba llamando a servicio al cliente.","<b>Integraciones:</b> cada comercio que se conectaba por API necesitaba acompañamiento de desarrolladores senior, el asesor comercial y el arquitecto de merchants."]}]},
+      {p:"Deuna es la billetera digital más usada de Ecuador. Lo que más atrae a los comercios grandes es conectarse por API y cobrar con Deuna desde sus propios sistemas. Pero todo lo que pasaba después del cobro vivía fuera de su alcance:"},
+      {ul:["<b>Reportes:</b> se enviaban por correo y muchos no llegaban porque caímos en listas negras. Sin reportes, los comercios no podían cerrar caja y querían cancelar el servicio.","<b>Transacciones:</b> la confirmación de pago le llegaba a una sola persona de la empresa. El cajero no podía verificarla, desconfiaba de comprobantes falsos y terminaba llamando a servicio al cliente.","<b>Integraciones:</b> cada comercio que se conectaba por API necesitaba acompañamiento de desarrolladores senior, el asesor comercial y el arquitecto de merchants."]}]},
+    {h:"El costo de no tener portal", blocks:[
+      {p:"Antes de diseñar, el equipo puso en números lo que costaba operar sin un canal propio. Ese fue el caso de negocio que aprobó el proyecto."},
+      {stats:[["72 h","al mes por coordinador comercial resolviendo problemas de reportes"],["20 h","al mes del arquitecto en el mismo problema"],["40 h","semanales de 3 desarrolladores senior en soporte de integraciones"],["$0,04","por cada SMS de notificación ($0,02 por correo)"]]},
+      {p:"Las metas: bajar entre 20 y 25% los costos de notificar transacciones por canales que no controlamos, reducir a la mitad el tiempo perdido en errores, ganar comercios que no se afiliaban por falta de autogestión y mejorar el CSAT."}]},
     {h:"Mi rol", blocks:[
-      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Antes de este portal diseñaba el back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Construí con el equipo el caso de negocio, definí la arquitectura de información y traté cada funcionalidad como una iniciativa propia, con su benchmark, diseño, pruebas de usabilidad e iteración."}]},
-    {h:"El MVP", blocks:[
-      {p:"Teníamos dos meses. Priorizamos solo lo que hacía que los comercios quisieran irse:"},
-      {finding:["Si los reportes no llegaban, el comercio quería cancelar.","Historial de reportes siempre disponible en el portal, filtrado por fecha, frecuencia y sucursal."]},
-      {finding:["Cualquier cajero necesitaba verificar un pago al instante, sin depender del correo de otra persona.","Transacciones en tiempo real con búsqueda por pagador o número de transacción y el detalle a un clic."]},
+      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Antes de este portal diseñaba el back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Definí la arquitectura de información, diseñé y prototipé cada flujo, y trabajé con UX research en cada estudio: preparé prototipos, participé en las sesiones e iteré con los hallazgos."}]},
+    {h:"Cómo validamos", blocks:[
+      {p:"Cada funcionalidad se trató como una iniciativa propia, con su benchmark, prototipo, prueba con comercios reales e iteración antes de desarrollo."},
+      {fig:img("deuna/research","Estudios de research del Portal Deuna Negocios","1600×580",{free:true})}]},
+    {h:"Benchmark", blocks:[
+      {p:"Analizamos los portales de Mercado Pago, Nuvei, Payphone, Shopify, Wave y Stripe. Los patrones que adoptamos: menús de poca profundidad, terminología consistente, filtros potentes y feedback claro en cada acción. La idea era que un usuario que ya usa otro medio de pago no tuviera que aprender nada nuevo."}]},
+    {h:"MVP: reportes", blocks:[
+      {p:"Probamos dos propuestas con 10 comercios: reutilizar la estructura del back office o crear un listado con lenguaje pensado para el comercio."},
+      {stats:[["10/10","terminaron el flujo de la propuesta 2 más rápido y sin ayuda"],["7/10","la calificaron como fácil de usar"],["8/10","esperaban filtrar por fecha y sucursal"]]},
+      {finding:["La propuesta 1, basada en el back office, confundía y tomaba mucho más tiempo.","Elegimos la propuesta 2: un listado con términos del comercio, no del equipo interno."]},
+      {finding:["8 de 10 buscaban filtrar por fecha y sucursal para encontrar un reporte.","Agregamos filtros por fecha y sucursal como primera interacción."]},
+      {finding:["6 de 10 tenían procesos de cuadre automatizados con el Excel que recibían por correo.","Mantuvimos el mismo formato de descarga para no romper su operación."]},
+      {fig:img("deuna/reportes","Historial de reportes","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})}]},
+    {h:"MVP: transacciones en tiempo real", blocks:[
+      {p:"Probamos el listado en desktop y mobile con 10 comercios. Los usos principales: validar si un cliente pagó, cuadre y conciliación, y cierre de caja."},
+      {stats:[["7/10","completaron ver una transacción sin ayuda, en desktop y en mobile"],["8/10","encontraron el filtro de fecha directamente"],["9/10","se confundieron con el término “Pagos”"]]},
+      {finding:["9 de 10 entendían “Pagos” como un pago a un proveedor, no como el dinero que Deuna les deposita.","Cambiamos el término por “Acreditaciones” y separamos ventas, acreditaciones y devoluciones en pestañas."]},
+      {finding:["4 de 10 iban primero a Reportes para buscar una transacción.","Renombramos la sección a “Transacciones en tiempo real”."]},
+      {finding:["Al ver “Crear reporte”, 6 de 10 esperaban configurar un consolidado.","Cambiamos el CTA a “Descargar” para que la acción fuera explícita."]},
+      {p:"También definimos los datos que van primero: fecha, nombre del pagador, monto, ID de transacción, hora y sucursal. Desktop fue el dispositivo principal, así que el MVP salió en web."},
       {fig:img("deuna/transacciones","Transacciones en tiempo real","1600×1000",{free:true, remote:"https://framerusercontent.com/images/N9pPFzjVXfQdooiTmYl4XiksQU.png"})},
-      {fig:img("deuna/reportes","Historial de reportes","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})},
-      {p:"Salimos con 10 comercios piloto. Funcionó tan bien que hubo que masificarlo, y el portal empezó a crecer."}]},
+      {p:"Salimos con un piloto y medimos satisfacción, recomendación y facilidad de uso con una encuesta a las empresas participantes. Funcionó tan bien que hubo que masificarlo."}]},
     {h:"Perfil desarrollador y sandbox", blocks:[
-      {p:"Los desarrolladores de los comercios ahora tienen la documentación, las credenciales, la configuración de webhooks y un ambiente sandbox para probar su integración por su cuenta. Lo priorizamos para liberar a nuestra célula: en vez de dar consultoría de integración, podía construir producto."},
-      {stats:[["40 h","semanales de soporte de integración"],["3","desarrolladores senior dedicados a eso"]]},
-      {p:"Además del soporte que daban el asesor comercial y el arquitecto de merchants. Con el perfil desarrollador, ese tiempo volvió al roadmap."}]},
+      {p:"Los desarrolladores de los comercios ahora tienen documentación, credenciales, configuración de webhooks y un sandbox para probar su integración por su cuenta. Lo priorizamos para liberar a la célula: las 40 horas semanales que 3 desarrolladores senior dedicaban a soporte volvieron al roadmap."}]},
     {h:"Roles y permisos", blocks:[
-      {p:"No todos los que entran al portal son iguales ni deben ver lo mismo. Diseñamos un modelo de accesos según la estructura de cada comercio: grupos sombrilla, empresas, sucursales y cajas."},
+      {p:"En los primeros tests apareció una señal: 4 de 10 comercios querían que sus vendedores vieran reportes, pero solo de su sucursal. Con el portal en uso, el acceso recaía en una sola persona por empresa. Diseñé un modelo de roles según la estructura del comercio (grupo, empresa, sucursal y caja) y lo probamos con 8 administradores."},
+      {stats:[["8/8","estuvieron de acuerdo con los tres roles propuestos"],["8/8","invitaron a un colaborador con éxito"],["25%","completó la edición de permisos: la tarea más difícil"]]},
+      {finding:["Solo 2 de 8 lograron quitar un permiso. Confundían la lista de colaboradores con la de roles y no entendían que debían crear un rol personalizado.","Simplificar la edición de permisos y separar con claridad colaboradores de roles."]},
+      {finding:["7 de 8 cambiaron un rol sin problema, pero 6 no entendieron qué permisos ganaba la persona.","Mostrar un resumen de los nuevos permisos antes de confirmar el cambio."]},
+      {finding:["5 de 6 empresas usan correo institucional para administradores, pero los cajeros rotan mucho.","Contemplar métodos de acceso alternativos para cajeros."]},
       {ul:["<b>Administrador de grupo:</b> ve y gestiona todas las empresas del grupo.","<b>Administrador de empresa:</b> gestiona su empresa, sus sucursales y quién ve qué.","<b>Consulta:</b> permisos variables que define el administrador.","<b>Desarrollador:</b> solo las funciones de integración."]},
       {fig:img("deuna/roles-1","Roles y permisos","1728×1145",{free:true,remote:"https://framerusercontent.com/images/yDKWtaFokPTjMCFFCnwIhdDhM.png"})}]},
+    {h:"Grupos empresariales", blocks:[
+      {p:"Los holdings con varias empresas tenían que entrar empresa por empresa y consolidar en Excel. Entrevistamos a comerciales internos y a administradores de grupos para diseñar un acceso unificado: ver todas las empresas del grupo desde un solo lugar, con el rol de administrador de grupo."}]},
     {h:"Reportes consolidados", blocks:[
-      {p:"Solo ofrecíamos reportes diarios. A fin de mes, trimestre o año, los comercios armaban sus cifras a mano o le pedían a nuestra fuerza comercial que lo hiciera. Creamos reportes personalizados que el comercio configura y descarga con las métricas que necesita."}]},
+      {p:"Solo ofrecíamos reportes diarios. A fin de mes, trimestre o año, los comercios armaban sus cifras a mano o le pedían a nuestra fuerza comercial que lo hiciera. Creamos reportes que el comercio configura, programa y descarga, y los probamos antes del lanzamiento con tres tareas: crear un reporte puntual, programar uno recurrente y encontrar un reporte ya generado."}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"En B2B, el lenguaje interno es el enemigo. “Pagos”, “reportes” o “rol personalizado” tenían sentido para nosotros y confundían al comercio. Probar cada funcionalidad nos ahorró capacitar a 2.000 comercios después."}]},
   ],
-  impact:{big:"10 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus usuarios e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
+  impact:{big:"10 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus equipos e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
 },
 {
   id:"back-office", noSlots:true, title:"Back Office comercial Deuna",
