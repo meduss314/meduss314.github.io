@@ -710,6 +710,50 @@ const CASES = [
 },
 
 {
+  id:"datafonos", noSlots:true, title:"Datáfonos para micros y pymes",
+  card:"Investigación conjoint con 576 comercios para decidir qué datáfono vender",
+  lead:"Descubrimos que el problema no era el precio del datáfono, sino que nadie se lo había ofrecido a los comercios.",
+  tags:["Research","Encuesta conjoint","Estrategia"], year:"2025", status:"Investigación",
+  meta:[["Rol","Product Designer · research en dupla con Diana Rivadeneira"],["Equipo","UX Research, producto, negocio y marketing"],["Métodos","Desk research, benchmark y encuesta conjoint"],["Muestra","576 comercios (70% micro, 30% pyme)"]],
+  summary:[["El reto","Deuna quería vender datáfonos a sus comercios y tenía 5 modelos candidatos, pero no sabía cuál comprar ni cómo cobrarlo antes de invertir en inventario."],["Qué hice","Desk research, benchmark de 7 proveedores en LATAM y una encuesta con análisis conjoint, piloteada con 17 comercios antes de lanzarla a 576."],["Resultado","Cinco recomendaciones para negocio, cada una atada a un hallazgo: vender educando, tarifa fija y un portafolio por perfil de comercio."]],
+  cover:img("datafonos/cover","Barreras de los comercios y datos clave de la encuesta"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Deuna quería vender datáfonos a sus comercios para que aceptaran pagos con tarjeta, sumando ingresos y adopción. Negocio ya tenía 5 modelos candidatos, con precios entre $36,50 y $200, y necesitaba saber cuál comprar y cómo cobrarlo antes de invertir en inventario."},
+      {p:"El riesgo era real: en otros mercados, los datáfonos baratos se adoptan rápido y luego quedan en un cajón. Y en Ecuador el efectivo todavía domina el comercio de barrio."},
+      {p:"La pregunta: ¿qué datáfono, a qué precio y con qué modalidad de pago adoptaría cada tipo de comercio? La convertimos en cuatro objetivos: entender motivaciones y barreras, identificar los atributos indispensables, medir qué combinación elegiría cada segmento y saber si pedir RUC sería una barrera."}]},
+    {h:"Proceso", blocks:[
+      {p:"Trabajamos en tres fases, y cada una afinó las preguntas de la siguiente."},
+      {h3:"1. Desk research y benchmark"},
+      {p:"Mapeamos el mercado de POS en LATAM y comparamos 7 proveedores: modelos, precios, comisiones y a qué segmento apunta cada uno. Salió una primera hipótesis: el portafolio debía crecer con el comercio, del lector Bluetooth al SmartPOS."},
+      {fig:img("datafonos/benchmark","Benchmark de proveedores e hipótesis de portafolio","1600×1000",{free:true})},
+      {h3:"2. Diseño de la encuesta"},
+      {p:"Dos ramas: comercios con datáfono (qué los motivó, qué les duele) y sin datáfono (por qué no lo tienen). Luego, un ranking de atributos y un análisis conjoint con los 5 modelos reales, combinando apariencia, precio, modalidad de compra y medios de pago."},
+      {p:"Por qué conjoint: preguntar “¿qué te importa más?” lleva a que todos digan “el precio”. El conjoint obliga a elegir entre paquetes completos y revela cuánto pesa cada atributo en la decisión real."},
+      {h3:"3. Piloto, lanzamiento y análisis"},
+      {p:"Probamos la encuesta con 17 comercios: 16 la terminaron en 6 a 15 minutos. Ajustamos el lenguaje de comisión vs. pago por uso, que generaba confusión, y la lanzamos a 576 comercios. Segmentamos los resultados en FigJam."},
+      {stats:[["576","comercios encuestados"],["78%","no tiene datáfono"],["8/10","de ellos nunca recibió una oferta"],["44%","prefiere tarifa mensual fija"]]}]},
+    {h:"Hallazgos", blocks:[
+      {finding:["Asumíamos que el precio frenaba la compra.","La principal barrera es no conocer los beneficios de aceptar tarjeta (35%), por encima del costo del equipo (30%) y las comisiones (20%). La demanda existe, pero nadie la está atendiendo."]},
+      {finding:["Temíamos que el datáfono quedara en un cajón.","Quien lo adopta se queda: el 51% lleva más de 2 años. Lo compraron para cobrar con tarjeta (69%), agilizar el cobro (56%) y verse más profesionales (49%)."]},
+      {fig:img("datafonos/barreras","El dolor de quien ya lo usa es el costo, no la experiencia","1600×1000",{free:true})},
+      {finding:["Casi todo el mercado cobra un porcentaje por venta.","Los comercios prefieren un cobro predecible: tarifa mensual fija 44%, porcentaje por venta 29%, escalonado 20%."]},
+      {finding:["Asumíamos que aceptar QR sería un diferenciador.","En el conjoint, la apariencia fue el atributo de mayor peso, seguida del precio. El QR no sumó valor en ningún segmento."]},
+      {p:"No hay un solo datáfono para todos: encontramos dos perfiles fuertes, alimentación y retail, ambos de 2 a 5 empleados y sin datáfono, cada uno con un paquete óptimo distinto. Y el RUC no frena: el 85% ya lo tiene."},
+      {fig:img("datafonos/hallazgos","Síntesis de hallazgos","1600×1000",{free:true})}]},
+    {h:"Recomendaciones", blocks:[
+      {p:"Llevamos a negocio cinco recomendaciones, cada una atada a un hallazgo:"},
+      {ul:["<b>Vender educando:</b> la fuerza comercial explica el beneficio de aceptar tarjeta antes de ofrecer el equipo.","<b>Tarifa mensual fija</b> como opción principal: la comisión por venta genera miedo a cobros excesivos.","<b>Un paquete por perfil:</b> el modelo con pago a cuotas para el segmento grande, más un modelo básico de $40.","<b>No vender el QR como diferenciador:</b> comunicar precio, modalidad y depósito inmediato.","<b>Mantener el comprobante impreso</b> y estudiar qué haría confiable uno digital."]},
+      {p:"A favor de la fuerza comercial: Deuna ya registra el segmento de cada comercio al afiliarlo, así que puede ofrecer de entrada el modelo con más probabilidad de compra."}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"Lo que la gente dice no es lo que elige: en las preguntas directas el costo era la gran barrera; en el conjoint, la apariencia pesó más que el precio. Medir elecciones entre paquetes cambió la recomendación."},
+      {p:"El piloto se pagó solo: con 17 comercios detectamos la confusión entre “comisión” y “pago por usar el dispositivo” antes de llegar a 576. Lo que haría distinto: fotos realistas de los 5 modelos, porque dos se veían “de juguete”, y más pymes medianas en la muestra."},
+      {p:"Esta investigación abrió una segunda pregunta: si un celular con Tap to Phone podía reemplazar al datáfono para los micros. La exploramos con una nueva encuesta conjoint a 382 comercios."}]},
+  ],
+  impact:{big:"576 comercios", p:"Una decisión de portafolio, precio y modalidad de cobro basada en lo que los comercios eligen, no en lo que dicen."}
+},
+
+{
   id:"back-office", noSlots:true, title:"Back Office comercial Deuna",
   card:"Evolución de la herramienta interna con la que el equipo comercial gestiona unos 10.000 comercios",
   lead:"La plataforma interna donde los asesores comerciales de Deuna afilian comercios, generan sus QR y les dan acceso al portal. Me sumé para mantenerla, evolucionarla y conectarla con el Portal Deuna Negocios.",
@@ -1008,7 +1052,7 @@ function homeView(){
             <div class="bottom"><p>${c.card}</p><span class="arrow">↗</span></div>
           </a>`).join("")}
       </div>
-      <div class="more-cta rv"><a class="pill big" href="#proyectos">Ver más proyectos →</a><span>Back office, pensiones, crédito, telco y sitios web.</span></div>
+      <div class="more-cta rv"><a class="pill big" href="#proyectos">Ver más proyectos →</a><span>Research, back office, pensiones, crédito, telco y sitios web.</span></div>
     </div>
   </section>
 
@@ -1054,7 +1098,7 @@ function moreView(){
   <section class="chero more-hero" style="--a:#5b4cf8;--s:#ece9ff"><span class="hblob" aria-hidden="true"></span><div class="wrap">
     <a class="pill back" href="#casos">← Volver al inicio</a>
     <h1 class="cond"><span class="ln">Más proyectos</span></h1>
-    <p class="sub">Otros proyectos de herramientas internas, banca, telco y sitios web, para quien quiera ver el recorrido completo.</p>
+    <p class="sub">Otros proyectos de research, herramientas internas, banca, telco y sitios web, para quien quiera ver el recorrido completo.</p>
   </div></section>
   <section class="cases more"><div class="wrap">
     <div class="case-grid">
