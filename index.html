@@ -754,6 +754,44 @@ const CASES = [
 },
 
 {
+  id:"gasolineras", noSlots:true, title:"Pago en gasolineras",
+  card:"Una nueva comisión de $0,23 diseñada con datos de 547 conductores",
+  lead:"Deuna iba a cobrar una comisión de $0,23 en gasolineras. Antes de lanzarla, medimos qué tanto podía romper la preferencia de los usuarios y diseñamos el pago para que el costo se entienda antes de pagar.",
+  tags:["App","Pagos","Research"], year:"2026", status:"En desarrollo",
+  meta:[["Rol","Product Designer · research con Diana Rivadeneira"],["Método","Encuesta con dos rutas"],["Muestra","547 conductores (309 + 238)"],["Plataforma","App Deuna"]],
+  summary:[["El reto","Negocio quería subir el MDR con una comisión de $0,23 por pago en gasolineras, la misma de las tarjetas, sin perder a quienes hoy prefieren Deuna justamente porque no cobra."],["Qué hice","Encuesta a 547 conductores, con y sin experiencia pagando con Deuna, y el flujo de pago en alta fidelidad con la comisión, su explicación y todos los estados de error."],["Resultado","Recomendaciones para lanzar la comisión con una estrategia de compensación, y un pago que muestra el costo antes de confirmar."]],
+  cover:img("gasolineras/cover","Pago en gasolinera: monto, costo de la comisión y comprobante"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"En las gasolineras de Ecuador se puede pagar con Deuna escaneando un QR estático en el surtidor. Para muchos usuarios es la forma preferida de pagar: rápida, sin efectivo y sin la comisión que cobran las tarjetas."},
+      {p:"Negocio quería aumentar los ingresos por MDR cobrando $0,23 por pago en gasolineras, lo mismo que se cobra con tarjeta. La pregunta era incómoda: ¿cuántos usuarios dejarían de usar Deuna por esa comisión, y qué podría compensarlo?"}]},
+    {h:"Investigación", blocks:[
+      {p:"Hicimos una encuesta a conductores que cargan gasolina con frecuencia, con dos rutas: quienes ya pagan con Deuna (qué los motiva, qué los haría dejarlo) y quienes no (qué los frena, qué los haría probar)."},
+      {stats:[["547","respuestas"],["56%","ya ha pagado con Deuna"],["97%","de ellos dice que es fácil"],["65%","lo dejaría si tiene costo"]]},
+      {fig:img("gasolineras/hallazgos","Síntesis de la encuesta","1600×1000",{free:true})}]},
+    {h:"Hallazgos", blocks:[
+      {finding:["Quienes pagan con Deuna lo prefieren por rapidez y por no pagar comisión.","El 99% lo ve mejor que la tarjeta. La comisión toca justo el beneficio que sostiene esa preferencia: el riesgo de abandono se acerca al 50%."]},
+      {finding:["La fricción de quienes no lo usan no está en “cómo se paga”, sino en “dónde y cuándo”.","El 42% no sabía que se podía pagar con Deuna en gasolineras y el 53% dice que en su estación solo a veces, rara vez o nunca se puede."]},
+      {fig:img("gasolineras/competidor","El competidor es el efectivo","1600×1000",{free:true})},
+      {finding:["El principal competidor no son las tarjetas, es el efectivo.","Cobrar la comisión no nos pone “en la misma cancha” que las tarjetas: nos pone en desventaja frente a un método sin ningún costo."]},
+      {finding:["Hay una ventana para mitigar el impacto.","El 86% de quienes no usan Deuna se sentiría cómodo pagando con ella y el 61% cambiaría de método si recibe beneficios."]}]},
+    {h:"Recomendaciones", blocks:[
+      {p:"La comisión no puede salir sola: necesita una estrategia de compensación. Propusimos tres alternativas para el programa de beneficios:"},
+      {ul:["<b>Beneficios por nivel de usuario:</b> consumos de gasolina sin comisión al mes, más consumos al subir de nivel.","<b>Incentivo por ticket:</b> si el usuario carga dos veces más de $25, la siguiente no paga comisión.","<b>Beneficio por frecuencia:</b> cada 4 pagos con Deuna, el siguiente no paga comisión."]},
+      {p:"Y corregir las barreras actuales antes de cobrar: material POP más visible, el QR en un lugar accesible para el conductor y personal de las estaciones capacitado. A mediano plazo, evaluar pagos sin internet: el 34% dejaría Deuna si el pago depende de tener conexión."}]},
+    {h:"La solución", blocks:[
+      {p:"Diseñé el pago con la comisión visible desde el primer momento. En la pantalla del monto aparece “Costo de comisión $0,23” con un acceso a más información, la confirmación separa el total del costo y el usuario acepta de forma explícita que se debite."},
+      {video:{src:"gasolineras/pago-video",label:"Recorrido: del QR al comprobante"}},
+      {fig:img("gasolineras/flujo","Pago en gasolinera con QR estático","1600×960",{free:true})},
+      {p:"Un pago en el surtidor no puede quedarse colgado. Definí el orden de los errores, de fondos insuficientes a límites diarios, mensuales y transaccionales, timeout y error genérico, cada uno con qué pasó y qué hacer."},
+      {fig:img("gasolineras/estados","Saldo, límites y errores","1600×1000",{free:true})}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"Un cobro nuevo no es solo un número en la pantalla: cambia el valor que la gente le da al producto. Medir ese quiebre antes de lanzar le dio a negocio una forma de cobrar sin perder a quienes más nos prefieren."}]},
+  ],
+  impact:{big:"547 conductores", p:"Datos para decidir cómo lanzar la comisión, con un programa de beneficios y un pago donde el costo se entiende antes de confirmar."}
+},
+
+{
   id:"back-office", noSlots:true, title:"Back Office comercial Deuna",
   card:"Evolución de la herramienta interna con la que el equipo comercial gestiona unos 10.000 comercios",
   lead:"La plataforma interna donde los asesores comerciales de Deuna afilian comercios, generan sus QR y les dan acceso al portal. Me sumé para mantenerla, evolucionarla y conectarla con el Portal Deuna Negocios.",
