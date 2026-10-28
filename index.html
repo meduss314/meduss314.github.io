@@ -11,6 +11,8 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Lina Valentina Prieto, Senior Product Designer en fintech y pagos. Casos: Portal Deuna Negocios, Back Office, Código Único de Pago, Suscripciones, Colombia Fintech, Crédito Fácil Codensa, Porvenir y Movistar.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:title" content="Lina Prieto · Senior Product Designer">
 <meta property="og:description" content="Productos financieros que se usan en la caja, la sucursal y el back-office. Casos de Deuna, Colombia Fintech, Porvenir, Crédito Fácil Codensa y Movistar.">
 <meta property="og:image" content="https://linaprietodesign.com/img/lina.jpg">
@@ -440,16 +442,53 @@ section{position:relative}
 .quotes{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px}
 .quotes blockquote{margin:0; background:var(--white); border:1px solid var(--line); border-radius:18px; padding:20px 22px; font-size:16px; line-height:1.5}
 .quotes cite{display:block; margin-top:12px; font:500 12px/1.4 var(--mono); font-style:normal; color:#6b6b72; text-transform:uppercase; letter-spacing:.04em}
+
+/* ===== v7 · sobrio y profesional ===== */
+header.top{background:rgba(244,241,233,.92); color:var(--ink); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.logo{display:inline-flex; align-items:center; gap:10px; font:700 17px/1 var(--body); color:var(--ink); text-decoration:none; letter-spacing:-.01em}
+.logo svg{display:none}
+.mono-lp{display:inline-grid; place-items:center; width:32px; height:32px; border-radius:9px; background:var(--ink); color:var(--white); font:800 13px/1 var(--body); letter-spacing:.02em}
+nav.links{gap:22px}
+nav.links .nl{color:var(--ink); text-decoration:none; font-weight:600; font-size:15px}
+nav.links .nl:hover{text-decoration:underline; text-underline-offset:5px}
+.pill.cvbtn{background:var(--ink); color:var(--white); border-color:var(--ink)}
+.hero{background:var(--paper); color:var(--ink); border-bottom:1px solid var(--line)}
+.hero h1 .row2{color:var(--ink)}
+.hero .kicker{gap:14px}
+.hero .kicker .mono{color:#6b6b72}
+.avail{display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600; background:var(--white); border:1px solid var(--line); border-radius:999px; padding:6px 12px}
+.avail i{width:8px; height:8px; border-radius:50%; background:#2bb673; box-shadow:0 0 0 3px rgba(43,182,115,.18)}
+.hero .sub{font-weight:500; color:#3a3a42}
+.hero .photo img,.hero .split-media.photo img{border-radius:20px; border:0; box-shadow:0 30px 60px -36px rgba(27,27,31,.45); transform:none}
+.hero .pill.big:not(.black){background:var(--white); color:var(--ink); border:1px solid var(--line)}
+.pill.black{background:var(--ink); color:var(--white)}
+.dd,.sticker,.hero .s2,.contact h2 .spark{display:none!important}
+.stats{background:var(--paper); color:var(--ink)}
+.stats .sec-title{color:var(--ink)}
+.stat{background:var(--white)!important; color:var(--ink)!important; border:1px solid var(--line); min-height:170px}
+.stat b{color:var(--ink)}
+.stat span{font-weight:500; color:#4a4a52}
+.stat:hover{transform:none; box-shadow:none}
+.about{background-image:none; border-radius:0; border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(56px,9vw,120px)}
+.ccard:hover{transform:translateY(-4px)}
+.ccard:hover .shot img{transform:none}
+.hero .ln,.chero .ln,.hero .kicker,.chero .mono,.hero .sub,.chero .sub,.hero .photo,.cover-media{animation:fadeUp .6s ease both}
+@keyframes fadeUp{from{opacity:0; transform:translateY(12px)}}
+.rv{transition:opacity .6s ease, transform .6s ease!important; transition-delay:var(--d,0ms)}
+.rv.wait:not(.in),.stat.rv.wait:not(.in),.ccard.rv.wait:not(.in),.impact.rv.wait:not(.in){opacity:0; transform:translateY(16px)!important; filter:none!important}
+::view-transition-old(root){animation:vtOut .2s ease both}
+::view-transition-new(root){animation:vtIn .3s ease both}
 </style>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#inicio">lina<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg></a>
+    <a class="logo" href="#inicio"><span class="mono-lp">LP</span>Lina Prieto</a>
     <nav class="links" aria-label="Principal">
-      <a class="pill violet" href="#casos">Casos</a>
-      <a class="pill violet hide-sm" href="#sobre-mi">Sobre mí</a>
-      <a class="pill violet hide-sm" href="#contacto">Contacto</a>
-      <a class="pill lime" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="nl" href="#casos">Casos</a>
+      <a class="nl hide-sm" href="#sobre-mi">Sobre mí</a>
+      <a class="nl hide-sm" href="#contacto">Contacto</a>
+      <a class="pill cvbtn" href="cv/Lina-Prieto-CV.pdf" target="_blank" rel="noopener">Ver CV</a>
     </nav>
   </div>
 </header>
@@ -808,35 +847,30 @@ function homeView(){
   const tick = ticker.map(t=>`<span>${t} ${SPARK}</span>`).join("");
   return `
   <section class="hero" id="inicio">
-    ${CORNERS}
     <div class="wrap">
       <div class="split">
         <div class="split-text">
-          <div class="kicker"><span class="pill lime">Senior Product Designer</span><span class="mono">Bogotá · Remoto</span></div>
+          <div class="kicker"><span class="mono">Senior Product Designer · Bogotá · Remoto</span><span class="avail"><i></i>Disponible para nuevos proyectos</span></div>
           <h1 class="cond"><span class="ln">Lina</span><span class="ln row2">Prieto</span></h1>
-          <p class="sub">Diseño productos financieros que se usan <mark>en la caja</mark>, <mark class="lime">en la sucursal</mark> y en el back-office.</p>
+          <p class="sub">Diseño productos financieros que se usan en la caja, en la sucursal y en el back-office.</p>
         </div>
         <div class="split-media photo">
           <img src="img/lina.jpg" alt="Lina Valentina Prieto" width="900" height="900">
-          ${sticker("Open to work · Open to work · Open to work · ","Open<br>to work")}
-          <svg class="s2" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="${STAR4}"/></svg>
         </div>
       </div>
       <div class="ctas">
-        <a class="pill lime big" href="#casos">Ver casos ↓</a>
+        <a class="pill black big" href="#casos">Ver casos ↓</a>
         <a class="pill big" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
   </section>
 
-  <div class="ticker" aria-hidden="true"><div class="track">${tick}${tick}</div></div>
 
   <section class="stats">
-    ${doodle("burst","d-stats1")}${doodle("esse","d-stats2")}
     <div class="wrap">
       <div class="sec-title rv"><h2 class="cond">Resultados</h2><p>Números de productos que ya están en producción. Diseño pensando en lo que cambia para el negocio y para quien usa el producto todos los días.</p></div>
       <div class="stat-grid" id="statSlider">
-        ${RESULTS.map((r,i)=>`<div class="stat ${r.c} rv" style="--d:${i*80}ms">${doodle(r.d,"stat-dd")}<b>${r.big}</b><span>${r.txt}</span></div>`).join("")}
+        ${RESULTS.map((r,i)=>`<div class="stat rv" style="--d:${i*60}ms"><b>${r.big}</b><span>${r.txt}</span></div>`).join("")}
       </div>
       <div class="dots" id="statDots" aria-hidden="true">${RESULTS.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join("")}</div>
     </div>
@@ -857,14 +891,13 @@ function homeView(){
   </section>
 
   <section class="about" id="sobre-mi">
-    ${doodle("burst","d-about1")}${doodle("curl","d-about2")}
     <div class="wrap">
-      <div class="sec-title rv"><h2 class="cond">Sobre mí ${SPARK}</h2></div>
+      <div class="sec-title rv"><h2 class="cond">Sobre mí</h2></div>
       <div class="about-grid">
         <div class="text rv">
           <p>Llevo más de 5 años diseñando productos financieros: billeteras, pagos en caja, portales para comercios y herramientas internas de banca.</p>
-          <p>Hoy lidero el diseño del frente B2B en <mark class="lime">Deuna</mark>, la billetera digital más usada de Ecuador. Allí llevamos el Portal Deuna Negocios de 10 a más de 2.000 comercios y lanzamos el Código Único de Pago.</p>
-          <p>Antes diseñé para BBVA, Bancolombia, Claro, Porvenir y Crédito Fácil Codensa. Me muevo entre negocio, tecnología y usuario: investigo, armo el caso, diseño el flujo y lo acompaño hasta que <mark>funciona en producción</mark>.</p>
+          <p>Hoy lidero el diseño del frente B2B en Deuna, la billetera digital más usada de Ecuador. Allí llevamos el Portal Deuna Negocios de 10 a más de 2.000 comercios y lanzamos el Código Único de Pago.</p>
+          <p>Antes diseñé para BBVA, Bancolombia, Claro, Porvenir y Crédito Fácil Codensa. Me muevo entre negocio, tecnología y usuario: investigo, armo el caso, diseño el flujo y lo acompaño hasta que funciona en producción.</p>
           <div class="chips">${["UX Research","Design Systems","Flujos de pago","Herramientas internas","Figma","Maze","Accesibilidad","Prototipado"].map(s=>`<span class="chip">${s}</span>`).join("")}</div>
         </div>
         <ol class="tl rv" style="--d:120ms" aria-label="Trayectoria">
@@ -880,7 +913,7 @@ function homeView(){
 
   <section class="contact" id="contacto">
     <div class="wrap">
-      <h2 class="cond rv">${SPARK}Hablemos!!!${sticker("Open to work · Open to work · ","Open<br>to work")}</h2>
+      <h2 class="cond rv">Hablemos</h2>
       <p class="lead rv">¿Buscas una Product Designer para tu equipo? Escríbeme y conversamos.</p>
       <dl class="contact-list">
         <div class="ci rv"><dt class="mono">Correo</dt><dd>${EMAIL}</dd><button class="pill lime" data-copy="${EMAIL}" type="button">Copiar</button></div>
