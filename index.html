@@ -479,6 +479,11 @@ section{position:relative}
 .vfig .vwrap{border-radius:20px; overflow:hidden; background:#5b4cf8; aspect-ratio:16/10}
 .vfig video{width:100%; height:100%; display:block; object-fit:cover}
 @media (prefers-reduced-motion: reduce){ .hst{animation:none} }
+
+/* ===== v10 · detalles ===== */
+.chero .split-text .sub,.chero .sub{font:400 clamp(17px,1.6vw,20px)/1.55 var(--body); max-width:44ch; color:#3a3a42}
+.chero .cover-media .shot{height:auto!important; aspect-ratio:16/10!important; background:transparent}
+.chero .cover-media .shot img{object-fit:contain!important; height:100%}
 </style>
 
 <header class="top">
@@ -569,6 +574,7 @@ const CASES = [
     {h:"Grupos empresariales", blocks:[
       {p:"Los holdings con varias empresas tenían que entrar empresa por empresa y consolidar en Excel. Entrevistamos a comerciales internos y a administradores de grupos para diseñar un acceso unificado: ver todas las empresas del grupo desde un solo lugar, con el rol de administrador de grupo."},
       {p:"Exploramos tres flujos en media fidelidad: un selector de grupo con dashboard, un switcher persistente y un híbrido que combina ambos."},
+      {video:{src:"deuna/grupos-video",label:"Recorrido: de la exploración en media fidelidad al dashboard del grupo"}},
       {fig:img("deuna/grupos","Exploración en media fidelidad: elegir empresas y vista combinada","1600×1000",{free:true})},
       {p:"En alta fidelidad, el administrador del grupo ve un dashboard consolidado: ingresos, transacciones, ticket promedio y devoluciones de todas sus empresas, la participación de cada una y la opción de exportar el consolidado."},
       {fig:img("deuna/grupos-hifi","Dashboard del grupo en alta fidelidad","1600×1000",{free:true})}]},
@@ -740,6 +746,7 @@ const CASES = [
       {p:"Tarjeta, cupo disponible, pago oportuno, últimos movimientos y préstamo personal en la primera pantalla. En móvil se mantiene la misma jerarquía."},
       {h3:"Encuesta de satisfacción"},
       {p:"Cuatro preguntas con progreso visible y respuestas rápidas (caritas, sí/no, escala) para que contestar tome segundos."},
+      {video:{src:"cfc/encuesta-video",label:"Recorrido: los cuatro pasos de la encuesta"}},
       {fig:img("cfc/mock-encuesta","Paso 1: recomendación de 0 a 10","1600×1000",{free:true})},
       {fig:img("cfc/encuesta-flujo","Pasos 2 a 4 y confirmación","1600×1000",{free:true})},
       {h3:"Design system"},
@@ -779,6 +786,7 @@ const CASES = [
     {h:"La solución", blocks:[
       {h3:"Home con accesos directos"},
       {p:"Las cuatro tareas más frecuentes (transferir, retirar, certificados y extractos) quedan arriba y debajo todos los productos con su saldo."},
+      {video:{src:"porvenir/app-video",label:"Recorrido por la app: home, cuentas, saldo y movimientos"}},
       {fig:img("porvenir/mock-movimientos","Home y movimientos","1600×1000",{free:true})},
       {h3:"Entender el dinero"},
       {p:"El detalle de cada producto separa aportes y rendimientos, y muestra cómo está invertido. Los movimientos se leen como una lista con fecha, tipo y monto."}]},
@@ -819,6 +827,7 @@ const CASES = [
       {fig:img("movistar/mock-detalle","Detalle de la cuenta y sus líneas","1600×1000",{free:true})},
       {h3:"Ayuda en línea"},
       {p:"Crear una solicitud se divide en cuatro pasos visibles para que el cliente sepa siempre qué falta. Al final recibe un número de ticket para hacer seguimiento."},
+      {video:{src:"movistar/flujo-video",label:"Recorrido: crear una solicitud de soporte"}},
       {fig:img("movistar/flujo","Flujo de solicitud: datos, razón, archivos y ticket","1600×1000",{free:true})}]},
     {h:"Qué aprendí", blocks:[
       {learn:"En B2B el usuario no navega, busca. Diseñar desde la búsqueda y las tablas fue más útil que cualquier dashboard."}]},
