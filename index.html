@@ -484,6 +484,7 @@ section{position:relative}
 .chero .split-text .sub,.chero .sub{font:400 clamp(17px,1.6vw,20px)/1.55 var(--body); max-width:44ch; color:#3a3a42}
 .chero .cover-media .shot{height:auto!important; aspect-ratio:16/10!important; background:transparent}
 .chero .cover-media .shot img{object-fit:contain!important; height:100%}
+.chero h1.long{font-size:clamp(40px,5.2vw,80px)}
 </style>
 
 <header class="top">
@@ -672,41 +673,47 @@ const CASES = [
 },
 
 {
-  id:"suscripciones", title:"Suscripciones y débitos automáticos",
+  id:"suscripciones", noSlots:true, title:"Suscripciones y débitos automáticos",
   card:"Débitos automáticos sin tarjeta, desde la billetera",
-  lead:"Pagar suscripciones con la billetera, sin tarjeta: una tokenización compleja convertida en “vincular cuenta”.",
-  tags:["App","Pagos","Integraciones"], year:"2026", status:"En desarrollo",
-  meta:[["Rol","Lead Product Designer"],["Equipo","Producto, arquitectura y desarrollo"],["Plataforma","App Deuna + apps de comercios"],["Estado","En desarrollo"]],
-  summary:[["El problema","Los comercios digitales internacionales que cobran vía dLocal solo aceptaban tarjeta, y Deuna no tiene tarjeta."],["Qué hice","Diseñé la vinculación de la cuenta y el débito automático: benchmark de Latinoamérica, flujos entre apps, pruebas de usabilidad y medición."],["Resultado","Un nuevo método de pago recurrente sin tarjeta, con el embudo de medición listo desde el día uno."]],
-  cover:img("suscripciones/portada","Portada: pantalla “Vincular cuenta”","1600×1000",{remote:"https://framerusercontent.com/images/TsqXxFsRybj1exbSyDk1Qzn4FZA.png"}),
+  lead:"Pagar suscripciones y pedidos con la billetera, sin tarjeta: una tokenización compleja convertida en “vincular cuenta”.",
+  tags:["App","Pagos","Research"], year:"2026", status:"En desarrollo",
+  meta:[["Rol","Lead Product Designer"],["Research","Desk research y benchmark propios"],["Plataforma","App Deuna + apps de comercios"],["Estado","En desarrollo"]],
+  summary:[["El problema","Los comercios digitales internacionales que cobran vía dLocal solo aceptaban tarjeta, y Deuna no tiene tarjeta."],["Qué hice","Desk research y benchmark de pagos recurrentes en Latinoamérica, flujos entre apps, prototipos de prueba, estados de error y medición por paso."],["Resultado","Un método de pago recurrente sin tarjeta: el usuario vincula su cuenta una vez y paga sin salir de la app del comercio."]],
+  cover:img("suscripciones/cover","Vinculación: elegir Deuna en el comercio, aceptar y volver"),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"Pedir comida, pagar el gimnasio o una suscripción: casi todo cobro recurrente en apps exige una tarjeta. Deuna no tiene tarjeta, y no queríamos inventar una."},
-      {p:"La oportunidad vino de dLocal, el procesador que cobra en Latinoamérica para comercios digitales internacionales como Netflix, Rappi, PedidosYa, Shein o Temu. Para que esos comercios pudieran cobrar con Deuna, había que darle a la billetera la capacidad de un cobro automático."},
-      {p:"La respuesta técnica fue tokenizar la cuenta del usuario: un token único que se comporta como una tarjeta frente al comercio y que se le entrega solo cuando el usuario acepta la vinculación. Con él, el comercio puede debitar una suscripción o una compra puntual. La pregunta de diseño: ¿cómo le explicas eso a alguien que solo quiere pagar su pedido?"}]},
-    {h:"El reto", blocks:[
-      {p:"El flujo empieza en la app del comercio, salta a Deuna para autorizar y vuelve al comercio. Tres apps, un permiso de cobro y cero tolerancia a la desconfianza."},
-      {p:"Había que explicar la vinculación sin hablar de tokens ni APIs, distinguir una suscripción fija de un pago recurrente variable, y generar confianza en un salto entre aplicaciones."},
-      {fig:img("suscripciones/flujo","Flujo entre apps: comercio → Deuna → comercio","1600×900",{free:true, remote:"https://framerusercontent.com/images/xTC0Pe3GE3v3fhCtoy2vBQ5meQU.png"})}]},
+      {p:"Pedir comida, pagar una plataforma de streaming o una membresía: casi todo cobro recurrente en apps exige una tarjeta. Deuna no tiene tarjeta, y no queríamos inventar una."},
+      {p:"La oportunidad vino de dLocal, el procesador que cobra en Latinoamérica para comercios digitales internacionales de delivery, movilidad, streaming y e-commerce. Para que esos comercios pudieran cobrar con Deuna, la billetera necesitaba la capacidad de un cobro automático."},
+      {p:"La respuesta técnica fue tokenizar la cuenta del usuario: un token que se comporta como una tarjeta frente al comercio y que se le entrega solo cuando el usuario acepta la vinculación. La pregunta de diseño: ¿cómo le explicas eso a alguien que solo quiere pagar su pedido?"}]},
     {h:"Mi rol", blocks:[
-      {p:"Lideré el diseño de punta a punta en la app de Deuna: benchmark de los estándares de vinculación y débito automático en Latinoamérica, arquitectura, flujos, pruebas de usabilidad con usuarios, prototipos y la estrategia de medición. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
-    {h:"Tres decisiones", blocks:[
-      {fig:img("suscripciones/decisiones","Decisiones de diseño","2400×1900",{free:true,remote:"https://framerusercontent.com/images/8D2Zc3o0Ba2TuOcOXe97Vntst8.png"})},
-      {finding:["Tokenizar es un concepto técnico que asusta, y el miedo principal era que vincular generara un cobro.","Hablar de “vincular cuenta” y decir desde el inicio “Este paso no genera ningún cobro”."]},
-      {finding:["En research, los usuarios entendían suscripción y pago recurrente como lo mismo.","Cada tipo con su descripción, jerarquía y estado: fijo y periódico, o variable según el uso."]},
-      {finding:["El salto entre la app del comercio y Deuna genera desconfianza.","Mostrar siempre qué comercio pide el permiso y qué cobro hará, y dejar desvincular a la vista en Perfil."]},
-      {h3:"1. Hablar de “vincular cuenta”, no de tokenizar"},
-      {p:"Vincular una cuenta es una acción que la gente ya conoce. La pantalla de vinculación dice desde el inicio “Este paso no genera ningún cobro”: la frase que desactiva el miedo principal. Debajo, tres beneficios claros: pagos seguros, saldo disponible y control total."},
-      {trio:[img("suscripciones/vincular-1","Vincular cuenta","900×1600",{remote:"https://framerusercontent.com/images/z95BQwWQd1uPELB2KBDF5gc170U.png"}),img("suscripciones/vincular-2","Autorizar permiso","900×1600",{remote:"https://framerusercontent.com/images/hmInmKZRZitZVyVOrapQUHwGnk.png"}),img("suscripciones/vincular-3","Confirmación","900×1600",{remote:"https://framerusercontent.com/images/LkkVGvUc7tIXA5FcnyMdFnsEWWc.png"})]},
-      {h3:"2. Suscripción y pago recurrente, cada uno con su estado"},
-      {p:"En research, los usuarios entendían ambos conceptos como lo mismo. Cada tipo tiene su descripción, su jerarquía y su estado: fijo y periódico, o variable según el uso. Así nadie se sorprende con un cobro."},
-      {h3:"3. Control visible en todo momento"},
-      {p:"Siempre se ve qué comercio pide el permiso y qué tipo de cobro hará. Desvincular está siempre en Perfil → Comercios vinculados, con correo y notificación de confirmación."},
-      {p:"Y los casos que nadie ve: sesión inválida, cuenta ya vinculada, errores del servicio y espera de respuesta. Cada uno le dice al usuario qué pasó y le permite volver al comercio sin quedarse atrapado."},
-      {pair:[img("suscripciones/control","Comercios vinculados y desvincular","1200×900",{remote:"https://framerusercontent.com/images/DFciVUBqeb6vU28lvB4Bo0Nh2Y.png"}),img("suscripciones/errores","Estados de error y espera","1200×900",{remote:"https://framerusercontent.com/images/hDP8NOtjiN2bQkWZZcimej2dA.png"})]}]},
+      {p:"Lideré el diseño de punta a punta en la app de Deuna. Hice yo misma el desk research y el benchmark, diseñé los flujos de vinculación, pago y desvinculación con sus errores, armé los prototipos de prueba y la presentación para el banco, y definí qué medir en cada paso. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
+    {h:"Investigación", blocks:[
+      {p:"Los objetivos eran claros: subir el MDR con ingresos recurrentes, habilitar pagos recurrentes desde la cuenta Deuna y construir algo que sirviera para muchos comercios, no una solución a la medida de uno."},
+      {p:"Estudié cómo funcionan las suscripciones en Latinoamérica: conviven las suscripciones con tarjeta, los débitos automáticos de bancos para servicios básicos y modelos nuevos desde cuenta, como Pix Automático en Brasil o los pagos entre cuentas en Colombia. Y recorrí los flujos reales de billeteras, bancos y apps de la región."},
+      {fig:img("suscripciones/benchmark","Benchmark y desk research: 4 aprendizajes","1600×1000",{free:true})},
+      {p:"La conclusión más importante: la gente no reclama porque le cobren, reclama porque no sabe quién le está cobrando o no encuentra cómo detenerlo."}]},
+    {h:"La solución", blocks:[
+      {p:"El flujo empieza en la app del comercio, salta a Deuna para autorizar y vuelve al comercio. El usuario vincula una vez y después paga sin salir de la app."},
+      {video:{src:"suscripciones/vinculacion-video",label:"Recorrido: del comercio a Deuna y de vuelta"}},
+      {fig:img("suscripciones/flujo","Vinculación en cinco pasos","1600×1000",{free:true})}]},
+    {h:"Decisiones de diseño", blocks:[
+      {finding:["Tokenizar es un concepto técnico que asusta, y el miedo principal era que vincular generara un cobro.","Hablamos de “vincular cuenta”, una acción que la gente ya conoce, y la pantalla dice desde el inicio “Este paso no genera ningún cobro”."]},
+      {finding:["En el benchmark, el momento de autorizar es donde se gana o se rompe la confianza.","Una pantalla dedicada solo a eso: quién cobra, tres beneficios claros (pagos seguros, saldo disponible, control total) y la aceptación explícita de términos antes de habilitar el botón."]},
+      {finding:["El salto entre la app del comercio y Deuna genera desconfianza.","Siempre se ve qué comercio pide el permiso, la entrada a Deuna dice para qué estás ingresando y la confirmación te devuelve directo al comercio."]},
+      {finding:["En research, los usuarios entendían suscripción y pago recurrente como lo mismo.","Cada tipo tiene su descripción, su jerarquía y su estado: fijo y periódico, o variable según el uso."]},
+      {fig:img("suscripciones/estados","Antes de aceptar, error y confirmación","1600×1000",{free:true})},
+      {p:"Y los casos que nadie ve: sesión inválida, cuenta ya vinculada, errores temporales y permanentes, y la espera de respuesta. Cada uno le dice al usuario qué pasó y le deja volver al comercio sin quedarse atrapado."}]},
+    {h:"Control visible", blocks:[
+      {p:"Si la gente reclama porque no sabe quién le cobra, la respuesta es un lugar donde verlo. En Perfil → Comercios vinculados el usuario ve dónde está vinculada su cuenta y puede desvincularla en dos toques, con un aviso de lo que pierde antes de confirmar. Después recibe una notificación y un correo de respaldo."},
+      {fig:img("suscripciones/control","Comercios vinculados y desvinculación","1600×1000",{free:true})}]},
+    {h:"Medición desde el día uno", blocks:[
+      {p:"Cada pantalla del flujo tiene sus eventos definidos: entrada, ingreso a Deuna, aceptación, errores, confirmación y desvinculación. Así el embudo está listo para saber dónde se cae la gente desde el primer comercio integrado."}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"Un permiso de cobro es una relación, no una transacción. Diseñar la salida (ver, desvincular, entender qué pasó) fue tan importante como diseñar la entrada."}]},
   ],
-  impact:{big:"Pagos recurrentes sin tarjeta", p:"Un nuevo método de pago recurrente para los comercios del ecosistema Deuna, con el embudo de medición listo desde el día uno."}
+  impact:{big:"Pagos recurrentes sin tarjeta", p:"Un nuevo método de pago recurrente para los comercios del ecosistema Deuna, pensado para integrar muchos comercios y con el embudo de medición listo desde el día uno."}
 },
+
 {
   id:"colombia-fintech", title:"Colombia Fintech",
   card:"Rediseño del sitio del gremio fintech más importante del país",
@@ -1048,7 +1055,7 @@ function caseView(c){
       <div class="split">
         <div class="split-text">
           <span class="mono">${c.tags.join(" · ")} · ${c.year}</span>
-          <h1 class="cond"><span class="ln">${c.title}</span></h1>
+          <h1 class="cond${Math.max(...c.title.split(" ").map(w=>w.length))>10?" long":""}"><span class="ln">${c.title}</span></h1>
           <p class="sub">${c.lead}</p>
           ${c.link?`<div><a class="pill lime" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ↗</a></div>`:""}
         </div>
