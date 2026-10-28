@@ -485,6 +485,37 @@ section{position:relative}
 .chero .cover-media .shot{height:auto!important; aspect-ratio:16/10!important; background:transparent}
 .chero .cover-media .shot img{object-fit:contain!important; height:100%}
 .chero h1.long{font-size:clamp(40px,5.2vw,80px)}
+
+/* v11 home más ligero */
+.hero{background:linear-gradient(160deg,#ece7ff 0%,#f6f3ff 55%,#f1fadf 100%); color:var(--ink)}
+.hero h1 .row2{color:var(--violet)}
+.hero .sub{font-weight:500; color:#2a2a31; max-width:34ch}
+.hero mark{background:#ffd9fb}.hero mark.lime{background:#e2ff9c}
+.hero .now{margin-top:14px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#6b6b78}
+.hero .pill:not(.lime){background:#fff; color:var(--ink); border-color:var(--ink)}
+.hero .wrap{padding-block:64px 88px}
+.ticker{border-block:1px solid rgba(27,27,31,.25)}
+.stats{background:var(--white); color:var(--ink)}
+.stats .wrap{padding-block:120px 110px}
+.stats .sec-title{color:var(--ink)}
+.stats .stat{color:var(--ink)}
+.stats .c-lime{background:#eef9d6}.stats .c-pink{background:#ffe8fc}.stats .c-violet{background:#ece9ff; color:var(--ink)}.stats .c-paper{background:#fff6c9}
+.stats .c-violet .stat-dd{color:var(--violet)}
+.stats .dots i{background:rgba(27,27,31,.2)}
+.cases .wrap{padding-block:120px 120px}
+.case-grid.feat{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1000px){.case-grid.feat{grid-template-columns:1fr}}
+.case-grid.feat .ccard .top h3{font-size:clamp(26px,2.4vw,34px)}
+.more-cta{display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:44px}
+.more-cta span{color:#5a5a64; font-size:15px}
+.more-hero .wrap{padding-block:56px 40px}
+.more-hero h1{font-size:clamp(52px,7.4vw,112px); margin-top:22px}
+.cases.more .wrap{padding-block:40px 120px}
+.ticker{background:#e2ff9c}
+.case-grid.feat{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-grid.feat .ccard .top h3{font-size:clamp(22px,2vw,30px); overflow-wrap:anywhere}
+.case-grid.feat .ccard .top{flex-direction:column-reverse; align-items:flex-start; gap:10px}
+.case-grid.feat .ccard .top h3{font-size:clamp(20px,1.8vw,27px); overflow-wrap:normal}
 </style>
 
 <header class="top">
@@ -597,38 +628,6 @@ const CASES = [
   impact:{big:"25 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus equipos e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
 },
 {
-  id:"back-office", noSlots:true, title:"Back Office comercial Deuna",
-  card:"Evolución de la herramienta interna con la que el equipo comercial gestiona unos 10.000 comercios",
-  lead:"La plataforma interna donde los asesores comerciales de Deuna afilian comercios, generan sus QR y les dan acceso al portal. Me sumé para mantenerla, evolucionarla y conectarla con el Portal Deuna Negocios.",
-  tags:["Herramienta interna","B2B","Operaciones"], year:"2024–2026", status:"En producción",
-  meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Usuarios","Asesores comerciales"],["Plataforma","Web interna"]],
-  summary:[["El reto","Una herramienta ya en uso por la fuerza de ventas, con unos 10.000 comercios, que tenía que crecer sin frenar la operación."],["Qué hice","Mantenimiento y nuevas funcionalidades: creación masiva de pymes, QR por sucursal y QR masivos, configuración general del comercio y la gestión de cuentas que da acceso al portal."],["Resultado","Un back office que alimenta al portal: lo que el asesor configura es lo que el comercio ve y gestiona por su cuenta."]],
-  cover:img("backoffice/cover","Back office: sucursales de un comercio y generación de QR"),
-  chapters:[
-    {h:"Contexto", blocks:[
-      {p:"Cada comercio que cobra con Deuna entra por el back office. Los asesores comerciales, la fuerza de ventas de Deuna, consiguen el comercio y lo afilian desde ahí: lo crean, arman su estructura de sucursales y cajas, configuran cómo cobra y le entregan sus QR."}]},
-    {h:"Mi rol", blocks:[
-      {p:"No diseñé el back office desde cero: llegué con la plataforma en producción. Me encargué de su mantenimiento y evolución, con funcionalidades nuevas para que el equipo comercial afilie más rápido, y de diseñar la conexión con el Portal Deuna Negocios."},
-      {video:{src:"backoffice/backoffice-video",label:"Recorrido: afiliados, creación masiva, QR y acceso al portal"}}]},
-    {h:"Creación masiva de pymes", blocks:[
-      {p:"Afiliar pymes una por una no escalaba. El asesor ahora descarga una plantilla, la carga y el sistema valida el formato antes de crear los negocios. Si hay errores, se muestran por fila para corregirlos sin perder la carga, y se distinguen la carga completa, la parcial y la fallida."},
-      {fig:img("backoffice/masiva","Carga masiva: subir el archivo y validar el formato","1600×860",{free:true})}]},
-    {h:"QR por sucursal y QR masivos", blocks:[
-      {p:"Cada sucursal y cada caja necesita su QR. Desde la ficha del comercio, el asesor selecciona sucursales, previsualiza el QR con o sin la plantilla de Deuna, elige el tamaño y lo descarga para imprimir."},
-      {p:"Para afiliar en campo, el equipo crea campañas de QR masivos: hasta 1.000 códigos por lote que se activan cuando se asignan a un negocio, con el estado de activos e inactivos de cada campaña."},
-      {fig:img("backoffice/qr","QR por sucursal y campañas de QR masivos","1600×1000",{free:true})}]},
-    {h:"Conexión con el portal", blocks:[
-      {p:"El acceso al Portal Deuna Negocios nace en el back office. En la configuración general del comercio, junto a los métodos de pago y las integraciones, diseñé la gestión de cuentas: el asesor agrega los correos que tendrán acceso, les asigna un rol (maestro o desarrollador) y ve el estado de cada invitación, con la opción de reenviarla si caducó."},
-      {fig:img("backoffice/cuentas","Gestión de cuentas: el acceso del comercio al portal","1600×860",{free:true})},
-      {p:"Ese fue el primer paso hacia roles y permisos: después, el propio comercio pudo invitar y gestionar a su equipo desde el portal, sin pedírselo al asesor."}]},
-    {h:"Qué gestiona la plataforma", blocks:[
-      {fig:img("backoffice/modulos","Módulos del back office comercial","1600×760",{free:true})}]},
-    {h:"Qué aprendí", blocks:[
-      {learn:"Mantener un producto en producción es diseñar con restricciones reales: cada mejora tiene que convivir con lo que el equipo ya usa todos los días."}]},
-  ],
-  impact:{big:"≈10.000 comercios", p:"Gestionados por el equipo comercial desde el back office, conectado con el portal de autogestión."}
-},
-{
   id:"cup", noSlots:true, title:"Código Único de Pago",
   card:"Pagar en caja sin QR: 6 dígitos, aceptado en +45.000 puntos de venta",
   lead:"Pagar en caja sin QR: un código de 6 dígitos que el cajero dicta y el cliente ingresa en la app Deuna o en la banca móvil de Banco Pichincha.",
@@ -714,6 +713,38 @@ const CASES = [
   impact:{big:"Pagos recurrentes sin tarjeta", p:"Un nuevo método de pago recurrente para los comercios del ecosistema Deuna, pensado para integrar muchos comercios y con el embudo de medición listo desde el día uno."}
 },
 
+{
+  id:"back-office", noSlots:true, title:"Back Office comercial Deuna",
+  card:"Evolución de la herramienta interna con la que el equipo comercial gestiona unos 10.000 comercios",
+  lead:"La plataforma interna donde los asesores comerciales de Deuna afilian comercios, generan sus QR y les dan acceso al portal. Me sumé para mantenerla, evolucionarla y conectarla con el Portal Deuna Negocios.",
+  tags:["Herramienta interna","B2B","Operaciones"], year:"2024–2026", status:"En producción",
+  meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Usuarios","Asesores comerciales"],["Plataforma","Web interna"]],
+  summary:[["El reto","Una herramienta ya en uso por la fuerza de ventas, con unos 10.000 comercios, que tenía que crecer sin frenar la operación."],["Qué hice","Mantenimiento y nuevas funcionalidades: creación masiva de pymes, QR por sucursal y QR masivos, configuración general del comercio y la gestión de cuentas que da acceso al portal."],["Resultado","Un back office que alimenta al portal: lo que el asesor configura es lo que el comercio ve y gestiona por su cuenta."]],
+  cover:img("backoffice/cover","Back office: sucursales de un comercio y generación de QR"),
+  chapters:[
+    {h:"Contexto", blocks:[
+      {p:"Cada comercio que cobra con Deuna entra por el back office. Los asesores comerciales, la fuerza de ventas de Deuna, consiguen el comercio y lo afilian desde ahí: lo crean, arman su estructura de sucursales y cajas, configuran cómo cobra y le entregan sus QR."}]},
+    {h:"Mi rol", blocks:[
+      {p:"No diseñé el back office desde cero: llegué con la plataforma en producción. Me encargué de su mantenimiento y evolución, con funcionalidades nuevas para que el equipo comercial afilie más rápido, y de diseñar la conexión con el Portal Deuna Negocios."},
+      {video:{src:"backoffice/backoffice-video",label:"Recorrido: afiliados, creación masiva, QR y acceso al portal"}}]},
+    {h:"Creación masiva de pymes", blocks:[
+      {p:"Afiliar pymes una por una no escalaba. El asesor ahora descarga una plantilla, la carga y el sistema valida el formato antes de crear los negocios. Si hay errores, se muestran por fila para corregirlos sin perder la carga, y se distinguen la carga completa, la parcial y la fallida."},
+      {fig:img("backoffice/masiva","Carga masiva: subir el archivo y validar el formato","1600×860",{free:true})}]},
+    {h:"QR por sucursal y QR masivos", blocks:[
+      {p:"Cada sucursal y cada caja necesita su QR. Desde la ficha del comercio, el asesor selecciona sucursales, previsualiza el QR con o sin la plantilla de Deuna, elige el tamaño y lo descarga para imprimir."},
+      {p:"Para afiliar en campo, el equipo crea campañas de QR masivos: hasta 1.000 códigos por lote que se activan cuando se asignan a un negocio, con el estado de activos e inactivos de cada campaña."},
+      {fig:img("backoffice/qr","QR por sucursal y campañas de QR masivos","1600×1000",{free:true})}]},
+    {h:"Conexión con el portal", blocks:[
+      {p:"El acceso al Portal Deuna Negocios nace en el back office. En la configuración general del comercio, junto a los métodos de pago y las integraciones, diseñé la gestión de cuentas: el asesor agrega los correos que tendrán acceso, les asigna un rol (maestro o desarrollador) y ve el estado de cada invitación, con la opción de reenviarla si caducó."},
+      {fig:img("backoffice/cuentas","Gestión de cuentas: el acceso del comercio al portal","1600×860",{free:true})},
+      {p:"Ese fue el primer paso hacia roles y permisos: después, el propio comercio pudo invitar y gestionar a su equipo desde el portal, sin pedírselo al asesor."}]},
+    {h:"Qué gestiona la plataforma", blocks:[
+      {fig:img("backoffice/modulos","Módulos del back office comercial","1600×760",{free:true})}]},
+    {h:"Qué aprendí", blocks:[
+      {learn:"Mantener un producto en producción es diseñar con restricciones reales: cada mejora tiene que convivir con lo que el equipo ya usa todos los días."}]},
+  ],
+  impact:{big:"≈10.000 comercios", p:"Gestionados por el equipo comercial desde el back office, conectado con el portal de autogestión."}
+},
 {
   id:"colombia-fintech", title:"Colombia Fintech",
   card:"Rediseño del sitio del gremio fintech más importante del país",
@@ -938,7 +969,8 @@ function homeView(){
         <div class="split-text">
           <div class="kicker"><span class="pill lime">Senior Product Designer</span><span class="mono">Bogotá · Remoto</span></div>
           <h1 class="cond"><span class="ln">Lina</span><span class="ln row2">Prieto</span></h1>
-          <p class="sub">Diseño productos financieros que se usan <mark>en la caja</mark>, <mark class="lime">en la sucursal</mark> y en el back-office.</p>
+          <p class="sub">Diseño productos de pagos para <mark>comercios</mark> y <mark class="lime">personas</mark>: del cobro en caja al portal donde un negocio cuadra sus ventas.</p>
+          <p class="now mono">Hoy en Deuna · Ecuador</p>
         </div>
         <div class="split-media photo">
           <img src="img/lina.jpg" alt="Lina Valentina Prieto" width="900" height="900">
@@ -968,15 +1000,16 @@ function homeView(){
 
   <section class="cases" id="casos">
     <div class="wrap">
-      <div class="sec-title rv"><h2 class="cond">Casos</h2><p>Proyectos de pagos, banca y producto digital, contados desde el problema de negocio hasta el impacto.</p></div>
-      <div class="case-grid">
-        ${CASES.filter(c=>!c.draft).map((c,i)=>`
+      <div class="sec-title rv"><h2 class="cond">Casos</h2><p>Tres productos de pagos en producción o en desarrollo, contados del problema al impacto.</p></div>
+      <div class="case-grid feat">
+        ${FEATURED.map(id=>CASES.find(c=>c.id===id)).map((c,i)=>`
           <a class="ccard ${COLORS[i%COLORS.length]} rv" style="--d:${(i%2)*90}ms" href="#${c.id}">
             <div class="top"><h3 class="cond">${c.title}</h3><span class="badge">${c.status}</span></div>
             ${figureHTML(c.cover)}
             <div class="bottom"><p>${c.card}</p><span class="arrow">↗</span></div>
           </a>`).join("")}
       </div>
+      <div class="more-cta rv"><a class="pill big" href="#proyectos">Ver más proyectos →</a><span>Banca, back office, pensiones, crédito y telco.</span></div>
     </div>
   </section>
 
@@ -986,9 +1019,9 @@ function homeView(){
       <div class="sec-title rv"><h2 class="cond">Sobre mí ${SPARK}</h2></div>
       <div class="about-grid">
         <div class="text rv">
-          <p>Llevo más de 5 años diseñando productos financieros: billeteras, pagos en caja, portales para comercios y herramientas internas de banca.</p>
-          <p>Hoy lidero el diseño del frente B2B en <mark class="lime">Deuna</mark>, la billetera digital más usada de Ecuador. Allí llevamos el Portal Deuna Negocios de 25 empresas piloto a más de 2.000 comercios y lanzamos el Código Único de Pago.</p>
-          <p>Antes diseñé para BBVA, Bancolombia, Claro, Porvenir y Crédito Fácil Codensa. Me muevo entre negocio, tecnología y usuario: investigo, armo el caso, diseño el flujo y lo acompaño hasta que <mark>funciona en producción</mark>.</p>
+          <p>Llevo más de 5 años diseñando productos financieros. Me gustan los problemas donde un detalle de diseño mueve un número del negocio: un pago que se confirma solo, un reporte que ya no hay que pedir por correo, un cobro que el usuario entiende antes de aceptarlo.</p>
+          <p>Hoy diseño el frente de comercios en <mark class="lime">Deuna</mark>, la billetera digital más usada de Ecuador: el portal donde más de 2.000 comercios gestionan sus cobros, el pago en caja sin QR y los pagos recurrentes sin tarjeta.</p>
+          <p>Antes diseñé para BBVA, Bancolombia, Claro, Porvenir y Crédito Fácil Codensa. Trabajo en dupla con research y de la mano de producto y desarrollo: investigo, diseño el flujo con sus errores y lo acompaño hasta que <mark>funciona en producción</mark>.</p>
           <div class="chips">${["UX Research","Design Systems","Flujos de pago","Herramientas internas","Figma","Maze","Accesibilidad","Prototipado"].map(s=>`<span class="chip">${s}</span>`).join("")}</div>
         </div>
         <ol class="tl rv" style="--d:120ms" aria-label="Trayectoria">
@@ -1013,6 +1046,27 @@ function homeView(){
       </dl>
     </div>
   </section>`;
+}
+
+const FEATURED=["portal-deuna-negocios","cup","suscripciones"];
+function moreView(){
+  const rest=CASES.filter(c=>!c.draft && !FEATURED.includes(c.id));
+  return `
+  <section class="chero more-hero" style="--a:#5b4cf8;--s:#ece9ff"><span class="hblob" aria-hidden="true"></span><div class="wrap">
+    <a class="pill back" href="#casos">← Volver al inicio</a>
+    <h1 class="cond"><span class="ln">Más proyectos</span></h1>
+    <p class="sub">Otros proyectos de banca, herramientas internas y producto digital, para quien quiera ver el recorrido completo.</p>
+  </div></section>
+  <section class="cases more"><div class="wrap">
+    <div class="case-grid">
+      ${rest.map((c,i)=>`
+        <a class="ccard ${COLORS[i%COLORS.length]} rv" style="--d:${(i%2)*90}ms" href="#${c.id}">
+          <div class="top"><h3 class="cond">${c.title}</h3><span class="badge">${c.status}</span></div>
+          ${figureHTML(c.cover)}
+          <div class="bottom"><p>${c.card}</p><span class="arrow">↗</span></div>
+        </a>`).join("")}
+    </div>
+  </div></section>`;
 }
 
 function blockHTML(b){
@@ -1134,6 +1188,7 @@ function render(){
   const id = location.hash.slice(1);
   const c = CASES.find(x=>x.id===id);
   if(c){ app.innerHTML = caseView(c); app.dataset.home=""; document.title = `${c.title} · Lina Prieto`; window.scrollTo(0,0); }
+  else if(id==="proyectos"){ app.innerHTML = moreView(); app.dataset.home=""; document.title = "Más proyectos · Lina Prieto"; window.scrollTo(0,0); }
   else {
     if(!app.dataset.home){ app.innerHTML = homeView(); app.dataset.home="1"; document.title = "Lina Prieto · Product Designer"; }
     if(id){ document.getElementById(id)?.scrollIntoView(); } else window.scrollTo(0,0);
@@ -1142,7 +1197,7 @@ function render(){
 }
 let first = true;
 function go(){
-  const changesView = !!CASES.find(x=>x.id===location.hash.slice(1)) || !app.dataset.home;
+  const changesView = !!CASES.find(x=>x.id===location.hash.slice(1)) || location.hash==="#proyectos" || !app.dataset.home;
   if(!first && changesView && document.startViewTransition && !reduce){ document.startViewTransition(render); }
   else render();
   first = false;
