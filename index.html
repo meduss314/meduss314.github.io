@@ -211,7 +211,9 @@ footer .wrap{padding-block:26px; display:flex; justify-content:space-between; ga
 @media (max-width:640px){ .pair,.trio{grid-template-columns:1fr} }
 .finding{display:grid; grid-template-columns:auto 1fr; gap:8px 16px; padding:18px 20px; background:var(--white); border:2px solid var(--black); border-radius:20px; max-width:72ch}
 .finding .k{font:700 12px/1 var(--body); padding:7px 10px; border-radius:999px; align-self:start; text-align:center}
-.finding .k.v{background:var(--pink)} .finding .k.d{background:var(--lime)}
+.finding .k.v{background:var(--pink)} .finding .k.d{background:var(--lime)} .finding .k.n{background:#fff3a8} .finding .k.m{background:#dff1ff}
+.trade + .trade{margin-top:12px}
+@media (max-width:640px){.finding.trade{grid-template-columns:1fr; gap:6px} .finding.trade .k{justify-self:start} .finding.trade .k:not(:first-child){margin-top:8px}}
 .impact{background:var(--black); color:var(--white); border-radius:28px; padding:34px; display:grid; gap:14px; position:relative; overflow:hidden}
 .impact .big{font-size:clamp(46px,6.6vw,86px); color:var(--lime)}
 .impact p{max-width:58ch; opacity:.85}
@@ -430,7 +432,7 @@ section{position:relative}
 .chapter > h2:before{content:counter(ch,decimal-leading-zero); display:block; font:500 12px/1 var(--mono); letter-spacing:.08em; color:#6b6b72; margin-bottom:10px}
 .content h3{font:700 19px/1.3 var(--body)}
 .finding{border:1px solid var(--line); border-radius:18px}
-.finding .k.v{background:#ece9ff} .finding .k.d{background:#e6ffb0}
+.finding .k.v{background:#ece9ff} .finding .k.d{background:#e6ffb0} .finding .k.n{background:#fff3b8} .finding .k.m{background:#e3f2ff}
 .impact .spark{color:var(--lime)}
 .cbody figure .shot.free{background:transparent}
 .chero .cover-media .shot{border:1px solid var(--line); box-shadow:0 30px 60px -34px rgba(27,27,31,.35); transform:none; border-radius:20px}
@@ -544,68 +546,56 @@ const CASES = [
 {
   id:"portal-deuna-negocios", noSlots:true, title:"Portal Deuna Negocios",
   card:"De 25 empresas piloto a más de 2.000 comercios que se autogestionan",
-  lead:"Un portal de autogestión para que los comercios grandes de Deuna confirmen pagos, descarguen reportes, gestionen a su equipo e integren la API sin pasar por soporte.",
+  lead:"Un portal de autogestión para que los comercios grandes de Deuna confirmen pagos, descarguen reportes e integren la API sin pasar por soporte.",
   tags:["B2B","Web","Research"], year:"2024–2026", status:"En producción",
   meta:[["Rol","Senior Product Designer"],["Empresa","Neoris para Deuna (Ecuador)"],["Equipo","Dupla con UX research (Elizabeth Mendoza y Diana Rivadeneira), Product Owner, desarrollo y arquitectura"],["Plataforma","Web B2B"],["Tiempo al MVP","2 meses"]],
-  summary:[["El problema","Reportes por correo que no llegaban, pagos que solo una persona podía confirmar y un equipo comercial y técnico dedicado a soporte. Los comercios querían cancelar."],["Qué hice","Diseñé el portal desde cero y, en dupla con UX research, validé cada funcionalidad con comercios en 7 estudios entre 2024 y 2026."],["Resultado","De 25 empresas piloto a más de 2.000 comercios que se autogestionan, y 40 horas semanales de desarrolladores senior de vuelta al roadmap."]],
+  summary:[["El problema","Reportes por correo que no llegaban, pagos que solo una persona podía confirmar y un equipo técnico dedicado a soporte. Los comercios querían cancelar."],["Qué hice","Diseñé el portal desde cero, defendimos un MVP que la dirección no veía rentable y validé cada funcionalidad con comercios en 7 estudios."],["Resultado","De 25 empresas piloto a más de 2.000 comercios que se autogestionan, y 40 horas semanales de desarrolladores senior de vuelta al roadmap."]],
   cover:img("deuna/cover2","Portal Deuna Negocios: reportes y transacciones en tiempo real","1600×1000"),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"Deuna es la billetera digital más usada de Ecuador. Lo que más atrae a los comercios grandes es conectarse por API y cobrar con Deuna desde sus propios sistemas. Pero todo lo que pasaba después del cobro vivía fuera de su alcance:"},
-      {ul:["<b>Reportes:</b> se enviaban por correo y muchos no llegaban porque caímos en listas negras. Sin reportes, los comercios no podían cerrar caja y querían cancelar el servicio.","<b>Transacciones:</b> la confirmación de pago le llegaba a una sola persona de la empresa. El cajero no podía verificarla, desconfiaba de comprobantes falsos y terminaba llamando a servicio al cliente.","<b>Integraciones:</b> cada comercio que se conectaba por API necesitaba acompañamiento de desarrolladores senior, el asesor comercial y el arquitecto de merchants."]}]},
-    {h:"El costo de no tener portal", blocks:[
-      {p:"Antes de diseñar, el equipo puso en números lo que costaba operar sin un canal propio. Ese fue el caso de negocio que aprobó el proyecto."},
+      {p:"Los comercios grandes de Deuna cobran por API desde sus propios sistemas, pero todo lo que pasaba después del cobro estaba fuera de su alcance:"},
+      {ul:["<b>Reportes</b> que llegaban por correo y muchas veces se perdían. Sin ellos, los comercios no podían cerrar caja.","<b>Pagos</b> que solo una persona de la empresa podía confirmar. El cajero terminaba llamando a servicio al cliente.","<b>Integraciones</b> que necesitaban a desarrolladores senior acompañando a cada comercio."]}]},
+    {h:"Convencer de construirlo", blocks:[
+      {p:"La dirección no quería reinventar la rueda ni gastar capacidad de desarrollo en un producto sin ingresos directos. Nuestro argumento: el portal tal vez no generaba dinero, pero sí lo ahorraba, y además traía comercios que no trabajaban con Deuna porque no teníamos autogestión."},
       {stats:[["72 h","al mes por coordinador comercial resolviendo problemas de reportes"],["20 h","al mes del arquitecto en el mismo problema"],["40 h","semanales de 3 desarrolladores senior en soporte de integraciones"],["$0,04","por cada SMS de notificación ($0,02 por correo)"]]},
-      {p:"Las metas: bajar entre 20 y 25% los costos de notificar transacciones por canales que no controlamos, reducir a la mitad el tiempo perdido en errores, ganar comercios que no se afiliaban por falta de autogestión y mejorar el CSAT."}]},
+      {p:"Conseguimos aprobación para un MVP limitado: resolver los dos problemas más urgentes, transacciones y reportes, y probar que el portal era viable antes de invertir más."}]},
     {h:"Mi rol", blocks:[
-      {p:"Lideré el diseño de punta a punta, de discovery a QA visual. Venía de trabajar en el mantenimiento del back office interno de Deuna, así que conocía bien cómo se afiliaban y gestionaban los comercios. Definí la arquitectura de información, diseñé y prototipé cada flujo, e hice la investigación en dupla con UX research: con Elizabeth Mendoza en el benchmark y los tests de reportes y transacciones del MVP, y con Diana Rivadeneira desde roles y permisos en adelante. Planeamos cada estudio, moderamos las sesiones, sintetizamos los hallazgos y aplicamos las mejoras al diseño."}]},
-    {h:"Cómo validamos", blocks:[
-      {p:"Cada funcionalidad se trató como una iniciativa propia, con su benchmark, prototipo, prueba con comercios reales e iteración antes de desarrollo: 7 estudios entre 2024 y 2026."},
-      {p:"Arrancamos con un benchmark de Mercado Pago, Nuvei, Payphone, Shopify, Wave y Stripe. Adoptamos menús de poca profundidad, terminología consistente, filtros potentes y feedback claro en cada acción, para que quien ya usa otro medio de pago no tuviera que aprender nada nuevo."},
-      {fig:img("deuna/research","Estudios de research del Portal Deuna Negocios","1600×580",{free:true})}]},
-    {h:"1. MVP: reportes y transacciones", blocks:[
+      {p:"Lideré el diseño de punta a punta, de discovery a QA visual, e hice la investigación en dupla con UX research: con Elizabeth Mendoza en el MVP y con Diana Rivadeneira desde roles y permisos. Venía del back office interno de Deuna, así que conocía cómo se afiliaban y gestionaban los comercios."}]},
+    {h:"Lo que queríamos y con lo que salimos", blocks:[
+      {p:"El portal se diseñó para ser grande, pero el MVP tenía que caber en una capacidad de desarrollo muy limitada. Priorizamos lo que más dolía:"},
+      {rows:[["Queríamos","Transacciones de por lo menos una semana y devoluciones."],["Salimos con","Transacciones en tiempo real."],["Por qué","Lo urgente era que el cajero pudiera confirmar un pago sin llamar a nadie."]]},
+      {rows:[["Queríamos","Crear reportes personalizados y programarlos."],["Salimos con","El historial de reportes para descargar."],["Por qué","Sin reportes, los comercios no cerraban caja. Los personalizados se diseñaron después."]]},
+      {rows:[["Queríamos","Web y mobile."],["Salimos con","Solo web."],["Por qué","En los tests, desktop fue el dispositivo principal para cuadrar y conciliar."]]},
+      {rows:[["Queríamos","Roles y permisos completos, incluso para cajeros."],["Salimos con","Un acceso por empresa."],["Por qué","No entraba en el MVP. Hoy está diseñado y validado, pendiente de desarrollo."]]}]},
+    {h:"1. El MVP, validado con comercios", blocks:[
+      {p:"Cada funcionalidad tuvo su benchmark, su prototipo y su prueba con comercios reales antes de pasar a desarrollo: 7 estudios entre 2024 y 2026."},
+      {fig:img("deuna/research","Estudios de research del Portal Deuna Negocios","1600×580",{free:true})},
       {h3:"Reportes"},
-      {p:"Probamos dos propuestas con 10 comercios: reutilizar la estructura del back office o crear un listado con lenguaje pensado para el comercio."},
-      {stats:[["10/10","terminaron el flujo de la propuesta 2 más rápido y sin ayuda"],["7/10","la calificaron como fácil de usar"],["8/10","esperaban filtrar por fecha y sucursal"]]},
-      {finding:["La propuesta 1, basada en el back office, confundía y tomaba mucho más tiempo.","Elegimos la propuesta 2: un listado con términos del comercio, no del equipo interno."]},
-      {finding:["8 de 10 buscaban filtrar por fecha y sucursal para encontrar un reporte.","Agregamos filtros por fecha y sucursal como primera interacción."]},
-      {finding:["6 de 10 tenían procesos de cuadre automatizados con el Excel que recibían por correo.","Mantuvimos el mismo formato de descarga para no romper su operación."]},
+      {p:"Probamos dos propuestas con 10 comercios: reutilizar la estructura del back office o un listado con el lenguaje del comercio. Ganó la segunda: 10 de 10 la terminaron más rápido y sin ayuda."},
+      {finding:["6 de 10 tenían su cuadre automatizado con el Excel que recibían por correo.","Mantuvimos el mismo formato de descarga para no romper su operación."]},
       {fig:img("deuna/reportes","Historial de reportes","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})},
       {h3:"Transacciones en tiempo real"},
-      {p:"Probamos el listado en desktop y mobile con 10 comercios. Los usos principales: validar si un cliente pagó, cuadre y conciliación, y cierre de caja."},
-      {fig:img("deuna/prototipo-trx","Prototipo que probamos con 10 comercios, en desktop y mobile, antes de los ajustes","1600×1000",{free:true})},
-      {stats:[["7/10","completaron ver una transacción sin ayuda, en desktop y en mobile"],["8/10","encontraron el filtro de fecha directamente"],["9/10","se confundieron con el término “Pagos”"]]},
-      {finding:["9 de 10 entendían “Pagos” como un pago a un proveedor, no como el dinero que Deuna les deposita.","Cambiamos el término por “Acreditaciones” y separamos ventas, acreditaciones y devoluciones en pestañas."]},
-      {finding:["4 de 10 iban primero a Reportes para buscar una transacción.","Renombramos la sección a “Transacciones en tiempo real”."]},
-      {finding:["Al ver “Crear reporte”, 6 de 10 esperaban configurar un consolidado.","Cambiamos el CTA a “Descargar” para que la acción fuera explícita."]},
-      {p:"También definimos los datos que van primero: fecha, nombre del pagador, monto, ID de transacción, hora y sucursal. Desktop fue el dispositivo principal, así que el MVP salió en web."},
+      {p:"La probamos en desktop y mobile con 10 comercios, que la usan para validar si un cliente pagó, cuadrar y cerrar caja."},
+      {finding:["9 de 10 entendían “Pagos” como un pago a un proveedor, no como el dinero que Deuna les deposita.","Lo cambiamos por “Acreditaciones” y separamos ventas y acreditaciones en pestañas."]},
       {fig:img("deuna/transacciones","Transacciones en tiempo real","1600×1000",{free:true, remote:"https://framerusercontent.com/images/N9pPFzjVXfQdooiTmYl4XiksQU.png"})},
-      {p:"Salimos con un piloto de 25 empresas, el número que definió el equipo de seguridad para el MVP, y medimos satisfacción, recomendación y facilidad de uso con una encuesta a las empresas participantes. Funcionó tan bien que hubo que masificarlo."}]},
-    {h:"2. Perfil desarrollador y sandbox", blocks:[
-      {p:"Los desarrolladores de los comercios ahora tienen documentación, credenciales, configuración de webhooks y un sandbox para probar su integración por su cuenta. Lo priorizamos para liberar a la célula: las 40 horas semanales que 3 desarrolladores senior dedicaban a soporte volvieron al roadmap."},
-      {p:"El sandbox tiene dos pasos: configurar el webhook con sus credenciales y simular un cobro de prueba con un QR, CUP o deeplink para ver la respuesta (aprobado, rechazado o pendiente) y el comprobante, sin tocar dinero real."},
+      {p:"Salimos con un piloto de 25 empresas, el límite que puso seguridad. Funcionó y hubo que masificarlo: esa fue la prueba de viabilidad que necesitábamos."}]},
+    {h:"2. Sandbox: la siguiente apuesta", blocks:[
+      {p:"Con el portal validado, priorizamos el perfil desarrollador: documentación, credenciales, webhooks y un sandbox para que cada comercio pruebe su integración por su cuenta. Era el ahorro más claro: las 40 horas semanales de 3 desarrolladores senior en soporte volvieron al roadmap."},
       {video:{src:"deuna/sandbox-video",label:"Recorrido: documentación, centro de pruebas, webhook y cobro simulado"}},
       {fig:img("deuna/sandbox2","Centro de pruebas: configurar webhook y simular un cobro","1600×1000",{free:true})}]},
     {h:"3. Roles y permisos", blocks:[
-      {p:"En los primeros tests apareció una señal: 4 de 10 comercios querían que sus vendedores vieran reportes, pero solo de su sucursal. Con el portal en uso, el acceso recaía en una sola persona por empresa. Diseñé un modelo de roles según la estructura del comercio (grupo, empresa, sucursal y caja) y lo probamos con 8 administradores."},
-      {stats:[["8/8","estuvieron de acuerdo con los tres roles propuestos"],["8/8","invitaron a un colaborador con éxito"],["25%","completó la edición de permisos: la tarea más difícil"]]},
-      {finding:["Solo 2 de 8 lograron quitar un permiso. Confundían la lista de colaboradores con la de roles y no entendían que debían crear un rol personalizado.","Simplificamos la edición de permisos y separamos con claridad colaboradores de roles."]},
-      {finding:["7 de 8 cambiaron un rol sin problema, pero 6 no entendieron qué permisos ganaba la persona.","Agregamos un resumen de los nuevos permisos antes de confirmar el cambio."]},
-      {finding:["5 de 6 empresas usan correo institucional para administradores, pero los cajeros rotan mucho.","Habilitamos un método de acceso alternativo para cajeros."]},
-      {ul:["<b>Administrador de grupo:</b> ve y gestiona todas las empresas del grupo.","<b>Administrador de empresa:</b> gestiona su empresa, sus sucursales y quién ve qué.","<b>Consulta:</b> permisos variables que define el administrador.","<b>Desarrollador:</b> solo las funciones de integración."]},
-      {h3:"Cómo se invita a un colaborador"},
-      {p:"Desde el estado vacío, el administrador invita con correo y nombre, elige el rol, define qué sucursales verá y revisa los permisos que trae ese rol antes de enviar. Los permisos son fijos por rol para evitar el error que vimos en el test: nadie tiene que armar un rol personalizado."},
+      {p:"4 de 10 comercios querían que sus vendedores vieran reportes, pero solo de su sucursal. Diseñé un modelo de roles según la estructura del comercio (grupo, empresa, sucursal y caja) y lo probamos con 8 administradores. Está diseñado y validado; aún no se ha desarrollado."},
+      {stats:[["8/8","estuvieron de acuerdo con los roles propuestos"],["8/8","invitaron a un colaborador con éxito"],["25%","logró editar permisos: la tarea más difícil"]]},
+      {finding:["Solo 2 de 8 lograron quitar un permiso: no entendían que debían crear un rol personalizado.","Los permisos quedaron fijos por rol y se revisan antes de invitar. Nadie tiene que armar un rol desde cero."]},
       {video:{src:"deuna/roles-video",label:"Recorrido: invitar a un colaborador"}},
-      {fig:img("deuna/roles2","Invitar colaborador: estado vacío, formulario e invitación enviada","1600×1000",{free:true})},
-      {p:"Hoy estamos iterando el primer alcance: gestión de colaboradores con estados que explican su causa, auditoría de cambios y protección para no dejar a una empresa sin administrador."}]},
-    {h:"Lo que vino después", blocks:[
-      {p:"Con la base funcionando, seguimos con el mismo método de investigar, probar e iterar en dos frentes:"},
-      {ul:["<b>Grupos empresariales:</b> los holdings entraban empresa por empresa y consolidaban en Excel. Exploramos tres flujos en media fidelidad y llegamos a un dashboard consolidado para el administrador del grupo.","<b>Reportes consolidados:</b> solo había reportes diarios. Diseñé un asistente de cuatro pasos para crear reportes de cualquier rango, con generación en segundo plano y probado con tres tareas antes del lanzamiento."]},
+      {fig:img("deuna/roles2","Invitar colaborador: estado vacío, formulario e invitación enviada","1600×1000",{free:true})}]},
+    {h:"Lo que viene", blocks:[
+      {p:"El portal crece por fases. Ya diseñamos un dashboard para grupos empresariales y un asistente para crear reportes de cualquier rango. Siguen pendientes facturación y un motor de ventas."},
       {pair:[img("deuna/grupos-hifi","Dashboard del grupo en alta fidelidad","1600×1000",{free:true}),img("deuna/reportes2","Los cuatro pasos para crear un reporte personalizado","1600×1000",{free:true})]}]},
     {h:"Qué aprendí", blocks:[
-      {learn:"En B2B, el lenguaje interno es el enemigo. “Pagos”, “reportes” o “rol personalizado” tenían sentido para nosotros y confundían al comercio. Probar cada funcionalidad nos ahorró capacitar a 2.000 comercios después."}]},
+      {learn:"Un portal B2B se defiende por lo que ahorra, no solo por lo que vende. Ponerle números al soporte nos dio un MVP pequeño, y salir pequeño fue lo que nos dejó demostrar que valía la pena crecer."}]},
   ],
-  impact:{big:"25 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes, gestionan sus equipos e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
+  impact:{big:"25 → +2.000 comercios", p:"Comercios que confirman pagos, descargan reportes e integran la API sin llamar a soporte. El equipo técnico recuperó las 40 horas semanales que dedicaba a soporte de integraciones."}
 },
 {
   id:"cup", noSlots:true, title:"Código Único de Pago",
@@ -613,37 +603,35 @@ const CASES = [
   lead:"Pagar en caja sin QR: un código de 6 dígitos que el cajero dicta y el cliente ingresa en la app Deuna o en la banca móvil de Banco Pichincha.",
   tags:["App","Pagos","Research"], year:"2024", status:"En producción",
   meta:[["Rol","Product Designer"],["Research","Dupla con Elizabeth Mendoza"],["Plataforma","App Deuna y Banca Móvil Pichincha"],["Validación","2 tests moderados · 16 personas"],["Estado","En producción"]],
-  summary:[["El problema","Los QRs falsos hicieron que muchos comercios dejaran de mostrar el QR de Deuna, y los grandes comercios no tenían una pantalla en caja para mostrarlo."],["Qué hice","Benchmark, priorización, storyboard, flujo de punta a punta con sus estados de error y dos tests moderados en agencias bancarias, en la app Deuna y en la banca móvil."],["Resultado","En producción para todos los usuarios, aceptado en más de 45.000 puntos de venta y disponible desde la banca móvil de Banco Pichincha."]],
+  summary:[["El problema","Los QRs falsos hicieron que muchos comercios dejaran de mostrar el QR de Deuna, y los grandes comercios no tenían una pantalla en caja para mostrarlo."],["Qué hice","Benchmark, priorización, storyboard, el flujo de punta a punta con sus errores y dos tests moderados, en la app Deuna y en la banca móvil."],["Resultado","En producción para todos los usuarios, aceptado en más de 45.000 puntos de venta y disponible desde la banca móvil de Banco Pichincha."]],
   cover:img("cup/cover","Código Único de Pago: elegir la opción, ingresar los 6 dígitos y recibir el comprobante"),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"En Ecuador empezaron a circular QRs falsos. Muchos comercios dejaron de exhibir el QR de Deuna por miedo al fraude, y los grandes comercios, con varias cajas, tampoco tenían una pantalla donde mostrarlo. Son el mismo problema: si no hay QR a la vista, el cliente no paga con Deuna."},
-      {p:"El objetivo de negocio era subir los usuarios activos y el MDR con un método de pago para grandes comercios sin interfaz para QR, disponible en Deuna, en la banca móvil y en cooperativas."}]},
+      {p:"En Ecuador empezaron a circular QRs falsos. Muchos comercios dejaron de exhibir el QR de Deuna por miedo al fraude, y los grandes comercios, con varias cajas, no tenían una pantalla donde mostrarlo. Sin QR a la vista, el cliente no paga con Deuna."},
+      {p:"El objetivo de negocio: subir usuarios activos y MDR con un método de pago para grandes comercios, disponible en Deuna, en la banca móvil y en cooperativas."}]},
     {h:"Mi rol", blocks:[
-      {p:"Lo trabajamos end-to-end con mi dupla de research, Elizabeth Mendoza: benchmark, priorización, storyboard, diseño, pruebas con usuarios e iteración. Yo diseñé el flujo completo, del punto de entrada a los estados de error y los prototipos de alta fidelidad, y co-facilité los tests."}]},
-    {h:"Benchmark y priorización", blocks:[
-      {p:"Revisamos cómo pagan las billeteras en Latinoamérica y Estados Unidos. Encontramos cuatro patrones y los comparamos con tres criterios: que escale, que funcione en varios dispositivos y que sea fácil para el usuario."},
+      {p:"Lo trabajé end-to-end con mi dupla de research, Elizabeth Mendoza. Diseñé el flujo completo, del punto de entrada a los estados de error, y co-facilité los tests."}]},
+    {h:"Por qué un código y no un QR", blocks:[
+      {p:"Revisamos cómo pagan las billeteras en Latinoamérica y Estados Unidos y comparamos cuatro patrones con tres criterios: que escale, que funcione en varios dispositivos y que sea fácil para el usuario."},
       {fig:img("cup/benchmark","Benchmark: cuatro patrones de pago con billeteras","1600×1000",{free:true})},
-      {p:"El código ganó: funciona sin tarjeta, no depende de un QR impreso y el mismo gesto sirve en caja, en una tienda online o desde otra app bancaria."}]},
+      {rows:[["Opciones","QR, confirmación por push, registro único con pago automático y código."],["Elegimos","Un código de 6 dígitos que el cliente ingresa y confirma en su app."],["Por qué","El monto llega predefinido desde la integración del comercio, algo que un QR impreso no siempre permite, y el cliente sigue confirmando el pago."],["Lo que cedimos","El cliente tiene que digitar 6 números frente al cajero. Por eso cuidamos tanto el campo."]]}]},
     {h:"El momento de uso", blocks:[
-      {p:"Antes de diseñar pantallas, dibujamos la escena: una caja con fila, un cajero que dicta el código en voz alta y un cliente que nunca había pagado así. Cada paso extra era un segundo más frente al cajero."},
+      {p:"Antes de diseñar pantallas dibujamos la escena: una caja con fila, un cajero que dicta el código y un cliente que nunca había pagado así. Cada paso extra era un segundo más frente al cajero."},
       {fig:img("cup/storyboard","Storyboard: pagar en caja con el código","1600×1280",{free:true})}]},
     {h:"La solución", blocks:[
-      {p:"El código vive dentro de “Pagar”, junto al QR de Deuna, con una etiqueta de “Nuevo”: no creamos un acceso aparte en el home. El usuario ingresa los 6 dígitos, revisa comercio y monto, paga y recibe el comprobante."},
+      {p:"El código vive dentro de “Pagar”, junto al QR, con una etiqueta de “Nuevo”, en lugar de un acceso aparte en el home. El usuario ingresa los 6 dígitos, revisa comercio y monto, paga y recibe el comprobante."},
       {video:{src:"cup/pago-video",label:"Recorrido: de Pagar al comprobante"}},
       {fig:img("cup/flujo","Flujo final en la app Deuna","1600×1000",{free:true})},
-      {p:"Un pago en caja tampoco puede quedarse colgado. Diseñé salidas claras para código inválido, saldo insuficiente, límite transaccional y error del servicio, cada una con qué pasó y qué hacer, y siempre con la opción de pagar de otra forma."},
+      {p:"Un pago en caja no puede quedarse colgado: código inválido, saldo insuficiente, límite o error del servicio dicen qué pasó, qué hacer y siempre permiten pagar de otra forma."},
       {fig:img("cup/estados","Ingreso del código, error y confirmación","1600×1000",{free:true})}]},
     {h:"Test 1: app Deuna", blocks:[
-      {p:"Test moderado en una agencia de Banco Pichincha con 6 personas y el prototipo en mano. Queríamos saber si entendían cómo funciona el código y dónde se trababan."},
-      {stats:[["5/6","buscaron el código en “Pagar”"],["6","personas en el test"],["2","microinteracciones comparadas"],["0","observaciones en monto y confirmación"]]},
-      {finding:["Confundían el código con una OTP o clave de verificación.","Cambiamos el texto a “Es un número que te entrega el negocio y cambia cada vez que pagues” y agrupamos los dígitos de dos en dos para que se lea como un código de pago."]},
-      {finding:["No notaban diferencia entre las dos microinteracciones del campo.","Nos quedamos con la más simple: casillas que avanzan solas y validan al completar el sexto dígito."]},
-      {finding:["Mostraban el comprobante al cajero para que le tomara foto, como en las tiendas pequeñas.","El comprobante destaca monto, comercio y número de transacción, y el comercio recibe la confirmación en caja."]},
+      {p:"Test moderado en una agencia de Banco Pichincha con 6 personas. 5 de 6 buscaron el código en “Pagar”, donde lo pusimos."},
+      {finding:["Confundían el código con una OTP.","Cambiamos el texto a “Es un número que te entrega el negocio y cambia cada vez que pagues” y agrupamos los dígitos de dos en dos."]},
+      {finding:["No notaban diferencia entre las dos microinteracciones del campo.","Nos quedamos con la más simple: casillas que avanzan solas y validan al sexto dígito."]},
       {finding:["Monto y confirmación no generaron ninguna observación.","No las tocamos. Saber qué no cambiar también es una decisión."]}]},
     {h:"Test 2: banca móvil", blocks:[
-      {p:"El código también tenía que funcionar desde la banca móvil de Banco Pichincha. Hicimos un segundo test moderado con 10 personas para elegir el nombre y la posición del acceso a Deuna dentro de la app del banco, midiendo tiempo en tarea y tasa de éxito."},
-      {finding:["Los 3 que pidieron ayuda y los 4 que no completaron la tarea no encontraron el acceso a Deuna en el Home. “Escanear o mostrar QR” no comunicaba que también existe el código.","Propusimos un nombre que abarque todas las formas de pago con Deuna y lo llevamos a los tabs superiores, la opción más rápida en tiempo en tarea."]},
+      {p:"Con 10 personas probamos el nombre y la posición del acceso a Deuna dentro de la app de Banco Pichincha, midiendo tiempo en tarea y tasa de éxito."},
+      {finding:["Los 3 que pidieron ayuda y los 4 que no terminaron no encontraron el acceso en el Home. “Escanear o mostrar QR” no comunicaba que también existe el código.","Propusimos un nombre que abarque todas las formas de pago con Deuna, en los tabs superiores: la opción más rápida."]},
       {fig:img("cup/hallazgos","Síntesis de los dos tests","1600×1000",{free:true})}]},
     {h:"Qué aprendí", blocks:[
       {learn:"Un método de pago nuevo compite con la costumbre: los usuarios lo buscan donde ya pagan y lo leen con lo que ya conocen, como una OTP. Diseñar fue sobre todo quitar esas confusiones."}]},
@@ -657,36 +645,30 @@ const CASES = [
   lead:"Pagar suscripciones y pedidos con la billetera, sin tarjeta: una tokenización compleja convertida en “vincular cuenta”.",
   tags:["App","Pagos","Research"], year:"2026", status:"En desarrollo",
   meta:[["Rol","Senior Product Designer"],["Research","Desk research y benchmark propios"],["Plataforma","App Deuna + apps de comercios"],["Estado","En desarrollo"]],
-  summary:[["El problema","Los comercios digitales internacionales que cobran vía dLocal solo aceptaban tarjeta, y Deuna no tiene tarjeta."],["Qué hice","Desk research y benchmark de pagos recurrentes en Latinoamérica, flujos entre apps, prototipos de prueba, estados de error y medición por paso."],["Resultado","Un método de pago recurrente sin tarjeta: el usuario vincula su cuenta una vez y paga sin salir de la app del comercio."]],
+  summary:[["El problema","Los comercios digitales internacionales que cobran vía dLocal solo aceptaban tarjeta, y Deuna no tiene tarjeta."],["Qué hice","Desk research y benchmark de pagos recurrentes en Latinoamérica, flujos entre apps, estados de error y medición por paso, definiendo con arquitectura lo que la tokenización permitía."],["Resultado","Un método de pago recurrente sin tarjeta: el usuario vincula su cuenta una vez y paga sin salir de la app del comercio."]],
   cover:img("suscripciones/cover","Vinculación: elegir Deuna en el comercio, aceptar y volver"),
   chapters:[
     {h:"Contexto", blocks:[
-      {p:"Pedir comida, pagar una plataforma de streaming o una membresía: casi todo cobro recurrente en apps exige una tarjeta. Deuna no tiene tarjeta, y no queríamos inventar una."},
-      {p:"La oportunidad vino de dLocal, el procesador que cobra en Latinoamérica para comercios digitales internacionales de delivery, movilidad, streaming y e-commerce. Para que esos comercios pudieran cobrar con Deuna, la billetera necesitaba la capacidad de un cobro automático."},
-      {p:"La respuesta técnica fue tokenizar la cuenta del usuario: un token que se comporta como una tarjeta frente al comercio y que se le entrega solo cuando el usuario acepta la vinculación. La pregunta de diseño: ¿cómo le explicas eso a alguien que solo quiere pagar su pedido?"}]},
+      {p:"Casi todo cobro recurrente en apps exige tarjeta, y Deuna no tiene tarjeta. La oportunidad vino de dLocal, que cobra en Latinoamérica para comercios digitales internacionales: para que pudieran cobrar con Deuna, la billetera necesitaba permitir cobros automáticos."},
+      {p:"La respuesta técnica fue tokenizar la cuenta: un token que se comporta como tarjeta frente al comercio y que solo se entrega cuando el usuario acepta. La pregunta de diseño: ¿cómo le explicas eso a alguien que solo quiere pagar su pedido?"}]},
     {h:"Mi rol", blocks:[
-      {p:"Lideré el diseño de punta a punta en la app de Deuna. Hice yo misma el desk research y el benchmark, diseñé los flujos de vinculación, pago y desvinculación con sus errores, armé los prototipos de prueba y la presentación para el banco, y definí qué medir en cada paso. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
+      {p:"Lideré el diseño de punta a punta en la app de Deuna: desk research y benchmark, flujos de vinculación, pago y desvinculación con sus errores, y qué medir en cada paso. Trabajé con arquitectura y desarrollo para entender qué permitía la tokenización y dónde estaban sus límites."}]},
     {h:"Investigación", blocks:[
-      {p:"Los objetivos eran claros: subir el MDR con ingresos recurrentes, habilitar pagos recurrentes desde la cuenta Deuna y construir algo que sirviera para muchos comercios, no una solución a la medida de uno."},
-      {p:"Estudié cómo funcionan las suscripciones en Latinoamérica: conviven las suscripciones con tarjeta, los débitos automáticos de bancos para servicios básicos y modelos nuevos desde cuenta, como Pix Automático en Brasil o los pagos entre cuentas en Colombia. Y recorrí los flujos reales de billeteras, bancos y apps de la región."},
+      {p:"Estudié cómo conviven en Latinoamérica las suscripciones con tarjeta, los débitos automáticos de bancos y modelos nuevos desde cuenta, como Pix Automático, y recorrí los flujos reales de billeteras, bancos y apps de la región."},
       {fig:img("suscripciones/benchmark","Benchmark y desk research: 4 aprendizajes","1600×1000",{free:true})},
       {p:"La conclusión más importante: la gente no reclama porque le cobren, reclama porque no sabe quién le está cobrando o no encuentra cómo detenerlo."}]},
-    {h:"La solución", blocks:[
-      {p:"El flujo empieza en la app del comercio, salta a Deuna para autorizar y vuelve al comercio. El usuario vincula una vez y después paga sin salir de la app."},
+    {h:"Lo que queríamos y con lo que salimos", blocks:[
+      {rows:[["Queríamos","Que el usuario vinculara su cuenta sin salir de la app del comercio."],["Salimos con","Un salto a Deuna para autorizar y un regreso directo al comercio."],["Por qué","La capacidad técnica era limitada: un webview tendría que adaptarse a cada comercio, uno por uno, y el objetivo era una solución para muchos."],["Cómo lo compensamos","Siempre se ve qué comercio pide el permiso, la entrada a Deuna dice para qué estás ingresando y la confirmación te devuelve al comercio."]]},
       {video:{src:"suscripciones/vinculacion-video",label:"Recorrido: del comercio a Deuna y de vuelta"}},
       {fig:img("suscripciones/flujo","Vinculación en cinco pasos","1600×1000",{free:true})}]},
     {h:"Decisiones de diseño", blocks:[
-      {finding:["Tokenizar es un concepto técnico que asusta, y el miedo principal era que vincular generara un cobro.","Hablamos de “vincular cuenta”, una acción que la gente ya conoce, y la pantalla dice desde el inicio “Este paso no genera ningún cobro”."]},
-      {finding:["En el benchmark, el momento de autorizar es donde se gana o se rompe la confianza.","Una pantalla dedicada solo a eso: quién cobra, tres beneficios claros (pagos seguros, saldo disponible, control total) y la aceptación explícita de términos antes de habilitar el botón."]},
-      {finding:["El salto entre la app del comercio y Deuna genera desconfianza.","Siempre se ve qué comercio pide el permiso, la entrada a Deuna dice para qué estás ingresando y la confirmación te devuelve directo al comercio."]},
-      {finding:["En el benchmark, suscripción y pago recurrente se usaban como si fueran lo mismo.","Cada tipo tiene su descripción, su jerarquía y su estado: fijo y periódico, o variable según el uso."]},
-      {fig:img("suscripciones/estados","Antes de aceptar, error y confirmación","1600×1000",{free:true})},
-      {p:"Y los casos que nadie ve: sesión inválida, cuenta ya vinculada, errores temporales y permanentes, y la espera de respuesta. Cada uno le dice al usuario qué pasó y le deja volver al comercio sin quedarse atrapado."}]},
+      {finding:["Tokenizar es un concepto que asusta, y el miedo principal era que vincular generara un cobro.","Hablamos de “vincular cuenta”, una acción que la gente ya conoce, y la pantalla dice desde el inicio “Este paso no genera ningún cobro”."]},
+      {finding:["En el benchmark, el momento de autorizar es donde se gana o se rompe la confianza.","Una pantalla dedicada solo a eso: quién cobra, tres beneficios claros y la aceptación explícita de términos antes de habilitar el botón."]},
+      {finding:["En el benchmark, suscripción y pago recurrente se usaban como si fueran lo mismo.","Cada tipo tiene su descripción y su estado: fijo y periódico, o variable según el uso."]},
+      {fig:img("suscripciones/estados","Antes de aceptar, error y confirmación","1600×1000",{free:true})}]},
     {h:"Control visible", blocks:[
-      {p:"Si la gente reclama porque no sabe quién le cobra, la respuesta es un lugar donde verlo. En Perfil → Comercios vinculados el usuario ve dónde está vinculada su cuenta y puede desvincularla en dos toques, con un aviso de lo que pierde antes de confirmar. Después recibe una notificación y un correo de respaldo."},
+      {p:"Si la gente reclama porque no sabe quién le cobra, necesita un lugar donde verlo. En Perfil → Comercios vinculados puede desvincular su cuenta en dos toques, con un aviso de lo que pierde y un correo de respaldo. Cada pantalla tiene sus eventos de medición definidos desde el primer comercio integrado."},
       {fig:img("suscripciones/control","Comercios vinculados y desvinculación","1600×1000",{free:true})}]},
-    {h:"Medición desde el día uno", blocks:[
-      {p:"Cada pantalla del flujo tiene sus eventos definidos: entrada, ingreso a Deuna, aceptación, errores, confirmación y desvinculación. Así el embudo está listo para saber dónde se cae la gente desde el primer comercio integrado."}]},
     {h:"Qué aprendí", blocks:[
       {learn:"Un permiso de cobro es una relación, no una transacción. Diseñar la salida (ver, desvincular, entender qué pasó) fue tan importante como diseñar la entrada."}]},
   ],
@@ -799,7 +781,7 @@ const CASES = [
     {h:"Conexión con el portal", blocks:[
       {p:"El acceso al Portal Deuna Negocios nace en el back office. En la configuración general del comercio, junto a los métodos de pago y las integraciones, diseñé la gestión de cuentas: el asesor agrega los correos que tendrán acceso, les asigna un rol (maestro o desarrollador) y ve el estado de cada invitación, con la opción de reenviarla si caducó."},
       {fig:img("backoffice/cuentas","Gestión de cuentas: el acceso del comercio al portal","1600×860",{free:true})},
-      {p:"Ese fue el primer paso hacia roles y permisos: después, el propio comercio pudo invitar y gestionar a su equipo desde el portal, sin pedírselo al asesor."}]},
+      {p:"Ese fue el primer paso hacia roles y permisos, que ya diseñamos para que el propio comercio invite y gestione a su equipo desde el portal, sin pedírselo al asesor."}]},
     {h:"Qué gestiona la plataforma", blocks:[
       {fig:img("backoffice/modulos","Módulos del back office comercial","1600×760",{free:true})}]},
     {h:"Qué aprendí", blocks:[
@@ -1006,68 +988,56 @@ const CASES_EN = {
 "portal-deuna-negocios":{
   title:"Deuna Business Portal",
   card:"From 25 pilot companies to 2,000+ merchants who self-serve",
-  lead:"A self-service portal where Deuna’s large merchants confirm payments, download reports, manage their team and integrate the API without going through support.",
+  lead:"A self-service portal where Deuna’s large merchants confirm payments, download reports and integrate the API without going through support.",
   tags:["B2B","Web","Research"], status:"Live",
   meta:[["Role","Senior Product Designer"],["Company","Neoris for Deuna (Ecuador)"],["Team","Paired with UX research (Elizabeth Mendoza and Diana Rivadeneira), Product Owner, engineering and architecture"],["Platform","B2B web"],["Time to MVP","2 months"]],
-  summary:[["The problem","Emailed reports that never arrived, payments only one person could confirm, and sales and tech teams stuck doing support. Merchants wanted to cancel."],["What I did","I designed the portal from scratch and, paired with UX research, validated every feature with merchants across 7 studies between 2024 and 2026."],["Result","From 25 pilot companies to 2,000+ merchants who self-serve, and 40 hours a week of senior developer time back on the roadmap."]],
+  summary:[["The problem","Emailed reports that never arrived, payments only one person could confirm, and a tech team stuck doing support. Merchants wanted to cancel."],["What I did","I designed the portal from scratch, we made the case for an MVP leadership didn’t see as profitable, and I validated every feature with merchants across 7 studies."],["Result","From 25 pilot companies to 2,000+ merchants who self-serve, and 40 hours a week of senior developer time back on the roadmap."]],
   coverLabel:"Deuna Business Portal: reports and real-time transactions",
   chapters:[
     {h:"Context", blocks:[
-      {p:"Deuna is Ecuador’s most-used digital wallet. What draws large merchants is connecting through the API and taking Deuna payments from their own systems. But everything that happened after the payment was out of their reach:"},
-      {ul:["<b>Reports:</b> they were sent by email and many never arrived because we landed on blocklists. Without reports, merchants couldn’t close out the day and wanted to cancel.","<b>Transactions:</b> payment confirmation went to a single person in the company. Cashiers couldn’t verify it, distrusted fake receipts and ended up calling customer service.","<b>Integrations:</b> every merchant connecting through the API needed senior developers, the sales advisor and the merchants architect to hold their hand."]}]},
-    {h:"The cost of having no portal", blocks:[
-      {p:"Before designing, the team put a number on what it cost to operate without our own channel. That was the business case that got the project approved."},
+      {p:"Deuna’s large merchants take payments through the API from their own systems, but everything that happened after the payment was out of their reach:"},
+      {ul:["<b>Reports</b> sent by email that often got lost. Without them, merchants couldn’t close out the day.","<b>Payments</b> only one person in the company could confirm. Cashiers ended up calling customer service.","<b>Integrations</b> that needed senior developers holding each merchant’s hand."]}]},
+    {h:"Making the case", blocks:[
+      {p:"Leadership didn’t want to reinvent the wheel or spend development capacity on a product with no direct revenue. Our argument: the portal might not make money, but it would save money, and it would bring in merchants who wouldn’t work with Deuna because we had no self-service."},
       {stats:[["72 h","a month per sales coordinator fixing report issues"],["20 h","a month of the architect’s time on the same issue"],["40 h","a week of 3 senior developers doing integration support"],["$0.04","per notification SMS ($0.02 per email)"]]},
-      {p:"The goals: cut 20–25% of the cost of notifying transactions through channels we don’t control, halve the time lost to errors, win merchants who weren’t signing up for lack of self-service, and improve CSAT."}]},
+      {p:"We got approval for a limited MVP: solve the two most urgent problems, transactions and reports, and prove the portal was viable before investing more."}]},
     {h:"My role", blocks:[
-      {p:"I led the design end to end, from discovery to visual QA. I came from maintaining Deuna’s internal back office, so I knew how merchants were onboarded and managed. I defined the information architecture, designed and prototyped every flow, and did the research paired with UX research: with Elizabeth Mendoza on the benchmark and the MVP tests for reports and transactions, and with Diana Rivadeneira from roles and permissions onward. We planned each study, moderated the sessions, synthesized the findings and fed the improvements into the design."}]},
-    {h:"How we validated", blocks:[
-      {p:"Each feature was treated as its own initiative, with its benchmark, prototype, test with real merchants and iteration before development: 7 studies between 2024 and 2026."},
-      {p:"We started with a benchmark of Mercado Pago, Nuvei, Payphone, Shopify, Wave and Stripe. We adopted shallow menus, consistent terminology, powerful filters and clear feedback on every action, so anyone already using another payment provider wouldn’t have to learn anything new."},
-      {fig:img("deuna/research","Research studies for the Deuna Business Portal","1600×580",{free:true})}]},
-    {h:"1. MVP: reports and transactions", blocks:[
+      {p:"I led the design end to end, from discovery to visual QA, and did the research paired with UX research: with Elizabeth Mendoza on the MVP and with Diana Rivadeneira from roles and permissions onward. I came from Deuna’s internal back office, so I knew how merchants were onboarded and managed."}]},
+    {h:"What we wanted vs. what we shipped", blocks:[
+      {p:"The portal was designed to be big, but the MVP had to fit into very limited development capacity. We prioritized what hurt the most:"},
+      {rows:[["We wanted","At least a week of transactions, plus refunds."],["We shipped","Real-time transactions."],["Why","The urgent need was for cashiers to confirm a payment without calling anyone."]]},
+      {rows:[["We wanted","Custom and scheduled reports."],["We shipped","A report history to download."],["Why","Without reports, merchants couldn’t close out the day. Custom reports were designed later."]]},
+      {rows:[["We wanted","Web and mobile."],["We shipped","Web only."],["Why","In testing, desktop was the main device for reconciliation."]]},
+      {rows:[["We wanted","Full roles and permissions, cashiers included."],["We shipped","One login per company."],["Why","It didn’t fit the MVP. It’s now designed and validated, waiting for development."]]}]},
+    {h:"1. The MVP, validated with merchants", blocks:[
+      {p:"Every feature got its benchmark, prototype and test with real merchants before going to development: 7 studies between 2024 and 2026."},
+      {fig:img("deuna/research","Research studies for the Deuna Business Portal","1600×580",{free:true})},
       {h3:"Reports"},
-      {p:"We tested two proposals with 10 merchants: reuse the back office structure, or build a list written in the merchant’s language."},
-      {stats:[["10/10","finished proposal 2 faster and without help"],["7/10","rated it easy to use"],["8/10","expected to filter by date and branch"]]},
-      {finding:["Proposal 1, based on the back office, was confusing and took much longer.","We chose proposal 2: a list in the merchant’s terms, not the internal team’s."]},
-      {finding:["8 out of 10 looked for date and branch filters to find a report.","We made date and branch filters the first interaction."]},
-      {finding:["6 out of 10 had automated reconciliation processes built on the Excel file they got by email.","We kept the same download format so we wouldn’t break their operations."]},
+      {p:"We tested two proposals with 10 merchants: reuse the back office structure, or a list in the merchant’s language. The second won: 10 out of 10 finished it faster and without help."},
+      {finding:["6 out of 10 had automated reconciliation built on the Excel file they got by email.","We kept the same download format so we wouldn’t break their operations."]},
       {fig:img("deuna/reportes","Report history","1600×1000",{free:true, remote:"https://framerusercontent.com/images/US0Xpq2ZGsdXlv4zzoFtawU7854.png"})},
       {h3:"Real-time transactions"},
-      {p:"We tested the list on desktop and mobile with 10 merchants. The main uses: checking whether a customer paid, reconciliation, and closing out the register."},
-      {fig:img("deuna/prototipo-trx","The prototype we tested with 10 merchants, on desktop and mobile, before the changes","1600×1000",{free:true})},
-      {stats:[["7/10","viewed a transaction without help, on desktop and mobile"],["8/10","found the date filter right away"],["9/10","were confused by the term “Pagos” (payments)"]]},
-      {finding:["9 out of 10 read “Pagos” as a payment to a supplier, not as the money Deuna deposits to them.","We renamed it “Acreditaciones” (deposits) and split sales, deposits and refunds into tabs."]},
-      {finding:["4 out of 10 went to Reports first to look for a transaction.","We renamed the section “Real-time transactions”."]},
-      {finding:["When they saw “Create report”, 6 out of 10 expected to set up a consolidated report.","We changed the CTA to “Download” to make the action explicit."]},
-      {p:"We also defined which data comes first: date, payer name, amount, transaction ID, time and branch. Desktop was the main device, so the MVP shipped on web."},
+      {p:"We tested it on desktop and mobile with 10 merchants, who use it to check whether a customer paid, reconcile and close out the register."},
+      {finding:["9 out of 10 read “Pagos” (payments) as a payment to a supplier, not as the money Deuna deposits to them.","We renamed it “Acreditaciones” (deposits) and split sales and deposits into tabs."]},
       {fig:img("deuna/transacciones","Real-time transactions","1600×1000",{free:true, remote:"https://framerusercontent.com/images/N9pPFzjVXfQdooiTmYl4XiksQU.png"})},
-      {p:"We launched with a pilot of 25 companies, the number the security team set for the MVP, and measured satisfaction, recommendation and ease of use with a survey of the participating companies. It worked so well we had to roll it out to everyone."}]},
-    {h:"2. Developer profile and sandbox", blocks:[
-      {p:"Merchants’ developers now have documentation, credentials, webhook setup and a sandbox to test their integration on their own. We prioritized it to free up the squad: the 40 hours a week that 3 senior developers spent on support went back to the roadmap."},
-      {p:"The sandbox has two steps: set up the webhook with their credentials, and simulate a test payment with a QR, a payment code or a deeplink to see the response (approved, declined or pending) and the receipt, without touching real money."},
+      {p:"We launched with a pilot of 25 companies, the limit set by security. It worked and had to be rolled out to everyone: that was the proof of viability we needed."}]},
+    {h:"2. Sandbox: the next bet", blocks:[
+      {p:"With the portal validated, we prioritized the developer profile: documentation, credentials, webhooks and a sandbox so each merchant can test its integration on its own. It was the clearest saving: the 40 hours a week 3 senior developers spent on support went back to the roadmap."},
       {video:{src:"deuna/sandbox-video",label:"Walkthrough: documentation, test center, webhook and simulated payment"}},
       {fig:img("deuna/sandbox2","Test center: set up the webhook and simulate a payment","1600×1000",{free:true})}]},
     {h:"3. Roles and permissions", blocks:[
-      {p:"A signal showed up in the first tests: 4 out of 10 merchants wanted their sales staff to see reports, but only for their own branch. With the portal live, access sat with a single person per company. I designed a role model based on the merchant’s structure (group, company, branch and register) and we tested it with 8 administrators."},
-      {stats:[["8/8","agreed with the three proposed roles"],["8/8","invited a team member successfully"],["25%","completed editing permissions: the hardest task"]]},
-      {finding:["Only 2 out of 8 managed to remove a permission. They mixed up the team list with the roles list and didn’t understand they had to create a custom role.","We simplified permission editing and clearly separated team members from roles."]},
-      {finding:["7 out of 8 changed a role without trouble, but 6 didn’t understand which permissions the person gained.","We added a summary of the new permissions before confirming the change."]},
-      {finding:["5 out of 6 companies use corporate email for administrators, but cashiers turn over a lot.","We enabled an alternative sign-in method for cashiers."]},
-      {ul:["<b>Group admin:</b> sees and manages every company in the group.","<b>Company admin:</b> manages their company, its branches and who sees what.","<b>Viewer:</b> variable permissions set by the admin.","<b>Developer:</b> integration features only."]},
-      {h3:"How a team member is invited"},
-      {p:"From the empty state, the admin invites with an email and a name, picks the role, chooses which branches the person will see and reviews the permissions that role carries before sending. Permissions are fixed per role to avoid the error we saw in testing: nobody has to build a custom role."},
+      {p:"4 out of 10 merchants wanted their sales staff to see reports, but only for their own branch. I designed a role model based on the merchant’s structure (group, company, branch and register) and we tested it with 8 administrators. It’s designed and validated; it hasn’t been built yet."},
+      {stats:[["8/8","agreed with the proposed roles"],["8/8","invited a team member successfully"],["25%","managed to edit permissions: the hardest task"]]},
+      {finding:["Only 2 out of 8 managed to remove a permission: they didn’t understand they had to create a custom role.","Permissions are fixed per role and reviewed before inviting. Nobody has to build a role from scratch."]},
       {video:{src:"deuna/roles-video",label:"Walkthrough: inviting a team member"}},
-      {fig:img("deuna/roles2","Inviting a team member: empty state, form and invitation sent","1600×1000",{free:true})},
-      {p:"We’re now iterating on the first scope: team management with statuses that explain their cause, a change audit log, and safeguards so a company is never left without an admin."}]},
-    {h:"What came next", blocks:[
-      {p:"With the foundation working, we kept the same research, test and iterate method on two fronts:"},
-      {ul:["<b>Business groups:</b> holdings had to log in company by company and consolidate in Excel. We explored three mid-fidelity flows and landed on a consolidated dashboard for the group admin.","<b>Consolidated reports:</b> only daily reports existed. I designed a four-step wizard to create reports for any range, generated in the background and tested with three tasks before launch."]},
+      {fig:img("deuna/roles2","Inviting a team member: empty state, form and invitation sent","1600×1000",{free:true})}]},
+    {h:"What’s next", blocks:[
+      {p:"The portal grows in phases. We’ve already designed a dashboard for business groups and a wizard to create reports for any date range. Billing and a sales engine are still to come."},
       {pair:[img("deuna/grupos-hifi","Group dashboard in high fidelity","1600×1000",{free:true}),img("deuna/reportes2","The four steps to create a custom report","1600×1000",{free:true})]}]},
     {h:"What I learned", blocks:[
-      {learn:"In B2B, internal language is the enemy. “Pagos”, “reports” or “custom role” made sense to us and confused merchants. Testing every feature saved us from training 2,000 merchants later."}]}
+      {learn:"A B2B portal is defended by what it saves, not only by what it sells. Putting numbers on support got us a small MVP, and shipping small is what let us prove it was worth growing."}]}
   ],
-  impact:{big:"25 → 2,000+ merchants", p:"Merchants who confirm payments, download reports, manage their teams and integrate the API without calling support. The tech team got back the 40 hours a week it spent on integration support."}
+  impact:{big:"25 → 2,000+ merchants", p:"Merchants who confirm payments, download reports and integrate the API without calling support. The tech team got back the 40 hours a week it spent on integration support."}
 },
 "cup":{
   title:"Unique Payment Code",
@@ -1075,37 +1045,35 @@ const CASES_EN = {
   lead:"Pay at the register without a QR: a 6-digit code the cashier reads out and the customer enters in the Deuna app or in Banco Pichincha’s mobile banking.",
   tags:["App","Payments","Research"], status:"Live",
   meta:[["Role","Product Designer"],["Research","Paired with Elizabeth Mendoza"],["Platform","Deuna app and Pichincha mobile banking"],["Validation","2 moderated tests · 16 people"],["Status","Live"]],
-  summary:[["The problem","Fake QR codes made many merchants stop displaying Deuna’s QR, and large merchants had no screen at the register to show it."],["What I did","Benchmark, prioritization, storyboard, the end-to-end flow with its error states, and two moderated tests in bank branches, on the Deuna app and in mobile banking."],["Result","Live for all users, accepted at more than 45,000 points of sale and available from Banco Pichincha’s mobile banking."]],
+  summary:[["The problem","Fake QR codes made many merchants stop displaying Deuna’s QR, and large merchants had no screen at the register to show it."],["What I did","Benchmark, prioritization, storyboard, the end-to-end flow with its errors, and two moderated tests, on the Deuna app and in mobile banking."],["Result","Live for all users, accepted at more than 45,000 points of sale and available from Banco Pichincha’s mobile banking."]],
   coverLabel:"Unique Payment Code: choose the option, enter the 6 digits and get the receipt",
   chapters:[
     {h:"Context", blocks:[
-      {p:"Fake QR codes started circulating in Ecuador. Many merchants stopped displaying Deuna’s QR for fear of fraud, and large merchants with several registers had no screen to show it on either. It’s the same problem: if there’s no QR in sight, the customer doesn’t pay with Deuna."},
-      {p:"The business goal was to grow active users and MDR with a payment method for large merchants with no QR interface, available in Deuna, in mobile banking and in credit unions."}]},
+      {p:"Fake QR codes started circulating in Ecuador. Many merchants stopped displaying Deuna’s QR for fear of fraud, and large merchants with several registers had no screen to show it on. With no QR in sight, the customer doesn’t pay with Deuna."},
+      {p:"The business goal: grow active users and MDR with a payment method for large merchants, available in Deuna, in mobile banking and in credit unions."}]},
     {h:"My role", blocks:[
-      {p:"We worked on it end to end with my research partner, Elizabeth Mendoza: benchmark, prioritization, storyboard, design, user testing and iteration. I designed the full flow, from the entry point to the error states and the high-fidelity prototypes, and co-facilitated the tests."}]},
-    {h:"Benchmark and prioritization", blocks:[
-      {p:"We reviewed how wallets take payments in Latin America and the United States. We found four patterns and compared them on three criteria: it scales, it works across devices, and it’s easy for the user."},
+      {p:"I worked on it end to end with my research partner, Elizabeth Mendoza. I designed the full flow, from the entry point to the error states, and co-facilitated the tests."}]},
+    {h:"Why a code and not a QR", blocks:[
+      {p:"We reviewed how wallets take payments in Latin America and the United States and compared four patterns on three criteria: it scales, it works across devices, and it’s easy for the user."},
       {fig:img("cup/benchmark","Benchmark: four wallet payment patterns","1600×1000",{free:true})},
-      {p:"The code won: it works without a card, doesn’t depend on a printed QR, and the same gesture works at the register, in an online store or from another banking app."}]},
+      {rows:[["Options","QR, push confirmation, one-time sign-up with automatic payment, and a code."],["We chose","A 6-digit code the customer enters and confirms in their app."],["Why","The amount comes predefined from the merchant’s integration, which a printed QR can’t always do, and the customer still confirms the payment."],["What we gave up","The customer has to type 6 digits in front of the cashier. That’s why we put so much care into the input."]]}]},
     {h:"The moment of use", blocks:[
-      {p:"Before designing screens, we drew the scene: a register with a line, a cashier reading the code out loud and a customer who had never paid this way. Every extra step was one more second in front of the cashier."},
+      {p:"Before designing screens, we drew the scene: a register with a line, a cashier reading out the code and a customer who had never paid this way. Every extra step was one more second in front of the cashier."},
       {fig:img("cup/storyboard","Storyboard: paying at the register with the code","1600×1280",{free:true})}]},
     {h:"The solution", blocks:[
-      {p:"The code lives inside “Pay”, next to Deuna’s QR, with a “New” tag: we didn’t add a separate entry on the home screen. The user enters the 6 digits, checks the merchant and amount, pays and gets the receipt."},
+      {p:"The code lives inside “Pay”, next to the QR, with a “New” tag, instead of a separate entry on the home screen. The user enters the 6 digits, checks the merchant and amount, pays and gets the receipt."},
       {video:{src:"cup/pago-video",label:"Walkthrough: from Pay to the receipt"}},
       {fig:img("cup/flujo","Final flow in the Deuna app","1600×1000",{free:true})},
-      {p:"A payment at the register can’t be left hanging either. I designed clear ways out for an invalid code, insufficient balance, transaction limit and service error, each one saying what happened and what to do, and always with the option to pay another way."},
+      {p:"A payment at the register can’t be left hanging: an invalid code, insufficient balance, a limit or a service error each say what happened, what to do, and always offer another way to pay."},
       {fig:img("cup/estados","Code entry, error and confirmation","1600×1000",{free:true})}]},
     {h:"Test 1: Deuna app", blocks:[
-      {p:"A moderated test in a Banco Pichincha branch with 6 people, prototype in hand. We wanted to know whether they understood how the code works and where they got stuck."},
-      {stats:[["5/6","looked for the code in “Pay”"],["6","people in the test"],["2","micro-interactions compared"],["0","comments on amount and confirmation"]]},
-      {finding:["They confused the code with an OTP or verification code.","We changed the copy to “It’s a number the business gives you and it changes every time you pay” and grouped the digits in pairs so it reads as a payment code."]},
-      {finding:["They didn’t notice any difference between the two input micro-interactions.","We kept the simplest one: boxes that advance on their own and validate when the sixth digit is entered."]},
-      {finding:["They showed the receipt to the cashier so they could take a photo of it, as in small shops.","The receipt highlights amount, merchant and transaction number, and the merchant gets the confirmation at the register."]},
+      {p:"A moderated test in a Banco Pichincha branch with 6 people. 5 out of 6 looked for the code in “Pay”, where we put it."},
+      {finding:["They confused the code with an OTP.","We changed the copy to “It’s a number the business gives you and it changes every time you pay” and grouped the digits in pairs."]},
+      {finding:["They didn’t notice any difference between the two input micro-interactions.","We kept the simplest one: boxes that advance on their own and validate on the sixth digit."]},
       {finding:["Amount and confirmation drew no comments at all.","We left them alone. Knowing what not to change is a decision too."]}]},
     {h:"Test 2: mobile banking", blocks:[
-      {p:"The code also had to work from Banco Pichincha’s mobile banking. We ran a second moderated test with 10 people to choose the name and position of the Deuna entry point inside the bank’s app, measuring time on task and success rate."},
-      {finding:["The 3 who asked for help and the 4 who didn’t finish the task couldn’t find the Deuna entry point on the home screen. “Scan or show QR” didn’t say the code exists too.","We proposed a name covering every way to pay with Deuna and moved it to the top tabs, the fastest option on time on task."]},
+      {p:"With 10 people, we tested the name and position of the Deuna entry point inside Banco Pichincha’s app, measuring time on task and success rate."},
+      {finding:["The 3 who asked for help and the 4 who didn’t finish couldn’t find the entry point on the home screen. “Scan or show QR” didn’t say the code exists too.","We proposed a name covering every way to pay with Deuna, in the top tabs: the fastest option."]},
       {fig:img("cup/hallazgos","Synthesis of both tests","1600×1000",{free:true})}]},
     {h:"What I learned", blocks:[
       {learn:"A new payment method competes with habit: users look for it where they already pay and read it through what they already know, like an OTP. Designing was mostly about removing those confusions."}]}
@@ -1118,36 +1086,30 @@ const CASES_EN = {
   lead:"Paying for subscriptions and orders with the wallet, no card needed: complex tokenization turned into “link your account”.",
   tags:["App","Payments","Research"], status:"In development",
   meta:[["Role","Senior Product Designer"],["Research","My own desk research and benchmark"],["Platform","Deuna app + merchant apps"],["Status","In development"]],
-  summary:[["The problem","International digital merchants that charge through dLocal only accepted cards, and Deuna has no card."],["What I did","Desk research and a benchmark of recurring payments in Latin America, cross-app flows, test prototypes, error states and step-by-step measurement."],["Result","A card-free recurring payment method: the user links their account once and pays without leaving the merchant’s app."]],
+  summary:[["The problem","International digital merchants that charge through dLocal only accepted cards, and Deuna has no card."],["What I did","Desk research and a benchmark of recurring payments in Latin America, cross-app flows, error states and step-by-step measurement, working out with architecture what tokenization allowed."],["Result","A card-free recurring payment method: the user links their account once and pays without leaving the merchant’s app."]],
   coverLabel:"Linking: choose Deuna in the merchant app, accept and return",
   chapters:[
     {h:"Context", blocks:[
-      {p:"Ordering food, paying for streaming or a membership: almost every recurring charge in apps requires a card. Deuna has no card, and we didn’t want to invent one."},
-      {p:"The opportunity came from dLocal, the processor that collects payments in Latin America for international digital merchants in delivery, mobility, streaming and e-commerce. For those merchants to charge with Deuna, the wallet needed the ability to take automatic payments."},
-      {p:"The technical answer was to tokenize the user’s account: a token that behaves like a card for the merchant and is only handed over when the user accepts the link. The design question: how do you explain that to someone who just wants to pay for their order?"}]},
+      {p:"Almost every recurring charge in apps requires a card, and Deuna has no card. The opportunity came from dLocal, which collects payments in Latin America for international digital merchants: for them to charge with Deuna, the wallet needed to allow automatic payments."},
+      {p:"The technical answer was to tokenize the account: a token that behaves like a card for the merchant and is only handed over when the user accepts. The design question: how do you explain that to someone who just wants to pay for their order?"}]},
     {h:"My role", blocks:[
-      {p:"I led the design end to end in the Deuna app. I did the desk research and benchmark myself, designed the linking, payment and unlinking flows with their errors, built the test prototypes and the presentation for the bank, and defined what to measure at each step. I worked with architecture and engineering to understand what tokenization allowed and where its limits were."}]},
+      {p:"I led the design end to end in the Deuna app: desk research and benchmark, linking, payment and unlinking flows with their errors, and what to measure at each step. I worked with architecture and engineering to understand what tokenization allowed and where its limits were."}]},
     {h:"Research", blocks:[
-      {p:"The goals were clear: grow MDR with recurring revenue, enable recurring payments from the Deuna account, and build something that would work for many merchants, not a one-off for a single one."},
-      {p:"I studied how subscriptions work in Latin America: card subscriptions, bank direct debits for utilities and new account-to-account models such as Pix Automático in Brazil or account-to-account payments in Colombia all coexist. I also walked through the real flows of wallets, banks and apps across the region."},
+      {p:"I studied how card subscriptions, bank direct debits and new account-to-account models such as Pix Automático coexist in Latin America, and walked through the real flows of wallets, banks and apps across the region."},
       {fig:img("suscripciones/benchmark","Benchmark and desk research: 4 learnings","1600×1000",{free:true})},
       {p:"The most important conclusion: people don’t complain because they get charged, they complain because they don’t know who is charging them or can’t find how to stop it."}]},
-    {h:"The solution", blocks:[
-      {p:"The flow starts in the merchant’s app, jumps to Deuna to authorize and returns to the merchant. The user links once and then pays without leaving the app."},
+    {h:"What we wanted vs. what we shipped", blocks:[
+      {rows:[["We wanted","Users linking their account without leaving the merchant’s app."],["We shipped","A jump to Deuna to authorize and a direct return to the merchant."],["Why","Technical capacity was limited: a webview would have had to be adapted to each merchant, one by one, and the goal was a solution for many."],["How we made up for it","You always see which merchant is asking for permission, the Deuna sign-in says why you’re there, and the confirmation sends you back to the merchant."]]},
       {video:{src:"suscripciones/vinculacion-video",label:"Walkthrough: from the merchant to Deuna and back"}},
       {fig:img("suscripciones/flujo","Linking in five steps","1600×1000",{free:true})}]},
     {h:"Design decisions", blocks:[
-      {finding:["Tokenization is a technical concept that scares people, and the main fear was that linking would trigger a charge.","We talk about “link your account”, an action people already know, and the screen says from the start “This step doesn’t charge you anything”."]},
-      {finding:["In the benchmark, the authorization moment is where trust is won or broken.","A screen dedicated to just that: who is charging, three clear benefits (secure payments, available balance, full control) and explicit acceptance of the terms before the button is enabled."]},
-      {finding:["The jump between the merchant’s app and Deuna creates distrust.","You always see which merchant is asking for permission, the Deuna sign-in says why you’re there, and the confirmation sends you straight back to the merchant."]},
-      {finding:["In the benchmark, subscription and recurring payment were used as if they were the same thing.","Each type has its own description, hierarchy and status: fixed and periodic, or variable by usage."]},
-      {fig:img("suscripciones/estados","Before accepting, error and confirmation","1600×1000",{free:true})},
-      {p:"And the cases nobody sees: invalid session, account already linked, temporary and permanent errors, and waiting for a response. Each one tells the user what happened and lets them get back to the merchant without getting stuck."}]},
+      {finding:["Tokenization is a scary concept, and the main fear was that linking would trigger a charge.","We talk about “link your account”, an action people already know, and the screen says from the start “This step doesn’t charge you anything”."]},
+      {finding:["In the benchmark, the authorization moment is where trust is won or broken.","A screen dedicated to just that: who is charging, three clear benefits and explicit acceptance of the terms before the button is enabled."]},
+      {finding:["In the benchmark, subscription and recurring payment were used as if they were the same thing.","Each type has its own description and status: fixed and periodic, or variable by usage."]},
+      {fig:img("suscripciones/estados","Before accepting, error and confirmation","1600×1000",{free:true})}]},
     {h:"Visible control", blocks:[
-      {p:"If people complain because they don’t know who is charging them, the answer is a place to see it. In Profile → Linked merchants, users see where their account is linked and can unlink it in two taps, with a warning about what they lose before confirming. They then get a notification and a backup email."},
+      {p:"If people complain because they don’t know who is charging them, they need a place to see it. In Profile → Linked merchants they can unlink their account in two taps, with a warning about what they lose and a backup email. Every screen has its tracking events defined from the first integrated merchant."},
       {fig:img("suscripciones/control","Linked merchants and unlinking","1600×1000",{free:true})}]},
-    {h:"Measurement from day one", blocks:[
-      {p:"Every screen in the flow has its events defined: entry, Deuna sign-in, acceptance, errors, confirmation and unlinking. The funnel is ready to show where people drop off from the very first integrated merchant."}]},
     {h:"What I learned", blocks:[
       {learn:"A permission to charge is a relationship, not a transaction. Designing the way out (seeing, unlinking, understanding what happened) mattered as much as designing the way in."}]}
   ],
@@ -1374,6 +1336,7 @@ function blockHTML(b){
   if(b.video) return `<figure class="rv vfig"><div class="vwrap"><video src="img/${b.video.src}.mp4" poster="img/${b.video.src}.jpg" autoplay muted loop playsinline preload="metadata"></video></div><figcaption>${b.video.label}</figcaption></figure>`;
   if(b.quotes) return `<div class="quotes">${b.quotes.map(([q,a])=>`<blockquote class="rv">“${q}”<cite>${a}</cite></blockquote>`).join("")}</div>`;
   if(b.learn) return `<p class="learn rv">${b.learn}</p>`;
+  if(b.rows) return `<div class="finding trade rv">${b.rows.map(([k,v],i)=>`<span class="k ${["v","d","n","m"][i%4]}">${k}</span><span>${v}</span>`).join("")}</div>`;
   if(b.finding) return `<div class="finding rv"><span class="k v">${T("problema")}</span><span>${b.finding[0]}</span><span class="k d">${T("solucion")}</span><span>${b.finding[1]}</span></div>`;
   return "";
 }
