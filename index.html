@@ -742,18 +742,18 @@ const CASES = [
   impact:{big:"≈10.000 comercios", p:"Gestionados por el equipo comercial desde el back office, conectado con el portal de autogestión."}
 },
 {
-  id:"colombia-fintech", title:"Colombia Fintech",
+  id:"colombia-fintech", noSlots:true, title:"Colombia Fintech",
   card:"Rediseño del sitio del gremio fintech más importante del país",
   lead:"Del repositorio de información a la puerta de entrada del ecosistema fintech colombiano.",
   tags:["Sitio web","Arquitectura de información","Freelance"], year:"2025", status:"Publicado",
   meta:[["Rol","Product Designer"],["Equipo","Producto, stakeholders del gremio y agencia de marca"],["Plataforma","Sitio web"],["Estado","Publicado en 2025"]],
   summary:[["El problema","El sitio tenía todo apilado con el mismo peso: quien quería afiliarse tenía que buscar cómo hacerlo entre noticias y documentos."],["Qué hice","Rediseñé la arquitectura de información, los flujos de navegación y la experiencia completa con la nueva marca."],["Resultado","Sitio publicado en 2025, con la afiliación y la comunidad al frente."]],
-  cover:img("colombia-fintech/portada","Portada: home del nuevo sitio","1600×1000",{remote:"https://framerusercontent.com/images/1LKEvwaEU6ECPmK9LnY7NOvJdo.png"}),
+  cover:img("colombia-fintech/cover","Sitio de Colombia Fintech en desktop y móvil"),
   chapters:[
     {h:"Contexto", blocks:[
       {p:"Colombia Fintech reúne a bancos digitales, fintechs, aliados e inversionistas. Su sitio era donde todos ellos llegaban primero, y no le hablaba a ninguno."},
       {p:"Todo estaba ahí, pero apilado: noticias, eventos, afiliación y documentos con el mismo peso. Quien llegaba con ganas de afiliarse tenía que buscar cómo hacerlo entre noticias y documentos."},
-      {pair:[img("colombia-fintech/antes","Sitio anterior","1200×900",{remote:"https://framerusercontent.com/images/jVe34Z1NWNzfKvcOP3x2ZMCMZc.png"}),img("colombia-fintech/despues","Sitio nuevo","1200×900",{remote:"https://framerusercontent.com/images/6uTDjW9LzRhw0q8NTuBpCoC0.png"})]}]},
+      {pair:[img("colombia-fintech/antes","Sitio anterior","1200×900",{remote:"https://framerusercontent.com/images/jVe34Z1NWNzfKvcOP3x2ZMCMZc.png"}),img("colombia-fintech/despues","Sitio nuevo","1440×900")]}]},
     {h:"El reto", blocks:[
       {p:"Llevar la nueva identidad de marca, creada por un equipo externo, a un sitio que en pocos segundos le dijera a cada visitante qué gana con Colombia Fintech y dónde seguir."}]},
     {h:"Mi rol", blocks:[
@@ -762,12 +762,15 @@ const CASES = [
       {finding:["Afiliarse, el objetivo principal del gremio, era un enlace perdido.","“Vinculación” en el menú principal y un bloque propio en el inicio para unirse a la comunidad."]},
       {finding:["El valor de pertenecer no se veía.","Directorio de miembros y testimonios de líderes del sector en el inicio."]},
       {finding:["Eventos, cursos y webinars estaban mezclados en un solo listado.","Pestañas por tipo de contenido y más aire entre bloques."]},
+      {video:{src:"colombia-fintech/sitio-video",label:"Recorrido por el sitio publicado"}},
       {h3:"Afiliación y comunidad al frente"},
       {p:"“Vinculación” vive en el menú principal, y el inicio tiene su propio bloque para unirse a la comunidad fintech más grande de Colombia. Unirse dejó de ser un enlace perdido."},
       {p:"El directorio de miembros y los testimonios de líderes del sector están en el inicio: el valor de pertenecer se ve antes de leerlo."},
-      {pair:[img("colombia-fintech/afiliacion","Bloque de afiliación","1200×900",{remote:"https://framerusercontent.com/images/aS2gJ44t5Gqv3o4tb9Sm4Av3qng.png"}),img("colombia-fintech/comunidad","Directorio y testimonios","1200×900",{remote:"https://framerusercontent.com/images/rCYLdVV133IULVbImh29d3jR3k.png"})]},
+      {fig:img("colombia-fintech/afiliacion","Beneficios y bloque para unirse a la comunidad","1600×1300",{free:true})},
+      {fig:img("colombia-fintech/comunidad","Directorio de miembros y testimonios","1600×1260",{free:true})},
       {h3:"Traduciendo la marca a producto digital"},
-      {p:"Eventos, cursos, Fintech & Beer y webinars quedaron en pestañas, en lugar de un listado mezclado. La identidad nueva era fuerte: la usé para dar ritmo y jerarquía, no para decorar. Más aire, menos bloques compitiendo."}]},
+      {p:"Eventos, cursos, Fintech & Beer y webinars quedaron en pestañas, en lugar de un listado mezclado. La identidad nueva era fuerte: la usé para dar ritmo y jerarquía, no para decorar. Más aire, menos bloques compitiendo."},
+      {fig:img("colombia-fintech/eventos","Eventos por tipo, en desktop y móvil","1600×1000",{free:true})}]},
   ],
   impact:{big:"Sitio publicado", p:"En uso por el gremio fintech más importante de Colombia."},
   link:{href:"https://colombiafintech.co", label:"Ver sitio"}
@@ -795,7 +798,7 @@ const CASES = [
       {finding:["El cliente no tenía forma de decir si la web le servía.","Una encuesta corta de cuatro pasos al terminar una gestión, para medir recomendación, solución y facilidad."]}]},
     {h:"Wireframes", blocks:[
       {p:"Validamos los flujos en baja fidelidad antes del diseño visual. Este es el bloqueo de tarjeta: elegir el motivo, confirmar y recibir el comprobante."},
-      {fig:img("cfc/wireframes","Wireframes del flujo de bloqueo de tarjeta","1600×1000",{free:true})}]},
+      {fig:img("cfc/wireframes","Wireframes del flujo de bloqueo de tarjeta","1600×1220",{free:true})}]},
     {h:"La solución", blocks:[
       {h3:"Tus productos, en una sola vista"},
       {p:"Tarjeta, cupo disponible, pago oportuno, últimos movimientos y préstamo personal en la primera pantalla. En móvil se mantiene la misma jerarquía."},
@@ -803,7 +806,7 @@ const CASES = [
       {p:"Cuatro preguntas con progreso visible y respuestas rápidas (caritas, sí/no, escala) para que contestar tome segundos."},
       {video:{src:"cfc/encuesta-video",label:"Recorrido: los cuatro pasos de la encuesta"}},
       {fig:img("cfc/mock-encuesta","Paso 1: recomendación de 0 a 10","1600×1000",{free:true})},
-      {fig:img("cfc/encuesta-flujo","Pasos 2 a 4 y confirmación","1600×1000",{free:true})},
+      {fig:img("cfc/encuesta-flujo","Pasos 2 a 4 y confirmación","1600×1200",{free:true})},
       {h3:"Design system"},
       {p:"Botones, campos, iconografía, tarjetas por tipo de producto y estados. Web y app salieron de las mismas piezas, lo que aceleró desarrollo y mantuvo la consistencia."},
       {fig:img("cfc/design-system","Componentes del design system","1600×1000",{free:true})},
@@ -871,7 +874,7 @@ const CASES = [
       {p:"Fui la diseñadora del proyecto: hice el benchmark, definí la estructura del portal y diseñé las pantallas de home, detalle de cuenta y ayuda en línea con el equipo de Movistar y desarrollo."}]},
     {h:"Benchmark", blocks:[
       {p:"Revisé cómo resolvían la autogestión Virgin, Claro, Mi Tigo y ETB. Tomamos tres ideas: búsqueda como punto de entrada, información de la cuenta siempre visible y procesos de soporte guiados por pasos."},
-      {fig:img("movistar/benchmark","Benchmark de portales y apps de telcos","1600×1000",{free:true})}]},
+      {fig:img("movistar/benchmark","Benchmark de portales y apps de telcos","1600×1200",{free:true})}]},
     {h:"Decisiones clave", blocks:[
       {finding:["Los clientes manejan muchos NITs y no recuerdan en cuál está cada línea.","La home arranca con un buscador por NIT o razón social y tarjetas por empresa."]},
       {finding:["Revisar líneas una por una era lento.","Una tabla con estado, plan, valor y equipo de cada línea, con búsqueda y exportar a Excel."]},
@@ -879,11 +882,11 @@ const CASES = [
     {h:"La solución", blocks:[
       {h3:"Detalle de la cuenta"},
       {p:"Datos de la cuenta arriba (número, ciudad, fecha de corte, saldo) y todas las líneas en una tabla con su estado."},
-      {fig:img("movistar/mock-detalle","Detalle de la cuenta y sus líneas","1600×1000",{free:true})},
+      {fig:img("movistar/mock-detalle","Detalle de la cuenta y sus líneas","1600×1260",{free:true})},
       {h3:"Ayuda en línea"},
       {p:"Crear una solicitud se divide en cuatro pasos visibles para que el cliente sepa siempre qué falta. Al final recibe un número de ticket para hacer seguimiento."},
       {video:{src:"movistar/flujo-video",label:"Recorrido: crear una solicitud de soporte"}},
-      {fig:img("movistar/flujo","Flujo de solicitud: datos, razón, archivos y ticket","1600×1000",{free:true})}]},
+      {fig:img("movistar/flujo","Flujo de solicitud: datos, razón, archivos y ticket","1600×1220",{free:true})}]},
     {h:"Qué aprendí", blocks:[
       {learn:"En B2B el usuario no navega, busca. Diseñar desde la búsqueda y las tablas fue más útil que cualquier dashboard."}]},
   ],
@@ -1093,7 +1096,7 @@ function caseTicker(c){
   const t = items.map(x=>`<span>${x} ${SPARK}</span>`).join("");
   return `<div class="ticker" aria-hidden="true"><div class="track">${t}${t}${t}</div></div>`;
 }
-const ACC={_:["#5b4cf8","#ece9ff"],"credito-facil-codensa":["#8a2f8f","#f5e8f5"],"porvenir-app":["#3d7a12","#e7f1dc"],"movistar-empresas":["#0b6fd6","#e3eefb"],"colombia-fintech":["#5b4cf8","#eef9d6"]};
+const ACC={_:["#5b4cf8","#ece9ff"],"credito-facil-codensa":["#8a2f8f","#f5e8f5"],"porvenir-app":["#3d7a12","#e7f1dc"],"movistar-empresas":["#0b6fd6","#e3eefb"],"colombia-fintech":["#1f5a4a","#e3f5ea"]};
 const STAR4SVG='<svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z"/></svg>';
 function caseView(c){
   const L = CASES.filter(x=>!x.draft), i = L.indexOf(c), nx = L[(i+1)%L.length];
